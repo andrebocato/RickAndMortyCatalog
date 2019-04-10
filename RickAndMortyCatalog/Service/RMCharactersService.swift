@@ -36,3 +36,37 @@ class RMCharactersService: RMCharactersAPIProtocol {
     }
     
 }
+
+class RMCharactersServiceMock: RMCharactersAPIProtocol { // @TODO: Mock with jsons
+    
+    // MARK: - Protocol Stubs
+    
+    func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) {
+        let mockedCharacters = [
+            RMCharacter(id: 0, name: "Character 1"),
+            RMCharacter(id: 0, name: "Character 1"),
+            RMCharacter(id: 0, name: "Character 1"),
+            RMCharacter(id: 0, name: "Character 1")
+        ]
+        completion(.success(mockedCharacters))
+    }
+    
+    func getCharacter(withID: Int?,
+                      completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) {
+        
+        // @TODO:
+    }
+    
+    func getAllCharactersInRange(_ range: (start: Int, end: Int),
+                                 completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) {
+        
+        // @TODO:
+    }
+    
+    func filterCharacters(_ filters: [RMCharactersFilter],
+                          completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) {
+        
+        // @TODO:
+    }
+    
+}

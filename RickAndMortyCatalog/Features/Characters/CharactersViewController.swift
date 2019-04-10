@@ -11,6 +11,9 @@ import UIKit
 
 class CharactersViewController: UIViewController {
 
+    // MARK: - Dependencies
+    private let service: RMCharactersAPIProtocol = RMCharactersServiceMock()
+    
     // MARK: - IBOutlets
     
     @IBOutlet private weak var tableView: UITableView! {
@@ -24,7 +27,26 @@ class CharactersViewController: UIViewController {
 
     // MARK: - Properties
     
+    var characters = [RMCharacter]() { // mock
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    // MARK: - Initilization
+    
     // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        service.getAllCharacters { [weak self] (result) in
+            switch result {
+            case .success(let response):
+                self?.characters = response
+            default: return
+            }
+        }
+        
+    }
     
     // MARK: - Navigation
     
@@ -51,12 +73,13 @@ extension CharactersViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // @TODO: implement method properly
-        return 1
+        return characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell", for: indexPath) as! CustomTableViewCell
+        let cell = UITableViewCell() //tableView.dequeueReusableCell(withIdentifier: "CharacterCell", for: indexPath) as! CustomTableViewCell
 //        cell.configureWith(image, name, id)
+        cell.textLabel?.text = characters[indexPath.row].name
         return cell
     }
 

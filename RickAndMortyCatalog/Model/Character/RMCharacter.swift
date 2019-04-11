@@ -24,10 +24,20 @@ struct RMCharacter: Codable {
 }
 
 extension RMCharacter {
-
-    init(id: Int, name: String){
+    
+    init(id: Int, name: String, status: String, species: String, type: String, gender: String, origin: RMCharacterOrigin, location: RMCharacterLocation, image: String, episode: [String], url: String, created: String) {
         self.id = id
         self.name = name
+        self.status = status
+        self.species = species
+        self.type = type
+        self.gender = gender
+        self.origin = origin
+        self.location = location
+        self.image = image
+        self.episode = episode
+        self.url = url
+        self.created = created
     }
     
 }

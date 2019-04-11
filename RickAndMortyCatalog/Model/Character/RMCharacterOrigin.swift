@@ -9,6 +9,15 @@
 import Foundation
 
 struct RMCharacterOrigin: Codable {
-    var name: String?
-    var url: String?
+    let name: String?
+    let url: String?
+}
+
+extension RMCharacterOrigin {
+    
+    init(name: String, url: String) {
+        self.name = name
+        self.url = url
+    }
+    
 }

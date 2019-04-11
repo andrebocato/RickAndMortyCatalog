@@ -9,11 +9,25 @@
 import Foundation
 
 struct RMLocation: Codable {
-    var id: Int?                /// The id of the location.
-    var name: String?           /// The name of the location.
-    var type: String?           /// The type of the location.
-    var dimension: String?      /// The dimension in which the location is located.
-    var residents: [String]?    /// List of character who have been last seen in the location.
-    var url: String?            /// Link to the location's own endpoint.
-    var created: String?        /// Time at which the location was created in the database.
+    let id: Int?                /// The id of the location.
+    let name: String?           /// The name of the location.
+    let type: String?           /// The type of the location.
+    let dimension: String?      /// The dimension in which the location is located.
+    let residents: [String]?    /// List of character who have been last seen in the location.
+    let url: String?            /// Link to the location's own endpoint.
+    let created: String?        /// Time at which the location was created in the database.
+}
+
+extension RMLocation {
+    
+    init(id: Int, name: String, type: String, dimension: String, residents: [String], url: String, created: String) {
+        self.id = id
+        self.name = name
+        self.type = type
+        self.dimension = dimension
+        self.residents = residents
+        self.url = url
+        self.created = created
+    }
+    
 }

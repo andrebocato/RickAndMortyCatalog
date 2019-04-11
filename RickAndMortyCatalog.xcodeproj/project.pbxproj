@@ -31,8 +31,6 @@
 		65912AED225D1E7200F37508 /* RMCharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912AEC225D1E7200F37508 /* RMCharacterLocation.swift */; };
 		65912AF0225D1F8D00F37508 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912AEF225D1F8D00F37508 /* Service.swift */; };
 		65912AFB225D29C400F37508 /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912AFA225D29C400F37508 /* LocationDetailViewController.swift */; };
-		65912AFE225D2ABB00F37508 /* RMCharactersAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912AFD225D2ABB00F37508 /* RMCharactersAPIProtocol.swift */; };
-		65912B00225D2B1300F37508 /* RMLocationsAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912AFF225D2B1300F37508 /* RMLocationsAPIProtocol.swift */; };
 		65912B02225D2BCF00F37508 /* CharactersFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912B01225D2BCF00F37508 /* CharactersFilters.swift */; };
 		65912B04225D2C1900F37508 /* LocationsFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912B03225D2C1900F37508 /* LocationsFilters.swift */; };
 		65912B06225D2D6400F37508 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912B05225D2D6400F37508 /* LocationCell.swift */; };
@@ -89,8 +87,6 @@
 		65912AEC225D1E7200F37508 /* RMCharacterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterLocation.swift; sourceTree = "<group>"; };
 		65912AEF225D1F8D00F37508 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		65912AFA225D29C400F37508 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
-		65912AFD225D2ABB00F37508 /* RMCharactersAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharactersAPIProtocol.swift; sourceTree = "<group>"; };
-		65912AFF225D2B1300F37508 /* RMLocationsAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLocationsAPIProtocol.swift; sourceTree = "<group>"; };
 		65912B01225D2BCF00F37508 /* CharactersFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersFilters.swift; sourceTree = "<group>"; };
 		65912B03225D2C1900F37508 /* LocationsFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsFilters.swift; sourceTree = "<group>"; };
 		65912B05225D2D6400F37508 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
@@ -124,6 +120,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		654407E8225E96B60015A00B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				65912AFA225D29C400F37508 /* LocationDetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		654407E9225E96D50015A00B /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				65912AC4225CFDAC00F37508 /* LocationsViewController.swift */,
+				65912B05225D2D6400F37508 /* LocationCell.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		65912A6F225CF1C400F37508 = {
 			isa = PBXGroup;
 			children = (
@@ -149,10 +162,9 @@
 			children = (
 				65912AA9225CF28A00F37508 /* Application */,
 				65912ABB225CFACA00F37508 /* Service */,
-				65912ABE225CFBC800F37508 /* Model */,
-				65912ABD225CFBC500F37508 /* View */,
-				65912ABC225CFBC300F37508 /* Logic */,
 				65912AAB225CF2C600F37508 /* Convenience */,
+				65912ABE225CFBC800F37508 /* Model */,
+				65912ABD225CFBC500F37508 /* Features */,
 			);
 			path = RickAndMortyCatalog;
 			sourceTree = "<group>";
@@ -244,20 +256,17 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		65912ABC225CFBC300F37508 /* Logic */ = {
+		65912ABD225CFBC500F37508 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				65912A7F225CF1C400F37508 /* Main.storyboard */,
+				65912ADC225D0B2900F37508 /* Tab Bar */,
+				65912ACA225CFDCF00F37508 /* Characters */,
+				65912AC9225CFDCD00F37508 /* Locations */,
+				65912AD7225D08DA00F37508 /* Favorites */,
+				65912AD6225D08D700F37508 /* Settings */,
 			);
-			path = Logic;
-			sourceTree = "<group>";
-		};
-		65912ABD225CFBC500F37508 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				65912AC0225CFC0A00F37508 /* Controllers */,
-				65912AC1225CFC1000F37508 /* Storyboards */,
-			);
-			path = View;
+			path = Features;
 			sourceTree = "<group>";
 		};
 		65912ABE225CFBC800F37508 /* Model */ = {
@@ -269,32 +278,11 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		65912AC0225CFC0A00F37508 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				65912ADC225D0B2900F37508 /* Tab Bar */,
-				65912ACA225CFDCF00F37508 /* Characters */,
-				65912AC9225CFDCD00F37508 /* Locations */,
-				65912AD7225D08DA00F37508 /* Favorites */,
-				65912AD6225D08D700F37508 /* Settings */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		65912AC1225CFC1000F37508 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				65912A7F225CF1C400F37508 /* Main.storyboard */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
 		65912AC9225CFDCD00F37508 /* Locations */ = {
 			isa = PBXGroup;
 			children = (
-				65912AC4225CFDAC00F37508 /* LocationsViewController.swift */,
-				65912B05225D2D6400F37508 /* LocationCell.swift */,
-				65912AFA225D29C400F37508 /* LocationDetailViewController.swift */,
+				654407E9225E96D50015A00B /* Location */,
+				654407E8225E96B60015A00B /* Detail */,
 			);
 			path = Locations;
 			sourceTree = "<group>";
@@ -354,8 +342,6 @@
 		65912AFC225D2AA600F37508 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				65912AFD225D2ABB00F37508 /* RMCharactersAPIProtocol.swift */,
-				65912AFF225D2B1300F37508 /* RMLocationsAPIProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -517,9 +503,7 @@
 				65912AB5225CF45100F37508 /* AlertHelper.swift in Sources */,
 				65912AFB225D29C400F37508 /* LocationDetailViewController.swift in Sources */,
 				65912AE7225D1B8B00F37508 /* RMLocation.swift in Sources */,
-				65912AFE225D2ABB00F37508 /* RMCharactersAPIProtocol.swift in Sources */,
 				65912AB7225CF46100F37508 /* ErrorHelper.swift in Sources */,
-				65912B00225D2B1300F37508 /* RMLocationsAPIProtocol.swift in Sources */,
 				65912B04225D2C1900F37508 /* LocationsFilters.swift in Sources */,
 				65912AB3225CF43C00F37508 /* JSON.swift in Sources */,
 				65912ABA225CF49200F37508 /* ErrorTypes.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RMLocationsService: RMLocationsAPIProtocol {
+class RMLocationsService: RMLocationsServiceProtocol {
     
     // MARK: - Protocol Stubs
     
@@ -35,4 +35,19 @@ class RMLocationsService: RMLocationsAPIProtocol {
         // @TODO:
     }
     
+}
+
+// MARK: - Protocols
+
+protocol RMLocationsServiceProtocol {
+    func getAllLocations(completionHandler: @escaping (Result<[RMLocation], ServiceError>) -> Void)
+    
+    func getLocation(withID: Int?,
+                     completionHandler: @escaping (Result<RMLocation, ServiceError>) -> Void)
+    
+    func getAllLocationsInRange(_ range: (start: Int, end: Int),
+                                completionHandler: @escaping (Result<RMLocation, ServiceError>) -> Void)
+    
+    func filterLocations(_ filters: [RMCharactersFilter],
+                         completionHandler: @escaping (Result<[RMLocation], ServiceError>) -> Void)
 }

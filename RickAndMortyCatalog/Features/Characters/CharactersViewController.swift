@@ -12,7 +12,7 @@ import UIKit
 class CharactersViewController: UIViewController {
 
     // MARK: - Dependencies
-    private let service: RMCharactersAPIProtocol = RMCharactersServiceMock()
+    private let service: RMCharactersServiceProtocol = RMCharactersServiceMock()
     
     // MARK: - IBOutlets
     

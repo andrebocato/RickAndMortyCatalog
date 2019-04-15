@@ -13,7 +13,7 @@ extension UIView {
     
     // MARK: - Functions
     
-    func showEmptyView() {
+    func showEmptyView(message: String) {
         // @TODO: implement emptyView show
     }
     

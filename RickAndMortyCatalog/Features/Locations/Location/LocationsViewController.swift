@@ -23,17 +23,23 @@ class LocationsViewController: UIViewController {
     
     // MARK: - Properties
     
+    var locations = [RMLocation]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     // MARK: - Lifecycle
     
     // MARK: - Navigation
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? LocationDetailViewController, segue.destination is LocationDetailViewController else { return }
-        
-        if segue.identifier == "LocationDetailSegue" {
-            // @TODO: pass data
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let destination = segue.destination as? LocationDetailViewController, segue.destination is LocationDetailViewController else { return }
+//
+//        if segue.identifier == "LocationDetailSegue" {
+//            // @TODO: pass data
+//        }
+//    }
     
     // MARK: - Functions
     
@@ -50,13 +56,15 @@ extension LocationsViewController: UITableViewDataSource {
     // MARK: - Table View Data Source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // @TODO: implement method properly
-        return 1
+        return locations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! CustomTableViewCell
-        //        cell.configureWith(image, name, id)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as? LocationCell else { return UITableViewCell() }
+        
+        let location = locations[indexPath.row]
+        cell.configure(with: location)
+        
         return cell
     }
     

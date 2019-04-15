@@ -12,6 +12,7 @@ class FavoritesViewController: UIViewController {
 
     // MARK: - IBOutlets
     
+    @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet private weak var settingsBarButtonItem: UIBarButtonItem!
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
@@ -26,19 +27,26 @@ class FavoritesViewController: UIViewController {
         performSegue(withIdentifier: "SettingsSegue", sender: self)
     }
     
+    @IBAction func segmentedControlValueChanged(_ sender: Any) {
+        // @TODO: change collection view content for each segment
+    }
+    
     // MARK: - Properties
+    
+    var favoritedCharacters = [RMCharacter]() {
+        didSet {
+            collectionView.reloadData() 
+        }
+    }
+    var favoritedLocations = [RMLocation]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     // MARK: - Lifecycle
     
     // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? LocationDetailViewController, segue.destination is LocationDetailViewController else { return }
-        
-        if segue.identifier == "LocationDetailSegue" {
-            // @TODO: pass data to next view controller
-        }
-    }
     
     // MARK: - Functions
     
@@ -54,14 +62,34 @@ extension FavoritesViewController: UICollectionViewDataSource {
     
     // MARK: - Collection View Data Source
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // @TODO: retun number of favorites
-        return 1
+        switch section {
+        case 0:
+            guard favoritedCharacters.count > 0 else {
+                collectionView.showEmptyView(message: "No favorite characters to show")
+                return 0
+            }
+            return favoritedCharacters.count
+            
+        case 1:
+            guard favoritedLocations.count > 0 else {
+                collectionView.showEmptyView(message: "No favorite locations to show")
+                return 0
+            }
+            return favoritedLocations.count
+            
+        default: return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // @TODO: implement method properly
-        return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteCell", for: indexPath) as? FavoriteCell else { return UICollectionViewCell() }
+        // @TODO: configure cell
+        return cell
     }
     
 }

@@ -29,7 +29,7 @@ class RMLocationsService: RMLocationsServiceProtocol {
         // @TODO:
     }
     
-    func filterLocations(_ filters: [RMCharactersFilter],
+    func filterLocations(_ filters: [RMLocationsFilter],
                          completionHandler: @escaping (Result<[RMLocation], ServiceError>) -> Void) {
         
         // @TODO:
@@ -48,6 +48,6 @@ protocol RMLocationsServiceProtocol {
     func getAllLocationsInRange(_ range: (start: Int, end: Int),
                                 completionHandler: @escaping (Result<RMLocation, ServiceError>) -> Void)
     
-    func filterLocations(_ filters: [RMCharactersFilter],
+    func filterLocations(_ filters: [RMLocationsFilter],
                          completionHandler: @escaping (Result<[RMLocation], ServiceError>) -> Void)
 }

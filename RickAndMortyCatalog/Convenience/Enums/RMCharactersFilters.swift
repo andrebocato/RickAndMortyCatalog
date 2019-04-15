@@ -1,5 +1,5 @@
 //
-//  CharactersFilter.swift
+//  RMCharactersFilter.swift
 //  RickAndMortyCatalog
 //
 //  Created by Andre Sanches Bocato on 09/04/19.

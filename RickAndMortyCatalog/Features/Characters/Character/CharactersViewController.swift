@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CharactersViewController: UIViewController {
+class CharactersViewController: UIViewController, LoadableView {
 
     // MARK: - Dependencies
     
@@ -27,7 +27,7 @@ class CharactersViewController: UIViewController {
     // MARK: - IBActions
 
     // MARK: - Properties
-    
+
     var characters = [RMCharacter]() {
         didSet {
             tableView.reloadData()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: UIViewController, LoadableView, EmptiableView {
 
     // MARK: - IBOutlets
     
@@ -24,7 +24,8 @@ class FavoritesViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func settingsBarButtonItemDidReceiveTouchUpInside(_ sender: Any) {
-        performSegue(withIdentifier: Constants.SegueIdentifiers.settings, sender: self)
+//        performSegue(withIdentifier: Constants.SegueIdentifiers.settings, sender: self)
+        view.stopLoading()
     }
     
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
@@ -45,6 +46,11 @@ class FavoritesViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.startLoading()
+    }
     
     // MARK: - Navigation
     

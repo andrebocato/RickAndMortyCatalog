@@ -1,5 +1,5 @@
 //
-//  UICollectionViewCell+Extension.swift
+//  UICollectionViewCell+Identifier.swift
 //  RickAndMortyCatalog
 //
 //  Created by Andre Sanches Bocato on 16/04/19.

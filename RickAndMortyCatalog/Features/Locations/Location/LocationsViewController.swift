@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocationsViewController: UIViewController {
+class LocationsViewController: UIViewController, LoadableView {
 
     // MARK: - IBOutlets
     
@@ -79,4 +79,3 @@ extension LocationsViewController: UITableViewDelegate {
     }
     
 }
-

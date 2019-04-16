@@ -13,10 +13,16 @@ class FavoriteCell: UICollectionViewCell {
     // MARK: - Configuration Functions
     
     func configure(with: RMCharacter) {
+        startLoading()
         // @TODO: implement
+        
+        stopLoading()
     }
     
     func configure(with: RMLocation) {
+        startLoading()
         // @TODO: implement
+        
+        stopLoading()
     }
 }

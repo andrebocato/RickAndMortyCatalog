@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterCell: UITableViewCell {
+class CharacterCell: UITableViewCell, LoadableView {
 
     // MARK: - IBOutlets
     

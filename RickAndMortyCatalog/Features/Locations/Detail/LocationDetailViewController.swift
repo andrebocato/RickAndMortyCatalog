@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LocationDetailViewController: UIViewController {
+class LocationDetailViewController: UIViewController, LoadableView {
     
     // MARK: - IBOutlets
     

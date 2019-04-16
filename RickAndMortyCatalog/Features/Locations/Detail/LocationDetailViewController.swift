@@ -14,10 +14,12 @@ class LocationDetailViewController: UIViewController {
     // MARK: - IBOutlets
     
     @IBOutlet private weak var toggleFavoriteBarButtonItem: UIBarButtonItem!
+    // @TODO: set labels for each field
     
     // MARK: - IBActions
     
     @IBAction private func toggleFavoriteBarButtonItemDidReceiveTouchUpInside(_ sender: Any) {
+        // @TODO: change image for favorited
     }
     
     // MARK: - Properties
@@ -36,7 +38,7 @@ class LocationDetailViewController: UIViewController {
     
     // MARK: - Functions
     
-    // MARK: - Configuration
+    // MARK: - Configuration Functions
     
     // MARK: - Helper Functions
     

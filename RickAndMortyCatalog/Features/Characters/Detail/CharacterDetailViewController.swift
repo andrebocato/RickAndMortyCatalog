@@ -16,10 +16,10 @@ class CharacterDetailViewController: UIViewController {
     @IBOutlet private weak var toggleFavoriteBarButtonItem: UIBarButtonItem!
     // @TODO: set labels for each field
     
-    
     // MARK: - IBActions
     
     @IBAction private func toggleFavoriteBarButtonItemDidReceiveTouchUpInside(_ sender: Any) {
+        // @TODO: change image for favorited
     }
     
     // MARK: - Properties
@@ -38,7 +38,7 @@ class CharacterDetailViewController: UIViewController {
     
     // MARK: - Functions
     
-    // MARK: - Configuration
+    // MARK: - Configuration Functions
     
     // MARK: - Helper Functions
     

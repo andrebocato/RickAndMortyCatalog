@@ -9,5 +9,14 @@
 import UIKit
 
 class FavoriteCell: UICollectionViewCell {
+ 
+    // MARK: - Configuration Functions
     
+    func configure(with: RMCharacter) {
+        // @TODO: implement
+    }
+    
+    func configure(with: RMLocation) {
+        // @TODO: implement
+    }
 }

@@ -24,7 +24,7 @@ class FavoritesViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func settingsBarButtonItemDidReceiveTouchUpInside(_ sender: Any) {
-        performSegue(withIdentifier: "SettingsSegue", sender: self)
+        performSegue(withIdentifier: Constants.SegueIdentifiers.settings, sender: self)
     }
     
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
@@ -50,7 +50,7 @@ class FavoritesViewController: UIViewController {
     
     // MARK: - Functions
     
-    // MARK: - Configuration
+    // MARK: - Configuration Functions
     
     // MARK: - Helper Functions
     
@@ -62,12 +62,8 @@ extension FavoritesViewController: UICollectionViewDataSource {
     
     // MARK: - Collection View Data Source
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
+        switch segmentedControl.selectedSegmentIndex {
         case 0:
             guard favoritedCharacters.count > 0 else {
                 collectionView.showEmptyView(message: "No favorite characters to show")
@@ -87,8 +83,10 @@ extension FavoritesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteCell", for: indexPath) as? FavoriteCell else { return UICollectionViewCell() }
-        // @TODO: configure cell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCell.identifier, for: indexPath) as? FavoriteCell else { return UICollectionViewCell() }
+        
+//        cell.configure()
+        
         return cell
     }
     
@@ -98,7 +96,20 @@ extension FavoritesViewController: UICollectionViewDelegate {
     
     // MARK: - Collection View Delegate
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "LocationDetailSegue", sender: self)
+    // @TODO: implement
+}
+
+extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
+    
+    // MARK: - Collection View Delegate Flow Layout
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = collectionView.bounds.width
+        return CGSize(width: size, height: size)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 3
+    }
+    
 }

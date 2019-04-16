@@ -28,12 +28,21 @@ class SettingsViewController: UIViewController {
         navigationController?.toolbar.isHidden = false
         
         // @TODO: if view has changes, show alert asking if user wants to discard changes and put line below in completion
+        persistChanges()
         navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Functions
     
-    // MARK: - Configuration
+    private func persistChanges() {
+        // @TODO: implement
+    }
+    
+    private func clearFavorites() {
+        // @TODO: implement
+    }
+    
+    // MARK: - Configuration Functions
     
     // MARK: - Helper Functions
 

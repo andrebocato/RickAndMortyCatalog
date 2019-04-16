@@ -64,7 +64,7 @@ class CharactersViewController: UIViewController {
     
     // MARK: - Functions
     
-    // MARK: - Configuration
+    // MARK: - Configuration Functions
     
     // MARK: - Helper Functions
 }
@@ -80,7 +80,7 @@ extension CharactersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell", for: indexPath) as? CharacterCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.identifier, for: indexPath) as? CharacterCell else {
             return UITableViewCell()
         }
         
@@ -97,7 +97,7 @@ extension CharactersViewController: UITableViewDelegate {
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "CharacterDetailSegue", sender: self)
+        performSegue(withIdentifier: Constants.SegueIdentifiers.characterDetail, sender: self)
     }
     
 }

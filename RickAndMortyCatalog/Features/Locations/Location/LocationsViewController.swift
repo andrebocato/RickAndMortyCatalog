@@ -43,7 +43,7 @@ class LocationsViewController: UIViewController {
     
     // MARK: - Functions
     
-    // MARK: - Configuration
+    // MARK: - Configuration Functions
     
     // MARK: - Helper Functions
 
@@ -60,7 +60,7 @@ extension LocationsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as? LocationCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LocationCell.identifier, for: indexPath) as? LocationCell else { return UITableViewCell() }
         
         let location = locations[indexPath.row]
         cell.configure(with: location)
@@ -75,7 +75,7 @@ extension LocationsViewController: UITableViewDelegate {
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "LocationDetailSegue", sender: self)
+        performSegue(withIdentifier: Constants.SegueIdentifiers.locationDetail, sender: self)
     }
     
 }

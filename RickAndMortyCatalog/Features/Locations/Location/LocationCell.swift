@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocationCell: UITableViewCell, LoadableView {
+class LocationCell: UITableViewCell {
     
     // MARK: - IBOutlets
     

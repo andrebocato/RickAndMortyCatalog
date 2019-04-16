@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController , LoadableView {
+class SettingsViewController: UIViewController {
 
     // MARK: - IBOutlets
     

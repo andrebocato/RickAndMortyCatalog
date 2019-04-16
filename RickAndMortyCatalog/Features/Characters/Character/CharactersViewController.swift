@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CharactersViewController: UIViewController, LoadableView {
+class CharactersViewController: UIViewController {
 
     // MARK: - Dependencies
     
@@ -97,7 +97,7 @@ extension CharactersViewController: UITableViewDelegate {
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Constants.SegueIdentifiers.characterDetail, sender: self)
+        performSegue(withIdentifier: "CharacterDetailSegue", sender: self)
     }
     
 }

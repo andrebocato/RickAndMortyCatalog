@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocationsViewController: UIViewController, LoadableView {
+class LocationsViewController: UIViewController {
 
     // MARK: - IBOutlets
     
@@ -75,7 +75,7 @@ extension LocationsViewController: UITableViewDelegate {
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Constants.SegueIdentifiers.locationDetail, sender: self)
+        performSegue(withIdentifier: "LocationDetailSegue", sender: self)
     }
     
 }

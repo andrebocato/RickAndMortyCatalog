@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CharacterDetailViewController: UIViewController, LoadableView {
+class CharacterDetailViewController: UIViewController {
 
     // MARK: - IBOutlets
     

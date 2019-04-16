@@ -9,7 +9,11 @@
 import UIKit
 
 class LocationsViewController: UIViewController {
-
+    
+    // MARK: - Dependencies
+    
+    let service = RMLocationsService()
+    
     // MARK: - IBOutlets
     
     @IBOutlet private weak var tableView: UITableView! {
@@ -33,20 +37,20 @@ class LocationsViewController: UIViewController {
     
     // MARK: - Navigation
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let destination = segue.destination as? LocationDetailViewController, segue.destination is LocationDetailViewController else { return }
-//
-//        if segue.identifier == "LocationDetailSegue" {
-//            // @TODO: pass data
-//        }
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        guard let destination = segue.destination as? LocationDetailViewController, segue.destination is LocationDetailViewController else { return }
+    //
+    //        if segue.identifier == "LocationDetailSegue" {
+    //            // @TODO: pass data
+    //        }
+    //    }
     
     // MARK: - Functions
     
     // MARK: - Configuration Functions
     
     // MARK: - Helper Functions
-
+    
 }
 
 // MARK: - Extensions

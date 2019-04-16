@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class CharactersViewController: UIViewController {
-
+    
     // MARK: - Dependencies
     
     private let service: RMCharactersServiceProtocol = RMCharactersServiceMock()
@@ -25,14 +25,18 @@ class CharactersViewController: UIViewController {
     }
     
     // MARK: - IBActions
-
+    
     // MARK: - Properties
 
-    var characters = [RMCharacter]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    let characters: [RMCharacter] = [
+        RMCharacter(id: 12, name: "character name", status: "character status", species: "character species", type: "character type", gender: "character gender", origin: RMCharacterOrigin(name: "character origin name", url: nil), location: RMCharacterLocation(name: "character location name", url: nil), image: nil, episode: nil, url: nil, created: nil)
+    ]
+    
+//    var characters = [RMCharacter]() {
+//        didSet {
+//            tableView.reloadData()
+//        }
+//    }
     
     // MARK: - Initilization
     
@@ -40,31 +44,37 @@ class CharactersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        service.getAllCharacters { [weak self] (result) in
-            switch result {
-            case .success(let response):
-                self?.characters = response
-                
-            default: return
-            }
-        }
-        
+        loadViewData()
     }
     
     // MARK: - Navigation
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let destination = segue.destination as? CharacterDetailViewController, segue.destination is CharacterDetailViewController else { return }
-//
-//        if segue.identifier == "CharacterDetailSegue" {
-//            // @TODO: pass data
-//        }
-//    }
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            guard let destination = segue.destination as? CharacterDetailViewController, segue.destination is CharacterDetailViewController else { return }
+    
+            if segue.identifier == "CharacterDetailSegue" {
+                destination.character = characters[0]
+            }
+        }
     
     // MARK: - Functions
     
+    private func dowloadCharacters() {
+//        service.getAllCharacters { [weak self] (result) in
+//            switch result {
+//            case .success(let response):
+//                self?.characters = response
+//                
+//            default: return
+//            }
+//        }
+    }
+    
     // MARK: - Configuration Functions
+    
+    private func loadViewData() {
+        // @TODO: if there are downloaded characters, get them from Realm. if there aren't, download them
+    }
     
     // MARK: - Helper Functions
 }
@@ -80,16 +90,14 @@ extension CharactersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.identifier, for: indexPath) as? CharacterCell else {
-            return UITableViewCell()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.identifier, for: indexPath) as? CharacterCell else { return UITableViewCell() }
         
         let character = characters[indexPath.row]
         cell.configure(with: character)
         
         return cell
     }
-
+    
 }
 
 extension CharactersViewController: UITableViewDelegate {

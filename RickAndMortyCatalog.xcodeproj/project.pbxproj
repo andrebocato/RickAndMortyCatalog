@@ -41,6 +41,7 @@
 		65912B04225D2C1900F37508 /* RMLocationsFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912B03225D2C1900F37508 /* RMLocationsFilters.swift */; };
 		65912B0D225D35A600F37508 /* RMCharactersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912B0C225D35A600F37508 /* RMCharactersService.swift */; };
 		65912B0F225D363400F37508 /* RMLocationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912B0E225D363400F37508 /* RMLocationsService.swift */; };
+		65E2CB092267A0F300D89633 /* RMLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2CB082267A0F300D89633 /* RMLocation+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		65912B03225D2C1900F37508 /* RMLocationsFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLocationsFilters.swift; sourceTree = "<group>"; };
 		65912B0C225D35A600F37508 /* RMCharactersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharactersService.swift; sourceTree = "<group>"; };
 		65912B0E225D363400F37508 /* RMLocationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLocationsService.swift; sourceTree = "<group>"; };
+		65E2CB082267A0F300D89633 /* RMLocation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RMLocation+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 				6576A389226623EB00571620 /* UICollectionViewCell+Identifier.swift */,
 				6576A3912266370A00571620 /* UIView+Loadable.swift */,
 				6576A3952266413200571620 /* UIView+Emptiable.swift */,
+				65E2CB082267A0F300D89633 /* RMLocation+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				65803246226512BA000FCAB9 /* LocationCell.swift in Sources */,
 				65912B0D225D35A600F37508 /* RMCharactersService.swift in Sources */,
 				65912AEB225D1E0C00F37508 /* RMCharacterOrigin.swift in Sources */,
+				65E2CB092267A0F300D89633 /* RMLocation+Extension.swift in Sources */,
 				65912AED225D1E7200F37508 /* RMCharacterLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

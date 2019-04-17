@@ -28,15 +28,12 @@ class CharactersViewController: UIViewController {
     
     // MARK: - Properties
 
-    let characters: [RMCharacter] = [
-        RMCharacter(id: 12, name: "character name", status: "character status", species: "character species", type: "character type", gender: "character gender", origin: RMCharacterOrigin(name: "character origin name", url: nil), location: RMCharacterLocation(name: "character location name", url: nil), image: nil, episode: nil, url: nil, created: nil)
-    ]
-    
-//    var characters = [RMCharacter]() {
-//        didSet {
-//            tableView.reloadData()
-//        }
-//    }
+    var characters = [RMCharacter]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var selectedCharacter: RMCharacter!
     
     // MARK: - Initilization
     
@@ -49,31 +46,32 @@ class CharactersViewController: UIViewController {
     
     // MARK: - Navigation
     
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            guard let destination = segue.destination as? CharacterDetailViewController, segue.destination is CharacterDetailViewController else { return }
-    
-            if segue.identifier == "CharacterDetailSegue" {
-                destination.character = characters[0]
-            }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? CharacterDetailViewController, segue.destination is CharacterDetailViewController else { return }
+        
+        if segue.identifier == "CharacterDetailSegue" {
+            destination.character = selectedCharacter
         }
+    }
     
     // MARK: - Functions
     
     private func dowloadCharacters() {
-//        service.getAllCharacters { [weak self] (result) in
-//            switch result {
-//            case .success(let response):
-//                self?.characters = response
-//                
-//            default: return
-//            }
-//        }
+        service.getAllCharacters { [weak self] (result) in
+            switch result {
+            case .success(let response):
+                self?.characters = response
+                
+            default: return
+            }
+        }
     }
     
     // MARK: - Configuration Functions
     
     private func loadViewData() {
-        // @TODO: if there are downloaded characters, get them from Realm. if there aren't, download them
+        dowloadCharacters()
+        // @TODO: if there are downloaded characters, get them from persisted data. if there aren't, download them
     }
     
     // MARK: - Helper Functions
@@ -105,6 +103,8 @@ extension CharactersViewController: UITableViewDelegate {
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        selectedCharacter = characters[indexPath.row]
         performSegue(withIdentifier: "CharacterDetailSegue", sender: self)
     }
     

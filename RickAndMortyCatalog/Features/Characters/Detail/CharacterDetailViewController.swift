@@ -14,31 +14,35 @@ class CharacterDetailViewController: UIViewController {
     // MARK: - IBOutlets
     
     @IBOutlet private weak var toggleFavoriteBarButtonItem: UIBarButtonItem!
+    @IBOutlet private weak var idFixedLabel: UILabel!
+    @IBOutlet private weak var nameFixedLabel: UILabel!
+    @IBOutlet private weak var statusFixedLabel: UILabel!
+    @IBOutlet private weak var speciesFixedLabel: UILabel!
+    @IBOutlet private weak var typeFixedLabel: UILabel!
+    @IBOutlet private weak var genderFixedLabel: UILabel!
+    @IBOutlet private weak var originNameFixedLabel: UILabel!
+    @IBOutlet private weak var locationNameFixedLabel: UILabel!
+
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var idLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var statusLabel: UILabel!
     @IBOutlet private weak var speciesLabel: UILabel!
     @IBOutlet private weak var typeLabel: UILabel!
     @IBOutlet private weak var genderLabel: UILabel!
-    @IBOutlet private weak var originNameLabel: UILabel!
-    @IBOutlet private weak var locationNameLabel: UILabel!
-    @IBOutlet private weak var episodesLabel: UILabel!
-  
-    @IBOutlet private weak var id: UILabel!
-    @IBOutlet private weak var name: UILabel!
-    @IBOutlet private weak var status: UILabel!
-    @IBOutlet private weak var species: UILabel!
-    @IBOutlet private weak var type: UILabel!
-    @IBOutlet private weak var gender: UILabel!
-    @IBOutlet private weak var origin: UILabel!
-    @IBOutlet private weak var location: UILabel!
-    @IBOutlet private weak var episodes: UILabel!
+    @IBOutlet private weak var originLabel: UILabel!
+    @IBOutlet private weak var locationLabel: UILabel!
     
     
     // MARK: - IBActions
     
     @IBAction private func toggleFavoriteBarButtonItemDidReceiveTouchUpInside(_ sender: Any) {
-        // @TODO: change image for favorited
+        if toggleFavoriteBarButtonItem.image == UIImage(named: "unfavorited") {
+            toggleFavoriteBarButtonItem.image = UIImage(named: "favorited")
+        } else {
+            toggleFavoriteBarButtonItem.image = UIImage(named: "unfavorited")
+        }
+        // @TODO: if character is favorite, switch image and delete persisted data. else, set isFavorite to true and persist data.
     }
     
     // MARK: - Properties
@@ -47,20 +51,14 @@ class CharacterDetailViewController: UIViewController {
     
     // MARK: - Lifecycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureView(with: character)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.toolbar.isHidden = true
-        
-        id.text = String(describing: character.id)
-        name.text = character.name
-        status.text = character.status
-        status.text = character.status
-        species.text = character.species
-        type.text = character.type
-        gender.text = character.gender
-        origin.text = character.origin?.name
-        location.text = character.location?.name
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,7 +68,28 @@ class CharacterDetailViewController: UIViewController {
     
     // MARK: - Functions
     
+    private func persistFavorite() {
+        // @TODO: implement
+    }
+    
+    private func deletePersistedFavorite() {
+        // @TODO: implement
+    }
+    
     // MARK: - Configuration Functions
+    
+    private func configureView(with character: RMCharacter) {
+        imageView.image = UIImage() // @TOD: populate with image
+        idLabel.text = "\(character.id ?? 00)"
+        nameLabel.text = character.name
+        statusLabel.text = character.status
+        statusLabel.text = character.status
+        speciesLabel.text = character.species
+        typeLabel.text = character.type
+        genderLabel.text = character.gender
+        originLabel.text = character.origin?.name
+        locationLabel.text = character.location?.name
+    }
     
     // MARK: - Helper Functions
     

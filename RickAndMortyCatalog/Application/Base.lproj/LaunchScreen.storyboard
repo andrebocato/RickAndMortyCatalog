@@ -18,19 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rick &amp; Morty Catalog" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seR-TK-HKF">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="dyg-C7-Qgk">
+                                <rect key="frame" x="127.5" y="283.5" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="9Uk-yt-GiR"/>
+                                    <constraint firstAttribute="height" constant="120" id="XNw-3u-dy3"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="seR-TK-HKF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="12I-rd-mJe"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="seR-TK-HKF" secondAttribute="bottom" id="bgC-Q7-peA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="seR-TK-HKF" secondAttribute="trailing" id="chq-3v-iua"/>
-                            <constraint firstItem="seR-TK-HKF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jBQ-PL-ORA"/>
+                            <constraint firstItem="dyg-C7-Qgk" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="1C8-kl-N6B"/>
+                            <constraint firstItem="dyg-C7-Qgk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fcR-D3-rfc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -40,4 +39,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="appIcon.png" width="90" height="90"/>
+    </resources>
 </document>

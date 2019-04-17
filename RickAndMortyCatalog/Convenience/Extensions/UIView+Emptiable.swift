@@ -27,6 +27,7 @@ extension UIView: EmptiableView {
         emptyViewLabel.textAlignment = .center
         emptyViewLabel.sizeToFit()
         emptyViewLabel.tag = emptyViewTag
+        emptyViewLabel.center = self.center
         
         DispatchQueue.main.async {
             self.addSubview(emptyViewLabel)

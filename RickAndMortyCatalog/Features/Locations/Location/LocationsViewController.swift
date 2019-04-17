@@ -32,18 +32,19 @@ class LocationsViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    var selectedLocation: RMLocation!
     
     // MARK: - Lifecycle
     
     // MARK: - Navigation
     
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        guard let destination = segue.destination as? LocationDetailViewController, segue.destination is LocationDetailViewController else { return }
-    //
-    //        if segue.identifier == "LocationDetailSegue" {
-    //            // @TODO: pass data
-    //        }
-    //    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? LocationDetailViewController, segue.destination is LocationDetailViewController else { return }
+        
+        if segue.identifier == "LocationDetailSegue" {
+            destination.location = selectedLocation
+        }
+    }
     
     // MARK: - Functions
     
@@ -79,6 +80,8 @@ extension LocationsViewController: UITableViewDelegate {
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        selectedLocation = locations[indexPath.row]
         performSegue(withIdentifier: "LocationDetailSegue", sender: self)
     }
     

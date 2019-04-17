@@ -28,6 +28,8 @@ class FavoritesViewController: UIViewController {
     }
     
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
+        collectionView.hideEmptyView()
+        collectionView.reloadData()
         // @TODO: change collection view content for each segment
     }
     
@@ -66,14 +68,14 @@ extension FavoritesViewController: UICollectionViewDataSource {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             guard favoritedCharacters.count > 0 else {
-                collectionView.showEmptyView(message: "No favorite characters to show")
+                collectionView.showEmptyView(message: "No favorite characters to show.")
                 return 0
             }
             return favoritedCharacters.count
             
         case 1:
             guard favoritedLocations.count > 0 else {
-                collectionView.showEmptyView(message: "No favorite locations to show")
+                collectionView.showEmptyView(message: "No favorite locations to show.")
                 return 0
             }
             return favoritedLocations.count
@@ -104,12 +106,12 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     // MARK: - Collection View Delegate Flow Layout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = collectionView.bounds.width
+        let size = (collectionView.bounds.width/3) - 3
         return CGSize(width: size, height: size)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 3
+        return 3 // @TODO: magic number
     }
     
 }

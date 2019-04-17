@@ -27,7 +27,7 @@ class CharacterCell: UITableViewCell {
     
     func configure(with character: RMCharacter) {
         cellImageView.image = UIImage() // @TODO: should get image from character
-        idLabel.text = " #\(character)"
+        idLabel.text = " #\(character.id ?? 00)"
         nameLabel.text = character.name
         stopLoading()
     }

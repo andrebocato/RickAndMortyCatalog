@@ -41,13 +41,7 @@ class RMLocationsService: RMLocationsServiceProtocol {
 
 protocol RMLocationsServiceProtocol {
     func getAllLocations(completionHandler: @escaping (Result<[RMLocation], ServiceError>) -> Void)
-    
-    func getLocation(withID: Int?,
-                     completionHandler: @escaping (Result<RMLocation, ServiceError>) -> Void)
-    
-    func getAllLocationsInRange(_ range: (start: Int, end: Int),
-                                completionHandler: @escaping (Result<RMLocation, ServiceError>) -> Void)
-    
-    func filterLocations(_ filters: [RMLocationsFilter],
-                         completionHandler: @escaping (Result<[RMLocation], ServiceError>) -> Void)
+    func getLocation(withID: Int?, completionHandler: @escaping (Result<RMLocation, ServiceError>) -> Void)
+    func getAllLocationsInRange(_ range: (start: Int, end: Int), completionHandler: @escaping (Result<RMLocation, ServiceError>) -> Void)
+    func filterLocations(_ filters: [RMLocationsFilter], completionHandler: @escaping (Result<[RMLocation], ServiceError>) -> Void)
 }

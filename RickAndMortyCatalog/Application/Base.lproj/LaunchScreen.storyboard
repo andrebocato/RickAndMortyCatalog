@@ -25,10 +25,20 @@
                                     <constraint firstAttribute="height" constant="120" id="XNw-3u-dy3"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zrb-6s-cpi">
+                                <rect key="frame" x="162.5" y="443.5" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XlN-Lv-Mes"/>
+                                    <constraint firstAttribute="width" constant="50" id="j9h-eg-4tY"/>
+                                </constraints>
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dyg-C7-Qgk" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="1C8-kl-N6B"/>
+                            <constraint firstItem="zrb-6s-cpi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="EGH-Tn-CI1"/>
+                            <constraint firstItem="zrb-6s-cpi" firstAttribute="top" secondItem="dyg-C7-Qgk" secondAttribute="bottom" constant="40" id="dqa-uU-Z9O"/>
                             <constraint firstItem="dyg-C7-Qgk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fcR-D3-rfc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

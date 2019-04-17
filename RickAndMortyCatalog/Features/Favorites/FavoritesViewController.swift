@@ -40,11 +40,6 @@ class FavoritesViewController: UIViewController {
             collectionView.reloadData() 
         }
     }
-    var favoritedLocations = [RMLocation]() {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
     
     // MARK: - Lifecycle
     

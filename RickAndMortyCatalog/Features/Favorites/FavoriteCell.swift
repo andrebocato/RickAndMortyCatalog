@@ -18,11 +18,4 @@ class FavoriteCell: UICollectionViewCell {
         
         stopLoading()
     }
-    
-    func configure(with: RMLocation) {
-        startLoading()
-        // @TODO: implement
-        
-        stopLoading()
-    }
 }

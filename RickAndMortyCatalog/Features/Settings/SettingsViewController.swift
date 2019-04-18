@@ -12,7 +12,13 @@ class SettingsViewController: UIViewController {
 
     // MARK: - IBOutlets
     
+    @IBOutlet private weak var clearFavoritesButton: UIButton!
+    
     // MARK: - IBActions
+    
+    @IBAction private func clearFavoritesButtonDidReceiveTouchUpInside(_ sender: Any) {
+        clearFavorites()
+    }
     
     // MARK: - Properties
     

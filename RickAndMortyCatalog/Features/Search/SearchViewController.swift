@@ -20,6 +20,14 @@ class SearchViewController: UIViewController {
     
     // MARK: - Navigation
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? CharacterDetailViewController, segue.destination is CharacterDetailViewController else { return }
+        
+        if segue.identifier == "SearchCharacterSegue" {
+            // @TODO: pass character
+        }
+    }
+    
     // MARK: - Functions
     
     // MARK: - Configuration Functions

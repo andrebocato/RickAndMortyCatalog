@@ -13,7 +13,7 @@
 		6576A38A226623EB00571620 /* UICollectionViewCell+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A389226623EB00571620 /* UICollectionViewCell+Identifier.swift */; };
 		6576A3922266370A00571620 /* UIView+Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3912266370A00571620 /* UIView+Loadable.swift */; };
 		6576A3962266413200571620 /* UIView+Emptiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3952266413200571620 /* UIView+Emptiable.swift */; };
-		658032422264FC39000FCAB9 /* FavoriteCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658032412264FC39000FCAB9 /* FavoriteCharacterCell.swift */; };
+		658032422264FC39000FCAB9 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658032412264FC39000FCAB9 /* FavoriteCell.swift */; };
 		6580324422651049000FCAB9 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580324322651049000FCAB9 /* CharacterCell.swift */; };
 		65912A7C225CF1C400F37508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912A7B225CF1C400F37508 /* AppDelegate.swift */; };
 		65912A81225CF1C400F37508 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65912A7F225CF1C400F37508 /* Main.storyboard */; };
@@ -62,7 +62,7 @@
 		6576A389226623EB00571620 /* UICollectionViewCell+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Identifier.swift"; sourceTree = "<group>"; };
 		6576A3912266370A00571620 /* UIView+Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loadable.swift"; sourceTree = "<group>"; };
 		6576A3952266413200571620 /* UIView+Emptiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Emptiable.swift"; sourceTree = "<group>"; };
-		658032412264FC39000FCAB9 /* FavoriteCharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharacterCell.swift; sourceTree = "<group>"; };
+		658032412264FC39000FCAB9 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		6580324322651049000FCAB9 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		65912A78225CF1C400F37508 /* RickAndMortyCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65912A7B225CF1C400F37508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -306,7 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				65912AD8225D08FC00F37508 /* FavoritesViewController.swift */,
-				658032412264FC39000FCAB9 /* FavoriteCharacterCell.swift */,
+				658032412264FC39000FCAB9 /* FavoriteCell.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -475,7 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				658032422264FC39000FCAB9 /* FavoriteCharacterCell.swift in Sources */,
+				658032422264FC39000FCAB9 /* FavoriteCell.swift in Sources */,
 				65912AE5225D1B7500F37508 /* RMCharacter.swift in Sources */,
 				65912AC3225CFD9A00F37508 /* CharactersViewController.swift in Sources */,
 				65912ADE225D0B4200F37508 /* TabBarController.swift in Sources */,

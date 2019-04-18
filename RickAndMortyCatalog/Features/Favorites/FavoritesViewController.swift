@@ -9,7 +9,7 @@
 import UIKit
 
 class FavoritesViewController: UIViewController {
-
+    
     // MARK: - IBOutlets
     
     @IBOutlet private weak var collectionView: UICollectionView! {
@@ -28,12 +28,21 @@ class FavoritesViewController: UIViewController {
             collectionView.reloadData() 
         }
     }
+    var selectedCharacter: RMCharacter!
     
     let minimumLineSpacing: CGFloat = 3
     
     // MARK: - Lifecycle
     
     // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? CharacterDetailViewController, segue.destination is CharacterDetailViewController else { return }
+        
+        if segue.identifier == "FavoriteCharacterSegue" {
+            destination.character = selectedCharacter
+        }
+    }
     
     // MARK: - Functions
     
@@ -58,7 +67,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCharacterCell.identifier, for: indexPath) as? FavoriteCharacterCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCell.identifier, for: indexPath) as? FavoriteCell else { return UICollectionViewCell() }
         cell.configure(with: favoritedCharacters[indexPath.item])
         return cell
     }
@@ -70,6 +79,7 @@ extension FavoritesViewController: UICollectionViewDelegate {
     // MARK: - Collection View Delegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedCharacter = favoritedCharacters[indexPath.item]
         performSegue(withIdentifier: "FavoriteCharacterSegue", sender: self)
         collectionView.deselectItem(at: indexPath, animated: true)
     }

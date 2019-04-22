@@ -30,7 +30,7 @@ class FavoritesViewController: UIViewController {
     }
     var selectedCharacter: RMCharacter!
     
-    let minimumSpacing: CGFloat = 2
+    private let minimumSpacing: CGFloat = 1
     
     // MARK: - Lifecycle
     

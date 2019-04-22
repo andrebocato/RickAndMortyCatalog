@@ -12,7 +12,11 @@ class CharacterCell: UITableViewCell {
     
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var cellImageView: UIImageView!
+    @IBOutlet private weak var cellImageView: UIImageView! {
+        didSet {
+            cellImageView.layer.cornerRadius = 10
+        }
+    }
     @IBOutlet private weak var idLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
     

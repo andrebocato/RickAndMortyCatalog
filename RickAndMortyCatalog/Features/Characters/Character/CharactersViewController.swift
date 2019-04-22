@@ -28,6 +28,8 @@ class CharactersViewController: UIViewController {
     
     // MARK: - Properties
 
+    private let cellHeight: CGFloat = 80
+    
     private var characters = [RMCharacter]() {
         didSet {
             tableView.reloadData()
@@ -94,6 +96,10 @@ extension CharactersViewController: UITableViewDataSource {
         cell.configure(with: character)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight
     }
     
 }

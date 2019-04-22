@@ -79,16 +79,16 @@ class CharacterDetailViewController: UIViewController {
     // MARK: - Configuration Functions
     
     private func configureView(with character: RMCharacter) {
-        imageView.image = UIImage() // @TOD: populate with image
-        idLabel.text = "\(character.id ?? 00)"
+        imageView.image = UIImage() // @TODO: populate with image
+        idLabel.text = "\(character.id)"
         nameLabel.text = character.name
         statusLabel.text = character.status
         statusLabel.text = character.status
         speciesLabel.text = character.species
         typeLabel.text = character.type
         genderLabel.text = character.gender
-        originLabel.text = character.origin?.name
-        locationLabel.text = character.location?.name
+        originLabel.text = character.origin.name
+        locationLabel.text = character.location.name
     }
     
     // MARK: - Helper Functions

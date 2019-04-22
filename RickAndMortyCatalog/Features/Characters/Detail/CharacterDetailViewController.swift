@@ -11,6 +11,10 @@ import UIKit
 
 class CharacterDetailViewController: UIViewController {
 
+    // MARK: - Dependencies
+    
+    private let service: RMCharactersServiceProtocol = RMCharactersServiceMock()
+    
     // MARK: - IBOutlets
     
     @IBOutlet private weak var toggleFavoriteBarButtonItem: UIBarButtonItem!
@@ -79,7 +83,7 @@ class CharacterDetailViewController: UIViewController {
     // MARK: - Configuration Functions
     
     private func configureView(with character: RMCharacter) {
-        imageView.image = UIImage() // @TODO: populate with image
+        imageView.image = UIImage(named: "MockImage")
         idLabel.text = "\(character.id)"
         nameLabel.text = character.name
         statusLabel.text = character.status
@@ -92,5 +96,5 @@ class CharacterDetailViewController: UIViewController {
     }
     
     // MARK: - Helper Functions
-    
+     
 }

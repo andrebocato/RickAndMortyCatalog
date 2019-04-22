@@ -17,7 +17,9 @@ class SettingsViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction private func clearFavoritesButtonDidReceiveTouchUpInside(_ sender: Any) {
-        clearFavorites()
+        AlertHelper.showAlert(inController: self, title: "Deleting favorites", message: "Are you sure you want to delete all your favorited characters? This action can't be undone.", rightAction: UIAlertAction(title: "Delete", style: .destructive, handler: nil)) { [weak self] in
+            self?.clearFavorites()
+        }
     }
     
     // MARK: - Properties

@@ -12,11 +12,7 @@ class FavoriteCell: UICollectionViewCell {
  
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var imageView: UIImageView! {
-        didSet {
-            imageView.layer.cornerRadius = 8.0 // @TODO: create custom image view with rounded corners
-        }
-    }
+    @IBOutlet private weak var imageView: UIImageView!
     
     // MARK: - Lifecycle
     
@@ -28,8 +24,8 @@ class FavoriteCell: UICollectionViewCell {
     
     // MARK: - Configuration Functions
     
-    func configure(with character: RMCharacter) {
-        imageView.image = UIImage() // @TODO: character.image
+    func configure(/*with character: RMCharacter*/) {
+        imageView.image = UIImage(named: "MockImage")
         
         imageView.stopLoading()
     }

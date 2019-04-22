@@ -16,46 +16,56 @@ class AlertHelper {
     
     // MARK: - Functions
     
-    /// Presents a custom alert with an action by default and an optional right action.
+    /// Presents an Alert Controller with cancel and destructive actions.
     ///
     /// - Parameters:
-    ///   - controller: UIViewController where the alert is being presented.
+    ///   - controller: View Controller where the alert will be presented.
     ///   - title: Title to be displayed in the alert.
-    ///   - message: Message to be displayed in the alert.
-    ///   - style: Style of the default action.
-    ///   - rightAction: Optional right action.
-    ///   - completionHandler: Closure executed right after the view is dismissed.
+    ///   - message: Optional message to be displayed in the alert.
+    ///   - rightAction: Main action of the alert.
+    ///   - completionHandler: Closure to be executed right after presenting the alert.
     static func showAlert(inController controller: UIViewController?,
                           title: String,
                           message: String?,
-                          style: UIAlertAction.Style,
-                          rightAction: UIAlertAction? = nil,
+                          rightAction: UIAlertAction,
                           completionHandler: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "OK", style: style, handler: { (action) in
-            if rightAction == nil {
-                alert.dismiss(animated: true, completion: nil)
-            } else {
-                completionHandler?()
-            }
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
             alert.dismiss(animated: true, completion: nil)
         })
         
-        alert.addAction(okAction)
-        if let rightAction = rightAction {
-            alert.addAction(rightAction)
-        } else {
-            alert.addAction(cancelAction)
-        }
+        alert.addAction(cancelAction)
+        alert.addAction(rightAction)
         
         DispatchQueue.main.async {
             controller?.present(alert, animated: true, completion: completionHandler)
         }
         
+    }
+    
+    /// Presents an Alert Controller with an alert message.
+    ///
+    /// - Parameters:
+    ///   - controller: View Controller where the alert will be presented.
+    ///   - title: Title to be displayed in the alert.
+    ///   - message: Optional message to be displayed in the alert.
+    ///   - completionHandler: Closure to be executed right after presenting the alert.
+    static func showAlert(inController controller: UIViewController?,
+                          title: String,
+                          message: String?,
+                          completionHandler: (() -> Void)? = nil) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(okAction)
+        
+        DispatchQueue.main.async {
+            controller?.present(alert, animated: true, completion: completionHandler)
+        }
     }
 }

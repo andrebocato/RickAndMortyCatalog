@@ -57,14 +57,14 @@ class CharactersViewController: UIViewController {
     // MARK: - Functions
     
     private func dowloadCharacters() {
-//        service.getAllCharacters { [weak self] (result) in
-//            switch result {
-//            case .success(let response):
-//                self?.characters = response
-//
-//            default: return
-//            }
-//        }
+        service.getAllCharacters { [weak self] (result) in
+            switch result {
+            case .success(let response):
+                self?.characters = response
+
+            default: return
+            }
+        }
     }
     
     // MARK: - Configuration Functions

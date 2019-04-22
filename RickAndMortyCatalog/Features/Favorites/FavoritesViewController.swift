@@ -30,7 +30,7 @@ class FavoritesViewController: UIViewController {
     }
     var selectedCharacter: RMCharacter!
     
-    let minimumLineSpacing: CGFloat = 3
+    let minimumSpacing: CGFloat = 2
     
     // MARK: - Lifecycle
     
@@ -59,16 +59,16 @@ extension FavoritesViewController: UICollectionViewDataSource {
     // MARK: - Collection View Data Source
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard favoritedCharacters.count > 0 else {
-            collectionView.showEmptyView(message: "You have no favorites.")
-            return 0
-        }
-        return favoritedCharacters.count
+//        guard favoritedCharacters.count > 0 else {
+//            collectionView.showEmptyView(message: "You have no favorites.")
+//            return 0
+//        }
+        return 5//favoritedCharacters.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCell.identifier, for: indexPath) as? FavoriteCell else { return UICollectionViewCell() }
-        cell.configure(with: favoritedCharacters[indexPath.item])
+        cell.configure(/*with: favoritedCharacters[indexPath.item]*/)
         return cell
     }
     
@@ -90,12 +90,16 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     // MARK: - Collection View Delegate Flow Layout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = (collectionView.bounds.width/3) - minimumLineSpacing
+        let size = (collectionView.bounds.width/3) - minimumSpacing
         return CGSize(width: size, height: size)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return minimumLineSpacing
+        return minimumSpacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return minimumSpacing
     }
     
 }

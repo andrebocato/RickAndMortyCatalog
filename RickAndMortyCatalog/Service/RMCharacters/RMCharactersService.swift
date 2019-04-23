@@ -37,7 +37,10 @@ class RMCharactersService: RMCharactersServiceProtocol {
         
         let request: RMCharactersRequest = .allCharacters
         return dispatcher.execute(request: request, completion: { (result) in
-            self.serializeDispatcherResult(result, responseType: [RMCharacter].self, completion: completionHandler)
+            self.serializeDispatcherResult(result, responseType: RMCharacterResponse.self, completion: { (result) in
+                let transformedResult = result.map { $0.results }
+                completionHandler(transformedResult)
+            })
         })
     }
     
@@ -47,7 +50,7 @@ class RMCharactersService: RMCharactersServiceProtocol {
         
         let request: RMCharactersRequest = .characterWithID(id)
         return dispatcher.execute(request: request, completion: { (result) in
-            self.serializeDispatcherResult(result, responseType: RMCharacter.self, completion: completionHandler)
+            self.serializeDispatcherResult(result, responseType: RMCharacterResponse.self, completion: completionHandler)
         })
     }
     

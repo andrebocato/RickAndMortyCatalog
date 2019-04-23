@@ -12,8 +12,8 @@ import UIKit
 class CharactersViewController: UIViewController {
     
     // MARK: - Dependencies
-    
-    private let service: RMCharactersServiceProtocol = RMCharactersServiceMock(dispatcher: URLRequestDispatcherMock()) // TODO: change this
+
+    private let service: RMCharactersServiceProtocol = RMCharactersService(dispatcher: URLSessionDispatcher()) // TODO: change this
     
     // MARK: - IBOutlets
     

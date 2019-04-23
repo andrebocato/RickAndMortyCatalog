@@ -10,7 +10,7 @@ import Foundation
 
 class URLUtil {
     
-    /// Provides a simple way to get scaped query parameters
+    /// Provides a simple way to get scaped query parameters.
     ///
     /// - Parameter parameters: the parameters for the query
     /// - Returns: an string representing the parameters

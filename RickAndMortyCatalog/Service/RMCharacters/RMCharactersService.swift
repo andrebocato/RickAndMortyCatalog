@@ -13,7 +13,7 @@ import Foundation
 protocol RMCharactersServiceProtocol: APIService {
     @discardableResult func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken?
     @discardableResult func getCharacter(withID id: Int, completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) -> URLRequestToken?
-    @discardableResult func getAllCharactersInRange(_ range: (start: Int, end: Int), completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) -> URLRequestToken?
+    @discardableResult func getAllCharactersInRange(_ range: (start: Int, end: Int), completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken?
     @discardableResult func filterCharacters(_ filters: [RMCharactersFilter], completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken?
     @discardableResult func getImageDataFromURL(_ url: String, completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken?
 }
@@ -34,6 +34,7 @@ class RMCharactersService: RMCharactersServiceProtocol {
     
     @discardableResult
     func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken? {
+        
         let request: RMCharactersRequest = .allCharacters
         return dispatcher.execute(request: request, completion: { (result) in
             self.serializeDispatcherResult(result, responseType: [RMCharacter].self, completion: completionHandler)
@@ -44,18 +45,20 @@ class RMCharactersService: RMCharactersServiceProtocol {
     func getCharacter(withID id: Int,
                       completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void)  -> URLRequestToken? {
         
-        // @TODO:
-        
-        return nil
+        let request: RMCharactersRequest = .characterWithID(id)
+        return dispatcher.execute(request: request, completion: { (result) in
+            self.serializeDispatcherResult(result, responseType: RMCharacter.self, completion: completionHandler)
+        })
     }
     
     @discardableResult
     func getAllCharactersInRange(_ range: (start: Int, end: Int),
-                                 completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void)  -> URLRequestToken? {
+                                 completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void)  -> URLRequestToken? {
         
-        // @TODO:
-        
-        return nil
+        let request: RMCharactersRequest = .characterInRange(range.start, range.end)
+        return dispatcher.execute(request: request, completion: { (result) in
+            self.serializeDispatcherResult(result, responseType: [RMCharacter].self, completion: completionHandler)
+        })
     }
     
     @discardableResult

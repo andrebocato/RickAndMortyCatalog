@@ -127,7 +127,7 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
     
     @discardableResult
     func getAllCharactersInRange(_ range: (start: Int, end: Int),
-                                 completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) -> URLRequestToken? {
+                                 completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken? {
         
         //
         

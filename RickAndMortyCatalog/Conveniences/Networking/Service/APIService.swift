@@ -19,6 +19,7 @@ public protocol APIService {
     /// - Parameter dispatcher: the dispatcher to take care of the network requests
     init(dispatcher: URLRequestDispatcherProtocol)
 }
+
 extension APIService {
     
     /// Helper function to serialize results when needed

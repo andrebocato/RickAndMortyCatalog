@@ -24,7 +24,7 @@ class FavoriteCell: UICollectionViewCell {
     
     // MARK: - Configuration Functions
     
-    func configure(/*with character: RMCharacter*/) {
+    func configure(with character: RMCharacter) {
         imageView.image = UIImage(named: "MockImage")
         
         imageView.stopLoading()

@@ -35,7 +35,7 @@ class CharactersViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    private var selectedCharacter: RMCharacter! // why is this forced?
+    private var selectedCharacter: RMCharacter?
     
     // MARK: - Initilization
     

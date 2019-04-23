@@ -59,16 +59,16 @@ extension FavoritesViewController: UICollectionViewDataSource {
     // MARK: - Collection View Data Source
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        guard favoritedCharacters.count > 0 else {
-//            collectionView.showEmptyView(message: "You have no favorites.")
-//            return 0
-//        }
-        return 5//favoritedCharacters.count
+        guard favoritedCharacters.count > 0 else {
+            collectionView.showEmptyView(message: "You have no favorites.")
+            return 0
+        }
+        return favoritedCharacters.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCell.identifier, for: indexPath) as? FavoriteCell else { return UICollectionViewCell() }
-        cell.configure(/*with: favoritedCharacters[indexPath.item]*/)
+        cell.configure(with: favoritedCharacters[indexPath.item]) 
         return cell
     }
     

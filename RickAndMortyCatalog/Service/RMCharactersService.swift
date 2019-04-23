@@ -8,42 +8,60 @@
 
 import Foundation
 
+// MARK: - Protocols
+
+protocol RMCharactersServiceProtocol {
+    @discardableResult func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken?
+    @discardableResult func getCharacter(withID id: Int, completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) -> URLRequestToken?
+    @discardableResult func getAllCharactersInRange(_ range: (start: Int, end: Int), completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) -> URLRequestToken?
+    @discardableResult func filterCharacters(_ filters: [RMCharactersFilter], completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken?
+    @discardableResult func getImageDataFromURL(_ url: String, completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken?
+}
+
 class RMCharactersService: RMCharactersServiceProtocol {
     
     // MARK: - Protocol Stubs
     
-    func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) {
+    @discardableResult
+    func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken? {
         
         // @TODO:
+        
+        return nil
     }
     
+    @discardableResult
     func getCharacter(withID id: Int,
-                      completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) {
+                      completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void)  -> URLRequestToken? {
         
         // @TODO:
+        
+        return nil
     }
     
+    @discardableResult
     func getAllCharactersInRange(_ range: (start: Int, end: Int),
-                                 completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) {
+                                 completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void)  -> URLRequestToken? {
         
         // @TODO:
+        
+        return nil
     }
     
+    @discardableResult
     func filterCharacters(_ filters: [RMCharactersFilter],
-                          completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) {
+                          completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void)  -> URLRequestToken? {
         
         // @TODO:
+        
+        return nil
     }
     
-}
-
-// MARK: - Protocols
-
-protocol RMCharactersServiceProtocol {
-    func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void)
-    func getCharacter(withID id: Int, completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void)
-    func getAllCharactersInRange(_ range: (start: Int, end: Int), completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void)
-    func filterCharacters(_ filters: [RMCharactersFilter], completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void)
+    @discardableResult
+    func getImageDataFromURL(_ url: String, completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken? {
+        return nil
+    }
+    
 }
 
 // MARK: - Mocked Service
@@ -52,7 +70,8 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
     
     // MARK: - Protocol Stubs
     
-    func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) {
+    @discardableResult
+    func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void)  -> URLRequestToken? {
         
         // Example using JSON strings on the code.
         guard let mockedCharactersData = """
@@ -111,7 +130,7 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
                   }
                ]
             }
-        """.data(using: .utf8) else { return }
+        """.data(using: .utf8) else { return nil }
         
         do {
            let mockedCharacters  = try JSONDecoder().decode(RMCharacterResponse.self, from: mockedCharactersData)
@@ -121,10 +140,13 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
             fatalError("Could not parse JSON, check if its valid.")
         }
         
+        return nil
+        
     }
     
+    @discardableResult
     func getCharacter(withID: Int,
-                      completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) {
+                      completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) -> URLRequestToken? {
         
         // Example getting the JSON data from a file on the project
         let bundle = Bundle(for: RMCharactersServiceMock.self)
@@ -138,18 +160,31 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
         }
         
         completionHandler(.success(mockedCharacter))
+        
+        return nil
     }
     
+    @discardableResult
     func getAllCharactersInRange(_ range: (start: Int, end: Int),
-                                 completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) {
+                                 completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) -> URLRequestToken? {
         
         //
+        
+        return nil
     }
     
+    @discardableResult
     func filterCharacters(_ filters: [RMCharactersFilter],
-                          completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) {
+                          completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken? {
         
         //
+        
+        return nil
+    }
+    
+    @discardableResult
+    func getImageDataFromURL(_ url: String, completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken? {
+        return nil
     }
 
 }

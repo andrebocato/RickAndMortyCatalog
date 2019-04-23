@@ -25,6 +25,7 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
     internal let dispatcher: URLRequestDispatcherProtocol
     
     // MARK: - Initialization
+    
     required init(dispatcher: URLRequestDispatcherProtocol) {
         self.dispatcher = dispatcher
     }

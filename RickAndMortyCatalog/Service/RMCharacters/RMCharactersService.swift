@@ -37,7 +37,10 @@ class RMCharactersService: RMCharactersServiceProtocol {
         
         let request: RMCharactersRequest = .allCharacters
         return dispatcher.execute(request: request, completion: { (result) in
-            self.serializeDispatcherResult(result, responseType: [RMCharacter].self, completion: completionHandler)
+            self.serializeDispatcherResult(result, responseType: RMCharacterResponse.self, completion: { (result) in
+                let transformedResult = result.map { $0.results }
+                completionHandler(transformedResult)
+            })
         })
     }
     
@@ -65,13 +68,17 @@ class RMCharactersService: RMCharactersServiceProtocol {
     func filterCharacters(_ filters: [RMCharactersFilter],
                           completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void)  -> URLRequestToken? {
         
-        // @TODO:
-        
-        return nil
+        let request: RMCharactersRequest = .charactersWithFilters(filters)
+        return dispatcher.execute(request: request, completion: { (result) in
+            self.serializeDispatcherResult(result, responseType: RMCharacterResponse.self, completion: { (result) in
+                let transformedResult = result.map { $0.results }
+                completionHandler(transformedResult)
+            })
+        })
     }
     
     @discardableResult
-    func getImageDataFromURL(_ url: String, completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken? {
+    func getImageDataFromURL(_ url: String, completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken? {       
         return nil // TODO: Define
     }
     

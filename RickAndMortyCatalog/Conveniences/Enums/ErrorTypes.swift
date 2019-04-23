@@ -8,41 +8,6 @@
 
 import Foundation
 
-// MARK: - Service Errors
-
-enum ServiceError: Error {
-    case unknown
-    case unexpected
-    case api
-    case statusCode
-    
-    var code: Int {
-        switch self {
-        case .unknown:
-            return 10
-        case .unexpected:
-            return 11
-        case .api:
-            return 12
-        case .statusCode:
-            return 13
-        }
-    }
-    
-    var localizedDescription: String {
-        switch self {
-        case .unknown:
-            return "An unknown error has occurred in the service."
-        case .unexpected:
-            return "An unexpected error has occurred in the service."
-        case .api:
-            return "There was an error in the API."
-        case .statusCode:
-            return "The request returned a status code different than 2xx."
-        }
-    }
-}
-
 // MARK: - Persistence Errors
 
 enum PersistenceError: Error {

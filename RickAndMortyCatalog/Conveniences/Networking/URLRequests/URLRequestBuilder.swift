@@ -68,7 +68,7 @@ public class URLRequestBuilder {
     /// - Parameter parameters: some parameters
     /// - Returns: itself, for sugar syntax purposes
     @discardableResult
-    public func set(parameters: URLRequestParameters) -> Self {
+    public func set(parameters: URLRequestParameters?) -> Self {
         self.parameters = parameters
         return self
     }

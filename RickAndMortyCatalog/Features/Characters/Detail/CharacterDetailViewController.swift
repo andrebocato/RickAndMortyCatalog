@@ -13,7 +13,7 @@ class CharacterDetailViewController: UIViewController {
 
     // MARK: - Dependencies
     
-    private let service: RMCharactersServiceProtocol = RMCharactersServiceMock()
+    private let service: RMCharactersServiceProtocol = RMCharactersServiceMock(dispatcher: URLRequestDispatcherMock()) // TODO: change this
     
     // MARK: - IBOutlets
     

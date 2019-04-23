@@ -1,0 +1,64 @@
+//
+//  ServiceError.swift
+//  RickAndMortyCatalog
+//
+//  Created by Andre Sanches Bocato on 23/04/19.
+//  Copyright © 2019 Andre Sanches Bocato. All rights reserved.
+//
+
+import Foundation
+
+private let domain = "ServiceError"
+
+// MARK: - Service Errors
+
+public enum ServiceError: Error {
+    
+    case unknown
+    case unexpected
+    case api(URLRequestError)
+    case serializationError(Error)
+    case noData
+    
+    public var code: Int {
+        switch self {
+        case .unknown:
+            return 10
+        case .unexpected:
+            return 11
+        case .api(let requestError):
+            return requestError.code
+        case .serializationError:
+            return 12
+        case .noData:
+            return 13
+        }
+    }
+    
+    public var localizedDescription: String {
+        switch self {
+        case .unknown:
+            return "An unknown error has occurred in the service."
+        case .unexpected:
+            return "An unexpected error has occurred in the service."
+        case .api:
+            return "There was an error in the API."
+        case .serializationError:
+            return "A serialization error has occurred."
+        case .noData:
+            return "No data was found."
+        }
+    }
+    
+    public var rawError: NSError {
+        switch self {
+        case .api(let apiError):
+            return apiError.rawError
+        case .serializationError(let error):
+            return error as NSError
+        default:
+            return NSError(domain: domain, code: code, description: localizedDescription)
+        }
+    }
+    
+}

@@ -35,7 +35,6 @@ class CharactersViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    private var selectedCharacter: RMCharacter?
     
     // MARK: - Initilization
     
@@ -45,17 +44,7 @@ class CharactersViewController: UIViewController {
         super.viewDidLoad()
         loadViewData()
     }
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? CharacterDetailViewController, segue.destination is CharacterDetailViewController else { return }
-        
-        if segue.identifier == "CharacterDetailSegue" {
-            destination.character = selectedCharacter
-        }
-    }
-    
+
     // MARK: - Functions
     
     private func dowloadCharacters() {
@@ -109,9 +98,17 @@ extension CharactersViewController: UITableViewDelegate {
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         tableView.deselectRow(at: indexPath, animated: true)
-        selectedCharacter = characters[indexPath.row]
-        performSegue(withIdentifier: "CharacterDetailSegue", sender: self)
+        let selectedCharacter = characters[indexPath.row]
+        
+        let detailsController = CharacterDetailViewController(nibName: CharacterDetailViewController.className,
+                                                              bundle: Bundle(for: CharacterDetailViewController.self),
+                                                              service: DependencyInjection.charactersService,
+                                                              character: selectedCharacter)
+        navigationController?.pushViewController(detailsController, animated: true)
+        
+        
     }
     
 }

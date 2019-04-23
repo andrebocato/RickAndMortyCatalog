@@ -10,14 +10,8 @@ import Foundation
 import UIKit
 
 class CharacterDetailViewController: UIViewController {
-
-    // MARK: - Dependencies
-    
-    private let service: RMCharactersServiceProtocol = RMCharactersServiceMock(dispatcher: URLRequestDispatcherMock()) // TODO: change this
     
     // MARK: - IBOutlets
-    
-    @IBOutlet private weak var toggleFavoriteBarButtonItem: UIBarButtonItem!
     @IBOutlet private weak var idFixedLabel: UILabel!
     @IBOutlet private weak var nameFixedLabel: UILabel!
     @IBOutlet private weak var statusFixedLabel: UILabel!
@@ -26,7 +20,7 @@ class CharacterDetailViewController: UIViewController {
     @IBOutlet private weak var genderFixedLabel: UILabel!
     @IBOutlet private weak var originNameFixedLabel: UILabel!
     @IBOutlet private weak var locationNameFixedLabel: UILabel!
-
+    
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var idLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
@@ -37,26 +31,31 @@ class CharacterDetailViewController: UIViewController {
     @IBOutlet private weak var originLabel: UILabel!
     @IBOutlet private weak var locationLabel: UILabel!
     
+    // MARK: - Dependencies
     
-    // MARK: - IBActions
+    private let service: RMCharactersServiceProtocol
+    private let character: RMCharacter
     
-    @IBAction private func toggleFavoriteBarButtonItemDidReceiveTouchUpInside(_ sender: Any) {
-        if toggleFavoriteBarButtonItem.image == UIImage(named: "unfavorited") {
-            toggleFavoriteBarButtonItem.image = UIImage(named: "favorited")
-        } else {
-            toggleFavoriteBarButtonItem.image = UIImage(named: "unfavorited")
-        }
-        // @TODO: if character is favorite, switch image and delete persisted data. else, set isFavorite to true and persist data.
+    // MARK: - Initialization
+    
+    init(nibName nibNameOrNil: String?,
+         bundle nibBundleOrNil: Bundle?,
+         service: RMCharactersServiceProtocol,
+         character: RMCharacter) {
+        self.service = service
+        self.character = character
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    // MARK: - Properties
-    
-    var character: RMCharacter!
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBarButtonItem()
         configureView(with: character)
     }
     
@@ -68,6 +67,24 @@ class CharacterDetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.toolbar.isHidden = false
+    }
+    
+    // MARK: - UI
+    
+    private func setupBarButtonItem() {
+        let barButtonItem = UIBarButtonItem(image:  UIImage(named: "unfavorited"), style: .done, target: self, action: #selector(toggleFavoriteBarButtonItemDidReceiveTouchUpInside(_:)))
+        navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func toggleFavoriteBarButtonItemDidReceiveTouchUpInside(_ sender: UIBarButtonItem) {
+        if sender.image == UIImage(named: "unfavorited") {
+            sender.image = UIImage(named: "favorited")
+        } else {
+            sender.image = UIImage(named: "unfavorited")
+        }
+        // @TODO: if character is favorite, switch image and delete persisted data. else, set isFavorite to true and persist data.
     }
     
     // MARK: - Functions
@@ -96,5 +113,5 @@ class CharacterDetailViewController: UIViewController {
     }
     
     // MARK: - Helper Functions
-     
+    
 }

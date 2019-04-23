@@ -28,21 +28,10 @@ class FavoritesViewController: UIViewController {
             collectionView.reloadData() 
         }
     }
-    var selectedCharacter: RMCharacter!
     
     private let minimumSpacing: CGFloat = 1
     
     // MARK: - Lifecycle
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? CharacterDetailViewController, segue.destination is CharacterDetailViewController else { return }
-        
-        if segue.identifier == "FavoriteCharacterSegue" {
-            destination.character = selectedCharacter
-        }
-    }
     
     // MARK: - Functions
     
@@ -79,9 +68,17 @@ extension FavoritesViewController: UICollectionViewDelegate {
     // MARK: - Collection View Delegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedCharacter = favoritedCharacters[indexPath.item]
-        performSegue(withIdentifier: "FavoriteCharacterSegue", sender: self)
+        
         collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let selectedCharacter = favoritedCharacters[indexPath.item]
+        
+        let detailsController = CharacterDetailViewController(nibName: CharacterDetailViewController.className,
+                                                              bundle: Bundle(for: CharacterDetailViewController.self),
+                                                              service: DependencyInjection.charactersService,
+                                                              character: selectedCharacter)
+        navigationController?.pushViewController(detailsController, animated: true)
+    
     }
 }
 

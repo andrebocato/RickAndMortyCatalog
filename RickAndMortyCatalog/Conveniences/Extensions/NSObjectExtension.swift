@@ -1,0 +1,17 @@
+//
+//  NSObjectExtension.swift
+//  RickAndMortyCatalog
+//
+//  Created by Eduardo Sanches Bocato on 23/04/19.
+//  Copyright © 2019 Andre Sanches Bocato. All rights reserved.
+//
+
+import Foundation
+
+extension NSObject {
+    
+    static var className: String {
+        return String(describing: self)
+    }
+    
+}

@@ -32,7 +32,7 @@ class CharactersViewController: UIViewController {
     
     private var characters = [RMCharacter]() {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async { self.tableView.reloadData() }
         }
     }
     private var selectedCharacter: RMCharacter?

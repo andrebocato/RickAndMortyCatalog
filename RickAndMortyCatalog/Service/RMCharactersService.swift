@@ -118,7 +118,7 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
             completionHandler(.success(mockedCharacters.results))
         } catch {
             debugPrint(error.localizedDescription)
-            fatalError("Could not parse JSON, check if its validity.")
+            fatalError("Could not parse JSON, check if its valid.")
         }
         
     }
@@ -134,7 +134,7 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
         }
         
         guard let mockedCharacter = try? JSONDecoder().decode(RMCharacter.self, from: jsonData) else {
-            fatalError("Could not parse JSON, check if its validity.")
+            fatalError("Could not parse JSON, check if its valid.")
         }
         
         completionHandler(.success(mockedCharacter))

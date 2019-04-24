@@ -60,6 +60,7 @@
 		E50C9D7622707D3500588EBC /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D7522707D3500588EBC /* ImageService.swift */; };
 		E50C9D7922707E2400588EBC /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D7822707E2400588EBC /* CacheService.swift */; };
 		E50C9D7B22707F8B00588EBC /* String+Encription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D7A22707F8B00588EBC /* String+Encription.swift */; };
+		E50C9D802270A9AD00588EBC /* RealmDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D7F2270A9AD00588EBC /* RealmDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		E50C9D7522707D3500588EBC /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		E50C9D7822707E2400588EBC /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		E50C9D7A22707F8B00588EBC /* String+Encription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Encription.swift"; sourceTree = "<group>"; };
+		E50C9D7F2270A9AD00588EBC /* RealmDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 		65912AAB225CF2C600F37508 /* Conveniences */ = {
 			isa = PBXGroup;
 			children = (
+				E50C9D7C2270A12F00588EBC /* Persistency */,
 				E50C9D7722707E1900588EBC /* Cache */,
 				E50C9D33226F49D000588EBC /* Networking */,
 				65912AFC225D2AA600F37508 /* Protocols */,
@@ -401,7 +404,6 @@
 				5500136B425F93B4E9C513A7 /* Pods-RickAndMortyCatalogUITests.debug.xcconfig */,
 				21765CD5AE9A6488087B8C61 /* Pods-RickAndMortyCatalogUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -515,6 +517,14 @@
 				E50C9D7822707E2400588EBC /* CacheService.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		E50C9D7C2270A12F00588EBC /* Persistency */ = {
+			isa = PBXGroup;
+			children = (
+				E50C9D7F2270A9AD00588EBC /* RealmDatabase.swift */,
+			);
+			path = Persistency;
 			sourceTree = "<group>";
 		};
 		F9B56FE2BCAA3347E9DB850A /* Frameworks */ = {
@@ -772,6 +782,7 @@
 				E50C9CC0226DF67400588EBC /* RMCharacterInfo.swift in Sources */,
 				E50C9D38226F4A3B00588EBC /* URLUtil.swift in Sources */,
 				E50C9D7922707E2400588EBC /* CacheService.swift in Sources */,
+				E50C9D802270A9AD00588EBC /* RealmDatabase.swift in Sources */,
 				E50C9D59226F618000588EBC /* RMCharactersServiceMock.swift in Sources */,
 				E50C9D4B226F4ADE00588EBC /* URLRequestAdapter.swift in Sources */,
 				E50C9D49226F4AD300588EBC /* URLRequestParameters.swift in Sources */,

@@ -28,7 +28,7 @@ public protocol CacheServiceProtocol {
     ///
     /// - Parameter fileManager: the file manager for the service, for checking file or directory exists in a specified path
     ///   - documentDirectoryPath: the path of the document directory
-    init(fileManager: FileManager, documentDirectoryPath: String)
+    init(fileManager: FileManager, cacheDirectoryName: String)
     
     /// Saves some data in a key
     ///
@@ -73,17 +73,17 @@ public final class CacheService: CacheServiceProtocol {
     /// Initializes a cache service
     ///
     /// - Parameter fileManager: the file manager for the service, for checking file or directory exists in a specified path
-    ///   - documentDirectoryPath: the path of the document directory
-    public init(fileManager: FileManager = FileManager.default, documentDirectoryPath: String) {
+    ///   - cacheDirectoryName: the path of the cache directory
+    public init(fileManager: FileManager = FileManager.default, cacheDirectoryName: String) {
         self.fileManager = fileManager
         do {
-            let documentDirectory = try fileManager.url(
-                for: .documentDirectory,
+            let cachesDirectory = try fileManager.url(
+                for: .cachesDirectory,
                 in: .userDomainMask,
                 appropriateFor: nil,
                 create: true
             )
-            diskPath = documentDirectory.appendingPathComponent(documentDirectoryPath)
+            diskPath = cachesDirectory.appendingPathComponent(cacheDirectoryName)
             try createDirectoryIfNeeded()
         } catch {
             fatalError()
@@ -159,7 +159,7 @@ public final class CacheService: CacheServiceProtocol {
     private func createDirectoryIfNeeded() throws {
         
         // Get document directory for device, this should succeed
-        if fileManager.urls(for: .documentDirectory, in: .userDomainMask).first != nil {
+        if fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first != nil {
             
             // If folder URL does not exist, create it
             if !fileManager.fileExists(atPath: diskPath.path) {

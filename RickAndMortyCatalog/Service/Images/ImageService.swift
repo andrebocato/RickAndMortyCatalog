@@ -19,12 +19,12 @@ protocol ImageServiceProtocol {
     ///   - cacheService: to load the cached data
     init(networkDispatcher: URLRequestDispatcherProtocol, cacheService: CacheServiceProtocol)
     
-    /// <#Description#>
+    /// Gets and image from the URL, it can be in the cache or fetched from the network
     ///
     /// - Parameters:
-    ///   - url: <#url description#>
-    ///   - completionHandler: <#completionHandler description#>
-    /// - Returns: <#return value description#>
+    ///   - url: the image URL
+    ///   - completionHandler: the completion handler for the fetch operation
+    /// - Returns: an image, if present or a networking error
     @discardableResult func getImageDataFromURL(_ url: String, completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken?
 }
 

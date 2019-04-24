@@ -16,14 +16,16 @@ extension UIView: LoadableView {
         
     // MARK: - Functions
     
-    /// Presents a subview with a light gray background and an activity indicator in the middle.
+    /// Presents a subview with an activity indicator in the middle.
     func startLoading() {
         let loadingView = UIView(frame: self.bounds)
-        loadingView.backgroundColor = UIColor.lightGray
+        loadingView.backgroundColor = .white
         loadingView.tag = loadingViewTag
+        loadingView.center = self.center // @TODO: fix that
         
         let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
         activityIndicator.startAnimating()
+        activityIndicator.color = .black
         activityIndicator.center = loadingView.center
         
         DispatchQueue.main.async {

@@ -14,7 +14,6 @@
 		6576A3962266413200571620 /* UIView+Emptiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3952266413200571620 /* UIView+Emptiable.swift */; };
 		658032422264FC39000FCAB9 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658032412264FC39000FCAB9 /* FavoriteCell.swift */; };
 		65912A7C225CF1C400F37508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912A7B225CF1C400F37508 /* AppDelegate.swift */; };
-		65912A81225CF1C400F37508 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65912A7F225CF1C400F37508 /* Main.storyboard */; };
 		65912A83225CF1C500F37508 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65912A82225CF1C500F37508 /* Assets.xcassets */; };
 		65912A86225CF1C500F37508 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65912A84225CF1C500F37508 /* LaunchScreen.storyboard */; };
 		65912A91225CF1C500F37508 /* RickAndMortyCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912A90225CF1C500F37508 /* RickAndMortyCatalogTests.swift */; };
@@ -30,6 +29,9 @@
 		65912AEB225D1E0C00F37508 /* RMCharacterOrigin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912AEA225D1E0C00F37508 /* RMCharacterOrigin.swift */; };
 		65912AED225D1E7200F37508 /* RMCharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912AEC225D1E7200F37508 /* RMCharacterLocation.swift */; };
 		65912B0D225D35A600F37508 /* RMCharactersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912B0C225D35A600F37508 /* RMCharactersService.swift */; };
+		6591EFD02270D8C300C7502E /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6591EFCF2270D8C300C7502E /* FavoriteCell.xib */; };
+		6591EFD22270D8D500C7502E /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6591EFD12270D8D500C7502E /* FavoritesViewController.xib */; };
+		6591EFD42270D8E200C7502E /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6591EFD32270D8E200C7502E /* SettingsViewController.xib */; };
 		BFDB456DD162690DBC06803E /* Pods_RickAndMortyCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40580FF8463F851878A0EA2 /* Pods_RickAndMortyCatalogTests.framework */; };
 		E50C9CBE226DF29700588EBC /* GetCharacterMock.json in Resources */ = {isa = PBXBuildFile; fileRef = E50C9CBD226DF29700588EBC /* GetCharacterMock.json */; };
 		E50C9CC0226DF67400588EBC /* RMCharacterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9CBF226DF67400588EBC /* RMCharacterInfo.swift */; };
@@ -93,7 +95,6 @@
 		658032412264FC39000FCAB9 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		65912A78225CF1C400F37508 /* RickAndMortyCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65912A7B225CF1C400F37508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		65912A80225CF1C400F37508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65912A82225CF1C500F37508 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65912A85225CF1C500F37508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65912A87225CF1C500F37508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,6 +115,9 @@
 		65912AEA225D1E0C00F37508 /* RMCharacterOrigin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterOrigin.swift; sourceTree = "<group>"; };
 		65912AEC225D1E7200F37508 /* RMCharacterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterLocation.swift; sourceTree = "<group>"; };
 		65912B0C225D35A600F37508 /* RMCharactersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharactersService.swift; sourceTree = "<group>"; };
+		6591EFCF2270D8C300C7502E /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
+		6591EFD12270D8D500C7502E /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
+		6591EFD32270D8E200C7502E /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		A40580FF8463F851878A0EA2 /* Pods_RickAndMortyCatalogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RickAndMortyCatalogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06B783FBB9B2ED15594D8F1 /* Pods-RickAndMortyCatalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalog.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalog/Pods-RickAndMortyCatalog.debug.xcconfig"; sourceTree = "<group>"; };
 		C82754B62518529268BB6207 /* Pods-RickAndMortyCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalogTests.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalogTests/Pods-RickAndMortyCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -325,7 +329,6 @@
 		65912ABD225CFBC500F37508 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				65912A7F225CF1C400F37508 /* Main.storyboard */,
 				65912ACA225CFDCF00F37508 /* Characters */,
 				65912AD7225D08DA00F37508 /* Favorites */,
 				65912AD6225D08D700F37508 /* Settings */,
@@ -355,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				65912ADA225D090700F37508 /* SettingsViewController.swift */,
+				6591EFD32270D8E200C7502E /* SettingsViewController.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -362,8 +366,9 @@
 		65912AD7225D08DA00F37508 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				6591EFCE2270D86000C7502E /* Cells */,
 				65912AD8225D08FC00F37508 /* FavoritesViewController.swift */,
-				658032412264FC39000FCAB9 /* FavoriteCell.swift */,
+				6591EFD12270D8D500C7502E /* FavoritesViewController.xib */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -392,6 +397,15 @@
 			children = (
 			);
 			path = "UI Components";
+			sourceTree = "<group>";
+		};
+		6591EFCE2270D86000C7502E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				658032412264FC39000FCAB9 /* FavoriteCell.swift */,
+				6591EFCF2270D8C300C7502E /* FavoriteCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		9AC5C3F3DE8E1EAF447C82EA /* Pods */ = {
@@ -646,12 +660,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E50C9D65226FE51900588EBC /* CharactersViewController.xib in Resources */,
+				6591EFD02270D8C300C7502E /* FavoriteCell.xib in Resources */,
 				65912A86225CF1C500F37508 /* LaunchScreen.storyboard in Resources */,
 				65912A83225CF1C500F37508 /* Assets.xcassets in Resources */,
-				65912A81225CF1C400F37508 /* Main.storyboard in Resources */,
+				6591EFD22270D8D500C7502E /* FavoritesViewController.xib in Resources */,
 				E50C9D5D226F874F00588EBC /* CharacterDetailViewController.xib in Resources */,
 				E50C9CBE226DF29700588EBC /* GetCharacterMock.json in Resources */,
 				E50C9D70226FEEE700588EBC /* CharacterCell.xib in Resources */,
+				6591EFD42270D8E200C7502E /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,14 +862,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		65912A7F225CF1C400F37508 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				65912A80225CF1C400F37508 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		65912A84225CF1C500F37508 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

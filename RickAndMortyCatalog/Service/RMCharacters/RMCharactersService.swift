@@ -11,7 +11,7 @@ import Foundation
 // MARK: - Protocols
 
 protocol RMCharactersServiceProtocol: NetworkingService {
-    @discardableResult func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken?
+    @discardableResult func getAllCharacters(onPage page: Int, completionHandler: @escaping (Result<RMCharacterResponse, ServiceError>) -> Void) -> URLRequestToken?
     @discardableResult func getCharacter(withID id: Int, completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) -> URLRequestToken?
     @discardableResult func getAllCharactersInRange(_ range: (start: Int, end: Int), completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken?
 }
@@ -31,20 +31,13 @@ class RMCharactersService: RMCharactersServiceProtocol {
     // MARK: - Protocol Stubs
     
     @discardableResult
-    func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken? {
+    func getAllCharacters(onPage page: Int,
+                          completionHandler: @escaping (Result<RMCharacterResponse, ServiceError>) -> Void) -> URLRequestToken? {
         
-        let request: RMCharactersRequest = .allCharacters
-        
-        let requestToken = dispatcher.execute(request: request, completion: { (result) in
-            
-            self.serializeDispatcherResult(result, responseType: RMCharacterResponse.self, completion: { (result) in
-                let transformedResult = result.map { $0.results }
-                completionHandler(transformedResult)
-            })
-            
+        let request: RMCharactersRequest = .allCharactersOnPage(page)
+        return dispatcher.execute(request: request, completion: { (result) in
+            self.serializeDispatcherResult(result, responseType: RMCharacterResponse.self, completion: completionHandler)
         })
-        
-        return requestToken
     }
     
     @discardableResult

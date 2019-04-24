@@ -10,7 +10,7 @@ import Foundation
 
 enum RMCharactersRequest: URLRequestProtocol {
     
-    case allCharacters
+    case allCharactersOnPage(Int)
     case characterWithID(Int)
     case characterInRange(Int,Int)
     
@@ -28,11 +28,12 @@ enum RMCharactersRequest: URLRequestProtocol {
     
     var parameters: URLRequestParameters? {
         switch self {
+        case .allCharactersOnPage(let page):
+            return .url(["?page=": "\(page)"])
         case .characterWithID(let id):
             return .url(["": "\(id)"])
         case .characterInRange(let start, let end):
             return .url(["": "\(start),\(end)"])
-        default: return nil
         }
     }
     

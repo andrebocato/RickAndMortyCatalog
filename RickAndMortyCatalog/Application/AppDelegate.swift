@@ -58,12 +58,27 @@ extension AppDelegate {
         
         let charactersViewController = CharactersViewController(nibName: CharactersViewController.className,
                                                                 bundle: Bundle(for: CharactersViewController.self),
-                                                                service: DependencyInjection.charactersService)
+                                                                service: DependencyInjection.charactersService,
+                                                                currentPage: Int(),
+                                                                pages: Int())
         charactersViewController.title = "Characters"
         charactersViewController.tabBarItem = UITabBarItem(title: "Characters", image: UIImage(named: "characters"), tag: 0)
         let charactersNavigationController = UINavigationController(rootViewController: charactersViewController)
         
-        tabBarController.setViewControllers([charactersNavigationController], animated: false)
+        let favoritesViewController = FavoritesViewController(nibName: FavoritesViewController.className,
+                                                              bundle: Bundle(for: FavoritesViewController.self),
+                                                              service: DependencyInjection.charactersService)
+        favoritesViewController.title = "Favorites"
+        favoritesViewController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorited"), tag: 0)
+        let favoritesNavigationController = UINavigationController(rootViewController: favoritesViewController)
+        
+        let settingsViewController = SettingsViewController(nibName: SettingsViewController.className,
+                                                            bundle: Bundle(for: SettingsViewController.self))
+        settingsViewController.title = "Settings"
+        settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 0)
+        let settingsNavigationController = UINavigationController(rootViewController: settingsViewController)
+        
+        tabBarController.setViewControllers([charactersNavigationController, favoritesNavigationController, settingsNavigationController], animated: false)
         
         return tabBarController
     }

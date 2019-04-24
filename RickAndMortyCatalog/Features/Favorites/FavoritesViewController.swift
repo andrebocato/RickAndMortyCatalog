@@ -20,6 +20,23 @@ class FavoritesViewController: UIViewController {
         }
     }
     
+    // MARK: - Dependencies
+    
+    private let service: RMCharactersServiceProtocol
+    
+    // MARK: - Initialization
+    
+    init(nibName nibNameOrNil: String?,
+         bundle nibBundleOrNil: Bundle?,
+         service: RMCharactersServiceProtocol) {
+        self.service = service
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - IBActions
     
     // MARK: - Properties
@@ -36,10 +53,17 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        registerCollectionViewCells()
         loadFavorites()
-        
+    }
+    
+    // MARK: - UI
+    
+    private func registerCollectionViewCells() {
+        let bundle = Bundle(for: FavoriteCell.self)
+        let className = FavoriteCell.className
+        let cellNib = UINib(nibName: className, bundle: bundle)
+        collectionView.register(cellNib, forCellWithReuseIdentifier: className)
     }
     
     // MARK: - Functions

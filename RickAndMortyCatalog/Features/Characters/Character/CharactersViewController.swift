@@ -34,12 +34,19 @@ class CharactersViewController: UIViewController {
         }
     }
     
+    private var currentPage = 1
+    private var pages: Int
+    
     // MARK: - Initilization
     
     init(nibName nibNameOrNil: String?,
          bundle nibBundleOrNil: Bundle?,
-         service: RMCharactersServiceProtocol) {
+         service: RMCharactersServiceProtocol,
+         currentPage: Int,
+         pages: Int) {
         self.service = service
+        self.currentPage = currentPage
+        self.pages = pages
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -52,7 +59,7 @@ class CharactersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableViewCells()
-        loadViewData()
+        downloadResponse(forPage: 1)
     }
     
     // MARK: - UI
@@ -66,22 +73,23 @@ class CharactersViewController: UIViewController {
 
     // MARK: - Functions
     
-    private func dowloadCharacters() {
-        service.getAllCharacters { [weak self] (result) in
+    private func downloadResponse(forPage page: Int) {
+        service.getAllCharacters(onPage: page) { [weak self] (result) in
             switch result {
             case .success(let response):
-                self?.characters = response
+                guard let characters = self?.characters else { return }
+                if characters.count == 0 {
+                    self?.characters = response.results
+                } else {
+                    self?.characters += response.results // @TODO: filter characters that already exist in the array
+                }
+                self?.pages = response.info.pages
             default: return
             }
         }
     }
     
     // MARK: - Configuration Functions
-    
-    private func loadViewData() {
-        dowloadCharacters()
-        // @TODO: if there are downloaded characters, get them from persisted data. if there aren't, download them
-    }
     
 }
 
@@ -100,12 +108,20 @@ extension CharactersViewController: UITableViewDataSource {
         
         let character = characters[indexPath.row]
         cell.configure(with: character)
+        tableView.stopLoading()
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if indexPath.row == characters.count {
+//            currentPage += 1
+//            downloadResponse(forPage: currentPage)
+//        }
     }
     
 }
@@ -124,8 +140,6 @@ extension CharactersViewController: UITableViewDelegate {
                                                               service: DependencyInjection.charactersService,
                                                               character: selectedCharacter)
         navigationController?.pushViewController(detailsController, animated: true)
-        
-        
     }
     
 }

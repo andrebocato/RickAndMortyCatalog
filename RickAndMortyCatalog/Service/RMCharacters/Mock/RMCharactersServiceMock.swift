@@ -33,7 +33,8 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
     // MARK: - Protocol Stubs
     
     @discardableResult
-    func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void)  -> URLRequestToken? {
+    func getAllCharacters(onPage page: Int,
+                          completionHandler: @escaping (Result<RMCharacterResponse, ServiceError>) -> Void)  -> URLRequestToken? {
         
         // Example using JSON strings on the code.
         guard let mockedCharactersData = """
@@ -96,7 +97,7 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
         
         do {
             let mockedCharacters  = try JSONDecoder().decode(RMCharacterResponse.self, from: mockedCharactersData)
-            completionHandler(.success(mockedCharacters.results))
+            completionHandler(.success(mockedCharacters))
         } catch {
             debugPrint(error.localizedDescription)
             fatalError("Could not parse JSON, check if its valid.")

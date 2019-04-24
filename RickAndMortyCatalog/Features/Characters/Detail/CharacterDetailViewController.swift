@@ -13,6 +13,7 @@ import RealmSwift
 class CharacterDetailViewController: UIViewController {
     
     // MARK: - IBOutlets
+    
     @IBOutlet private weak var idFixedLabel: UILabel!
     @IBOutlet private weak var nameFixedLabel: UILabel!
     @IBOutlet private weak var statusFixedLabel: UILabel!

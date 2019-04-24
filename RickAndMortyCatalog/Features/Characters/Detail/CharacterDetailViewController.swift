@@ -117,7 +117,8 @@ class CharacterDetailViewController: UIViewController {
         imageView.startLoading()
         
         let imageURL = character.image
-        service.getImageDataFromURL(imageURL) { [weak self] (result) in
+        
+         DependencyInjection.imageService.getImageDataFromURL(imageURL) { [weak self] (result) in
             
             self?.imageView.stopLoading()
             
@@ -132,6 +133,7 @@ class CharacterDetailViewController: UIViewController {
             
             
         }
+        
     }
     
     // MARK: - Helper Functions

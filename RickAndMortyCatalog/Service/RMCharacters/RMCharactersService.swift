@@ -10,11 +10,10 @@ import Foundation
 
 // MARK: - Protocols
 
-protocol RMCharactersServiceProtocol: APIService {
+protocol RMCharactersServiceProtocol: NetworkingService {
     @discardableResult func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken?
     @discardableResult func getCharacter(withID id: Int, completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) -> URLRequestToken?
     @discardableResult func getAllCharactersInRange(_ range: (start: Int, end: Int), completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken?
-    @discardableResult func getImageDataFromURL(_ url: String, completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken?
 }
 
 class RMCharactersService: RMCharactersServiceProtocol {
@@ -66,35 +65,6 @@ class RMCharactersService: RMCharactersServiceProtocol {
         return dispatcher.execute(request: request, completion: { (result) in
             self.serializeDispatcherResult(result, responseType: [RMCharacter].self, completion: completionHandler)
         })
-    }
-    
-    @discardableResult
-    func getImageDataFromURL(_ url: String, completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken? {
-        
-        guard let imageURL = URL(string: url) else {
-            completionHandler(.failure(.unexpected))
-            return nil
-        }
-        
-        let request = SimpleURLRequest(baseURL: imageURL)
-        
-        return dispatcher.execute(request: request) { (result) in
-            
-            do {
-                
-                guard let data = try result.get() else {
-                    completionHandler(.failure(.noData))
-                    return
-                }
-                
-                completionHandler(.success(data))
-                
-            } catch {
-                completionHandler(.failure(.api(.raw(error))))
-            }
-            
-        }
-        
     }
     
 }

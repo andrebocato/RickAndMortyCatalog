@@ -1,5 +1,5 @@
 //
-//  APIService.swift
+//  NetworkingService.swift
 //  RickAndMortyCatalog
 //
 //  Created by Andre Sanches Bocato on 23/04/19.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Defines an API service
-public protocol APIService {
+public protocol NetworkingService {
     
     /// The dispatcher to take care of the network requests
     var dispatcher: URLRequestDispatcherProtocol { get }
@@ -20,7 +20,7 @@ public protocol APIService {
     init(dispatcher: URLRequestDispatcherProtocol)
 }
 
-extension APIService {
+extension NetworkingService {
     
     /// Helper function to serialize results when needed
     ///

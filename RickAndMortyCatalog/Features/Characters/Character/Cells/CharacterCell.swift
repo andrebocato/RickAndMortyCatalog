@@ -44,7 +44,7 @@ class CharacterCell: UITableViewCell {
     
     private func loadImage(for character: RMCharacter) {
         
-        let service = DependencyInjection.charactersService
+        let service = DependencyInjection.imageService
         
         cellImageView.startLoading()
         

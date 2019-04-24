@@ -13,6 +13,8 @@ struct DependencyInjection {
     private init() {}
     
     private static let urlSessionDispatcher = URLSessionDispatcher()
+    private static let cacheService = CacheService(documentDirectoryPath: "RickAndMortyCatalogCache")
     static let charactersService = RMCharactersService(dispatcher: urlSessionDispatcher)
+    static let imageService = ImageService(networkDispatcher: urlSessionDispatcher, cacheService: cacheService)
     
 }

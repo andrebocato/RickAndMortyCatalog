@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FavoritesViewController: UIViewController {
     
@@ -33,7 +34,21 @@ class FavoritesViewController: UIViewController {
     
     // MARK: - Lifecycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        loadFavorites()
+        
+    }
+    
     // MARK: - Functions
+    
+    private func loadFavorites() {
+        let realm = try! Realm()
+        let database = RealmDatabase(realm: realm)
+        favoritedCharacters = database.fetchAllFavorites().compactMap { $0.rmCharacter }
+    }
     
     // MARK: - Configuration Functions
     

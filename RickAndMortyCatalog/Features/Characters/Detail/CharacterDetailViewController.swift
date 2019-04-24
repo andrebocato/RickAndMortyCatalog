@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class CharacterDetailViewController: UIViewController {
     
@@ -81,8 +82,10 @@ class CharacterDetailViewController: UIViewController {
     @objc private func toggleFavoriteBarButtonItemDidReceiveTouchUpInside(_ sender: UIBarButtonItem) {
         if sender.image == UIImage(named: "unfavorited") {
             sender.image = UIImage(named: "favorited")
+            persistFavorite()
         } else {
             sender.image = UIImage(named: "unfavorited")
+            deletePersistedFavorite()
         }
         // @TODO: if character is favorite, switch image and delete persisted data. else, set isFavorite to true and persist data.
     }
@@ -90,11 +93,36 @@ class CharacterDetailViewController: UIViewController {
     // MARK: - Functions
     
     private func persistFavorite() {
-        // @TODO: implement
+        
+        let realm = try! Realm()
+        let database = RealmDatabase(realm: realm)
+        
+        guard let imageData = imageView.image?.jpegData(compressionQuality: 0.75) else {
+            debugPrint("No data.")
+            return
+        }
+        
+        do {
+            try database.createOrUpdateFavorite(rmCharacter: character, imageData: imageData)
+            debugPrint("Saved.")
+        } catch {
+            debugPrint(error)
+        }
+        
     }
     
     private func deletePersistedFavorite() {
-        // @TODO: implement
+        
+        let realm = try! Realm()
+        let database = RealmDatabase(realm: realm)
+        
+        do {
+            try database.deleteFavorite(withID: character.id)
+            debugPrint("Deleted.")
+        } catch {
+            debugPrint(error)
+        }
+        
     }
     
     // MARK: - Configuration Functions

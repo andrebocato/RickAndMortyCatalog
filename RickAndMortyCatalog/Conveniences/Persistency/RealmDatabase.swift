@@ -13,9 +13,15 @@ class FavoriteCharacter: Object {
     
     // MARK: - Properties
     
-    dynamic var id: String = UUID().uuidString
-    dynamic var rmCharacter: RMCharacter? = nil
-    dynamic var imageData: Data? = nil
+    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var rmCharacterData: Data? = nil
+    @objc dynamic var imageData: Data? = nil
+    
+    var rmCharacter: RMCharacter? {
+        guard let data = rmCharacterData,
+            let character = try? JSONDecoder().decode(RMCharacter.self, from: data) else { return nil }
+        return character
+    }
     
     // MARK: - Initialization
     
@@ -26,8 +32,7 @@ class FavoriteCharacter: Object {
     ///   - imageData: a character image
     convenience init(rmCharacter: RMCharacter, imageData: Data) {
         self.init()
-        self.id = "\(rmCharacter.id)"
-        self.rmCharacter = rmCharacter
+        self.rmCharacterData = try? JSONEncoder().encode(rmCharacter)
         self.imageData = imageData
     }
     
@@ -59,11 +64,15 @@ class RealmDatabase {
     
     func fetchFavoriteWithID(_ id: Int) -> FavoriteCharacter? {
         let results = realm.objects(FavoriteCharacter.self)
-        return results.filter { $0.id == "\(id)" }.first
+        return results.filter { $0.rmCharacter?.id == id }.first
     }
     
     func fetchAllFavorites() -> [FavoriteCharacter] {
-        return realm.objects(FavoriteCharacter.self).sorted(by: { $0.id < $1.id } )
+        return realm.objects(FavoriteCharacter.self)
+            .sorted(by: { (f1, f2) -> Bool in
+                guard let rm1 = f1.rmCharacter, let rm2 = f1.rmCharacter else { return false }
+                return rm1.id < rm2.id
+            })
     }
 
     func deleteFavorite(withID id: Int) throws {

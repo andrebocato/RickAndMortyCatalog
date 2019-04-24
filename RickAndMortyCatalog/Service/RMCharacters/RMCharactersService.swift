@@ -14,7 +14,6 @@ protocol RMCharactersServiceProtocol: APIService {
     @discardableResult func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken?
     @discardableResult func getCharacter(withID id: Int, completionHandler: @escaping (Result<RMCharacter, ServiceError>) -> Void) -> URLRequestToken?
     @discardableResult func getAllCharactersInRange(_ range: (start: Int, end: Int), completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken?
-    @discardableResult func filterCharacters(_ filters: [RMCharactersFilter], completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken?
     @discardableResult func getImageDataFromURL(_ url: String, completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken?
 }
 
@@ -36,12 +35,17 @@ class RMCharactersService: RMCharactersServiceProtocol {
     func getAllCharacters(completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken? {
         
         let request: RMCharactersRequest = .allCharacters
-        return dispatcher.execute(request: request, completion: { (result) in
+        
+        let requestToken = dispatcher.execute(request: request, completion: { (result) in
+            
             self.serializeDispatcherResult(result, responseType: RMCharacterResponse.self, completion: { (result) in
                 let transformedResult = result.map { $0.results }
                 completionHandler(transformedResult)
             })
+            
         })
+        
+        return requestToken
     }
     
     @discardableResult
@@ -65,21 +69,32 @@ class RMCharactersService: RMCharactersServiceProtocol {
     }
     
     @discardableResult
-    func filterCharacters(_ filters: [RMCharactersFilter],
-                          completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void)  -> URLRequestToken? {
+    func getImageDataFromURL(_ url: String, completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken? {
         
-        let request: RMCharactersRequest = .charactersWithFilters(filters)
-        return dispatcher.execute(request: request, completion: { (result) in
-            self.serializeDispatcherResult(result, responseType: RMCharacterResponse.self, completion: { (result) in
-                let transformedResult = result.map { $0.results }
-                completionHandler(transformedResult)
-            })
-        })
-    }
-    
-    @discardableResult
-    func getImageDataFromURL(_ url: String, completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken? {       
-        return nil // TODO: Define
+        guard let imageURL = URL(string: url) else {
+            completionHandler(.failure(.unexpected))
+            return nil
+        }
+        
+        let request = SimpleURLRequest(baseURL: imageURL)
+        
+        return dispatcher.execute(request: request) { (result) in
+            
+            do {
+                
+                guard let data = try result.get() else {
+                    completionHandler(.failure(.noData))
+                    return
+                }
+                
+                completionHandler(.success(data))
+                
+            } catch {
+                completionHandler(.failure(.api(.raw(error))))
+            }
+            
+        }
+        
     }
     
 }

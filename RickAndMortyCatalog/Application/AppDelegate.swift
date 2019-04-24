@@ -14,9 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let rootViewController = createTabBarController()
+        
+        window = UIWindow()
+        window?.rootViewController = rootViewController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
@@ -43,5 +48,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension AppDelegate {
+    
+    private func createTabBarController() ->  UITabBarController {
+     
+        let tabBarController = UITabBarController()
+        
+        let charactersViewController = CharactersViewController(nibName: CharactersViewController.className,
+                                                                bundle: Bundle(for: CharactersViewController.self),
+                                                                service: DependencyInjection.charactersService)
+        charactersViewController.title = "Characters"
+        charactersViewController.tabBarItem = UITabBarItem(title: "Characters", image: UIImage(named: "characters"), tag: 0)
+        let charactersNavigationController = UINavigationController(rootViewController: charactersViewController)
+        
+        tabBarController.setViewControllers([charactersNavigationController], animated: false)
+        
+        return tabBarController
+    }
+    
 }
 

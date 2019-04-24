@@ -13,7 +13,7 @@ class CharactersViewController: UIViewController {
     
     // MARK: - Dependencies
 
-    private let service: RMCharactersServiceProtocol = RMCharactersService(dispatcher: URLSessionDispatcher()) // TODO: change this
+    private let service: RMCharactersServiceProtocol
     
     // MARK: - IBOutlets
     
@@ -23,8 +23,6 @@ class CharactersViewController: UIViewController {
             tableView.delegate = self
         }
     }
-    
-    // MARK: - IBActions
     
     // MARK: - Properties
 
@@ -38,11 +36,32 @@ class CharactersViewController: UIViewController {
     
     // MARK: - Initilization
     
+    init(nibName nibNameOrNil: String?,
+         bundle nibBundleOrNil: Bundle?,
+         service: RMCharactersServiceProtocol) {
+        self.service = service
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerTableViewCells()
         loadViewData()
+    }
+    
+    // MARK: - UI
+    
+    private func registerTableViewCells() {
+        let bundle = Bundle(for: CharacterCell.self)
+        let className = CharacterCell.className
+        let cellNib = UINib(nibName: className, bundle: bundle)
+        tableView.register(cellNib, forCellReuseIdentifier: className)
     }
 
     // MARK: - Functions
@@ -52,7 +71,6 @@ class CharactersViewController: UIViewController {
             switch result {
             case .success(let response):
                 self?.characters = response
-
             default: return
             }
         }
@@ -65,7 +83,6 @@ class CharactersViewController: UIViewController {
         // @TODO: if there are downloaded characters, get them from persisted data. if there aren't, download them
     }
     
-    // MARK: - Helper Functions
 }
 
 // MARK: - Extensions
@@ -79,7 +96,7 @@ extension CharactersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.identifier, for: indexPath) as? CharacterCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.className, for: indexPath) as? CharacterCell else { return UITableViewCell() }
         
         let character = characters[indexPath.row]
         cell.configure(with: character)

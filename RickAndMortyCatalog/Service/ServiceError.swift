@@ -19,6 +19,7 @@ public enum ServiceError: Error {
     case api(URLRequestError)
     case serializationError(Error)
     case noData
+    case invalidURL
     
     public var code: Int {
         switch self {
@@ -32,6 +33,8 @@ public enum ServiceError: Error {
             return 12
         case .noData:
             return 13
+        case .invalidURL:
+            return 14
         }
     }
     
@@ -47,6 +50,8 @@ public enum ServiceError: Error {
             return "A serialization error has occurred."
         case .noData:
             return "No data was found."
+        case .invalidURL:
+            return "The URL is invalid."
         }
     }
     

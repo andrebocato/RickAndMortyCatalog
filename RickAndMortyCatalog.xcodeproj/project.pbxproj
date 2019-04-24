@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6576A3882266215700571620 /* UITableViewCell+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3872266215700571620 /* UITableViewCell+Identifier.swift */; };
 		6576A38A226623EB00571620 /* UICollectionViewCell+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A389226623EB00571620 /* UICollectionViewCell+Identifier.swift */; };
 		6576A3922266370A00571620 /* UIView+Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3912266370A00571620 /* UIView+Loadable.swift */; };
 		6576A3962266413200571620 /* UIView+Emptiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3952266413200571620 /* UIView+Emptiable.swift */; };
 		658032422264FC39000FCAB9 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658032412264FC39000FCAB9 /* FavoriteCell.swift */; };
-		6580324422651049000FCAB9 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580324322651049000FCAB9 /* CharacterCell.swift */; };
 		65912A7C225CF1C400F37508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912A7B225CF1C400F37508 /* AppDelegate.swift */; };
 		65912A81225CF1C400F37508 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65912A7F225CF1C400F37508 /* Main.storyboard */; };
 		65912A83225CF1C500F37508 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65912A82225CF1C500F37508 /* Assets.xcassets */; };
@@ -53,6 +51,10 @@
 		E50C9D5D226F874F00588EBC /* CharacterDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50C9D5B226F874F00588EBC /* CharacterDetailViewController.xib */; };
 		E50C9D5F226FD66D00588EBC /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D5E226FD66D00588EBC /* DependencyInjection.swift */; };
 		E50C9D61226FD74D00588EBC /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D60226FD74D00588EBC /* NSObjectExtension.swift */; };
+		E50C9D63226FE02C00588EBC /* SimpleURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D62226FE02C00588EBC /* SimpleURLRequest.swift */; };
+		E50C9D65226FE51900588EBC /* CharactersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50C9D64226FE51900588EBC /* CharactersViewController.xib */; };
+		E50C9D6F226FEEE700588EBC /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D6D226FEEE700588EBC /* CharacterCell.swift */; };
+		E50C9D70226FEEE700588EBC /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50C9D6E226FEEE700588EBC /* CharacterCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,12 +75,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6576A3872266215700571620 /* UITableViewCell+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Identifier.swift"; sourceTree = "<group>"; };
 		6576A389226623EB00571620 /* UICollectionViewCell+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Identifier.swift"; sourceTree = "<group>"; };
 		6576A3912266370A00571620 /* UIView+Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loadable.swift"; sourceTree = "<group>"; };
 		6576A3952266413200571620 /* UIView+Emptiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Emptiable.swift"; sourceTree = "<group>"; };
 		658032412264FC39000FCAB9 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
-		6580324322651049000FCAB9 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		65912A78225CF1C400F37508 /* RickAndMortyCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65912A7B225CF1C400F37508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65912A80225CF1C400F37508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -125,6 +125,10 @@
 		E50C9D5B226F874F00588EBC /* CharacterDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailViewController.xib; sourceTree = "<group>"; };
 		E50C9D5E226FD66D00588EBC /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
 		E50C9D60226FD74D00588EBC /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
+		E50C9D62226FE02C00588EBC /* SimpleURLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleURLRequest.swift; sourceTree = "<group>"; };
+		E50C9D64226FE51900588EBC /* CharactersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharactersViewController.xib; sourceTree = "<group>"; };
+		E50C9D6D226FEEE700588EBC /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
+		E50C9D6E226FEEE700588EBC /* CharacterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,8 +159,9 @@
 		6537485F2264E19800AC910E /* Character */ = {
 			isa = PBXGroup;
 			children = (
+				E50C9D66226FE5FB00588EBC /* Cells */,
 				65912AC2225CFD9A00F37508 /* CharactersViewController.swift */,
-				6580324322651049000FCAB9 /* CharacterCell.swift */,
+				E50C9D64226FE51900588EBC /* CharactersViewController.xib */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -256,7 +261,6 @@
 		65912AAE225CF2ED00F37508 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				6576A3872266215700571620 /* UITableViewCell+Identifier.swift */,
 				6576A389226623EB00571620 /* UICollectionViewCell+Identifier.swift */,
 				6576A3912266370A00571620 /* UIView+Loadable.swift */,
 				6576A3952266413200571620 /* UIView+Emptiable.swift */,
@@ -428,6 +432,7 @@
 				E50C9D4A226F4ADE00588EBC /* URLRequestAdapter.swift */,
 				E50C9D4C226F4AEA00588EBC /* URLRequestToken.swift */,
 				E50C9D4E226F4AF600588EBC /* URLRequestError.swift */,
+				E50C9D62226FE02C00588EBC /* SimpleURLRequest.swift */,
 			);
 			path = URLRequests;
 			sourceTree = "<group>";
@@ -448,6 +453,15 @@
 				E50C9D58226F618000588EBC /* RMCharactersServiceMock.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		E50C9D66226FE5FB00588EBC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E50C9D6D226FEEE700588EBC /* CharacterCell.swift */,
+				E50C9D6E226FEEE700588EBC /* CharacterCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -554,11 +568,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E50C9D65226FE51900588EBC /* CharactersViewController.xib in Resources */,
 				65912A86225CF1C500F37508 /* LaunchScreen.storyboard in Resources */,
 				65912A83225CF1C500F37508 /* Assets.xcassets in Resources */,
 				65912A81225CF1C400F37508 /* Main.storyboard in Resources */,
 				E50C9D5D226F874F00588EBC /* CharacterDetailViewController.xib in Resources */,
 				E50C9CBE226DF29700588EBC /* GetCharacterMock.json in Resources */,
+				E50C9D70226FEEE700588EBC /* CharacterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,13 +604,11 @@
 				65912AC3225CFD9A00F37508 /* CharactersViewController.swift in Sources */,
 				65912AD9225D08FC00F37508 /* FavoritesViewController.swift in Sources */,
 				E50C9D3F226F4A8800588EBC /* URLRequestDispatcherProtocol.swift in Sources */,
-				6580324422651049000FCAB9 /* CharacterCell.swift in Sources */,
 				E50C9D52226F4E0900588EBC /* RMCharactersRequest.swift in Sources */,
 				E50C9D3B226F4A5B00588EBC /* APIService.swift in Sources */,
 				65912B02225D2BCF00F37508 /* RMCharactersFilters.swift in Sources */,
 				65912A7C225CF1C400F37508 /* AppDelegate.swift in Sources */,
 				E50C9D56226F5BB700588EBC /* ServiceError.swift in Sources */,
-				6576A3882266215700571620 /* UITableViewCell+Identifier.swift in Sources */,
 				E50C9D47226F4AC800588EBC /* HTTPMethod.swift in Sources */,
 				E50C9CC0226DF67400588EBC /* RMCharacterInfo.swift in Sources */,
 				E50C9D38226F4A3B00588EBC /* URLUtil.swift in Sources */,
@@ -606,6 +620,7 @@
 				65912AB5225CF45100F37508 /* AlertHelper.swift in Sources */,
 				E50C9D41226F4A9A00588EBC /* URLSessionDispatcher.swift in Sources */,
 				E50C9CC2226DF6FB00588EBC /* RMCharacterResponse.swift in Sources */,
+				E50C9D63226FE02C00588EBC /* SimpleURLRequest.swift in Sources */,
 				E50C9D5F226FD66D00588EBC /* DependencyInjection.swift in Sources */,
 				6576A3922266370A00571620 /* UIView+Loadable.swift in Sources */,
 				6576A3962266413200571620 /* UIView+Emptiable.swift in Sources */,
@@ -618,6 +633,7 @@
 				65912ABA225CF49200F37508 /* ErrorTypes.swift in Sources */,
 				65912B0D225D35A600F37508 /* RMCharactersService.swift in Sources */,
 				E50C9D5C226F874F00588EBC /* CharacterDetailViewController.swift in Sources */,
+				E50C9D6F226FEEE700588EBC /* CharacterCell.swift in Sources */,
 				E50C9D35226F4A0100588EBC /* NSErrorExtensions.swift in Sources */,
 				E50C9D4D226F4AEA00588EBC /* URLRequestToken.swift in Sources */,
 				65912AEB225D1E0C00F37508 /* RMCharacterOrigin.swift in Sources */,

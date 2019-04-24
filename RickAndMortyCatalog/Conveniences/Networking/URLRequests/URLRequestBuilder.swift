@@ -13,7 +13,7 @@ public class URLRequestBuilder {
     // MARK: - Properties
     
     private var baseURL: URL
-    private var path: String
+    private var path: String?
     private var method: HTTPMethod = .get
     private var headers: [String: Any]?
     private var parameters: URLRequestParameters?
@@ -26,7 +26,7 @@ public class URLRequestBuilder {
     /// - Parameters:
     ///   - baseURL: a base URL
     ///   - path: a path for the request
-    public init(with baseURL: URL, path: String) {
+    public init(with baseURL: URL, path: String?) {
         self.baseURL = baseURL
         self.path = path
     }
@@ -89,7 +89,11 @@ public class URLRequestBuilder {
     /// - Returns: a configurad url request
     public func build() throws -> URLRequest {
         
-        let url = baseURL.appendingPathComponent(path)
+        var url = baseURL
+        if let path = path {
+            url = baseURL.appendingPathComponent(path)
+        }
+        
         var urlRequest = URLRequest(url: url,
                                     cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
                                     timeoutInterval: 100)

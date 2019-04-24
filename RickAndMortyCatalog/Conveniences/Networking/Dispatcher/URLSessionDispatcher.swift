@@ -17,6 +17,7 @@ private struct DataTaskResponse {
 public class URLSessionDispatcher: URLRequestDispatcherProtocol {
     
     // MARK: - Properties
+    
     private var session: URLSession
     
     // MARK: - Initialization

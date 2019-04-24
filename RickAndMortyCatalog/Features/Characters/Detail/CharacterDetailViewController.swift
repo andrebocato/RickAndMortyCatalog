@@ -100,7 +100,7 @@ class CharacterDetailViewController: UIViewController {
     // MARK: - Configuration Functions
     
     private func configureView(with character: RMCharacter) {
-        imageView.image = UIImage(named: "MockImage")
+        loadImage(for: character)
         idLabel.text = "\(character.id)"
         nameLabel.text = character.name
         statusLabel.text = character.status
@@ -110,6 +110,28 @@ class CharacterDetailViewController: UIViewController {
         genderLabel.text = character.gender
         originLabel.text = character.origin.name
         locationLabel.text = character.location.name
+    }
+    
+    private func loadImage(for character: RMCharacter) {
+        
+        imageView.startLoading()
+        
+        let imageURL = character.image
+        service.getImageDataFromURL(imageURL) { [weak self] (result) in
+            
+            self?.imageView.stopLoading()
+            
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self?.imageView.image = UIImage(data: data)
+                }
+            case .failure(let error):
+                debugPrint(error)
+            }
+            
+            
+        }
     }
     
     // MARK: - Helper Functions

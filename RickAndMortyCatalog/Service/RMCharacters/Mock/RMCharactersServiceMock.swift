@@ -136,15 +136,6 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
     }
     
     @discardableResult
-    func filterCharacters(_ filters: [RMCharactersFilter],
-                          completionHandler: @escaping (Result<[RMCharacter], ServiceError>) -> Void) -> URLRequestToken? {
-        
-        //
-        
-        return nil
-    }
-    
-    @discardableResult
     func getImageDataFromURL(_ url: String, completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken? {
         return nil
     }

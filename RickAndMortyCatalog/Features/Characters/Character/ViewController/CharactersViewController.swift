@@ -12,8 +12,7 @@ import UIKit
 class CharactersViewController: UIViewController {
     
     // MARK: - Dependencies
-
-    private let service: RMCharactersServiceProtocol
+    private let logicController: CharactersLogicController
     
     // MARK: - IBOutlets
     
@@ -28,25 +27,12 @@ class CharactersViewController: UIViewController {
 
     private let cellHeight: CGFloat = 80
     
-    private var characters = [RMCharacter]() {
-        didSet {
-            DispatchQueue.main.async { self.tableView.reloadData() }
-        }
-    }
-    
-    private var currentPage = 1
-    private var pages: Int
-    
     // MARK: - Initilization
     
     init(nibName nibNameOrNil: String?,
          bundle nibBundleOrNil: Bundle?,
-         service: RMCharactersServiceProtocol,
-         currentPage: Int,
-         pages: Int) {
-        self.service = service
-        self.currentPage = currentPage
-        self.pages = pages
+         logicController: CharactersLogicController) {
+        self.logicController = logicController
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -59,7 +45,7 @@ class CharactersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableViewCells()
-        downloadResponse(forPage: 1)
+        logicController.loadCharacters()
     }
     
     // MARK: - UI
@@ -71,26 +57,6 @@ class CharactersViewController: UIViewController {
         tableView.register(cellNib, forCellReuseIdentifier: className)
     }
 
-    // MARK: - Functions
-    
-    private func downloadResponse(forPage page: Int) {
-        service.getAllCharacters(onPage: page) { [weak self] (result) in
-            switch result {
-            case .success(let response):
-                guard let characters = self?.characters else { return }
-                if characters.count == 0 {
-                    self?.characters = response.results
-                } else {
-                    self?.characters += response.results // @TODO: filter characters that already exist in the array
-                }
-                self?.pages = response.info.pages
-            default: return
-            }
-        }
-    }
-    
-    // MARK: - Configuration Functions
-    
 }
 
 // MARK: - Extensions
@@ -100,15 +66,14 @@ extension CharactersViewController: UITableViewDataSource {
     // MARK: - Table View Data Source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characters.count
+        return logicController.numberOfCharacters
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.className, for: indexPath) as? CharacterCell else { return UITableViewCell() }
         
-        let character = characters[indexPath.row]
+        let character = logicController.characterData(for: indexPath.row)
         cell.configure(with: character)
-        tableView.stopLoading()
         
         return cell
     }
@@ -118,10 +83,10 @@ extension CharactersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        if indexPath.row == characters.count {
-//            currentPage += 1
-//            downloadResponse(forPage: currentPage)
-//        }
+        let lastRowIndex = logicController.numberOfCharacters - 1
+        if indexPath.row == lastRowIndex {
+            logicController.loadNextCharactersPage()
+        }
     }
     
 }
@@ -133,13 +98,49 @@ extension CharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
-        let selectedCharacter = characters[indexPath.row]
+        
+        let selectedCharacter = logicController.characterData(for: indexPath.row)
         
         let detailsController = CharacterDetailViewController(nibName: CharacterDetailViewController.className,
                                                               bundle: Bundle(for: CharacterDetailViewController.self),
                                                               service: DependencyInjection.charactersService,
                                                               character: selectedCharacter)
+        
         navigationController?.pushViewController(detailsController, animated: true)
+    }
+    
+}
+
+extension CharactersViewController: CharactersLogicControllerDelegate {
+ 
+    func stateDidChange(_ newState: CharactersLogicControllerState) {
+        switch newState {
+        case .loadingCharacters(let value): handleLoadingCharactersState(value)
+        case .loadingNextPage(let value): handleLoadingNextPageState(value)
+        case .serviceError(let error): handleServiceError(error)
+        }
+    }
+    
+    func charactersListDidUpdate() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    // MARK: - State Handlers
+    
+    private func handleLoadingCharactersState(_ state: Bool) {
+        state ? tableView.startLoading() : tableView.stopLoading()
+    }
+    
+    private func handleLoadingNextPageState(_ state: Bool) { // @TODO: Maybe change this...
+        let lastRowIndex = logicController.numberOfCharacters - 1
+        let lastCell = tableView.cellForRow(at: IndexPath(row: lastRowIndex, section: 0))
+        state ? lastCell?.startLoading() : lastCell?.stopLoading()
+    }
+    
+    private func handleServiceError(_ error: ServiceError) {
+        AlertHelper.showAlert(inController: self, title: "Service Error!", message: error.localizedDescription)
     }
     
 }

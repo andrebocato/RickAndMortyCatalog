@@ -34,3 +34,15 @@ struct RMCharacter: Codable {
     /// Time at which the character was created in the database.
     let created: String
 }
+
+extension RMCharacter: Equatable {
+    
+    static func == (lhs: RMCharacter, rhs: RMCharacter) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    public static func != (lhs: RMCharacter, rhs: RMCharacter) -> Bool {
+        return lhs.id != rhs.id
+    }
+    
+}

@@ -14,5 +14,5 @@ import Foundation
 /// - url: path parameters to be set o the URL
 public enum URLRequestParameters {
     case body(_: [String: Any]?)
-    case url(_: [String: Any]?)
+    case url(_: [String: String]?)
 }

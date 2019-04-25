@@ -29,7 +29,7 @@ enum RMCharactersRequest: URLRequestProtocol {
     var parameters: URLRequestParameters? {
         switch self {
         case .allCharactersOnPage(let page):
-            return .url(["?page=": "\(page)"])
+            return .url(["page": "\(page)"])
         case .characterWithID(let id):
             return .url(["": "\(id)"])
         case .characterInRange(let start, let end):

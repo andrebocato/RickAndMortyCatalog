@@ -37,7 +37,6 @@
 		E50C9CC0226DF67400588EBC /* RMCharacterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9CBF226DF67400588EBC /* RMCharacterInfo.swift */; };
 		E50C9CC2226DF6FB00588EBC /* RMCharacterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9CC1226DF6FB00588EBC /* RMCharacterResponse.swift */; };
 		E50C9D35226F4A0100588EBC /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D34226F4A0100588EBC /* NSErrorExtensions.swift */; };
-		E50C9D38226F4A3B00588EBC /* URLUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D37226F4A3B00588EBC /* URLUtil.swift */; };
 		E50C9D3B226F4A5B00588EBC /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D3A226F4A5B00588EBC /* NetworkingService.swift */; };
 		E50C9D3F226F4A8800588EBC /* URLRequestDispatcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D3E226F4A8800588EBC /* URLRequestDispatcherProtocol.swift */; };
 		E50C9D41226F4A9A00588EBC /* URLSessionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D40226F4A9A00588EBC /* URLSessionDispatcher.swift */; };
@@ -63,6 +62,8 @@
 		E50C9D7922707E2400588EBC /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D7822707E2400588EBC /* CacheService.swift */; };
 		E50C9D7B22707F8B00588EBC /* String+Encription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D7A22707F8B00588EBC /* String+Encription.swift */; };
 		E50C9D802270A9AD00588EBC /* RealmDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D7F2270A9AD00588EBC /* RealmDatabase.swift */; };
+		E50C9D842271616A00588EBC /* CharactersLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D832271616A00588EBC /* CharactersLogicController.swift */; };
+		E50C9D862271618600588EBC /* CharactersLogicControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D852271618600588EBC /* CharactersLogicControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,7 +126,6 @@
 		E50C9CBF226DF67400588EBC /* RMCharacterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterInfo.swift; sourceTree = "<group>"; };
 		E50C9CC1226DF6FB00588EBC /* RMCharacterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterResponse.swift; sourceTree = "<group>"; };
 		E50C9D34226F4A0100588EBC /* NSErrorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSErrorExtensions.swift; sourceTree = "<group>"; };
-		E50C9D37226F4A3B00588EBC /* URLUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLUtil.swift; sourceTree = "<group>"; };
 		E50C9D3A226F4A5B00588EBC /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		E50C9D3E226F4A8800588EBC /* URLRequestDispatcherProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestDispatcherProtocol.swift; sourceTree = "<group>"; };
 		E50C9D40226F4A9A00588EBC /* URLSessionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDispatcher.swift; sourceTree = "<group>"; };
@@ -151,6 +151,8 @@
 		E50C9D7822707E2400588EBC /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		E50C9D7A22707F8B00588EBC /* String+Encription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Encription.swift"; sourceTree = "<group>"; };
 		E50C9D7F2270A9AD00588EBC /* RealmDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDatabase.swift; sourceTree = "<group>"; };
+		E50C9D832271616A00588EBC /* CharactersLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersLogicController.swift; sourceTree = "<group>"; };
+		E50C9D852271618600588EBC /* CharactersLogicControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersLogicControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,9 +186,9 @@
 		6537485F2264E19800AC910E /* Character */ = {
 			isa = PBXGroup;
 			children = (
+				E50C9D822271614700588EBC /* ViewController */,
+				E50C9D812271613D00588EBC /* Logic */,
 				E50C9D66226FE5FB00588EBC /* Cells */,
-				65912AC2225CFD9A00F37508 /* CharactersViewController.swift */,
-				E50C9D64226FE51900588EBC /* CharactersViewController.xib */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -442,20 +444,11 @@
 		E50C9D33226F49D000588EBC /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				E50C9D36226F4A3100588EBC /* Util */,
 				E50C9D39226F4A5300588EBC /* Service */,
 				E50C9D3C226F4A6800588EBC /* Dispatcher */,
 				E50C9D3D226F4A7300588EBC /* URLRequests */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		E50C9D36226F4A3100588EBC /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				E50C9D37226F4A3B00588EBC /* URLUtil.swift */,
-			);
-			path = Util;
 			sourceTree = "<group>";
 		};
 		E50C9D39226F4A5300588EBC /* Service */ = {
@@ -539,6 +532,24 @@
 				E50C9D7F2270A9AD00588EBC /* RealmDatabase.swift */,
 			);
 			path = Persistency;
+			sourceTree = "<group>";
+		};
+		E50C9D812271613D00588EBC /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				E50C9D832271616A00588EBC /* CharactersLogicController.swift */,
+				E50C9D852271618600588EBC /* CharactersLogicControllerDelegate.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		E50C9D822271614700588EBC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				65912AC2225CFD9A00F37508 /* CharactersViewController.swift */,
+				E50C9D64226FE51900588EBC /* CharactersViewController.xib */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		F9B56FE2BCAA3347E9DB850A /* Frameworks */ = {
@@ -796,7 +807,6 @@
 				E50C9D56226F5BB700588EBC /* ServiceError.swift in Sources */,
 				E50C9D47226F4AC800588EBC /* HTTPMethod.swift in Sources */,
 				E50C9CC0226DF67400588EBC /* RMCharacterInfo.swift in Sources */,
-				E50C9D38226F4A3B00588EBC /* URLUtil.swift in Sources */,
 				E50C9D7922707E2400588EBC /* CacheService.swift in Sources */,
 				E50C9D802270A9AD00588EBC /* RealmDatabase.swift in Sources */,
 				E50C9D59226F618000588EBC /* RMCharactersServiceMock.swift in Sources */,
@@ -820,9 +830,11 @@
 				65912AB3225CF43C00F37508 /* JSON.swift in Sources */,
 				65912ABA225CF49200F37508 /* ErrorTypes.swift in Sources */,
 				65912B0D225D35A600F37508 /* RMCharactersService.swift in Sources */,
+				E50C9D842271616A00588EBC /* CharactersLogicController.swift in Sources */,
 				E50C9D7622707D3500588EBC /* ImageService.swift in Sources */,
 				E50C9D5C226F874F00588EBC /* CharacterDetailViewController.swift in Sources */,
 				E50C9D6F226FEEE700588EBC /* CharacterCell.swift in Sources */,
+				E50C9D862271618600588EBC /* CharactersLogicControllerDelegate.swift in Sources */,
 				E50C9D35226F4A0100588EBC /* NSErrorExtensions.swift in Sources */,
 				E50C9D4D226F4AEA00588EBC /* URLRequestToken.swift in Sources */,
 				65912AEB225D1E0C00F37508 /* RMCharacterOrigin.swift in Sources */,

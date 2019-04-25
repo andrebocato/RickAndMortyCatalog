@@ -54,17 +54,19 @@ extension AppDelegate {
     
     private func createTabBarController() ->  UITabBarController {
      
-        let tabBarController = UITabBarController()
-        
+        // CharactersViewController
+        // @TODO: Use Factory pattern
+        let charactersLogicController = CharactersLogicController(service: DependencyInjection.charactersService)
         let charactersViewController = CharactersViewController(nibName: CharactersViewController.className,
                                                                 bundle: Bundle(for: CharactersViewController.self),
-                                                                service: DependencyInjection.charactersService,
-                                                                currentPage: Int(),
-                                                                pages: Int())
+                                                                logicController: charactersLogicController)
+        charactersLogicController.delegate = charactersViewController
         charactersViewController.title = "Characters"
         charactersViewController.tabBarItem = UITabBarItem(title: "Characters", image: UIImage(named: "characters"), tag: 0)
         let charactersNavigationController = UINavigationController(rootViewController: charactersViewController)
         
+        // FavoritesViewController
+        // @TODO: Use Factory pattern
         let favoritesViewController = FavoritesViewController(nibName: FavoritesViewController.className,
                                                               bundle: Bundle(for: FavoritesViewController.self),
                                                               service: DependencyInjection.charactersService)
@@ -72,12 +74,17 @@ extension AppDelegate {
         favoritesViewController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorited"), tag: 0)
         let favoritesNavigationController = UINavigationController(rootViewController: favoritesViewController)
         
+        // SettingsViewController
+        // @TODO: Use Factory pattern
         let settingsViewController = SettingsViewController(nibName: SettingsViewController.className,
                                                             bundle: Bundle(for: SettingsViewController.self))
         settingsViewController.title = "Settings"
         settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 0)
         let settingsNavigationController = UINavigationController(rootViewController: settingsViewController)
         
+        // UITabBarController
+        // @TODO: Use Factory pattern
+        let tabBarController = UITabBarController()
         tabBarController.setViewControllers([charactersNavigationController, favoritesNavigationController, settingsNavigationController], animated: false)
         
         return tabBarController

@@ -72,8 +72,10 @@ extension CharactersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.className, for: indexPath) as? CharacterCell else { return UITableViewCell() }
         
-        let character = logicController.characterData(for: indexPath.row)
-        cell.configure(with: character)
+        let modelController = logicController.modelController(for: indexPath.row)
+        cell.configure(with: modelController, onFavoriteErrorCallBack: { [weak self] (error) in
+            AlertHelper.showAlert(inController: self, title: "Persistency Error!", message: error.localizedDescription)
+        })
         
         return cell
     }

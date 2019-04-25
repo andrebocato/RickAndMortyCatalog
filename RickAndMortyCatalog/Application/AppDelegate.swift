@@ -56,7 +56,8 @@ extension AppDelegate {
      
         // CharactersViewController
         // @TODO: Use Factory pattern
-        let charactersLogicController = CharactersLogicController(service: DependencyInjection.charactersService)
+        let charactersLogicController = CharactersLogicController(service: DependencyInjection.charactersService,
+                                                                  modelControllerFactory: self)
         let charactersViewController = CharactersViewController(nibName: CharactersViewController.className,
                                                                 bundle: Bundle(for: CharactersViewController.self),
                                                                 logicController: charactersLogicController)
@@ -92,3 +93,12 @@ extension AppDelegate {
     
 }
 
+extension AppDelegate: ModelControllersFactoryProtocol { // @TODO: MAYBE move this from here
+    
+    func createRMCharacterModelController(character: RMCharacter) -> RMCharacterModelController {
+        return RMCharacterModelController(character: character,
+                                          service: DependencyInjection.imageService,
+                                          favoritesDatabase: DependencyInjection.favoritesDatabase)
+    }
+    
+}

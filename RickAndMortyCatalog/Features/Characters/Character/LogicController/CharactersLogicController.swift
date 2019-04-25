@@ -23,6 +23,7 @@ class CharactersLogicController {
     // MARK: - Dependencies
     
     private let service: RMCharactersServiceProtocol
+    private let modelControllerFactory: ModelControllersFactoryProtocol
     
     // MARK: - Private Properties
     
@@ -42,8 +43,9 @@ class CharactersLogicController {
     
     // MARK: - Initialization
     
-    init(service: RMCharactersServiceProtocol) {
+    init(service: RMCharactersServiceProtocol, modelControllerFactory: ModelControllersFactoryProtocol) {
         self.service = service
+        self.modelControllerFactory = modelControllerFactory
     }
     
     // MARK: - Public Functions
@@ -54,6 +56,10 @@ class CharactersLogicController {
     /// - Returns: an RMCharacter
     func characterData(for row: Int) -> RMCharacter {
         return characters[row]
+    }
+    
+    func modelController(for row: Int) -> RMCharacterModelController {
+        return modelControllerFactory.createRMCharacterModelController(character: characters[row])
     }
     
     /// Fetches characters from the Network

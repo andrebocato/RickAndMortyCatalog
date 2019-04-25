@@ -20,54 +20,89 @@ class CharacterCell: UITableViewCell {
     
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var idLabel: UILabel!
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet private weak var favoriteButton: UIButton!
+    
+    // MARK: - Private Properties
+    
+    private var modelController: RMCharacterModelController!
+    private var onFavoriteErrorCallBack: ((_ error: Error) -> Void)?
     
     // MARK: - Lifecycle
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        requestToken?.cancel()
+        modelController.cancelImageRequest()
     }
-    
-    //
     
     // MARK: - Configuration Functions
     
-    func configure(with character: RMCharacter) {
-        loadImage(for: character)
-        idLabel.text = " #\(character.id)"
-        nameLabel.text = character.name
-        
+    /// <#Description#>
+    ///
+    /// - Parameter modelController: <#modelController description#>
+    func configure(with modelController: RMCharacterModelController, onFavoriteErrorCallBack: ((_ error: Error) -> Void)? = nil) {
+        self.modelController = modelController
+        self.modelController.delegate = self
+        self.onFavoriteErrorCallBack = onFavoriteErrorCallBack
+        setupUI()
     }
     
-    // For Tests
-    private var requestToken: URLRequestToken?
+    // MARK: - IBActions
     
-    private func loadImage(for character: RMCharacter) {
-        
-        let service = DependencyInjection.imageService
-        
-        cellImageView.startLoading()
-        
-        let imageURL = character.image
-        requestToken = service.getImageDataFromURL(imageURL) { [weak self] (result) in
-            self?.cellImageView.stopLoading()
-            
-            switch result {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    self?.cellImageView.image = UIImage(data: data)
-                }
-            case .failure(let error):
-                debugPrint(error)
-            }
-            
-            
+    @IBAction func favoriteButtonDidReceiveTouchUpInside(_ sender: Any) {
+        if modelController.isFavorite {
+            modelController.addToFavorites(onSuccess: setupFavoriteButton)
+        } else {
+            modelController.removeFromFavorites(onSuccess: setupFavoriteButton)
         }
-        
     }
     
-    // For Tests
+    // MARK: - Private Functions
+    
+    private func setupUI() {
+        setupImage()
+        setupLabels()
+        setupFavoriteButton()
+    }
+    
+    private func setupImage() {
+        modelController.fetchImageData { [weak self] (data) in
+            DispatchQueue.main.async {
+                self?.cellImageView.image = UIImage(data: data)
+            }
+        }
+    }
+    
+    private func setupLabels() {
+        idLabel.text = " #\(modelController.character.id)"
+        nameLabel.text = modelController.character.name
+    }
+    
+    private func setupFavoriteButton() {
+        DispatchQueue.main.async {
+            let favoriteButtonImage = self.modelController.isFavorite ? UIImage(named: "favorited") : UIImage(named: "unfavorited")
+            self.favoriteButton.setImage(favoriteButtonImage, for: .normal)
+        }
+    }
+    
+}
 
+extension CharacterCell: RMCharacterModelControllerDelegate {
+    
+    func stateDidChange(_ newState: RMCharacterModelControllerState) {
+        switch newState {
+        case .loadingImage(let value): handleLoadingImageState(value)
+        case .businessError(let error): handleBusinessError(error)
+        }
+    }
+    
+    private func handleLoadingImageState(_ loading: Bool) {
+        DispatchQueue.main.async {
+//            loading ? self.cellImageView.startLoading() : self.cellImageView.startLoading()
+        }
+    }
+    
+    private func handleBusinessError(_ error: Error) {
+        onFavoriteErrorCallBack?(error)
+    }
     
 }

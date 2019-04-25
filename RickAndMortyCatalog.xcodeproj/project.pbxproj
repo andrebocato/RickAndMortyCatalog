@@ -67,6 +67,11 @@
 		E50C9D8A2271DEC500588EBC /* RMCharacterModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D892271DEC500588EBC /* RMCharacterModelController.swift */; };
 		E50C9D942271E34E00588EBC /* RealmFavoriteCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D932271E34E00588EBC /* RealmFavoriteCharacter.swift */; };
 		E50C9D982271E7D200588EBC /* FavoriteCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D972271E7D200588EBC /* FavoriteCharacter.swift */; };
+		E50C9D9A2271F49F00588EBC /* RMCharacterModelControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D992271F49F00588EBC /* RMCharacterModelControllerDelegate.swift */; };
+		E50C9D9C2271F4B000588EBC /* RMCharacterModelControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D9B2271F4B000588EBC /* RMCharacterModelControllerState.swift */; };
+		E50C9D9E2271F4D300588EBC /* CharactersLogicControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D9D2271F4D300588EBC /* CharactersLogicControllerState.swift */; };
+		E50C9DA02272016200588EBC /* RMCharacterModelControllerBusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D9F2272016200588EBC /* RMCharacterModelControllerBusinessError.swift */; };
+		E50C9DA2227203DB00588EBC /* ModelControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DA1227203DB00588EBC /* ModelControllersFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +164,11 @@
 		E50C9D892271DEC500588EBC /* RMCharacterModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterModelController.swift; sourceTree = "<group>"; };
 		E50C9D932271E34E00588EBC /* RealmFavoriteCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFavoriteCharacter.swift; sourceTree = "<group>"; };
 		E50C9D972271E7D200588EBC /* FavoriteCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharacter.swift; sourceTree = "<group>"; };
+		E50C9D992271F49F00588EBC /* RMCharacterModelControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterModelControllerDelegate.swift; sourceTree = "<group>"; };
+		E50C9D9B2271F4B000588EBC /* RMCharacterModelControllerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterModelControllerState.swift; sourceTree = "<group>"; };
+		E50C9D9D2271F4D300588EBC /* CharactersLogicControllerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersLogicControllerState.swift; sourceTree = "<group>"; };
+		E50C9D9F2272016200588EBC /* RMCharacterModelControllerBusinessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterModelControllerBusinessError.swift; sourceTree = "<group>"; };
+		E50C9DA1227203DB00588EBC /* ModelControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelControllersFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +249,7 @@
 				E50C9D7C2270A12F00588EBC /* Persistency */,
 				65912ABB225CFACA00F37508 /* Service */,
 				65912ABE225CFBC800F37508 /* Models */,
+				E50C9DA32272042200588EBC /* Factories */,
 				65912ABD225CFBC500F37508 /* Features */,
 				E50C9CBB226DEFE300588EBC /* Supporting Files */,
 			);
@@ -336,10 +347,10 @@
 		65912ABD225CFBC500F37508 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				E50C9D5E226FD66D00588EBC /* DependencyInjection.swift */,
 				65912ACA225CFDCF00F37508 /* Characters */,
 				65912AD7225D08DA00F37508 /* Favorites */,
 				65912AD6225D08D700F37508 /* Settings */,
-				E50C9D5E226FD66D00588EBC /* DependencyInjection.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -531,6 +542,7 @@
 			children = (
 				E50C9D832271616A00588EBC /* CharactersLogicController.swift */,
 				E50C9D852271618600588EBC /* CharactersLogicControllerDelegate.swift */,
+				E50C9D9D2271F4D300588EBC /* CharactersLogicControllerState.swift */,
 			);
 			path = LogicController;
 			sourceTree = "<group>";
@@ -548,6 +560,9 @@
 			isa = PBXGroup;
 			children = (
 				E50C9D892271DEC500588EBC /* RMCharacterModelController.swift */,
+				E50C9D992271F49F00588EBC /* RMCharacterModelControllerDelegate.swift */,
+				E50C9D9B2271F4B000588EBC /* RMCharacterModelControllerState.swift */,
+				E50C9D9F2272016200588EBC /* RMCharacterModelControllerBusinessError.swift */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -559,6 +574,14 @@
 				E50C9D972271E7D200588EBC /* FavoriteCharacter.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E50C9DA32272042200588EBC /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				E50C9DA1227203DB00588EBC /* ModelControllersFactory.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 		F9B56FE2BCAA3347E9DB850A /* Frameworks */ = {
@@ -823,20 +846,24 @@
 				E50C9D4B226F4ADE00588EBC /* URLRequestAdapter.swift in Sources */,
 				E50C9D49226F4AD300588EBC /* URLRequestParameters.swift in Sources */,
 				65912ADB225D090700F37508 /* SettingsViewController.swift in Sources */,
+				E50C9D9C2271F4B000588EBC /* RMCharacterModelControllerState.swift in Sources */,
 				6576A38A226623EB00571620 /* UICollectionViewCell+Identifier.swift in Sources */,
 				65912AB5225CF45100F37508 /* AlertHelper.swift in Sources */,
 				E50C9D41226F4A9A00588EBC /* URLSessionDispatcher.swift in Sources */,
 				E50C9D942271E34E00588EBC /* RealmFavoriteCharacter.swift in Sources */,
+				E50C9DA02272016200588EBC /* RMCharacterModelControllerBusinessError.swift in Sources */,
 				E50C9CC2226DF6FB00588EBC /* RMCharacterResponse.swift in Sources */,
 				E50C9D63226FE02C00588EBC /* SimpleURLRequest.swift in Sources */,
 				E50C9D7B22707F8B00588EBC /* String+Encription.swift in Sources */,
 				E50C9D5F226FD66D00588EBC /* DependencyInjection.swift in Sources */,
+				E50C9D9A2271F49F00588EBC /* RMCharacterModelControllerDelegate.swift in Sources */,
 				6576A3922266370A00571620 /* UIView+Loadable.swift in Sources */,
 				6576A3962266413200571620 /* UIView+Emptiable.swift in Sources */,
 				65912AB7225CF46100F37508 /* ErrorHelper.swift in Sources */,
 				E50C9D4F226F4AF600588EBC /* URLRequestError.swift in Sources */,
 				E50C9D43226F4AB100588EBC /* URLRequestProtocol.swift in Sources */,
 				E50C9D45226F4ABD00588EBC /* URLRequestBuilder.swift in Sources */,
+				E50C9DA2227203DB00588EBC /* ModelControllersFactory.swift in Sources */,
 				E50C9D61226FD74D00588EBC /* NSObjectExtension.swift in Sources */,
 				65912AB3225CF43C00F37508 /* JSON.swift in Sources */,
 				65912ABA225CF49200F37508 /* ErrorTypes.swift in Sources */,
@@ -847,6 +874,7 @@
 				E50C9D5C226F874F00588EBC /* CharacterDetailViewController.swift in Sources */,
 				E50C9D6F226FEEE700588EBC /* CharacterCell.swift in Sources */,
 				E50C9D862271618600588EBC /* CharactersLogicControllerDelegate.swift in Sources */,
+				E50C9D9E2271F4D300588EBC /* CharactersLogicControllerState.swift in Sources */,
 				E50C9D35226F4A0100588EBC /* NSErrorExtensions.swift in Sources */,
 				E50C9D4D226F4AEA00588EBC /* URLRequestToken.swift in Sources */,
 				65912AEB225D1E0C00F37508 /* RMCharacterOrigin.swift in Sources */,

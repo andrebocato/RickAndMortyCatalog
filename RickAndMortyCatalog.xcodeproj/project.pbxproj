@@ -236,7 +236,7 @@
 			children = (
 				65912AA9225CF28A00F37508 /* Application */,
 				65912AAB225CF2C600F37508 /* Conveniences */,
-				E50C9D7C2270A12F00588EBC /* Persistency */,
+				E50C9D7C2270A12F00588EBC /* Persistence */,
 				65912ABB225CFACA00F37508 /* Service */,
 				65912ABE225CFBC800F37508 /* Models */,
 				65912ABD225CFBC500F37508 /* Features */,
@@ -517,13 +517,13 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
-		E50C9D7C2270A12F00588EBC /* Persistency */ = {
+		E50C9D7C2270A12F00588EBC /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
 				E50C9D912271E32D00588EBC /* Models */,
 				E50C9D7F2270A9AD00588EBC /* FavoritesDatabase.swift */,
 			);
-			path = Persistency;
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		E50C9D812271613D00588EBC /* LogicController */ = {

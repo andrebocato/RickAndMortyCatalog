@@ -8,12 +8,12 @@
 
 import Foundation
 
-/// Defines the CacheService errors
+/// Defines the CacheService errors.
 ///
-/// - encryptionFailed: the key encription has failed
-/// - couldNotSaveData: the data could not be saved
-/// - couldNotLoadData: the data could not be loaded
-/// - raw: some system error, not previously defined
+/// - encryptionFailed: The key encription has failed.
+/// - couldNotSaveData: The data could not be saved.
+/// - couldNotLoadData: The data could not be loaded.
+/// - raw: Some system error not previously defined.
 public enum CacheServiceError: Error {
     case encryptionFailed
     case couldNotSaveData
@@ -21,59 +21,60 @@ public enum CacheServiceError: Error {
     case raw(Error)
 }
 
-/// Defines a cache service
+/// Defines a cache service.
 public protocol CacheServiceProtocol {
     
-    /// Initializes a cache service
+    /// Initializes a cache service.
     ///
-    /// - Parameter fileManager: the file manager for the service, for checking file or directory exists in a specified path
-    ///   - documentDirectoryPath: the path of the document directory
+    /// - Parameter fileManager: The file manager for the service, for checking if file or directory exists in a specified path.
+    ///   - documentDirectoryPath: The path of the document directory.
     init(fileManager: FileManager, cacheDirectoryName: String)
     
-    /// Saves some data in a key
+    /// Saves some data in a key.
     ///
     /// - Parameters:
-    ///   - data: the data to be saved
-    ///   - key: the key to save/retrieve the data
-    ///   - completion: completion block, with a result
-    /// - Returns: void if successfull, an error otherwise
+    ///   - data: The data to be saved.
+    ///   - key: The key to save/retrieve the data.
+    ///   - completion: Completion block with a result.
+    /// - Returns: Void if successful, otherwise an error.
     func save(data: Data, key: String, completion: ((_ result: Result<Void, CacheServiceError>) -> Void)?)
     
-    /// Loads the data from the cache (disk or memory)
+    /// Loads the data from the cache (disk or memory).
     ///
     /// - Parameters:
-    ///   - key: the key to fetch the data
-    ///   - completion: completion block to get its result
+    ///   - key: The key to fetch the data.
+    ///   - completion: Completion block to get its result.
     func loadData(from key: String, completion: ((_ result: Result<Data, CacheServiceError>) -> Void))
 
-    /// Clears da cache
+    /// Clears the cache.
     ///
-    /// - Parameter completion: returns if the cache could be cleared
+    /// - Parameter completion: Returns whether the cache could be clearedor not.
     func clear(completion: ((_ result: Result<Data, CacheServiceError>) -> Void)?)
     
 }
 
-/// Save and load data to memory and disk cache
+/// Save and load data to memory and disk cache.
 public final class CacheService: CacheServiceProtocol {
     
-    /// For get or load data in memory
+    /// For getting or loading data in memory.
     private let memory = NSCache<NSString, NSData>()
     
-    /// The path url that contain cached files (mp3 files and image files)
+    /// The path url that contains cached files (mp3 and image files).
     private let diskPath: URL
     
-    /// For checking file or directory exists in a specified path
+    /// For checking whether file or directory exists in a specified path.
     private let fileManager: FileManager
     
-    /// Make sure all operation are executed serially
+    /// Makes sure all operation are executed serially.
     private let serialQueue = DispatchQueue(label: "CacheService")
     
     // MARK: - Initialization
     
-    /// Initializes a cache service
+    /// Initializes a cache service.
     ///
-    /// - Parameter fileManager: the file manager for the service, for checking file or directory exists in a specified path
-    ///   - cacheDirectoryName: the path of the cache directory
+    /// - Parameters:
+    ///   - fileManager: The file manager for the service, for checking if file or directory exists in a specified path.
+    ///   - cacheDirectoryName: The path of the cache directory.
     public init(fileManager: FileManager = FileManager.default, cacheDirectoryName: String) {
         self.fileManager = fileManager
         do {
@@ -92,7 +93,9 @@ public final class CacheService: CacheServiceProtocol {
     
     // MARK: - Public functions
     
-    public func save(data: Data, key: String, completion: ((_ result: Result<Void, CacheServiceError>) -> Void)? = nil) {
+    public func save(data: Data,
+                     key: String,
+                     completion: ((_ result: Result<Void, CacheServiceError>) -> Void)? = nil) {
         
         guard let encriptedKey = key.md5 else {
             completion?(.failure(.encryptionFailed))
@@ -108,10 +111,10 @@ public final class CacheService: CacheServiceProtocol {
                 completion?(.failure(.couldNotSaveData))
             }
         }
-        
     }
 
-    public func loadData(from key: String, completion: ((Result<Data, CacheServiceError>) -> Void)) {
+    public func loadData(from key: String,
+                         completion: ((Result<Data, CacheServiceError>) -> Void)) {
         
         guard let encriptedKey = key.md5 else {
             completion(.failure(.encryptionFailed))
@@ -131,23 +134,16 @@ public final class CacheService: CacheServiceProtocol {
     public func clear(completion: ((_ result: Result<Data, CacheServiceError>) -> Void)? = nil) {
         
         serialQueue.async {
-            
             self.memory.removeAllObjects()
-            
             do {
-                
                 let files = try self.fileManager.contentsOfDirectory(at: self.diskPath, includingPropertiesForKeys: nil, options: [])
-                
                 try files.forEach {
                     try self.fileManager.removeItem(at: $0)
                 }
-                
             } catch {
                 completion?(.failure(.raw(error)))
             }
-            
         }
-        
     }
     
     // MARK: - Private Functions
@@ -157,7 +153,6 @@ public final class CacheService: CacheServiceProtocol {
     }
     
     private func createDirectoryIfNeeded() throws {
-        
         // Get document directory for device, this should succeed
         if fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first != nil {
             
@@ -167,9 +162,7 @@ public final class CacheService: CacheServiceProtocol {
                                                 withIntermediateDirectories: true,
                                                 attributes: nil)
             }
-            
         }
-        
     }
     
     private func getDataFromDisk(for encriptedKey: String) -> Data? {
@@ -180,5 +173,4 @@ public final class CacheService: CacheServiceProtocol {
         return nsData as Data
     }
 
-    
 }

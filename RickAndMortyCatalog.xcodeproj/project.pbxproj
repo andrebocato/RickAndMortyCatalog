@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		1686156EAEDFD7974B12CAF9 /* Pods_RickAndMortyCatalogUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3EF03A9023914565E5C8AE /* Pods_RickAndMortyCatalogUITests.framework */; };
 		3995102BC0AFEF307FE69EEA /* Pods_RickAndMortyCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2791398DF094DC4A4D9CB139 /* Pods_RickAndMortyCatalog.framework */; };
-		6576A38A226623EB00571620 /* UICollectionViewCell+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A389226623EB00571620 /* UICollectionViewCell+Identifier.swift */; };
-		6576A3922266370A00571620 /* UIView+Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3912266370A00571620 /* UIView+Loadable.swift */; };
-		6576A3962266413200571620 /* UIView+Emptiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3952266413200571620 /* UIView+Emptiable.swift */; };
+		6576A3922266370A00571620 /* UIViewLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3912266370A00571620 /* UIViewLoadable.swift */; };
+		6576A3962266413200571620 /* UIViewEmptiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3952266413200571620 /* UIViewEmptiable.swift */; };
 		658032422264FC39000FCAB9 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658032412264FC39000FCAB9 /* FavoriteCell.swift */; };
 		65912A7C225CF1C400F37508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912A7B225CF1C400F37508 /* AppDelegate.swift */; };
 		65912A83225CF1C500F37508 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65912A82225CF1C500F37508 /* Assets.xcassets */; };
@@ -98,9 +97,8 @@
 		457EBC460303FD9226D0FED7 /* Pods-RickAndMortyCatalogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalogTests.release.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalogTests/Pods-RickAndMortyCatalogTests.release.xcconfig"; sourceTree = "<group>"; };
 		5122440E45AD6D5ABF6FE029 /* Pods-RickAndMortyCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalog.release.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalog/Pods-RickAndMortyCatalog.release.xcconfig"; sourceTree = "<group>"; };
 		5500136B425F93B4E9C513A7 /* Pods-RickAndMortyCatalogUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalogUITests.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalogUITests/Pods-RickAndMortyCatalogUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		6576A389226623EB00571620 /* UICollectionViewCell+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Identifier.swift"; sourceTree = "<group>"; };
-		6576A3912266370A00571620 /* UIView+Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loadable.swift"; sourceTree = "<group>"; };
-		6576A3952266413200571620 /* UIView+Emptiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Emptiable.swift"; sourceTree = "<group>"; };
+		6576A3912266370A00571620 /* UIViewLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewLoadable.swift; sourceTree = "<group>"; };
+		6576A3952266413200571620 /* UIViewEmptiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewEmptiable.swift; sourceTree = "<group>"; };
 		658032412264FC39000FCAB9 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		65912A78225CF1C400F37508 /* RickAndMortyCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65912A7B225CF1C400F37508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -308,9 +306,8 @@
 		65912AAE225CF2ED00F37508 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				6576A389226623EB00571620 /* UICollectionViewCell+Identifier.swift */,
-				6576A3912266370A00571620 /* UIView+Loadable.swift */,
-				6576A3952266413200571620 /* UIView+Emptiable.swift */,
+				6576A3912266370A00571620 /* UIViewLoadable.swift */,
+				6576A3952266413200571620 /* UIViewEmptiable.swift */,
 				E50C9D34226F4A0100588EBC /* NSErrorExtensions.swift */,
 				E50C9D60226FD74D00588EBC /* NSObjectExtension.swift */,
 				E50C9D7A22707F8B00588EBC /* String+Encription.swift */,
@@ -847,7 +844,6 @@
 				E50C9D49226F4AD300588EBC /* URLRequestParameters.swift in Sources */,
 				65912ADB225D090700F37508 /* SettingsViewController.swift in Sources */,
 				E50C9D9C2271F4B000588EBC /* RMCharacterModelControllerState.swift in Sources */,
-				6576A38A226623EB00571620 /* UICollectionViewCell+Identifier.swift in Sources */,
 				65912AB5225CF45100F37508 /* AlertHelper.swift in Sources */,
 				E50C9D41226F4A9A00588EBC /* URLSessionDispatcher.swift in Sources */,
 				E50C9D942271E34E00588EBC /* RealmFavoriteCharacter.swift in Sources */,
@@ -857,8 +853,8 @@
 				E50C9D7B22707F8B00588EBC /* String+Encription.swift in Sources */,
 				E50C9D5F226FD66D00588EBC /* DependencyInjection.swift in Sources */,
 				E50C9D9A2271F49F00588EBC /* RMCharacterModelControllerDelegate.swift in Sources */,
-				6576A3922266370A00571620 /* UIView+Loadable.swift in Sources */,
-				6576A3962266413200571620 /* UIView+Emptiable.swift in Sources */,
+				6576A3922266370A00571620 /* UIViewLoadable.swift in Sources */,
+				6576A3962266413200571620 /* UIViewEmptiable.swift in Sources */,
 				65912AB7225CF46100F37508 /* ErrorHelper.swift in Sources */,
 				E50C9D4F226F4AF600588EBC /* URLRequestError.swift in Sources */,
 				E50C9D43226F4AB100588EBC /* URLRequestProtocol.swift in Sources */,

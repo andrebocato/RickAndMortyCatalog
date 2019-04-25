@@ -2,7 +2,7 @@
 //  FavoriteCharacter.swift
 //  RickAndMortyCatalog
 //
-//  Created by Eduardo Sanches Bocato on 25/04/19.
+//  Created by Andre Sanches Bocato on 25/04/19.
 //  Copyright © 2019 Andre Sanches Bocato. All rights reserved.
 //
 
@@ -19,11 +19,11 @@ class RealmFavoriteCharacter: Object {
     
     // MARK: - Initialization
     
-    /// Inializes a favorite from an RMCharacter and its image
+    /// Initializes a favorite from an RMCharacter and its image.
     ///
     /// - Parameters:
-    ///   - character: an RMCharacter
-    ///   - imageData: a character image
+    ///   - character: A RMCharacter.
+    ///   - imageData: The character's image data.
     convenience init(rmCharacter: RMCharacter, imageData: Data) {
         self.init()
         self.id = "\(rmCharacter.id)"
@@ -33,9 +33,9 @@ class RealmFavoriteCharacter: Object {
     
     // MARK: - Functions
     
-    /// Returns this objects primary key
+    /// Returns this objects primary key.
     ///
-    /// - Returns: the primary key
+    /// - Returns: The primary key.
     override static func primaryKey() -> String? {
         return "id"
     }

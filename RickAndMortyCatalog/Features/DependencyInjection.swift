@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+
 struct DependencyInjection {
     
     // MARK: - Private

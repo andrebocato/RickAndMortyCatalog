@@ -11,37 +11,37 @@ import RealmSwift
 
 protocol FavoritesDatabaseProtocol { // @TODO: Document
     
-    /// <#Description#>
+    /// Creates a new favorite or updates its data on the database.
     ///
     /// - Parameters:
-    ///   - rmCharacter: <#rmCharacter description#>
-    ///   - imageData: <#imageData description#>
-    /// - Returns: <#return value description#>
-    /// - Throws: <#throws value description#>
+    ///   - rmCharacter: A RMCharacter.
+    ///   - imageData: The character's image data.
+    /// - Returns: Void.
+    /// - Throws: An error from the persistence.
     func createOrUpdateFavorite(rmCharacter: RMCharacter, imageData: Data) throws
     
-    /// <#Description#>
+    /// Fetches an object from the favorites database.
     ///
-    /// - Parameter id: <#id description#>
-    /// - Returns: <#return value description#>
-    /// - Throws: <#throws value description#>
+    /// - Parameter id: The id from the character to be retrieved.
+    /// - Returns: A FavoriteCharacter.
+    /// - Throws: An error from the persistence.
     func fetchFavoriteWithID(_ id: Int) throws -> FavoriteCharacter?
     
-    /// <#Description#>
+    /// Fetches all objects from the favorites database.
     ///
-    /// - Returns: <#return value description#>
-    /// - Throws: <#throws value description#>
+    /// - Returns: An array of FavoriteCharacters.
+    /// - Throws: An error from the persistence.
     func fetchAllFavorites() throws -> [FavoriteCharacter]
     
-    /// <#Description#>
+    /// Deletes a specified object from the favorites database.
     ///
-    /// - Parameter id: <#id description#>
-    /// - Throws: <#throws value description#>
+    /// - Parameter id: The id from the character to be deleted.
+    /// - Throws: An error from the persistence.
     func deleteFavorite(withID id: Int) throws
     
-    /// <#Description#>
+    /// Deletes all favorite characters in the database.
     ///
-    /// - Throws: <#throws value description#>
+    /// - Throws: An error from the persistence.
     func deleteAll() throws
 }
 
@@ -53,7 +53,9 @@ class FavoritesDatabase: FavoritesDatabaseProtocol {
         self.realm = realm
     }
 
-    func createOrUpdateFavorite(rmCharacter: RMCharacter, imageData: Data) throws {
+    func createOrUpdateFavorite(rmCharacter: RMCharacter,
+                                imageData: Data) throws {
+        
         let objectToPersist = RealmFavoriteCharacter(rmCharacter: rmCharacter, imageData: imageData)
         objectToPersist.id = "\(rmCharacter.id)"
         try realm.write {
@@ -71,11 +73,12 @@ class FavoritesDatabase: FavoritesDatabaseProtocol {
             .compactMap({ (realmFavorite) -> FavoriteCharacter? in
                 guard let characterData = realmFavorite.rmCharacterData,
                     let imageData = realmFavorite.imageData else { return nil }
+                
                 let character = try JSONDecoder().decode(RMCharacter.self, from: characterData)
                 return FavoriteCharacter(rmCharacter: character, imageData: imageData)
             })
-            .sorted(by: { (f1, f2) -> Bool in
-                return f1.rmCharacter.id < f1.rmCharacter.id
+            .sorted(by: { (favorite1, favorite2) -> Bool in
+                return favorite1.rmCharacter.id < favorite2.rmCharacter.id
             })
     }
 

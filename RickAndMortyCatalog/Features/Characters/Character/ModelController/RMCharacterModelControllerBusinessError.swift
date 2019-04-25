@@ -2,13 +2,13 @@
 //  RMCharacterModelControllerBusinessError.swift
 //  RickAndMortyCatalog
 //
-//  Created by Eduardo Sanches Bocato on 25/04/19.
+//  Created by Andre Sanches Bocato on 25/04/19.
 //  Copyright © 2019 Andre Sanches Bocato. All rights reserved.
 //
 
 import Foundation
 
-/// Defines business errors for the model controller
+/// Defines business errors for the model controller.
 enum RMCharacterModelControllerBusinessError: Error {
     
     case couldNotAddToFavorites

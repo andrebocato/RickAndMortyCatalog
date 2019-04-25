@@ -36,9 +36,9 @@ class CharacterCell: UITableViewCell {
     
     // MARK: - Configuration Functions
     
-    /// <#Description#>
+    /// Configures the cell with data.
     ///
-    /// - Parameter modelController: <#modelController description#>
+    /// - Parameter modelController: The modelController that refers to a RMCharacter.
     func configure(with modelController: RMCharacterModelController, onFavoriteErrorCallBack: ((_ error: Error) -> Void)? = nil) {
         self.modelController = modelController
         self.modelController.delegate = self
@@ -78,6 +78,7 @@ class CharacterCell: UITableViewCell {
         nameLabel.text = modelController.character.name
     }
     
+    // @TODO: change button to imageView
     private func setupFavoriteButton() {
 //        DispatchQueue.main.async {
             let buttonImageName = self.modelController.isFavorite ? "favorited" : "unfavorited"
@@ -88,7 +89,11 @@ class CharacterCell: UITableViewCell {
     
 }
 
+// MARK: - Extensions
+
 extension CharacterCell: RMCharacterModelControllerDelegate {
+
+    // MARK: - RMCharacter Model Controller Delegate
     
     func stateDidChange(_ newState: RMCharacterModelControllerState) {
         switch newState {

@@ -12,7 +12,7 @@ private let domain = "URLRequestError"
 
 /// Defines URLRequestErrors.
 ///
-/// - raw: An error comming from the system that conforms with Error.
+/// - raw: An error comming from the system that conforms to Error.
 /// - unknown: Unknown error.
 /// - requestBuilderFailed: The request builder failed.
 /// - withData: There is an error and it has a payload.

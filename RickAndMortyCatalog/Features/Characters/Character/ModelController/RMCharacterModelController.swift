@@ -2,7 +2,7 @@
 //  RMCharacterModelController.swift
 //  RickAndMortyCatalog
 //
-//  Created by Eduardo Sanches Bocato on 25/04/19.
+//  Created by Andre Sanches Bocato on 25/04/19.
 //  Copyright © 2019 Andre Sanches Bocato. All rights reserved.
 //
 
@@ -22,7 +22,7 @@ class RMCharacterModelController {
     
     // MARK: - Public Properties
     
-    /// Checks if this character is present on the favorites database
+    /// Checks if this character is present on the favorites database.
     var isFavorite: Bool {
         let favorite = try? favoritesDatabase.fetchFavoriteWithID(character.id)
         return favorite != nil
@@ -31,17 +31,17 @@ class RMCharacterModelController {
     // Returns the RMCharacterData
     let character: RMCharacter
     
-    /// Delegate to communicate with the model holder
+    /// Delegate to communicate with the model holder.
     weak var delegate: RMCharacterModelControllerDelegate?
     
-    // MARK: Initilizer
+    // MARK: - Initialization
     
-    /// <#Description#>
+    /// Initializer.
     ///
     /// - Parameters:
-    ///   - character: <#character description#>
-    ///   - service: <#service description#>
-    ///   - favoritesDatabase: <#favoritesDatabase description#>
+    ///   - character: A RMCharacter.
+    ///   - service: The networking service for getting image data.
+    ///   - favoritesDatabase: The favorite characters database.
     init(character: RMCharacter,
          service: ImageServiceProtocol,
          favoritesDatabase: FavoritesDatabaseProtocol) {
@@ -52,30 +52,31 @@ class RMCharacterModelController {
     
     // MARK: Public Functions
     
-    /// Fetches da image data
+    /// Fetches the image data from persistence or downloads it.
     ///
-    /// - Parameter completion: returns the image data from an asyncro
+    /// - Parameter completion: Returns the image data asynchronously.
     func fetchImageData(completion: @escaping (Data) -> Void) {
         if isFavorite {
-            fetchCharacterImageFromPersistency(completion: completion)
+            fetchCharacterImageFromPersistence(completion: completion)
         } else {
             fetchCharacterImageFromImageService(completion: completion)
         }
     }
     
-    /// <#Description#>
+    /// Cancels the network request for image data.
     func cancelImageRequest() {
         requestToken?.cancel()
     }
     
-    /// <#Description#>
+    /// Adds the model to the favorites database.
     ///
-    /// - Parameter onSuccess: <#onSuccess description#>
+    /// - Parameter onSuccess: To be executed after successfully adding to favorites.
     func addToFavorites(onSuccess: (() -> Void)? = nil) {
         guard let imageData = imageData else {
             delegate?.stateDidChange(.businessError(.couldNotAddToFavorites))
             return
         }
+        
         do {
             try favoritesDatabase.createOrUpdateFavorite(rmCharacter: character, imageData: imageData)
             onSuccess?()
@@ -85,9 +86,9 @@ class RMCharacterModelController {
         }
     }
     
-    /// <#Description#>
+    /// Removes the model from the favorites database.
     ///
-    /// - Parameter onSuccess: <#onSuccess description#>
+    /// - Parameter onSuccess: To be executed after successfully removing from favorites.
     func removeFromFavorites(onSuccess: (() -> Void)? = nil) {
         do {
             try favoritesDatabase.deleteFavorite(withID: character.id)
@@ -100,7 +101,10 @@ class RMCharacterModelController {
     
     // MARK: - Private Functions
     
-    private func fetchCharacterImageFromPersistency(completion: @escaping (Data) -> Void) {
+    /// Tries to fetch an image data from the persistence layer.
+    ///
+    /// - Parameter completion: Executed after fetching image data.
+    private func fetchCharacterImageFromPersistence(completion: @escaping (Data) -> Void) {
         guard let favorite = try? favoritesDatabase.fetchFavoriteWithID(character.id) else {
             // @TODO: return placeholder ?
             return
@@ -109,6 +113,9 @@ class RMCharacterModelController {
         completion(favorite.imageData)
     }
     
+    /// Gets an image data from the network.
+    ///
+    /// - Parameter completion: Returns image data on success and and error on failure.
     private func fetchCharacterImageFromImageService(completion: @escaping (Data) -> Void) {
         
         delegate?.stateDidChange(.loadingImage(true))

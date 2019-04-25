@@ -27,7 +27,7 @@ class CharactersViewController: UIViewController {
 
     private let cellHeight: CGFloat = 80
     
-    // MARK: - Initilization
+    // MARK: - Initialization
     
     init(nibName nibNameOrNil: String?,
          bundle nibBundleOrNil: Bundle?,
@@ -74,7 +74,7 @@ extension CharactersViewController: UITableViewDataSource {
         
         let modelController = logicController.modelController(for: indexPath.row)
         cell.configure(with: modelController, onFavoriteErrorCallBack: { [weak self] (error) in
-            AlertHelper.showAlert(inController: self, title: "Persistency Error!", message: error.localizedDescription)
+            AlertHelper.showAlert(inController: self, title: "Persistence Error!", message: error.localizedDescription)
         })
         
         return cell
@@ -117,6 +117,8 @@ extension CharactersViewController: UITableViewDelegate {
 
 extension CharactersViewController: CharactersLogicControllerDelegate {
  
+    // MARK: - Characters Logic Controller Delegate
+    
     func stateDidChange(_ newState: CharactersLogicControllerState) {
         switch newState {
         case .loadingCharacters(let value): handleLoadingCharactersState(value)

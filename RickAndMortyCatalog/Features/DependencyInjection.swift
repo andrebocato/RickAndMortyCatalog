@@ -7,14 +7,20 @@
 //
 
 import Foundation
-
+import RealmSwift
 struct DependencyInjection {
     
-    private init() {}
+    // MARK: - Private
     
+    private init() {}
     private static let urlSessionDispatcher = URLSessionDispatcher()
     private static let cacheService = CacheService(cacheDirectoryName: "RickAndMortyCatalogCache")
+    private static let realm = try! Realm()
+    
+    // MARK: - Public
+    
     static let charactersService = RMCharactersService(dispatcher: urlSessionDispatcher)
     static let imageService = ImageService(networkDispatcher: urlSessionDispatcher, cacheService: cacheService)
+    static let favoritesDatabase = FavoritesDatabase(realm: realm)
     
 }

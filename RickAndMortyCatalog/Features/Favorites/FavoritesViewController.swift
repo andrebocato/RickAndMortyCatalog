@@ -70,8 +70,8 @@ class FavoritesViewController: UIViewController {
     
     private func loadFavorites() {
         let realm = try! Realm()
-        let database = RealmDatabase(realm: realm)
-        favoritedCharacters = database.fetchAllFavorites().compactMap { $0.rmCharacter }
+        let database = FavoritesDatabase(realm: realm)
+        favoritedCharacters = try! database.fetchAllFavorites().map { $0.rmCharacter }
     }
     
     // MARK: - Configuration Functions
@@ -115,6 +115,7 @@ extension FavoritesViewController: UICollectionViewDelegate {
         let detailsController = CharacterDetailViewController(nibName: CharacterDetailViewController.className,
                                                               bundle: Bundle(for: CharacterDetailViewController.self),
                                                               service: DependencyInjection.charactersService,
+                                                              favoritesDatabase: DependencyInjection.favoritesDatabase,
                                                               character: selectedCharacter)
         navigationController?.pushViewController(detailsController, animated: true)
     

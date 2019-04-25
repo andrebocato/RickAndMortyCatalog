@@ -36,6 +36,7 @@ class CharacterDetailViewController: UIViewController {
     // MARK: - Dependencies
     
     private let service: RMCharactersServiceProtocol
+    private let favoritesDatabase: FavoritesDatabaseProtocol
     private let character: RMCharacter
     
     // MARK: - Initialization
@@ -43,8 +44,10 @@ class CharacterDetailViewController: UIViewController {
     init(nibName nibNameOrNil: String?,
          bundle nibBundleOrNil: Bundle?,
          service: RMCharactersServiceProtocol,
+         favoritesDatabase: FavoritesDatabaseProtocol,
          character: RMCharacter) {
         self.service = service
+        self.favoritesDatabase = favoritesDatabase
         self.character = character
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -94,17 +97,14 @@ class CharacterDetailViewController: UIViewController {
     // MARK: - Functions
     
     private func persistFavorite() {
-        
-        let realm = try! Realm()
-        let database = RealmDatabase(realm: realm)
-        
+
         guard let imageData = imageView.image?.jpegData(compressionQuality: 0.75) else {
             debugPrint("No data.")
             return
         }
         
         do {
-            try database.createOrUpdateFavorite(rmCharacter: character, imageData: imageData)
+            try favoritesDatabase.createOrUpdateFavorite(rmCharacter: character, imageData: imageData)
             debugPrint("Saved.")
         } catch {
             debugPrint(error)
@@ -114,11 +114,8 @@ class CharacterDetailViewController: UIViewController {
     
     private func deletePersistedFavorite() {
         
-        let realm = try! Realm()
-        let database = RealmDatabase(realm: realm)
-        
         do {
-            try database.deleteFavorite(withID: character.id)
+            try favoritesDatabase.deleteFavorite(withID: character.id)
             debugPrint("Deleted.")
         } catch {
             debugPrint(error)

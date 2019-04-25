@@ -20,6 +20,7 @@ class CharacterCell: UITableViewCell {
     
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var idLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     // MARK: - Lifecycle
     

@@ -101,9 +101,11 @@ extension CharactersViewController: UITableViewDelegate {
         
         let selectedCharacter = logicController.characterData(for: indexPath.row)
         
+        // TODO: Change this!!!
         let detailsController = CharacterDetailViewController(nibName: CharacterDetailViewController.className,
                                                               bundle: Bundle(for: CharacterDetailViewController.self),
                                                               service: DependencyInjection.charactersService,
+                                                              favoritesDatabase: DependencyInjection.favoritesDatabase,
                                                               character: selectedCharacter)
         
         navigationController?.pushViewController(detailsController, animated: true)
@@ -130,13 +132,15 @@ extension CharactersViewController: CharactersLogicControllerDelegate {
     // MARK: - State Handlers
     
     private func handleLoadingCharactersState(_ state: Bool) {
-        state ? tableView.startLoading() : tableView.stopLoading()
+        state ? view.startLoading() : view.stopLoading()
     }
     
     private func handleLoadingNextPageState(_ state: Bool) { // @TODO: Maybe change this...
         let lastRowIndex = logicController.numberOfCharacters - 1
-        let lastCell = tableView.cellForRow(at: IndexPath(row: lastRowIndex, section: 0))
-        state ? lastCell?.startLoading() : lastCell?.stopLoading()
+        DispatchQueue.main.async {
+            let lastCell = self.tableView.cellForRow(at: IndexPath(row: lastRowIndex, section: 0))
+            state ? lastCell?.startLoading() : lastCell?.stopLoading()
+        }
     }
     
     private func handleServiceError(_ error: ServiceError) {

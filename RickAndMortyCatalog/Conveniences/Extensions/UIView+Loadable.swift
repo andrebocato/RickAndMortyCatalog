@@ -18,10 +18,12 @@ extension UIView: LoadableView {
     
     /// Presents a subview with an activity indicator in the middle.
     func startLoading() {
-        let loadingView = UIView(frame: self.bounds)
+        
+        let loadingView = UIView(frame: frame)
         loadingView.backgroundColor = .white
         loadingView.tag = loadingViewTag
-        loadingView.center = self.center // @TODO: fix that
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.center = center
         
         let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
         activityIndicator.startAnimating()
@@ -33,6 +35,7 @@ extension UIView: LoadableView {
             loadingView.addSubview(activityIndicator)
             self.addSubview(loadingView)
         }
+        
     }
     
     /// Removes the loading subview previously added.

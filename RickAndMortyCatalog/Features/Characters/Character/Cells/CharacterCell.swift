@@ -49,7 +49,7 @@ class CharacterCell: UITableViewCell {
     // MARK: - IBActions
     
     @IBAction func favoriteButtonDidReceiveTouchUpInside(_ sender: Any) {
-        if modelController.isFavorite {
+        if !modelController.isFavorite {
             modelController.addToFavorites(onSuccess: setupFavoriteButton)
         } else {
             modelController.removeFromFavorites(onSuccess: setupFavoriteButton)

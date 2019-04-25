@@ -55,6 +55,7 @@ class FavoritesDatabase: FavoritesDatabaseProtocol {
 
     func createOrUpdateFavorite(rmCharacter: RMCharacter, imageData: Data) throws {
         let objectToPersist = RealmFavoriteCharacter(rmCharacter: rmCharacter, imageData: imageData)
+        objectToPersist.id = "\(rmCharacter.id)"
         try realm.write {
             realm.add(objectToPersist, update: true)
         }

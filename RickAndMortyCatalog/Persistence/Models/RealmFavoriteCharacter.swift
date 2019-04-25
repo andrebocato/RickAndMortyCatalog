@@ -26,6 +26,7 @@ class RealmFavoriteCharacter: Object {
     ///   - imageData: a character image
     convenience init(rmCharacter: RMCharacter, imageData: Data) {
         self.init()
+        self.id = "\(rmCharacter.id)"
         self.rmCharacterData = try? JSONEncoder().encode(rmCharacter)
         self.imageData = imageData
     }

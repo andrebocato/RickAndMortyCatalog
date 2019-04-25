@@ -24,8 +24,8 @@ class RMCharacterModelController {
     
     /// Checks if this character is present on the favorites database
     var isFavorite: Bool {
-        guard let favorite = try? favoritesDatabase.fetchFavoriteWithID(character.id) else { return false }
-        return favorite.rmCharacter == character
+        let favorite = try? favoritesDatabase.fetchFavoriteWithID(character.id)
+        return favorite != nil
     }
     
     // Returns the RMCharacterData

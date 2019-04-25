@@ -22,33 +22,24 @@ public class URLSessionDispatcher: URLRequestDispatcherProtocol {
     
     // MARK: - Initialization
     
-    /// Initilizes the dispatcher with a session, that could be injected
+    /// Initilizes the dispatcher with a session that can be injected.
     ///
-    /// - Parameter session: an URLSession
+    /// - Parameter session: An URLSession.
     public required init(session: URLSession = URLSession.shared) {
         self.session = session
     }
     
     // MARK: - Public
     
-    /// Executes the request and provides a completion with the response
-    ///
-    /// - Parameters:
-    ///   - request: the request to be executed
-    ///   - completion: the requests callback
-    /// - Returns: a token in order to let us manipulate the task if needed
-    public func execute(request: URLRequestProtocol, completion: @escaping (Result<Data?, URLRequestError>) -> Void) -> URLRequestToken? {
+    public func execute(request: URLRequestProtocol,
+                        completion: @escaping (Result<Data?, URLRequestError>) -> Void) -> URLRequestToken? {
         
         var urlRequestToken: URLRequestToken?
         
         do {
-            
             let urlRequest = try request.buildURLRequest()
-            
             let dataTask = session.dataTask(with: urlRequest) { [weak self] (data, urlResponse, error) in
-                
                 let httpResponse = urlResponse as? HTTPURLResponse
-                
                 let dataTaskResponse = DataTaskResponse(data: data,
                                                         error: error,
                                                         httpResponse: httpResponse)
@@ -56,54 +47,41 @@ public class URLSessionDispatcher: URLRequestDispatcherProtocol {
                 if let urlRequestError = self?.parseErrors(in: dataTaskResponse) {
                     completion(.failure(urlRequestError))
                 } else {
-                    
                     guard let data = data else {
                         completion(.success(nil))
                         return
                     }
-                    
                     completion(.success(data))
                 }
-                
             }
-            
             urlRequestToken = URLRequestToken(task: dataTask)
-            
             dataTask.resume()
-            
             
         } catch {
             completion(.failure(.requestBuilderFailed))
         }
         
         return urlRequestToken
-        
     }
+    // MARK: - Private Functions
     
     private func parseErrors(in dataTaskResponse: DataTaskResponse) -> URLRequestError? {
-        
         guard let statusCode = dataTaskResponse.httpResponse?.statusCode else {
             return .unknown
         }
         
         if !(200...299 ~= statusCode) {
-            
             guard dataTaskResponse.error == nil else {
                 return .unknown
             }
-            
             guard 400...499 ~= statusCode, let data = dataTaskResponse.data, let jsonString = String(data: data, encoding: .utf8) else {
                 return .unknown
             }
             
             debugPrint(jsonString)
-            
             return .withData(data, dataTaskResponse.error)
-            
         }
-        
         return nil
-        
     }
     
 }

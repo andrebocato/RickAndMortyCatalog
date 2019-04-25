@@ -8,33 +8,32 @@
 
 import Foundation
 
-/// Defines an API service
+/// Defines an API service.
 public protocol NetworkingService {
     
-    /// The dispatcher to take care of the network requests
+    /// The dispatcher to take care of the network requests.
     var dispatcher: URLRequestDispatcherProtocol { get }
     
-    /// Intializer to inject the dispatcher
+    /// Intializer to inject the dispatcher.
     ///
-    /// - Parameter dispatcher: the dispatcher to take care of the network requests
+    /// - Parameter dispatcher: The dispatcher to take care of the network requests.
     init(dispatcher: URLRequestDispatcherProtocol)
 }
 
 extension NetworkingService {
     
-    /// Helper function to serialize results when needed
+    /// Helper function to serialize results when needed.
     ///
     /// - Parameters:
-    ///   - result: the result from the dispatcher
-    ///   - responseType: the response type (Codable)
-    ///   - completion: the serialization completion handler
+    ///   - result: The result from the dispatcher.
+    ///   - responseType: The response type (Codable).
+    ///   - completion: The serialization completion handler.
     public func serializeDispatcherResult<ResponseType: Codable>(_ result: Result<Data?, URLRequestError>,
                                                                  responseType: ResponseType.Type,
                                                                  completion: @escaping (Result<ResponseType, ServiceError>) -> Void) {
         
         switch result {
         case .success(let data):
-            
             guard let data = data else {
                 completion(.failure(.noData))
                 return
@@ -51,8 +50,6 @@ extension NetworkingService {
         case .failure(let error):
             completion(.failure(.api(error)))
         }
-        
     }
-    
     
 }

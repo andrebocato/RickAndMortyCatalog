@@ -21,11 +21,11 @@ public class URLRequestBuilder {
     
     // MARK: - Initialization
     
-    /// Initialises the request
+    /// Initializes the request.
     ///
     /// - Parameters:
-    ///   - baseURL: a base URL
-    ///   - path: a path for the request
+    ///   - baseURL: A base URL.
+    ///   - path: A path for the request.
     public init(with baseURL: URL, path: String?) {
         self.baseURL = baseURL
         self.path = path
@@ -33,50 +33,50 @@ public class URLRequestBuilder {
     
     // MARK: - Builder methods
     
-    /// Sets the method
+    /// Sets the method.
     ///
-    /// - Parameter method: an HTTPMethod
-    /// - Returns: itself, for sugar syntax purposes
+    /// - Parameter method: A HTTPMethod.
+    /// - Returns: Itself, for sugar syntax purposes.
     @discardableResult
     public func set(method: HTTPMethod) -> Self {
         self.method = method
         return self
     }
     
-    /// Sets the request path
+    /// Sets the request path.
     ///
-    /// - Parameter path: a path
-    /// - Returns: itself, for sugar syntax purposes
+    /// - Parameter path: A path.
+    /// - Returns: Itself, for sugar syntax purposes.
     @discardableResult
     public func set(path: String) -> Self {
         self.path = path
         return self
     }
     
-    /// Sets the request headers
+    /// Sets the request headers.
     ///
     /// - Parameter headers: the headers
-    /// - Returns: itself, for sugar syntax purposes
+    /// - Returns: Itself, for sugar syntax purposes.
     @discardableResult
     public func set(headers: [String: Any]?) -> Self {
         self.headers = headers
         return self
     }
     
-    /// Sets the request parameters
+    /// Sets the request parameters.
     ///
     /// - Parameter parameters: some parameters
-    /// - Returns: itself, for sugar syntax purposes
+    /// - Returns: Itself, for sugar syntax purposes.
     @discardableResult
     public func set(parameters: URLRequestParameters?) -> Self {
         self.parameters = parameters
         return self
     }
     
-    /// Sets an adapter, Ex: OAuthAdapter
+    /// Sets an adapter, Ex: OAuthAdapter.
     ///
-    /// - Parameter adapter: an adapter
-    /// - Returns: itself, for sugar syntax purposes
+    /// - Parameter adapter: An adapter.
+    /// - Returns: Itself, for sugar syntax purposes.
     @discardableResult
     public func add(adapter: URLRequestAdapter?) -> Self {
         guard let adapter = adapter else { return self }
@@ -84,9 +84,9 @@ public class URLRequestBuilder {
         return self
     }
     
-    /// Buuilds an URLRequest as previously defined
+    /// Builds an URLRequest as previously defined.
     ///
-    /// - Returns: a configurad url request
+    /// - Returns: A configured URLRequest.
     public func build() throws -> URLRequest {
         
         var url = baseURL
@@ -108,7 +108,6 @@ public class URLRequestBuilder {
         }
         
         do {
-            
             try adapters.forEach {
                 urlRequest = try $0.adapt(urlRequest)
             }

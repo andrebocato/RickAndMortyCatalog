@@ -10,12 +10,12 @@ import Foundation
 
 private let domain = "URLRequestError"
 
-/// Defines URLRequestErrors
+/// Defines URLRequestErrors.
 ///
-/// - raw: and error comming from the system, that conforms with Error
-/// - unknown: unknown error
-/// - requestBuilderFailed: the request builder failed
-/// - withData: there is an error and it has a payload
+/// - raw: An error comming from the system that conforms with Error.
+/// - unknown: Unknown error.
+/// - requestBuilderFailed: The request builder failed.
+/// - withData: There is an error and it has a payload.
 public enum URLRequestError: Error {
     
     case raw(Error)

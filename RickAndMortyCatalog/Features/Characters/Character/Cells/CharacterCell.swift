@@ -49,8 +49,7 @@ class CharacterCell: UITableViewCell {
     // MARK: - IBActions
     
     @IBAction func favoriteButtonDidReceiveTouchUpInside(_ sender: Any) {
-        let isFavorite = modelController.isFavorite
-        if !isFavorite {
+        if !modelController.isFavorite {
             modelController.addToFavorites(onSuccess: setupFavoriteButton)
         } else {
             modelController.removeFromFavorites(onSuccess: setupFavoriteButton)
@@ -79,11 +78,9 @@ class CharacterCell: UITableViewCell {
     }
     
     private func setupFavoriteButton() {
-//        DispatchQueue.main.async {
-            let buttonImageName = self.modelController.isFavorite ? "favorited" : "unfavorited"
-            let favoriteButtonImage = UIImage(named: buttonImageName)
-            self.favoriteButton.setImage(favoriteButtonImage, for: .normal)
-//        }
+        let buttonImageName = self.modelController.isFavorite ? "favorited" : "unfavorited"
+        let favoriteButtonImage = UIImage(named: buttonImageName)
+        self.favoriteButton.setImage(favoriteButtonImage, for: .normal)
     }
     
 }

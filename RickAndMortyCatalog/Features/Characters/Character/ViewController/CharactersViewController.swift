@@ -12,6 +12,7 @@ import UIKit
 class CharactersViewController: UIViewController {
     
     // MARK: - Dependencies
+    
     private let logicController: CharactersLogicController
     
     // MARK: - IBOutlets
@@ -48,7 +49,7 @@ class CharactersViewController: UIViewController {
         logicController.loadCharacters()
     }
     
-    // MARK: - UI
+    // MARK: - UI Setup
     
     private func registerTableViewCells() {
         let bundle = Bundle(for: CharacterCell.self)
@@ -98,19 +99,15 @@ extension CharactersViewController: UITableViewDelegate {
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let selectedCharacter = logicController.characterData(for: indexPath.row)
-        
-        // TODO: Change this!!!
-        let detailsController = CharacterDetailViewController(nibName: CharacterDetailViewController.className,
-                                                              bundle: Bundle(for: CharacterDetailViewController.self),
-                                                              service: DependencyInjection.charactersService,
-                                                              favoritesDatabase: DependencyInjection.favoritesDatabase,
-                                                              character: selectedCharacter)
-        
-        navigationController?.pushViewController(detailsController, animated: true)
+        // @TODO: correct everything
+        let selectedCharacter = logicController.character(for: indexPath.row)
+        let detailController = DetailViewController(nibName: DetailViewController.className,
+                                                    bundle: Bundle(for: DetailViewController.self),
+                                                    logicController: DetailLogicController,
+                                                    character: selectedCharacter)
+        navigationController?.pushViewController(detailController, animated: true)
     }
     
 }

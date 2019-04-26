@@ -28,7 +28,7 @@ class RMCharacterModelController {
         return favorite != nil
     }
     
-    // Returns the RMCharacterData
+    // Returns the RMCharacter data
     let character: RMCharacter
     
     /// Delegate to communicate with the model holder.

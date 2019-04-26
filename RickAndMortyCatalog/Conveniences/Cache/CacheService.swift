@@ -75,7 +75,8 @@ public final class CacheService: CacheServiceProtocol {
     /// - Parameters:
     ///   - fileManager: The file manager for the service, for checking if file or directory exists in a specified path.
     ///   - cacheDirectoryName: The path of the cache directory.
-    public init(fileManager: FileManager = FileManager.default, cacheDirectoryName: String) {
+    public init(fileManager: FileManager = FileManager.default,
+                cacheDirectoryName: String) {
         self.fileManager = fileManager
         do {
             let cachesDirectory = try fileManager.url(

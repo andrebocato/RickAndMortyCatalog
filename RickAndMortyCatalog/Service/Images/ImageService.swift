@@ -17,7 +17,8 @@ protocol ImageServiceProtocol {
     /// - Parameters:
     ///   - networkDispatcher: To fetch images from the Network.
     ///   - cacheService: To load cached data.
-    init(networkDispatcher: URLRequestDispatcherProtocol, cacheService: CacheServiceProtocol)
+    init(networkDispatcher: URLRequestDispatcherProtocol,
+         cacheService: CacheServiceProtocol)
     
     /// Gets and image from the URL. May be in cache or fetched from the network.
     ///

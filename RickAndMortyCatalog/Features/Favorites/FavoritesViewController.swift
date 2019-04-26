@@ -110,14 +110,14 @@ extension FavoritesViewController: UICollectionViewDelegate {
         
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        let selectedCharacter = favoritedCharacters[indexPath.item]
-        
-        let detailsController = CharacterDetailViewController(nibName: CharacterDetailViewController.className,
-                                                              bundle: Bundle(for: CharacterDetailViewController.self),
-                                                              service: DependencyInjection.charactersService,
-                                                              favoritesDatabase: DependencyInjection.favoritesDatabase,
-                                                              character: selectedCharacter)
-        navigationController?.pushViewController(detailsController, animated: true)
+//        let selectedCharacter = favoritedCharacters[indexPath.item]
+//
+//        let detailsController = CharacterDetailViewController(nibName: CharacterDetailViewController.className,
+//                                                              bundle: Bundle(for: CharacterDetailViewController.self),
+//                                                              service: DependencyInjection.charactersService,
+//                                                              favoritesDatabase: DependencyInjection.favoritesDatabase,
+//                                                              character: selectedCharacter)
+//        navigationController?.pushViewController(detailsController, animated: true)
     
     }
 }

@@ -30,27 +30,17 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="FVz-cO-XAT">
-                                <rect key="frame" x="79" y="0.0" width="234" height="62"/>
+                                <rect key="frame" x="79" y="0.0" width="282" height="62"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38R-QW-iLF">
-                                <rect key="frame" x="317" y="0.0" width="28" height="62"/>
+                                <rect key="frame" x="365" y="0.0" width="28" height="62"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50B-8h-FB5">
-                                <rect key="frame" x="349" y="0.0" width="44" height="62"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="ske-Cm-Guq"/>
-                                </constraints>
-                                <state key="normal" image="unfavorited"/>
-                                <connections>
-                                    <action selector="favoriteButtonDidReceiveTouchUpInside:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PsJ-Dp-PwW"/>
-                                </connections>
-                            </button>
                         </subviews>
                     </stackView>
                 </subviews>
@@ -64,14 +54,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cellImageView" destination="mEa-We-A8Y" id="QY0-VW-Wnz"/>
-                <outlet property="favoriteButton" destination="50B-8h-FB5" id="0tp-E4-HMA"/>
                 <outlet property="idLabel" destination="38R-QW-iLF" id="Zds-i0-9VE"/>
                 <outlet property="nameLabel" destination="FVz-cO-XAT" id="L92-SI-uly"/>
             </connections>
             <point key="canvasLocation" x="219.56521739130437" y="144.64285714285714"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="unfavorited" width="25" height="25"/>
-    </resources>
 </document>

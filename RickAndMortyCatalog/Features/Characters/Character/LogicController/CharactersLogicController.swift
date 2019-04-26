@@ -37,28 +37,29 @@ class CharactersLogicController {
         }
     }
     private var charactersResponseInfo: RMCharacterInfo?
-    private var canFetchNextPage: Bool {
+    private var canGetNextPage: Bool {
         return charactersResponseInfo?.next != nil && currentPage < totalPages
     }
     
     // MARK: - Initialization
     
-    init(service: RMCharactersServiceProtocol, modelControllerFactory: ModelControllersFactoryProtocol) {
+    init(service: RMCharactersServiceProtocol,
+         modelControllerFactory: ModelControllersFactoryProtocol) {
         self.service = service
         self.modelControllerFactory = modelControllerFactory
     }
     
     // MARK: - Public Functions
     
-    /// Gets the character object for each row.
+    /// Gets a RMCharacter object for a row.
     ///
     /// - Parameter row: The row number.
     /// - Returns: The RMCharacter.
-    func characterData(for row: Int) -> RMCharacter {
+    func character(for row: Int) -> RMCharacter {
         return characters[row]
     }
     
-    /// Defines the modelController for a specific row.
+    /// Defines the modelController for a row.
     ///
     /// - Parameter row: The row to be worked on.
     /// - Returns: The modelController to the model on the specified row.
@@ -70,17 +71,17 @@ class CharactersLogicController {
     func loadCharacters() {
         currentPage = 1
         delegate?.stateDidChange(.loadingCharacters(true))
-        fetchCharacters(forPage: currentPage) { [weak self] in
+        getCharacters(forPage: currentPage) { [weak self] in
             self?.delegate?.stateDidChange(.loadingCharacters(false))
         }
     }
     
     /// Loads the next page of characters.
     func loadNextCharactersPage() {
-        if canFetchNextPage {
+        if canGetNextPage {
             currentPage += 1
             delegate?.stateDidChange(.loadingNextPage(true))
-            fetchCharacters(forPage: currentPage) { [weak self] in
+            getCharacters(forPage: currentPage) { [weak self] in
                 self?.delegate?.stateDidChange(.loadingNextPage(false))
             }
         }
@@ -88,13 +89,13 @@ class CharactersLogicController {
     
     // MARK: - Private Functions
     
-    /// Gets an ay of characters from the Network.
+    /// Gets an array of characters from the Network.
     ///
     /// - Parameters:
     ///   - page: Number of the desired page.
     ///   - completion: Returns a response on success or an error on failure.
-    private func fetchCharacters(forPage page: Int,
-                                 onCompletion completion: @escaping () -> ()) {
+    private func getCharacters(forPage page: Int,
+                               onCompletion completion: @escaping () -> ()) {
         
         service.getAllCharacters(onPage: page) { [weak self] (result) in
             
@@ -102,7 +103,7 @@ class CharactersLogicController {
             
             switch result {
             case .success(let response):
-                self?.handleFetchCharactersSuccessResponse(response)
+                self?.handleGetCharactersSuccessResponse(response)
                 
             case .failure(let error):
                 self?.delegate?.stateDidChange(.serviceError(error))
@@ -110,12 +111,12 @@ class CharactersLogicController {
         }
     }
     
-    // MARK: - fetchCharacters() Handlers
+    // MARK: - getCharacters() Handlers
     
     /// Handles the response when successful.
     ///
     /// - Parameter response: Success response to be handled.
-    private func handleFetchCharactersSuccessResponse(_ response: RMCharacterResponse) {
+    private func handleGetCharactersSuccessResponse(_ response: RMCharacterResponse) {
         charactersResponseInfo = response.info
         
         let newCharacters = response.results.filter { !characters.contains($0) }

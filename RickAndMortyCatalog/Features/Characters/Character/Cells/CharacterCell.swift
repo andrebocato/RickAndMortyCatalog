@@ -20,7 +20,6 @@ class CharacterCell: UITableViewCell {
     
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var idLabel: UILabel!
-    @IBOutlet private weak var favoriteButton: UIButton!
     
     // MARK: - Private Properties
     
@@ -45,23 +44,12 @@ class CharacterCell: UITableViewCell {
         self.onFavoriteErrorCallBack = onFavoriteErrorCallBack
         setupUI()
     }
-    
-    // MARK: - IBActions
-    
-    @IBAction func favoriteButtonDidReceiveTouchUpInside(_ sender: Any) {
-        if !modelController.isFavorite {
-            modelController.addToFavorites(onSuccess: setupFavoriteButton)
-        } else {
-            modelController.removeFromFavorites(onSuccess: setupFavoriteButton)
-        }
-    }
-    
+        
     // MARK: - Private Functions
     
     private func setupUI() {
         setupImage()
         setupLabels()
-        setupFavoriteButton()
     }
     
     private func setupImage() {
@@ -76,14 +64,7 @@ class CharacterCell: UITableViewCell {
         idLabel.text = " #\(modelController.character.id)"
         nameLabel.text = modelController.character.name
     }
-    
-    // @TODO: change button to imageView
-    private func setupFavoriteButton() {
-        let buttonImageName = self.modelController.isFavorite ? "favorited" : "unfavorited"
-        let favoriteButtonImage = UIImage(named: buttonImageName)
-        self.favoriteButton.setImage(favoriteButtonImage, for: .normal)
-    }
-    
+        
 }
 
 // MARK: - Extensions

@@ -12,20 +12,48 @@ class DetailLogicController {
     
     // MARK: - Dependencies
     
-    private let modelControllerFactory: ModelControllersFactoryProtocol
+    private let modelController: RMCharacterModelController
+    
+    // MARK: - Public Properties
+    
+    /// Exposes the character from
+    var character: RMCharacter {
+        return modelController.character
+    }
+    
+    // Exposes the isFavorite computed property from the modelController
+    var isFavoriteCharacter: Bool {
+        return modelController.isFavorite
+    }
     
     // MARK: - Initialization
     
-    init(modelControllerFactory: ModelControllersFactoryProtocol) {
-        self.modelControllerFactory = modelControllerFactory
+    init(modelController: RMCharacterModelController) {
+        self.modelController = modelController
     }
     
-    /// Defines a modelController for a RMCharacter.
+    // MARK: - Functions
+    
+    /// Toggle the character as favorite
     ///
-    /// - Parameter character: The model used to define the model controller.
-    /// - Returns: The modelController for the specified character.
-    func modelController(for character: RMCharacter) -> RMCharacterModelController {
-        return modelControllerFactory.createRMCharacterModelController(character: character)
+    /// - Parameter handler: a callback to call the next action
+    func toggleFavorite(then handler: (() -> ())? = nil) {
+        if modelController.isFavorite {
+            modelController.removeFromFavorites {
+                handler?()
+            }
+        } else {
+            modelController.addToFavorites {
+                handler?()
+            }
+        }
+    }
+    
+    /// Fetches the image data from persistence or downloads it.
+    ///
+    /// - Parameter completion: Returns the image data asynchronously.
+    func fetchImageData(completion: @escaping (Data) -> Void) {
+        modelController.fetchImageData(completion: completion)
     }
     
 }

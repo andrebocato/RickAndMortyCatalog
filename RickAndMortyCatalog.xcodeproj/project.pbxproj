@@ -51,7 +51,7 @@
 		E50C9D56226F5BB700588EBC /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D55226F5BB700588EBC /* ServiceError.swift */; };
 		E50C9D59226F618000588EBC /* RMCharactersServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D58226F618000588EBC /* RMCharactersServiceMock.swift */; };
 		E50C9D5C226F874F00588EBC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D5A226F874F00588EBC /* DetailViewController.swift */; };
-		E50C9D5D226F874F00588EBC /* CharacterDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50C9D5B226F874F00588EBC /* CharacterDetailViewController.xib */; };
+		E50C9D5D226F874F00588EBC /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50C9D5B226F874F00588EBC /* DetailViewController.xib */; };
 		E50C9D5F226FD66D00588EBC /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D5E226FD66D00588EBC /* DependencyInjection.swift */; };
 		E50C9D61226FD74D00588EBC /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D60226FD74D00588EBC /* NSObjectExtension.swift */; };
 		E50C9D63226FE02C00588EBC /* SimpleURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D62226FE02C00588EBC /* SimpleURLRequest.swift */; };
@@ -72,6 +72,7 @@
 		E50C9D9E2271F4D300588EBC /* CharactersLogicControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D9D2271F4D300588EBC /* CharactersLogicControllerState.swift */; };
 		E50C9DA02272016200588EBC /* RMCharacterModelControllerBusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D9F2272016200588EBC /* RMCharacterModelControllerBusinessError.swift */; };
 		E50C9DA2227203DB00588EBC /* ModelControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DA1227203DB00588EBC /* ModelControllersFactory.swift */; };
+		E50C9DA72273DFD000588EBC /* ViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DA62273DFD000588EBC /* ViewControllersFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,7 +149,7 @@
 		E50C9D55226F5BB700588EBC /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		E50C9D58226F618000588EBC /* RMCharactersServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharactersServiceMock.swift; sourceTree = "<group>"; };
 		E50C9D5A226F874F00588EBC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		E50C9D5B226F874F00588EBC /* CharacterDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailViewController.xib; sourceTree = "<group>"; };
+		E50C9D5B226F874F00588EBC /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		E50C9D5E226FD66D00588EBC /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
 		E50C9D60226FD74D00588EBC /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		E50C9D62226FE02C00588EBC /* SimpleURLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleURLRequest.swift; sourceTree = "<group>"; };
@@ -169,6 +170,7 @@
 		E50C9D9D2271F4D300588EBC /* CharactersLogicControllerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersLogicControllerState.swift; sourceTree = "<group>"; };
 		E50C9D9F2272016200588EBC /* RMCharacterModelControllerBusinessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterModelControllerBusinessError.swift; sourceTree = "<group>"; };
 		E50C9DA1227203DB00588EBC /* ModelControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelControllersFactory.swift; sourceTree = "<group>"; };
+		E50C9DA62273DFD000588EBC /* ViewControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllersFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				E50C9D5A226F874F00588EBC /* DetailViewController.swift */,
-				E50C9D5B226F874F00588EBC /* CharacterDetailViewController.xib */,
+				E50C9D5B226F874F00588EBC /* DetailViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -596,6 +598,7 @@
 			isa = PBXGroup;
 			children = (
 				E50C9DA1227203DB00588EBC /* ModelControllersFactory.swift */,
+				E50C9DA62273DFD000588EBC /* ViewControllersFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -723,7 +726,7 @@
 				65912A86225CF1C500F37508 /* LaunchScreen.storyboard in Resources */,
 				65912A83225CF1C500F37508 /* Assets.xcassets in Resources */,
 				6591EFD22270D8D500C7502E /* FavoritesViewController.xib in Resources */,
-				E50C9D5D226F874F00588EBC /* CharacterDetailViewController.xib in Resources */,
+				E50C9D5D226F874F00588EBC /* DetailViewController.xib in Resources */,
 				E50C9CBE226DF29700588EBC /* GetCharacterMock.json in Resources */,
 				E50C9D70226FEEE700588EBC /* CharacterCell.xib in Resources */,
 				6591EFD42270D8E200C7502E /* SettingsViewController.xib in Resources */,
@@ -857,6 +860,7 @@
 				E50C9D47226F4AC800588EBC /* HTTPMethod.swift in Sources */,
 				E50C9CC0226DF67400588EBC /* RMCharacterInfo.swift in Sources */,
 				E50C9D7922707E2400588EBC /* CacheService.swift in Sources */,
+				E50C9DA72273DFD000588EBC /* ViewControllersFactory.swift in Sources */,
 				E50C9D802270A9AD00588EBC /* FavoritesDatabase.swift in Sources */,
 				E50C9D59226F618000588EBC /* RMCharactersServiceMock.swift in Sources */,
 				E50C9D4B226F4ADE00588EBC /* URLRequestAdapter.swift in Sources */,

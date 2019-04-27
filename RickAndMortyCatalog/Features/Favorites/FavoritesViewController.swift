@@ -69,8 +69,7 @@ class FavoritesViewController: UIViewController {
     // MARK: - Functions
     
     private func loadFavorites() {
-        let realm = try! Realm()
-        let database = FavoritesDatabase(realm: realm)
+        let database = FavoritesDatabase()
         favoritedCharacters = try! database.fetchAllFavorites().map { $0.rmCharacter }
     }
     

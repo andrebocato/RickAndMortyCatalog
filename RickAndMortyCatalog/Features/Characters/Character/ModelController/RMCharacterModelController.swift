@@ -23,10 +23,7 @@ class RMCharacterModelController {
     // MARK: - Public Properties
     
     /// Checks if this character is present on the favorites database.
-    var isFavorite: Bool {
-        let favorite = try? favoritesDatabase.fetchFavoriteWithID(character.id)
-        return favorite != nil
-    }
+    private(set) var isFavorite: Bool = false
     
     // Returns the RMCharacter data
     let character: RMCharacter
@@ -48,6 +45,7 @@ class RMCharacterModelController {
         self.character = character
         self.service = service
         self.favoritesDatabase = favoritesDatabase
+        updateIsFavoriteValue()
     }
     
     // MARK: Public Functions
@@ -79,6 +77,7 @@ class RMCharacterModelController {
         
         do {
             try favoritesDatabase.createOrUpdateFavorite(rmCharacter: character, imageData: imageData)
+            updateIsFavoriteValue()
             onSuccess?()
         } catch {
             debugPrint(error)
@@ -92,6 +91,7 @@ class RMCharacterModelController {
     func removeFromFavorites(onSuccess: (() -> Void)? = nil) {
         do {
             try favoritesDatabase.deleteFavorite(withID: character.id)
+            updateIsFavoriteValue()
             onSuccess?()
         } catch {
             debugPrint(error)
@@ -100,6 +100,11 @@ class RMCharacterModelController {
     }
     
     // MARK: - Private Functions
+    
+    private func updateIsFavoriteValue() {
+        let favorite = try? favoritesDatabase.fetchFavoriteWithID(character.id)
+        isFavorite = favorite != nil
+    }
     
     /// Tries to fetch an image data from the persistence layer.
     ///

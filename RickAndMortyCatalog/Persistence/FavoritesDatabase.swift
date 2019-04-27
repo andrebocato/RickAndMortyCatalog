@@ -47,20 +47,17 @@ protocol FavoritesDatabaseProtocol { // @TODO: Document
 
 class FavoritesDatabase: FavoritesDatabaseProtocol {
 
-    private let realm: Realm
-
-    init(realm: Realm) {
-        self.realm = realm
-    }
-
     func createOrUpdateFavorite(rmCharacter: RMCharacter,
                                 imageData: Data) throws {
+        
+        let realm = try Realm()
         
         let objectToPersist = RealmFavoriteCharacter(rmCharacter: rmCharacter, imageData: imageData)
         objectToPersist.id = "\(rmCharacter.id)"
         try realm.write {
             realm.add(objectToPersist, update: true)
         }
+        
     }
     
     func fetchFavoriteWithID(_ id: Int) throws -> FavoriteCharacter? {
@@ -69,6 +66,9 @@ class FavoritesDatabase: FavoritesDatabaseProtocol {
     }
     
     func fetchAllFavorites() throws -> [FavoriteCharacter] {
+        
+        let realm = try Realm()
+        
         return try realm.objects(RealmFavoriteCharacter.self)
             .compactMap({ (realmFavorite) -> FavoriteCharacter? in
                 guard let characterData = realmFavorite.rmCharacterData,
@@ -80,9 +80,13 @@ class FavoritesDatabase: FavoritesDatabaseProtocol {
             .sorted(by: { (favorite1, favorite2) -> Bool in
                 return favorite1.rmCharacter.id < favorite2.rmCharacter.id
             })
+        
     }
 
     func deleteFavorite(withID id: Int) throws {
+        
+        let realm = try Realm()
+        
         let primaryKey = "\(id)"
         let object = realm.object(ofType: RealmFavoriteCharacter.self, forPrimaryKey: primaryKey)
         if let object = object {
@@ -90,12 +94,17 @@ class FavoritesDatabase: FavoritesDatabaseProtocol {
                 realm.delete(object)
             }
         }
+        
     }
 
     func deleteAll() throws {
+        
+        let realm = try Realm()
+        
         try realm.write {
             realm.deleteAll()
         }
+        
     }
 
 }

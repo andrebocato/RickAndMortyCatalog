@@ -14,6 +14,7 @@ class CharactersViewController: UIViewController {
     // MARK: - Dependencies
     
     private let logicController: CharactersLogicController
+    private let viewControllersFactory: ViewControllersFactoryProtocol
     
     // MARK: - IBOutlets
     
@@ -32,8 +33,10 @@ class CharactersViewController: UIViewController {
     
     init(nibName nibNameOrNil: String?,
          bundle nibBundleOrNil: Bundle?,
-         logicController: CharactersLogicController) {
+         logicController: CharactersLogicController,
+         viewControllersFactory: ViewControllersFactoryProtocol) {
         self.logicController = logicController
+        self.viewControllersFactory = viewControllersFactory
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -101,12 +104,8 @@ extension CharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // @TODO: correct everything
-        let selectedCharacter = logicController.character(for: indexPath.row)
-        let detailController = DetailViewController(nibName: DetailViewController.className,
-                                                    bundle: Bundle(for: DetailViewController.self),
-                                                    logicController: DetailLogicController,
-                                                    character: selectedCharacter)
+        let selectedCharacterModelController = logicController.modelController(for: indexPath.row)
+        let detailController = viewControllersFactory.createDetailsViewController(characterModelController: selectedCharacterModelController)
         navigationController?.pushViewController(detailController, animated: true)
     }
     

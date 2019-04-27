@@ -17,7 +17,7 @@ class CharactersLogicController {
     
     /// Returns the number of fetched characters.
     var numberOfCharacters: Int {
-        return characters.count
+        return characterModelControllers.count
     }
     
     // MARK: - Dependencies
@@ -31,7 +31,7 @@ class CharactersLogicController {
     private var totalPages: Int {
         return charactersResponseInfo?.pages ?? 1
     }
-    private var characters: [RMCharacter] = [] {
+    private var characterModelControllers: [RMCharacterModelController] = [] {
         didSet {
             delegate?.charactersListDidUpdate()
         }
@@ -51,20 +51,12 @@ class CharactersLogicController {
     
     // MARK: - Public Functions
     
-    /// Gets a RMCharacter object for a row.
-    ///
-    /// - Parameter row: The row number.
-    /// - Returns: The RMCharacter.
-    func character(for row: Int) -> RMCharacter {
-        return characters[row]
-    }
-    
     /// Defines the modelController for a row.
     ///
     /// - Parameter row: The row to be worked on.
     /// - Returns: The modelController to the model on the specified row.
     func modelController(for row: Int) -> RMCharacterModelController {
-        return modelControllerFactory.createRMCharacterModelController(character: characters[row])
+        return characterModelControllers[row]
     }
     
     /// Fetches characters from the Network.
@@ -119,10 +111,15 @@ class CharactersLogicController {
     private func handleGetCharactersSuccessResponse(_ response: RMCharacterResponse) {
         charactersResponseInfo = response.info
         
-        let newCharacters = response.results.filter { !characters.contains($0) }
-        characters.append(contentsOf: newCharacters)
-        characters.sort(by: { (character1, character2) -> Bool in
-            return character1.id < character2.id
+        let newCharacterModelControllers = response.results.filter({ (rmCharacter) -> Bool in
+            return !characterModelControllers.contains(where: { (rmCharacterController) -> Bool in
+                return rmCharacterController.character.id == rmCharacter.id
+            })
+        }).map { modelControllerFactory.createRMCharacterModelController(character: $0) }
+        
+        characterModelControllers.append(contentsOf: newCharacterModelControllers)
+        characterModelControllers.sort(by: { (characterModelController1, characterModelController2) -> Bool in
+            return characterModelController1.character.id < characterModelController2.character.id
         })
         
         delegate?.charactersListDidUpdate()

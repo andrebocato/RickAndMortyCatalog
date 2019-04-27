@@ -60,7 +60,8 @@ extension AppDelegate {
                                                                   modelControllerFactory: self)
         let charactersViewController = CharactersViewController(nibName: CharactersViewController.className,
                                                                 bundle: Bundle(for: CharactersViewController.self),
-                                                                logicController: charactersLogicController)
+                                                                logicController: charactersLogicController,
+                                                                viewControllersFactory: self)
         charactersLogicController.delegate = charactersViewController
         charactersViewController.title = "Characters"
         charactersViewController.tabBarItem = UITabBarItem(title: "Characters", image: UIImage(named: "characters"), tag: 0)
@@ -99,6 +100,17 @@ extension AppDelegate: ModelControllersFactoryProtocol { // @TODO: MAYBE move th
         return RMCharacterModelController(character: character,
                                           service: DependencyInjection.imageService,
                                           favoritesDatabase: DependencyInjection.favoritesDatabase)
+    }
+    
+}
+
+extension AppDelegate: ViewControllersFactoryProtocol { // @TODO: MAYBE move this from here
+    
+    func createDetailsViewController(characterModelController: RMCharacterModelController) -> DetailViewController {
+        let logicController = DetailLogicController(modelController: characterModelController)
+        return DetailViewController(nibName: DetailViewController.className,
+                                    bundle: Bundle(for: DetailViewController.self),
+                                    logicController: logicController)
     }
     
 }

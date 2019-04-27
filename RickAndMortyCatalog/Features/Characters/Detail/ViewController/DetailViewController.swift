@@ -16,7 +16,6 @@ class DetailViewController: UIViewController {
     // MARK: - Dependencies
     
     private let logicController: DetailLogicController
-    private let character: RMCharacter
     
     // MARK: - IBOutlets
     
@@ -39,19 +38,12 @@ class DetailViewController: UIViewController {
     @IBOutlet private weak var originLabel: UILabel!
     @IBOutlet private weak var locationLabel: UILabel!
     
-    // MARK: - Private Properties
-    
-    private var modelController: RMCharacterModelController
-    
     // MARK: - Initialization
     
     init(nibName nibNameOrNil: String?,
          bundle nibBundleOrNil: Bundle?,
-         logicController: DetailLogicController,
-         character: RMCharacter) {
+         logicController: DetailLogicController) {
         self.logicController = logicController
-        self.character = character
-        self.modelController = logicController.modelController(for: character)
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -92,27 +84,28 @@ class DetailViewController: UIViewController {
     
     private func setupImageView() {
         imageView.startLoading()
-        modelController.fetchImageData { [weak self] (imageData) in
+        logicController.fetchImageData { [weak self] (imageData) in
             DispatchQueue.main.async {
                 self?.imageView.image = UIImage(data: imageData)
+                self?.imageView.stopLoading()
             }
         }
     }
     
     private func setupLabelsText() {
-        idLabel.text = "\(modelController.character.id)"
-        nameLabel.text = modelController.character.name
-        statusLabel.text = modelController.character.status
-        statusLabel.text = modelController.character.status
-        speciesLabel.text = modelController.character.species
-        typeLabel.text = modelController.character.type
-        genderLabel.text = modelController.character.gender
-        originLabel.text = modelController.character.origin.name
-        locationLabel.text = modelController.character.location.name
+        idLabel.text = "\(logicController.character.id)"
+        nameLabel.text = logicController.character.name
+        statusLabel.text = logicController.character.status
+        statusLabel.text = logicController.character.status
+        speciesLabel.text = logicController.character.species
+        typeLabel.text = logicController.character.type
+        genderLabel.text = logicController.character.gender
+        originLabel.text = logicController.character.origin.name
+        locationLabel.text = logicController.character.location.name
     }
     
     private func updateBarButtonImage(_ button: UIBarButtonItem) {
-        let buttonImageName = modelController.isFavorite ? "favorited" : "unfavorited"
+        let buttonImageName = logicController.isFavoriteCharacter ? "favorited" : "unfavorited"
         let favoriteButtonImage = UIImage(named: buttonImageName)
         button.image = favoriteButtonImage
     }
@@ -120,14 +113,8 @@ class DetailViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func toggleFavoriteBarButtonItemDidReceiveTouchUpInside(_ sender: UIBarButtonItem) {
-        if modelController.isFavorite {
-            modelController.removeFromFavorites { [weak self] in
-                self?.updateBarButtonImage(sender)
-            }
-        } else {
-            modelController.addToFavorites { [weak self] in
-                self?.updateBarButtonImage(sender)
-            }
+        logicController.toggleFavorite { [weak self] in
+            self?.updateBarButtonImage(sender)
         }
     }
     

@@ -50,6 +50,13 @@ extension AppDelegate: ViewControllersFactoryProtocol {
         return favoritesViewController
     }
     
+    func createSettingsViewController() ->  SettingsViewController {
+        let settingsLogicController = SettingsLogicController(favoritesDatabase: DependencyInjection.favoritesDatabase)
+        return SettingsViewController(nibName: SettingsViewController.className,
+                                      bundle: Bundle(for: SettingsViewController.self),
+                                      logicController: settingsLogicController)
+    }
+    
     func createTabBarController() ->  UITabBarController {
         
         // CharactersViewController
@@ -64,9 +71,18 @@ extension AppDelegate: ViewControllersFactoryProtocol {
         favoritesViewController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorited"), tag: 1)
         let favoritesNavigationController = UINavigationController(rootViewController: favoritesViewController)
         
+        // CharactersViewController
+        let settingsViewController = createSettingsViewController()
+        settingsViewController.title = "Settings"
+        settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 2)
+        let settingsNavigationController = UINavigationController(rootViewController: settingsViewController)
+        
         // UITabBarController
         let tabBarController = UITabBarController()
-        tabBarController.setViewControllers([charactersNavigationController, favoritesNavigationController], animated: false)
+        tabBarController.setViewControllers([charactersNavigationController,
+                                             favoritesNavigationController,
+                                             settingsNavigationController],
+                                            animated: false)
         
         return tabBarController
     }

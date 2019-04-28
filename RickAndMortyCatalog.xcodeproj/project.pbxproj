@@ -78,6 +78,9 @@
 		E50C9DC9227521FE00588EBC /* FavoritesLogicControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DC8227521FE00588EBC /* FavoritesLogicControllerDelegate.swift */; };
 		E50C9DCD2275245A00588EBC /* RMCharacterImageFetcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DCC2275245A00588EBC /* RMCharacterImageFetcherProtocol.swift */; };
 		E50C9DCF2275CA5F00588EBC /* AppDelegate+Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DCE2275CA5F00588EBC /* AppDelegate+Factories.swift */; };
+		E50C9DD82275D50600588EBC /* SettingsLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DD72275D50600588EBC /* SettingsLogicController.swift */; };
+		E50C9DDB2275D51800588EBC /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50C9DD92275D51800588EBC /* SettingsViewController.xib */; };
+		E50C9DDC2275D51800588EBC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DDA2275D51800588EBC /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +184,9 @@
 		E50C9DC8227521FE00588EBC /* FavoritesLogicControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesLogicControllerDelegate.swift; sourceTree = "<group>"; };
 		E50C9DCC2275245A00588EBC /* RMCharacterImageFetcherProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMCharacterImageFetcherProtocol.swift; sourceTree = "<group>"; };
 		E50C9DCE2275CA5F00588EBC /* AppDelegate+Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Factories.swift"; sourceTree = "<group>"; };
+		E50C9DD72275D50600588EBC /* SettingsLogicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLogicController.swift; sourceTree = "<group>"; };
+		E50C9DD92275D51800588EBC /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		E50C9DDA2275D51800588EBC /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +387,7 @@
 				E50C9D5E226FD66D00588EBC /* DependencyInjection.swift */,
 				65912ACA225CFDCF00F37508 /* Characters */,
 				65912AD7225D08DA00F37508 /* Favorites */,
+				E50C9DD42275D4CF00588EBC /* Settings */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -634,6 +641,32 @@
 			path = LogicController;
 			sourceTree = "<group>";
 		};
+		E50C9DD42275D4CF00588EBC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E50C9DD62275D4DD00588EBC /* LogicController */,
+				E50C9DD52275D4DB00588EBC /* ViewController */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E50C9DD52275D4DB00588EBC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E50C9DDA2275D51800588EBC /* SettingsViewController.swift */,
+				E50C9DD92275D51800588EBC /* SettingsViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E50C9DD62275D4DD00588EBC /* LogicController */ = {
+			isa = PBXGroup;
+			children = (
+				E50C9DD72275D50600588EBC /* SettingsLogicController.swift */,
+			);
+			path = LogicController;
+			sourceTree = "<group>";
+		};
 		F9B56FE2BCAA3347E9DB850A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -753,6 +786,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E50C9D65226FE51900588EBC /* CharactersViewController.xib in Resources */,
+				E50C9DDB2275D51800588EBC /* SettingsViewController.xib in Resources */,
 				6591EFD02270D8C300C7502E /* FavoriteCell.xib in Resources */,
 				65912A86225CF1C500F37508 /* LaunchScreen.storyboard in Resources */,
 				65912A83225CF1C500F37508 /* Assets.xcassets in Resources */,
@@ -889,6 +923,7 @@
 				E50C9D56226F5BB700588EBC /* ServiceError.swift in Sources */,
 				E50C9D982271E7D200588EBC /* FavoriteCharacter.swift in Sources */,
 				E50C9D47226F4AC800588EBC /* HTTPMethod.swift in Sources */,
+				E50C9DD82275D50600588EBC /* SettingsLogicController.swift in Sources */,
 				E50C9CC0226DF67400588EBC /* RMCharacterInfo.swift in Sources */,
 				E50C9D7922707E2400588EBC /* CacheService.swift in Sources */,
 				E50C9DA72273DFD000588EBC /* ViewControllersFactory.swift in Sources */,
@@ -899,6 +934,7 @@
 				E50C9D49226F4AD300588EBC /* URLRequestParameters.swift in Sources */,
 				E50C9D9C2271F4B000588EBC /* RMCharacterModelControllerState.swift in Sources */,
 				65912AB5225CF45100F37508 /* AlertHelper.swift in Sources */,
+				E50C9DDC2275D51800588EBC /* SettingsViewController.swift in Sources */,
 				E50C9D41226F4A9A00588EBC /* URLSessionDispatcher.swift in Sources */,
 				E50C9D942271E34E00588EBC /* RealmFavoriteCharacter.swift in Sources */,
 				E50C9DA02272016200588EBC /* RMCharacterModelControllerBusinessError.swift in Sources */,

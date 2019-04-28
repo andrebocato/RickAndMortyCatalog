@@ -27,6 +27,11 @@ protocol ViewControllersFactoryProtocol {
     /// - Returns: A configured FavoritesViewController.
     func createFavoritesViewController() -> FavoritesViewController
     
+    /// Creates a configured instance of a SettingsViewController.
+    ///
+    /// - Returns: A configured SettingsViewController.
+    func createSettingsViewController() ->  SettingsViewController
+    
     /// Creates our TabBarController (applications root controller)
     ///
     /// - Returns: A configured instance of TabBarController.

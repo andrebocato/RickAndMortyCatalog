@@ -85,10 +85,10 @@ extension CharacterCell: RMCharacterModelControllerDelegate {
         }
     }
     
-    private func handleLoadingImageState(_ loading: Bool) {
-        DispatchQueue.main.async {
-            loading ? self.cellImageView.startLoading(style: .white) : self.cellImageView.stopLoading()
-        }
+    private func handleLoadingImageState(_ loading: Bool) { // @TODO: Check this...
+//        DispatchQueue.main.async {
+//            loading ? self.cellImageView.startLoading(style: .white) : self.cellImageView.stopLoading()
+//        }
     }
     
     private func handleBusinessError(_ error: Error) {

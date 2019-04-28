@@ -81,6 +81,9 @@
 		E50C9DD82275D50600588EBC /* SettingsLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DD72275D50600588EBC /* SettingsLogicController.swift */; };
 		E50C9DDB2275D51800588EBC /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50C9DD92275D51800588EBC /* SettingsViewController.xib */; };
 		E50C9DDC2275D51800588EBC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DDA2275D51800588EBC /* SettingsViewController.swift */; };
+		E50C9DDE2275E0FE00588EBC /* FavoriteDatabaseObjectChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DDD2275E0FE00588EBC /* FavoriteDatabaseObjectChange.swift */; };
+		E50C9DE02275E7A300588EBC /* FavoritesDatabaseObservationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DDF2275E7A300588EBC /* FavoritesDatabaseObservationToken.swift */; };
+		E50C9DE52275E81F00588EBC /* RealmObjectObservationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DE42275E81F00588EBC /* RealmObjectObservationToken.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +190,9 @@
 		E50C9DD72275D50600588EBC /* SettingsLogicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLogicController.swift; sourceTree = "<group>"; };
 		E50C9DD92275D51800588EBC /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		E50C9DDA2275D51800588EBC /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E50C9DDD2275E0FE00588EBC /* FavoriteDatabaseObjectChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDatabaseObjectChange.swift; sourceTree = "<group>"; };
+		E50C9DDF2275E7A300588EBC /* FavoritesDatabaseObservationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDatabaseObservationToken.swift; sourceTree = "<group>"; };
+		E50C9DE42275E81F00588EBC /* RealmObjectObservationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjectObservationToken.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -626,8 +632,8 @@
 		E50C9DB02274FD8B00588EBC /* FavoritesDatabase */ = {
 			isa = PBXGroup;
 			children = (
-				E50C9DB12274FDA000588EBC /* FavoritesDatabaseProtocol.swift */,
-				E50C9D7F2270A9AD00588EBC /* FavoritesDatabase.swift */,
+				E50C9DE32275E7DE00588EBC /* RealmImplementation */,
+				E50C9DE12275E7B100588EBC /* Abstraction */,
 			);
 			path = FavoritesDatabase;
 			sourceTree = "<group>";
@@ -665,6 +671,25 @@
 				E50C9DD72275D50600588EBC /* SettingsLogicController.swift */,
 			);
 			path = LogicController;
+			sourceTree = "<group>";
+		};
+		E50C9DE12275E7B100588EBC /* Abstraction */ = {
+			isa = PBXGroup;
+			children = (
+				E50C9DB12274FDA000588EBC /* FavoritesDatabaseProtocol.swift */,
+				E50C9DDD2275E0FE00588EBC /* FavoriteDatabaseObjectChange.swift */,
+				E50C9DDF2275E7A300588EBC /* FavoritesDatabaseObservationToken.swift */,
+			);
+			path = Abstraction;
+			sourceTree = "<group>";
+		};
+		E50C9DE32275E7DE00588EBC /* RealmImplementation */ = {
+			isa = PBXGroup;
+			children = (
+				E50C9D7F2270A9AD00588EBC /* FavoritesDatabase.swift */,
+				E50C9DE42275E81F00588EBC /* RealmObjectObservationToken.swift */,
+			);
+			path = RealmImplementation;
 			sourceTree = "<group>";
 		};
 		F9B56FE2BCAA3347E9DB850A /* Frameworks */ = {
@@ -918,6 +943,7 @@
 				65912AD9225D08FC00F37508 /* FavoritesViewController.swift in Sources */,
 				E50C9D3F226F4A8800588EBC /* URLRequestDispatcherProtocol.swift in Sources */,
 				E50C9D52226F4E0900588EBC /* RMCharactersRequest.swift in Sources */,
+				E50C9DE02275E7A300588EBC /* FavoritesDatabaseObservationToken.swift in Sources */,
 				E50C9D3B226F4A5B00588EBC /* NetworkingService.swift in Sources */,
 				65912A7C225CF1C400F37508 /* AppDelegate.swift in Sources */,
 				E50C9D56226F5BB700588EBC /* ServiceError.swift in Sources */,
@@ -956,7 +982,9 @@
 				E50C9DA2227203DB00588EBC /* ModelControllersFactory.swift in Sources */,
 				E50C9D61226FD74D00588EBC /* NSObjectExtension.swift in Sources */,
 				65912AB3225CF43C00F37508 /* JSON.swift in Sources */,
+				E50C9DDE2275E0FE00588EBC /* FavoriteDatabaseObjectChange.swift in Sources */,
 				65912ABA225CF49200F37508 /* ErrorTypes.swift in Sources */,
+				E50C9DE52275E81F00588EBC /* RealmObjectObservationToken.swift in Sources */,
 				65912B0D225D35A600F37508 /* RMCharactersService.swift in Sources */,
 				E50C9D8A2271DEC500588EBC /* RMCharacterModelController.swift in Sources */,
 				E50C9D842271616A00588EBC /* CharactersLogicController.swift in Sources */,

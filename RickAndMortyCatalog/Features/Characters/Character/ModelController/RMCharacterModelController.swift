@@ -19,6 +19,7 @@ class RMCharacterModelController: RMCharacterImageFetcherProtocol {
     
     private var requestToken: URLRequestToken?
     private var imageData: Data?
+    private var databaseObjectObservationToken: FavoritesDatabaseObservationToken?
     
     // MARK: - Public Properties
     
@@ -26,7 +27,6 @@ class RMCharacterModelController: RMCharacterImageFetcherProtocol {
     private(set) var isFavorite: Bool = false {
         didSet {
             delegate?.stateDidChange(.favoritePropertyChanged(isFavorite))
-            onFavoriteStateChanged?(isFavorite)
         }
     }
     
@@ -35,9 +35,6 @@ class RMCharacterModelController: RMCharacterImageFetcherProtocol {
     
     /// Delegate to communicate with the model holder.
     weak var delegate: RMCharacterModelControllerDelegate?
-    
-    /// Optional callback for favorite changes
-    var onFavoriteStateChanged: ((_ isFavorite: Bool) -> Void)?
     
     // MARK: - Initialization
     
@@ -53,7 +50,13 @@ class RMCharacterModelController: RMCharacterImageFetcherProtocol {
         self.character = character
         self.service = service
         self.favoritesDatabase = favoritesDatabase
-        updateIsFavoriteValue()
+        setupIsFavoriteValue()
+    }
+    
+    // MARK: - Lifecycle
+    
+    deinit {
+        databaseObjectObservationToken?.invalidate()
     }
     
     // MARK: Public Functions
@@ -103,9 +106,16 @@ class RMCharacterModelController: RMCharacterImageFetcherProtocol {
     
     // MARK: - Private Functions
     
-    private func updateIsFavoriteValue() {
+    private func setupIsFavoriteValue() {
         let favorite = try? favoritesDatabase.fetchFavoriteWithID(character.id)
         isFavorite = favorite != nil
+        databaseObjectObservationToken = try? favoritesDatabase.addObserverForCharacterWithID(character.id) { [weak self] (change) in
+            switch change {
+            case .deleted:
+                self?.isFavorite = false
+            default: return
+            }
+        }
     }
     
     /// Tries to fetch an image data from the persistence layer.

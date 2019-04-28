@@ -81,6 +81,7 @@ class DetailViewController: UIViewController {
         setupImageView()
         setupLabelsText()
         updateBarButtonImage()
+        view.setNeedsDisplay()
     }
     
     private func setupImageView() {

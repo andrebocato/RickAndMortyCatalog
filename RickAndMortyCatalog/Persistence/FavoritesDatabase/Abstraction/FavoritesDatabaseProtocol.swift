@@ -42,4 +42,16 @@ protocol FavoritesDatabaseProtocol {
     ///
     /// - Throws: An error from the persistence.
     func deleteAll() throws
+    
+    /// Adds an observer for the character with the ID
+    ///
+    /// - Parameters:
+    ///   - id: The characters ID.
+    ///   - onChange: Callback for the observations.
+    /// - Returns: A change representation.
+    /// - Throws: An error if the observation could not be set on the object.
+    func addObserverForCharacterWithID(_ id: Int, onChange: @escaping (_ change: FavoriteDatabaseObjectChange) -> Void) throws -> FavoritesDatabaseObservationToken?
+    
 }
+
+

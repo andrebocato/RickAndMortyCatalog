@@ -49,9 +49,6 @@ class FavoritesLogicController {
     func modelController(for index: Int) -> RMCharacterModelController {
         let rmCharacter = favorites[index].rmCharacter
         let modelController = modelControllerFactory.createRMCharacterModelController(character: rmCharacter)
-        modelController.onFavoriteStateChanged = { [weak self] _ in
-            self?.favorites.remove(at: index)
-        }
         return modelController
     }
     

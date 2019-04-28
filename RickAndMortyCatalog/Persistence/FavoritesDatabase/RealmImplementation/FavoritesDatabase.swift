@@ -9,7 +9,6 @@
 import Foundation
 import RealmSwift
 
-
 class FavoritesDatabase: FavoritesDatabaseProtocol {
     
     // MARK: Public Methods
@@ -21,6 +20,7 @@ class FavoritesDatabase: FavoritesDatabaseProtocol {
         
         let objectToPersist = RealmFavoriteCharacter(rmCharacter: rmCharacter, imageData: imageData)
         objectToPersist.id = "\(rmCharacter.id)"
+        
         try realm.write {
             realm.add(objectToPersist, update: true)
         }
@@ -71,6 +71,28 @@ class FavoritesDatabase: FavoritesDatabaseProtocol {
         try realm.write {
             realm.deleteAll()
         }
+        
+    }
+    
+    func addObserverForCharacterWithID(_ id: Int, onChange: @escaping (_ change: FavoriteDatabaseObjectChange) -> Void) throws -> FavoritesDatabaseObservationToken? {
+        
+        let realm = try Realm()
+        
+        let primaryKey = "\(id)"
+        
+        guard let result = realm.object(ofType: RealmFavoriteCharacter.self, forPrimaryKey: primaryKey) else {
+            return nil
+        }
+        
+        let token = result.observe { (change) in
+            switch change {
+            case .change: onChange(.updated)
+            case .deleted: onChange(.deleted)
+            default: return
+            }
+        }
+        
+        return RealmObjectObservationToken(realmNotificationToken: token)
         
     }
 

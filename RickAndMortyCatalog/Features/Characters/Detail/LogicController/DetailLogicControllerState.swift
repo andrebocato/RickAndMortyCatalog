@@ -2,7 +2,7 @@
 //  DetailLogicControllerState.swift
 //  RickAndMortyCatalog
 //
-//  Created by Eduardo Sanches Bocato on 27/04/19.
+//  Created by Andre Sanches Bocato on 27/04/19.
 //  Copyright © 2019 Andre Sanches Bocato. All rights reserved.
 //
 

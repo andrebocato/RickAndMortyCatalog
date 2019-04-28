@@ -22,7 +22,7 @@ class FavoritesViewController: UIViewController {
     
     // MARK: - Dependencies
     
-    private let logicController: FavoritesLogicController
+    private var logicController: FavoritesLogicController
     private let viewControllersFactory: ViewControllersFactoryProtocol
     
     // MARK: - Initialization
@@ -34,6 +34,7 @@ class FavoritesViewController: UIViewController {
         self.logicController = logicController
         self.viewControllersFactory = viewControllersFactory
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.logicController.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {

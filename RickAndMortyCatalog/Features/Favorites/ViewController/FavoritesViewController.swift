@@ -34,7 +34,6 @@ class FavoritesViewController: UIViewController {
         self.logicController = logicController
         self.viewControllersFactory = viewControllersFactory
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.logicController.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {

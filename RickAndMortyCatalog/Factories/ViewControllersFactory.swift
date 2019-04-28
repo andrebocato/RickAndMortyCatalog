@@ -10,11 +10,25 @@ import UIKit
 
 /// This is an abstract factory for view controllers.
 protocol ViewControllersFactoryProtocol {
-    
-    /// Creates a model controller from a character.
+
+    /// Creates a configured instance of  a DetailViewController.
     ///
-    /// - Parameter character: A RMCharacter.
-    /// - Returns: A configured model controller.
+    /// - Parameter characterModelController: A model controller for the character.
+    /// - Returns: A configured DetailViewController.
     func createDetailsViewController(characterModelController: RMCharacterModelController) -> DetailViewController
     
+    /// Creates a configured instance of a CharactersViewController.
+    ///
+    /// - Returns: A configured CharactersViewController.
+    func createCharactersViewController() -> CharactersViewController
+    
+    /// Creates a configured instance of a FavoritesViewController.
+    ///
+    /// - Returns: A configured FavoritesViewController.
+    func createFavoritesViewController() -> FavoritesViewController
+    
+    /// Creates our TabBarController (applications root controller)
+    ///
+    /// - Returns: A configured instance of TabBarController.
+    func createTabBarController() -> UITabBarController
 }

@@ -15,4 +15,5 @@ import Foundation
 enum RMCharacterModelControllerState {
     case loadingImage(Bool)
     case businessError(RMCharacterModelControllerBusinessError)
+    case favoritePropertyChanged(Bool)
 }

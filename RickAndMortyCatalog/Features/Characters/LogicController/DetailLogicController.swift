@@ -12,9 +12,12 @@ class DetailLogicController {
     
     // MARK: - Dependencies
     
-    private let modelController: RMCharacterModelController
+    private var modelController: RMCharacterModelController
     
     // MARK: - Public Properties
+    
+    /// Delegate to make the view react to its events
+    weak var delegate: DetailLogicControllerDelegate?
     
     /// Exposes the character from
     var character: RMCharacter {
@@ -30,22 +33,17 @@ class DetailLogicController {
     
     init(modelController: RMCharacterModelController) {
         self.modelController = modelController
+        self.modelController.delegate = self
     }
     
     // MARK: - Functions
     
     /// Toggle the character as favorite
-    ///
-    /// - Parameter handler: a callback to call the next action
-    func toggleFavorite(then handler: (() -> ())? = nil) {
+    func toggleFavorite() {
         if modelController.isFavorite {
-            modelController.removeFromFavorites {
-                handler?()
-            }
+            modelController.removeFromFavorites()
         } else {
-            modelController.addToFavorites {
-                handler?()
-            }
+            modelController.addToFavorites()
         }
     }
     
@@ -54,6 +52,21 @@ class DetailLogicController {
     /// - Parameter completion: Returns the image data asynchronously.
     func fetchImageData(completion: @escaping (Data) -> Void) {
         modelController.fetchImageData(completion: completion)
+    }
+    
+}
+
+extension DetailLogicController: RMCharacterModelControllerDelegate {
+    
+    func stateDidChange(_ newState: RMCharacterModelControllerState) {
+        switch newState {
+        case .businessError(let be):
+            delegate?.stateDidChange(.error(be))
+        case .loadingImage(let isLoading):
+            delegate?.stateDidChange(.loadingImage(isLoading))
+        case .favoritePropertyChanged(let isFavorite):
+            delegate?.favoriteStateChanged(isFavorite)
+        }
     }
     
 }

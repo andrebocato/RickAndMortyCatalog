@@ -23,7 +23,7 @@ extension UIView: EmptiableView {
         let emptyViewLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         emptyViewLabel.text = message
         emptyViewLabel.textColor = .gray
-        emptyViewLabel.numberOfLines = 1
+        emptyViewLabel.numberOfLines = 0
         emptyViewLabel.textAlignment = .center
         emptyViewLabel.sizeToFit()
         emptyViewLabel.tag = emptyViewTag

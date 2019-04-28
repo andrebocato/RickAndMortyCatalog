@@ -14,19 +14,32 @@ class FavoriteCell: UICollectionViewCell {
     
     @IBOutlet private weak var imageView: UIImageView!
     
+    // MARK: - Private Properties
+    
+    private var imageFetcher: RMCharacterImageFetcherProtocol?
+    
     // MARK: - Lifecycle
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.image = UIImage()
-        imageView.startLoading()
+        imageFetcher?.cancelImageRequest()
+        imageView.startLoading(style: .gray)
     }
     
     // MARK: - Configuration Functions
     
-    func configure(with character: RMCharacter) {
-        imageView.image = UIImage(named: "MockImage")
-        
-        imageView.stopLoading()
+    func configure(with imageFetcher: RMCharacterImageFetcherProtocol) {
+        self.imageFetcher = imageFetcher
+        loadImage()
     }
+    
+    // MARK: - Private Functions
+    
+    private func loadImage() {
+        imageFetcher?.fetchImageData { [weak self] (data) in
+            self?.imageView.image = UIImage(data: data)
+            self?.imageView.stopLoading()
+        }
+    }
+    
 }

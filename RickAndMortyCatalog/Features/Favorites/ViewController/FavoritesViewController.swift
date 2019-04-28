@@ -22,29 +22,22 @@ class FavoritesViewController: UIViewController {
     
     // MARK: - Dependencies
     
-    private let service: RMCharactersServiceProtocol
+    private let logicController: FavoritesLogicController
+    private let viewControllersFactory: ViewControllersFactoryProtocol
     
     // MARK: - Initialization
     
     init(nibName nibNameOrNil: String?,
          bundle nibBundleOrNil: Bundle?,
-         service: RMCharactersServiceProtocol) {
-        self.service = service
+         logicController: FavoritesLogicController,
+         viewControllersFactory: ViewControllersFactoryProtocol) {
+        self.logicController = logicController
+        self.viewControllersFactory = viewControllersFactory
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - IBActions
-    
-    // MARK: - Properties
-    
-    var favoritedCharacters = [RMCharacter]() {
-        didSet {
-            collectionView.reloadData() 
-        }
     }
     
     private let minimumSpacing: CGFloat = 1
@@ -54,7 +47,11 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCollectionViewCells()
-        loadFavorites()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        logicController.loadFavorites()
     }
     
     // MARK: - UI
@@ -66,17 +63,6 @@ class FavoritesViewController: UIViewController {
         collectionView.register(cellNib, forCellWithReuseIdentifier: className)
     }
     
-    // MARK: - Functions
-    
-    private func loadFavorites() {
-        let database = FavoritesDatabase()
-        favoritedCharacters = try! database.fetchAllFavorites().map { $0.rmCharacter }
-    }
-    
-    // MARK: - Configuration Functions
-    
-    // MARK: - Helper Functions
-    
 }
 
 // MARK: - Extensions
@@ -86,16 +72,16 @@ extension FavoritesViewController: UICollectionViewDataSource {
     // MARK: - Collection View Data Source
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard favoritedCharacters.count > 0 else {
+        if logicController.numberOfFavorites == 0 {
             collectionView.showEmptyView(message: "You have no favorites.")
-            return 0
         }
-        return favoritedCharacters.count
+        return logicController.numberOfFavorites
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCell.className, for: indexPath) as? FavoriteCell else { return UICollectionViewCell() }
-        cell.configure(with: favoritedCharacters[indexPath.item]) 
+        let modelController = logicController.modelController(for: indexPath.item)
+        cell.configure(with: modelController)
         return cell
     }
     
@@ -109,14 +95,9 @@ extension FavoritesViewController: UICollectionViewDelegate {
         
         collectionView.deselectItem(at: indexPath, animated: true)
         
-//        let selectedCharacter = favoritedCharacters[indexPath.item]
-//
-//        let detailsController = CharacterDetailViewController(nibName: CharacterDetailViewController.className,
-//                                                              bundle: Bundle(for: CharacterDetailViewController.self),
-//                                                              service: DependencyInjection.charactersService,
-//                                                              favoritesDatabase: DependencyInjection.favoritesDatabase,
-//                                                              character: selectedCharacter)
-//        navigationController?.pushViewController(detailsController, animated: true)
+        let selectedCharacterModelController = logicController.modelController(for: indexPath.row)
+        let detailController = viewControllersFactory.createDetailsViewController(characterModelController: selectedCharacterModelController)
+        navigationController?.pushViewController(detailController, animated: true)
     
     }
 }
@@ -136,6 +117,21 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return minimumSpacing
+    }
+    
+}
+
+extension FavoritesViewController: FavoritesLogicControllerDelegate {
+    
+    func favoritesListDidUpdate() {
+        DispatchQueue.main.async {
+            self.collectionView.hideEmptyView()
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func databaseFetchDidFailWithError(_ error: Error) {
+        collectionView.showEmptyView(message: "Could not fetch favorites. \n=(")
     }
     
 }

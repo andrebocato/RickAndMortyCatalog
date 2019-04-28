@@ -8,12 +8,12 @@
 
 import Foundation
 
-class RMCharacterModelController {
+class RMCharacterModelController: RMCharacterImageFetcherProtocol {
     
     // MARK: - Dependencies
     
     private let service: ImageServiceProtocol
-    private let favoritesDatabase: FavoritesDatabaseProtocol
+    private var favoritesDatabase: FavoritesDatabaseProtocol
     
     // MARK: - Private Properties
     
@@ -23,13 +23,21 @@ class RMCharacterModelController {
     // MARK: - Public Properties
     
     /// Checks if this character is present on the favorites database.
-    private(set) var isFavorite: Bool = false
+    private(set) var isFavorite: Bool = false {
+        didSet {
+            delegate?.stateDidChange(.favoritePropertyChanged(isFavorite))
+            onFavoriteStateChanged?(isFavorite)
+        }
+    }
     
     // Returns the RMCharacter data
     let character: RMCharacter
     
     /// Delegate to communicate with the model holder.
     weak var delegate: RMCharacterModelControllerDelegate?
+    
+    /// Optional callback for favorite changes
+    var onFavoriteStateChanged: ((_ isFavorite: Bool) -> Void)?
     
     // MARK: - Initialization
     
@@ -67,9 +75,7 @@ class RMCharacterModelController {
     }
     
     /// Adds the model to the favorites database.
-    ///
-    /// - Parameter onSuccess: To be executed after successfully adding to favorites.
-    func addToFavorites(onSuccess: (() -> Void)? = nil) {
+    func addToFavorites() {
         guard let imageData = imageData else {
             delegate?.stateDidChange(.businessError(.couldNotAddToFavorites))
             return
@@ -77,8 +83,7 @@ class RMCharacterModelController {
         
         do {
             try favoritesDatabase.createOrUpdateFavorite(rmCharacter: character, imageData: imageData)
-            updateIsFavoriteValue()
-            onSuccess?()
+            isFavorite = true
         } catch {
             debugPrint(error)
             delegate?.stateDidChange(.businessError(.couldNotAddToFavorites))
@@ -86,13 +91,10 @@ class RMCharacterModelController {
     }
     
     /// Removes the model from the favorites database.
-    ///
-    /// - Parameter onSuccess: To be executed after successfully removing from favorites.
-    func removeFromFavorites(onSuccess: (() -> Void)? = nil) {
+    func removeFromFavorites() {
         do {
             try favoritesDatabase.deleteFavorite(withID: character.id)
-            updateIsFavoriteValue()
-            onSuccess?()
+            isFavorite = false
         } catch {
             debugPrint(error)
             delegate?.stateDidChange(.businessError(.couldNotRemoteFromFavorites))
@@ -128,7 +130,7 @@ class RMCharacterModelController {
         let imageURL = character.image
         requestToken = service.getImageDataFromURL(imageURL) { [weak self] (result) in
             
-            self?.delegate?.stateDidChange(.loadingImage(true))
+            self?.delegate?.stateDidChange(.loadingImage(false))
             
             switch result {
             case .success(let data):

@@ -17,7 +17,7 @@ class CharactersLogicController {
     
     /// Returns the number of fetched characters.
     var numberOfCharacters: Int {
-        return characterModelControllers.count
+        return characters.count
     }
     
     // MARK: - Dependencies
@@ -31,7 +31,7 @@ class CharactersLogicController {
     private var totalPages: Int {
         return charactersResponseInfo?.pages ?? 1
     }
-    private var characterModelControllers: [RMCharacterModelController] = [] {
+    private var characters: [RMCharacter] = [] {
         didSet {
             delegate?.charactersListDidUpdate()
         }
@@ -56,7 +56,7 @@ class CharactersLogicController {
     /// - Parameter row: The row to be worked on.
     /// - Returns: The modelController to the model on the specified row.
     func modelController(for row: Int) -> RMCharacterModelController {
-        return characterModelControllers[row]
+        return modelControllerFactory.createRMCharacterModelController(character: characters[row])
     }
     
     /// Fetches characters from the Network.
@@ -111,16 +111,9 @@ class CharactersLogicController {
     private func handleGetCharactersSuccessResponse(_ response: RMCharacterResponse) {
         charactersResponseInfo = response.info
         
-        let newCharacterModelControllers = response.results.filter({ (rmCharacter) -> Bool in
-            return !characterModelControllers.contains(where: { (rmCharacterController) -> Bool in
-                return rmCharacterController.character.id == rmCharacter.id
-            })
-        }).map { modelControllerFactory.createRMCharacterModelController(character: $0) }
-        
-        characterModelControllers.append(contentsOf: newCharacterModelControllers)
-        characterModelControllers.sort(by: { (characterModelController1, characterModelController2) -> Bool in
-            return characterModelController1.character.id < characterModelController2.character.id
-        })
+        let newCharacters = response.results.filter { !characters.contains($0) }
+        characters.append(contentsOf: newCharacters)
+        characters.sort(by: { $0.id < $1.id })
         
         delegate?.charactersListDidUpdate()
     }

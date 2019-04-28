@@ -73,6 +73,13 @@
 		E50C9DA02272016200588EBC /* RMCharacterModelControllerBusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9D9F2272016200588EBC /* RMCharacterModelControllerBusinessError.swift */; };
 		E50C9DA2227203DB00588EBC /* ModelControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DA1227203DB00588EBC /* ModelControllersFactory.swift */; };
 		E50C9DA72273DFD000588EBC /* ViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DA62273DFD000588EBC /* ViewControllersFactory.swift */; };
+		E50C9DAF2274FD2F00588EBC /* SettingsLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DAE2274FD2F00588EBC /* SettingsLogicController.swift */; };
+		E50C9DB22274FDA000588EBC /* FavoritesDatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DB12274FDA000588EBC /* FavoritesDatabaseProtocol.swift */; };
+		E50C9DB92274FF8400588EBC /* FavoritesLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DB82274FF8400588EBC /* FavoritesLogicController.swift */; };
+		E50C9DC322750FD000588EBC /* DetailLogicControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DC222750FD000588EBC /* DetailLogicControllerDelegate.swift */; };
+		E50C9DC522750FF400588EBC /* DetailLogicControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DC422750FF400588EBC /* DetailLogicControllerState.swift */; };
+		E50C9DC9227521FE00588EBC /* FavoritesLogicControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DC8227521FE00588EBC /* FavoritesLogicControllerDelegate.swift */; };
+		E50C9DCD2275245A00588EBC /* RMCharacterImageFetcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DCC2275245A00588EBC /* RMCharacterImageFetcherProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +178,13 @@
 		E50C9D9F2272016200588EBC /* RMCharacterModelControllerBusinessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterModelControllerBusinessError.swift; sourceTree = "<group>"; };
 		E50C9DA1227203DB00588EBC /* ModelControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelControllersFactory.swift; sourceTree = "<group>"; };
 		E50C9DA62273DFD000588EBC /* ViewControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllersFactory.swift; sourceTree = "<group>"; };
+		E50C9DAE2274FD2F00588EBC /* SettingsLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLogicController.swift; sourceTree = "<group>"; };
+		E50C9DB12274FDA000588EBC /* FavoritesDatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDatabaseProtocol.swift; sourceTree = "<group>"; };
+		E50C9DB82274FF8400588EBC /* FavoritesLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesLogicController.swift; sourceTree = "<group>"; };
+		E50C9DC222750FD000588EBC /* DetailLogicControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLogicControllerDelegate.swift; sourceTree = "<group>"; };
+		E50C9DC422750FF400588EBC /* DetailLogicControllerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLogicControllerState.swift; sourceTree = "<group>"; };
+		E50C9DC8227521FE00588EBC /* FavoritesLogicControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesLogicControllerDelegate.swift; sourceTree = "<group>"; };
+		E50C9DCC2275245A00588EBC /* RMCharacterImageFetcherProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMCharacterImageFetcherProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				65520C2A22737F170095371F /* DetailLogicController.swift */,
+				E50C9DC222750FD000588EBC /* DetailLogicControllerDelegate.swift */,
+				E50C9DC422750FF400588EBC /* DetailLogicControllerState.swift */,
 			);
 			path = LogicController;
 			sourceTree = "<group>";
@@ -393,8 +409,8 @@
 		65912AD6225D08D700F37508 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				65912ADA225D090700F37508 /* SettingsViewController.swift */,
-				6591EFD32270D8E200C7502E /* SettingsViewController.xib */,
+				E50C9DAC2274FD1400588EBC /* ViewController */,
+				E50C9DAB2274FD0B00588EBC /* LogicController */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -402,9 +418,9 @@
 		65912AD7225D08DA00F37508 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				E50C9DB62274FF6900588EBC /* LogicController */,
+				E50C9DA82274FCBC00588EBC /* ViewController */,
 				6591EFCE2270D86000C7502E /* Cells */,
-				65912AD8225D08FC00F37508 /* FavoritesViewController.swift */,
-				6591EFD12270D8D500C7502E /* FavoritesViewController.xib */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -550,7 +566,7 @@
 			isa = PBXGroup;
 			children = (
 				E50C9D912271E32D00588EBC /* Models */,
-				E50C9D7F2270A9AD00588EBC /* FavoritesDatabase.swift */,
+				E50C9DB02274FD8B00588EBC /* FavoritesDatabase */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -577,6 +593,7 @@
 		E50C9D902271E2A700588EBC /* ModelController */ = {
 			isa = PBXGroup;
 			children = (
+				E50C9DCC2275245A00588EBC /* RMCharacterImageFetcherProtocol.swift */,
 				E50C9D892271DEC500588EBC /* RMCharacterModelController.swift */,
 				E50C9D992271F49F00588EBC /* RMCharacterModelControllerDelegate.swift */,
 				E50C9D9B2271F4B000588EBC /* RMCharacterModelControllerState.swift */,
@@ -601,6 +618,50 @@
 				E50C9DA62273DFD000588EBC /* ViewControllersFactory.swift */,
 			);
 			path = Factories;
+			sourceTree = "<group>";
+		};
+		E50C9DA82274FCBC00588EBC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				65912AD8225D08FC00F37508 /* FavoritesViewController.swift */,
+				6591EFD12270D8D500C7502E /* FavoritesViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E50C9DAB2274FD0B00588EBC /* LogicController */ = {
+			isa = PBXGroup;
+			children = (
+				E50C9DAE2274FD2F00588EBC /* SettingsLogicController.swift */,
+			);
+			path = LogicController;
+			sourceTree = "<group>";
+		};
+		E50C9DAC2274FD1400588EBC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				65912ADA225D090700F37508 /* SettingsViewController.swift */,
+				6591EFD32270D8E200C7502E /* SettingsViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E50C9DB02274FD8B00588EBC /* FavoritesDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				E50C9DB12274FDA000588EBC /* FavoritesDatabaseProtocol.swift */,
+				E50C9D7F2270A9AD00588EBC /* FavoritesDatabase.swift */,
+			);
+			path = FavoritesDatabase;
+			sourceTree = "<group>";
+		};
+		E50C9DB62274FF6900588EBC /* LogicController */ = {
+			isa = PBXGroup;
+			children = (
+				E50C9DB82274FF8400588EBC /* FavoritesLogicController.swift */,
+				E50C9DC8227521FE00588EBC /* FavoritesLogicControllerDelegate.swift */,
+			);
+			path = LogicController;
 			sourceTree = "<group>";
 		};
 		F9B56FE2BCAA3347E9DB850A /* Frameworks */ = {
@@ -848,6 +909,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				658032422264FC39000FCAB9 /* FavoriteCell.swift in Sources */,
+				E50C9DCD2275245A00588EBC /* RMCharacterImageFetcherProtocol.swift in Sources */,
 				65912AE5225D1B7500F37508 /* RMCharacter.swift in Sources */,
 				65912AC3225CFD9A00F37508 /* CharactersViewController.swift in Sources */,
 				65912AD9225D08FC00F37508 /* FavoritesViewController.swift in Sources */,
@@ -862,19 +924,24 @@
 				E50C9D7922707E2400588EBC /* CacheService.swift in Sources */,
 				E50C9DA72273DFD000588EBC /* ViewControllersFactory.swift in Sources */,
 				E50C9D802270A9AD00588EBC /* FavoritesDatabase.swift in Sources */,
+				E50C9DC9227521FE00588EBC /* FavoritesLogicControllerDelegate.swift in Sources */,
 				E50C9D59226F618000588EBC /* RMCharactersServiceMock.swift in Sources */,
 				E50C9D4B226F4ADE00588EBC /* URLRequestAdapter.swift in Sources */,
 				E50C9D49226F4AD300588EBC /* URLRequestParameters.swift in Sources */,
 				65912ADB225D090700F37508 /* SettingsViewController.swift in Sources */,
 				E50C9D9C2271F4B000588EBC /* RMCharacterModelControllerState.swift in Sources */,
+				E50C9DAF2274FD2F00588EBC /* SettingsLogicController.swift in Sources */,
 				65912AB5225CF45100F37508 /* AlertHelper.swift in Sources */,
 				E50C9D41226F4A9A00588EBC /* URLSessionDispatcher.swift in Sources */,
 				E50C9D942271E34E00588EBC /* RealmFavoriteCharacter.swift in Sources */,
 				E50C9DA02272016200588EBC /* RMCharacterModelControllerBusinessError.swift in Sources */,
 				E50C9CC2226DF6FB00588EBC /* RMCharacterResponse.swift in Sources */,
+				E50C9DC322750FD000588EBC /* DetailLogicControllerDelegate.swift in Sources */,
 				E50C9D63226FE02C00588EBC /* SimpleURLRequest.swift in Sources */,
 				E50C9D7B22707F8B00588EBC /* String+Encription.swift in Sources */,
+				E50C9DB22274FDA000588EBC /* FavoritesDatabaseProtocol.swift in Sources */,
 				E50C9D5F226FD66D00588EBC /* DependencyInjection.swift in Sources */,
+				E50C9DB92274FF8400588EBC /* FavoritesLogicController.swift in Sources */,
 				E50C9D9A2271F49F00588EBC /* RMCharacterModelControllerDelegate.swift in Sources */,
 				6576A3922266370A00571620 /* UIViewLoadable.swift in Sources */,
 				65520C2B22737F170095371F /* DetailLogicController.swift in Sources */,
@@ -890,6 +957,7 @@
 				65912B0D225D35A600F37508 /* RMCharactersService.swift in Sources */,
 				E50C9D8A2271DEC500588EBC /* RMCharacterModelController.swift in Sources */,
 				E50C9D842271616A00588EBC /* CharactersLogicController.swift in Sources */,
+				E50C9DC522750FF400588EBC /* DetailLogicControllerState.swift in Sources */,
 				E50C9D7622707D3500588EBC /* ImageService.swift in Sources */,
 				E50C9D5C226F874F00588EBC /* DetailViewController.swift in Sources */,
 				E50C9D6F226FEEE700588EBC /* CharacterCell.swift in Sources */,

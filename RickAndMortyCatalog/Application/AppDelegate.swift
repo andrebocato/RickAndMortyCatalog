@@ -69,19 +69,24 @@ extension AppDelegate {
         
         // FavoritesViewController
         // @TODO: Use Factory pattern
+        let favoritesLogicController = FavoritesLogicController(database: DependencyInjection.favoritesDatabase,
+                                                                modelControllerFactory: self)
         let favoritesViewController = FavoritesViewController(nibName: FavoritesViewController.className,
                                                               bundle: Bundle(for: FavoritesViewController.self),
-                                                              service: DependencyInjection.charactersService)
+                                                              logicController: favoritesLogicController,
+                                                              viewControllersFactory: self)
         favoritesViewController.title = "Favorites"
-        favoritesViewController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorited"), tag: 0)
+        favoritesViewController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorited"), tag: 1)
         let favoritesNavigationController = UINavigationController(rootViewController: favoritesViewController)
         
         // SettingsViewController
         // @TODO: Use Factory pattern
+        let settingsLogicController = SettingsLogicController(favoritesDatabase: DependencyInjection.favoritesDatabase)
         let settingsViewController = SettingsViewController(nibName: SettingsViewController.className,
-                                                            bundle: Bundle(for: SettingsViewController.self))
+                                                            bundle: Bundle(for: SettingsViewController.self),
+                                                            logicController: settingsLogicController)
         settingsViewController.title = "Settings"
-        settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 0)
+        settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 2)
         let settingsNavigationController = UINavigationController(rootViewController: settingsViewController)
         
         // UITabBarController

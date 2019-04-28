@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     
     // MARK: - Dependencies
     
-    private let logicController: DetailLogicController
+    private var logicController: DetailLogicController
     
     // MARK: - IBOutlets
     
@@ -45,6 +45,7 @@ class DetailViewController: UIViewController {
          logicController: DetailLogicController) {
         self.logicController = logicController
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.logicController.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -56,12 +57,12 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createBarButtonItem()
-        setupViewData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.toolbar.isHidden = true
+        setupViewData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,12 +75,12 @@ class DetailViewController: UIViewController {
     private func createBarButtonItem() {
         let barButtonItem = UIBarButtonItem(image:  UIImage(named: "unfavorited"), style: .done, target: self, action: #selector(toggleFavoriteBarButtonItemDidReceiveTouchUpInside(_:)))
         navigationItem.rightBarButtonItem = barButtonItem
-        updateBarButtonImage(barButtonItem)
     }
     
     private func setupViewData() {
         setupImageView()
         setupLabelsText()
+        updateBarButtonImage()
     }
     
     private func setupImageView() {
@@ -104,17 +105,42 @@ class DetailViewController: UIViewController {
         locationLabel.text = logicController.character.location.name
     }
     
-    private func updateBarButtonImage(_ button: UIBarButtonItem) {
+    private func updateBarButtonImage() {
+        guard let barButtonItem = navigationItem.rightBarButtonItem else { return }
         let buttonImageName = logicController.isFavoriteCharacter ? "favorited" : "unfavorited"
-        let favoriteButtonImage = UIImage(named: buttonImageName)
-        button.image = favoriteButtonImage
+        barButtonItem.image = UIImage(named: buttonImageName)
     }
     
     // MARK: - Actions
     
     @objc private func toggleFavoriteBarButtonItemDidReceiveTouchUpInside(_ sender: UIBarButtonItem) {
-        logicController.toggleFavorite { [weak self] in
-            self?.updateBarButtonImage(sender)
+        logicController.toggleFavorite()
+    }
+    
+}
+
+extension DetailViewController: DetailLogicControllerDelegate {
+    
+    func favoriteStateChanged(_ isFavorite: Bool) {
+        updateBarButtonImage()
+    }
+    
+    func stateDidChange(_ newState: DetailLogicControllerState) {
+        switch newState {
+        case .error(let e): handleError(e)
+        case .loadingImage(let value): handleLoadingImageState(value)
+        }
+    }
+    
+    // MARK: - State Handlers
+    
+    private func handleLoadingImageState(_ loading: Bool) {
+        loading ? imageView.startLoading() : imageView.stopLoading()
+    }
+    
+    private func handleError(_ error: Error) {
+        AlertHelper.showAlert(inController: self, title: "Error!", message: error.localizedDescription) { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
         }
     }
     

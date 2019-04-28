@@ -73,16 +73,21 @@ extension CharacterCell: RMCharacterModelControllerDelegate {
 
     // MARK: - RMCharacter Model Controller Delegate
     
+    func allCharactersWereDeleted() {
+        setupUI()
+    }
+    
     func stateDidChange(_ newState: RMCharacterModelControllerState) {
         switch newState {
         case .loadingImage(let value): handleLoadingImageState(value)
         case .businessError(let error): handleBusinessError(error)
+        default: return
         }
     }
     
     private func handleLoadingImageState(_ loading: Bool) {
         DispatchQueue.main.async {
-//            loading ? self.cellImageView.startLoading() : self.cellImageView.startLoading()
+            loading ? self.cellImageView.startLoading(style: .white) : self.cellImageView.stopLoading()
         }
     }
     

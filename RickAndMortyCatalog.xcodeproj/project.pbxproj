@@ -229,6 +229,7 @@
 		653748602264E19F00AC910E /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				65520C2922737F020095371F /* LogicController */,
 				65520C2122734F6A0095371F /* ViewController */,
 			);
 			path = Detail;
@@ -401,7 +402,6 @@
 			children = (
 				6537485F2264E19800AC910E /* Character */,
 				653748602264E19F00AC910E /* Detail */,
-				65520C2922737F020095371F /* LogicController */,
 			);
 			path = Characters;
 			sourceTree = "<group>";

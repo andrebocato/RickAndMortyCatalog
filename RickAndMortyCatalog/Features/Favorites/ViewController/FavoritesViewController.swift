@@ -77,7 +77,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
         }
         return logicController.numberOfFavorites
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCell.className, for: indexPath) as? FavoriteCell else { return UICollectionViewCell() }
         let modelController = logicController.modelController(for: indexPath.item)

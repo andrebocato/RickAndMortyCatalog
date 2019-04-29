@@ -62,12 +62,14 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.toolbar.isHidden = true
+        navigationController?.tabBarController?.tabBar.isHidden = true
         setupViewData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.toolbar.isHidden = false
+        navigationController?.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - UI

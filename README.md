@@ -13,4 +13,5 @@
 
 ## API and Persistence
 * The data used in the app comes from the [Rick And Morty API](https://rickandmortyapi.com) and it is persisted through [Realm](https://realm.io).
-* [CocoaPods](https://cocoapods.org) needs to installed in order to use Realm.
+* [CocoaPods](https://cocoapods.org) needs to be installed in order to use Realm.
+* The documentation and guide for utilizing those tools can be found on their websites, linked above.

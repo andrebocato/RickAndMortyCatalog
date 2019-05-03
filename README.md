@@ -15,3 +15,14 @@
 * The data used in the app comes from the [Rick And Morty API](https://rickandmortyapi.com) and it is persisted through [Realm](https://realm.io).
 * [CocoaPods](https://cocoapods.org) needs to be installed in order to use Realm.
 * The documentation and guide for utilizing those tools can be found on their websites, linked above.
+
+## Known bugs
+* Loading view on characters list not centered.
+* Images on characters list are being placed over the last ones, new ones should be loaded.
+
+## TODOs
+* Fix known bugs.
+* Add dark theme.
+* Add "Episodes" list.
+* Add "Locations" list.
+* Add long gesture recognizers for characters list and favorites.

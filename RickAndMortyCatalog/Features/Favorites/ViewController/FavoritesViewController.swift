@@ -73,7 +73,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if logicController.numberOfFavorites == 0 {
-            collectionView.showEmptyView(message: "You have no favorites.")
+            view.showEmptyView(message: "You have no favorites.")
         }
         return logicController.numberOfFavorites
     }
@@ -125,13 +125,13 @@ extension FavoritesViewController: FavoritesLogicControllerDelegate {
     
     func favoritesListDidUpdate() {
         DispatchQueue.main.async {
-            self.collectionView.hideEmptyView()
+            self.view.hideEmptyView()
             self.collectionView.reloadData()
         }
     }
     
     func databaseFetchDidFailWithError(_ error: Error) {
-        collectionView.showEmptyView(message: "Could not fetch favorites. \n=(")
+        view.showEmptyView(message: "Could not fetch favorites. \n=(")
     }
     
 }

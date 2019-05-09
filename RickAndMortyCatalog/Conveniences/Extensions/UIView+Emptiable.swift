@@ -1,5 +1,5 @@
 //
-//  UViewEmptiable.swift
+//  UView+Emptiable.swift
 //  RickAndMortyCatalog
 //
 //  Created by Andre Sanches Bocato on 16/04/19.
@@ -8,13 +8,17 @@
 
 import UIKit
 
+// MARK: - Protocols
+
 protocol EmptiableView { }
+
+// MARK: - Tags
 
 fileprivate let emptyViewTag = 222
 
+// MARK: - Emptiable View
+
 extension UIView: EmptiableView {
-    
-    // MARK: - Functions
     
     /// Shows a subview indicating the view is empty.
     ///

@@ -78,7 +78,7 @@ extension CharactersViewController: UITableViewDataSource {
         
         let modelController = logicController.modelController(for: indexPath.row)
         cell.configure(with: modelController, onFavoriteErrorCallBack: { [weak self] (error) in
-            AlertHelper.showAlert(inController: self, title: "Persistence Error!", message: error.localizedDescription)
+            AlertHelper.presentAlert(inController: self, title: "Persistence Error!", message: error.localizedDescription)
         })
         
         return cell
@@ -146,7 +146,7 @@ extension CharactersViewController: CharactersLogicControllerDelegate {
     }
     
     private func handleServiceError(_ error: ServiceError) {
-        AlertHelper.showAlert(inController: self, title: "Service Error!", message: error.localizedDescription)
+        AlertHelper.presentAlert(inController: self, title: "Service Error!", message: error.localizedDescription)
     }
     
 }

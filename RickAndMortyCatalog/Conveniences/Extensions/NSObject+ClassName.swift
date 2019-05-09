@@ -1,5 +1,5 @@
 //
-//  NSObjectExtension.swift
+//  NSObject+ClassName.swift
 //  RickAndMortyCatalog
 //
 //  Created by Andre Sanches Bocato on 23/04/19.

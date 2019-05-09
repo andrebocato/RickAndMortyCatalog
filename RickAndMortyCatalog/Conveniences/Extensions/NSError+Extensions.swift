@@ -1,5 +1,5 @@
 //
-//  NSErrorExtensions.swift
+//  NSError+Extensions.swift
 //  RickAndMortyCatalog
 //
 //  Created by Andre Sanches Bocato on 23/04/19.

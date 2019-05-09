@@ -11,7 +11,7 @@ import UIKit
 /// This is an abstract factory for view controllers.
 protocol ViewControllersFactoryProtocol {
 
-    /// Creates a configured instance of  a DetailViewController.
+    /// Creates a configured instance of a DetailViewController.
     ///
     /// - Parameter characterModelController: A model controller for the character.
     /// - Returns: A configured DetailViewController.
@@ -32,8 +32,8 @@ protocol ViewControllersFactoryProtocol {
     /// - Returns: A configured SettingsViewController.
     func createSettingsViewController() ->  SettingsViewController
     
-    /// Creates our TabBarController (applications root controller)
+    /// Creates a TabBarController (applications root controller).
     ///
-    /// - Returns: A configured instance of TabBarController.
+    /// - Returns: A configured instance of a TabBarController.
     func createTabBarController() -> UITabBarController
 }

@@ -1,5 +1,5 @@
 //
-//  UIViewLoadable.swift
+//  UIView+Loadable.swift
 //  RickAndMortyCatalog
 //
 //  Created by Andre Sanches Bocato on 16/04/19.
@@ -8,15 +8,21 @@
 
 import UIKit
 
+// MARK: - Protocols
+
 protocol LoadableView { }
+
+// MARK: - Tags
 
 fileprivate let loadingViewTag = 111
 
+//MARK: - Loadable View
+
 extension UIView: LoadableView {
-        
-    // MARK: - Functions
     
     /// Presents a subview with an activity indicator in the middle.
+    ///
+    /// - Parameter style: Style of the activity indicator, 'whiteLarge' by default...
     func startLoading(style: UIActivityIndicatorView.Style = .whiteLarge) {
         
         let loadingView = UIView(frame: frame)

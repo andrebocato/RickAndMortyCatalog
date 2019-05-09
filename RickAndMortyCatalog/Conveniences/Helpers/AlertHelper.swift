@@ -24,11 +24,11 @@ class AlertHelper {
     ///   - message: Optional message to be displayed in the alert.
     ///   - rightAction: Main action of the alert.
     ///   - completionHandler: Closure to be executed right after presenting the alert.
-    static func showAlert(inController controller: UIViewController?,
-                          title: String,
-                          message: String?,
-                          rightAction: UIAlertAction,
-                          completionHandler: (() -> Void)? = nil) {
+    static func presentAlert(inController controller: UIViewController?,
+                             title: String,
+                             message: String?,
+                             rightAction: UIAlertAction,
+                             completionHandler: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -52,10 +52,10 @@ class AlertHelper {
     ///   - title: Title to be displayed in the alert.
     ///   - message: Optional message to be displayed in the alert.
     ///   - completionHandler: Closure to be executed right after presenting the alert.
-    static func showAlert(inController controller: UIViewController?,
-                          title: String,
-                          message: String?,
-                          completionHandler: (() -> Void)? = nil) {
+    static func presentAlert(inController controller: UIViewController?,
+                             title: String,
+                             message: String?,
+                             completionHandler: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         

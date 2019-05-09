@@ -45,11 +45,11 @@ class SettingsViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction private func deleteAllFavoritesButtonDidReceiveTouchUpInside(_ sender: Any) {
-        AlertHelper.showAlert(inController: self, title: "Deleting favorites", message: "Are you sure you want to delete all your favorited characters? This action can't be undone.", rightAction: UIAlertAction(title: "Delete", style: .destructive, handler: nil)) { [weak self] in
+        AlertHelper.presentAlert(inController: self, title: "Deleting favorites", message: "Are you sure you want to delete all your favorited characters? This action can't be undone.", rightAction: UIAlertAction(title: "Delete", style: .destructive, handler: nil)) { [weak self] in
             self?.logicController.deleteAllFavorites { [weak self] (result) in
                 switch result {
                 case .failure(let error):
-                    AlertHelper.showAlert(inController: self, title: "Error!", message: error.localizedDescription)
+                    AlertHelper.presentAlert(inController: self, title: "Error!", message: error.localizedDescription)
                 default: return
                 }
             }

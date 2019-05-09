@@ -22,7 +22,7 @@ class RealmFavoriteCharacter: Object {
     /// Initializes a favorite from an RMCharacter and its image.
     ///
     /// - Parameters:
-    ///   - character: A RMCharacter.
+    ///   - rmCharacter: A RMCharacter.
     ///   - imageData: The character's image data.
     convenience init(rmCharacter: RMCharacter,
                      imageData: Data) {

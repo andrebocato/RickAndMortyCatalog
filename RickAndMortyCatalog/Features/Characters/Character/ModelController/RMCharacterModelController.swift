@@ -100,7 +100,7 @@ class RMCharacterModelController: RMCharacterImageFetcherProtocol {
             isFavorite = false
         } catch {
             debugPrint(error)
-            delegate?.stateDidChange(.businessError(.couldNotRemoteFromFavorites))
+            delegate?.stateDidChange(.businessError(.couldNotRemoveFromFavorites))
         }
     }
     

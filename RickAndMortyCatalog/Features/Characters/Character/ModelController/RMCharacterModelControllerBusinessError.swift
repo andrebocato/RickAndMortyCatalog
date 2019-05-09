@@ -12,12 +12,12 @@ import Foundation
 enum RMCharacterModelControllerBusinessError: Error {
     
     case couldNotAddToFavorites
-    case couldNotRemoteFromFavorites
+    case couldNotRemoveFromFavorites
     
     var localizedDescription: String {
         switch self {
         case .couldNotAddToFavorites: return "Could not add to Favorites."
-        case .couldNotRemoteFromFavorites: return "Could not remove from Favorites."
+        case .couldNotRemoveFromFavorites: return "Could not remove from Favorites."
         }
     }
     

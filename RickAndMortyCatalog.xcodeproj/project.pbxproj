@@ -30,6 +30,8 @@
 		6591EFD02270D8C300C7502E /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6591EFCF2270D8C300C7502E /* FavoriteCell.xib */; };
 		6591EFD22270D8D500C7502E /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6591EFD12270D8D500C7502E /* FavoritesViewController.xib */; };
 		65A26C0E2284A61400FC824E /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A26C0D2284A61400FC824E /* PersistenceError.swift */; };
+		65A26C122284B49F00FC824E /* shlop rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C112284B49F00FC824E /* shlop rg.ttf */; };
+		65A26C162284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C152284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png */; };
 		BFDB456DD162690DBC06803E /* Pods_RickAndMortyCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40580FF8463F851878A0EA2 /* Pods_RickAndMortyCatalogTests.framework */; };
 		E50C9CBE226DF29700588EBC /* GetCharacterMock.json in Resources */ = {isa = PBXBuildFile; fileRef = E50C9CBD226DF29700588EBC /* GetCharacterMock.json */; };
 		E50C9CC0226DF67400588EBC /* RMCharacterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9CBF226DF67400588EBC /* RMCharacterInfo.swift */; };
@@ -137,6 +139,9 @@
 		6591EFCF2270D8C300C7502E /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
 		6591EFD12270D8D500C7502E /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
 		65A26C0D2284A61400FC824E /* PersistenceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceError.swift; sourceTree = "<group>"; };
+		65A26C112284B49F00FC824E /* shlop rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "shlop rg.ttf"; sourceTree = "<group>"; };
+		65A26C152284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rick-And-Morty-PNG-Transparent-Image.png"; sourceTree = "<group>"; };
+		65A26C172284BD4F00FC824E /* Cartoon Toy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cartoon Toy.ttf"; sourceTree = "<group>"; };
 		A40580FF8463F851878A0EA2 /* Pods_RickAndMortyCatalogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RickAndMortyCatalogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06B783FBB9B2ED15594D8F1 /* Pods-RickAndMortyCatalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalog.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalog/Pods-RickAndMortyCatalog.debug.xcconfig"; sourceTree = "<group>"; };
 		C82754B62518529268BB6207 /* Pods-RickAndMortyCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalogTests.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalogTests/Pods-RickAndMortyCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -445,6 +450,15 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		65A26C102284B47E00FC824E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				65A26C112284B49F00FC824E /* shlop rg.ttf */,
+				65A26C172284BD4F00FC824E /* Cartoon Toy.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		9AC5C3F3DE8E1EAF447C82EA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,7 +475,9 @@
 		E50C9CBB226DEFE300588EBC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				65A26C102284B47E00FC824E /* Fonts */,
 				E50C9CBC226DF27000588EBC /* MockJSONs */,
+				65A26C152284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png */,
 				65912A82225CF1C500F37508 /* Assets.xcassets */,
 				65912A84225CF1C500F37508 /* LaunchScreen.storyboard */,
 			);
@@ -810,9 +826,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A26C162284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png in Resources */,
 				E50C9D65226FE51900588EBC /* CharactersViewController.xib in Resources */,
 				E50C9DDB2275D51800588EBC /* SettingsViewController.xib in Resources */,
 				6591EFD02270D8C300C7502E /* FavoriteCell.xib in Resources */,
+				65A26C122284B49F00FC824E /* shlop rg.ttf in Resources */,
 				65912A86225CF1C500F37508 /* LaunchScreen.storyboard in Resources */,
 				65912A83225CF1C500F37508 /* Assets.xcassets in Resources */,
 				6591EFD22270D8D500C7502E /* FavoritesViewController.xib in Resources */,

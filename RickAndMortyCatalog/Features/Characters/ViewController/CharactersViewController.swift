@@ -68,7 +68,7 @@ class CharactersViewController: UIViewController {
 extension CharactersViewController: UITableViewDataSource {
     
     // MARK: - Table View Data Source
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return logicController.numberOfCharacters
     }

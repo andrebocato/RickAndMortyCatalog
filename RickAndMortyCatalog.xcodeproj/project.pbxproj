@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1686156EAEDFD7974B12CAF9 /* Pods_RickAndMortyCatalogUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3EF03A9023914565E5C8AE /* Pods_RickAndMortyCatalogUITests.framework */; };
 		3995102BC0AFEF307FE69EEA /* Pods_RickAndMortyCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2791398DF094DC4A4D9CB139 /* Pods_RickAndMortyCatalog.framework */; };
+		650B02042285C351005F5F2E /* Cartoon Toy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C172284BD4F00FC824E /* Cartoon Toy.ttf */; };
 		65520C2B22737F170095371F /* DetailLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65520C2A22737F170095371F /* DetailLogicController.swift */; };
 		6576A3922266370A00571620 /* UIView+Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3912266370A00571620 /* UIView+Loadable.swift */; };
 		6576A3962266413200571620 /* UIView+Emptiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3952266413200571620 /* UIView+Emptiable.swift */; };
@@ -826,6 +827,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				650B02042285C351005F5F2E /* Cartoon Toy.ttf in Resources */,
 				65A26C162284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png in Resources */,
 				E50C9D65226FE51900588EBC /* CharactersViewController.xib in Resources */,
 				E50C9DDB2275D51800588EBC /* SettingsViewController.xib in Resources */,

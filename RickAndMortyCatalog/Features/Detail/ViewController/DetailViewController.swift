@@ -28,7 +28,11 @@ class DetailViewController: UIViewController {
     @IBOutlet private weak var originNameFixedLabel: UILabel!
     @IBOutlet private weak var locationNameFixedLabel: UILabel!
     
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: UIImageView! {
+        didSet {
+            imageView.layer.cornerRadius = 8.0
+        }
+    }
     @IBOutlet private weak var idLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var statusLabel: UILabel!

@@ -22,7 +22,7 @@ extension UIView: LoadableView {
     
     /// Presents a subview with an activity indicator in the middle.
     ///
-    /// - Parameter style: Style of the activity indicator, 'whiteLarge' by default...
+    /// - Parameter style: Style of the activity indicator, 'whiteLarge' by default.
     func startLoading(style: UIActivityIndicatorView.Style = .whiteLarge) {
         
         let loadingView = UIView(frame: frame)
@@ -34,7 +34,7 @@ extension UIView: LoadableView {
         let activityIndicator = UIActivityIndicatorView(style: style)
         activityIndicator.startAnimating()
         activityIndicator.color = .black
-        activityIndicator.center = loadingView.center
+        activityIndicator.center = center
         
         DispatchQueue.main.async {
             self.isUserInteractionEnabled = false

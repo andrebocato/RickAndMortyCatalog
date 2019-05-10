@@ -30,6 +30,7 @@ class CharacterCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        cellImageView.image = UIImage()
         modelController.cancelImageRequest()
     }
     

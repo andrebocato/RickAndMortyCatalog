@@ -23,9 +23,6 @@
 ## TODOs
 * Fix known bugs.
 * Add dark theme.
-* Add "Episodes" list.
-* Add "Locations" list.
 * Add long gesture recognizers for characters list and favorites.
-
-
-.
+* Add haptic feedback.
+* Add loading animation in pagination.

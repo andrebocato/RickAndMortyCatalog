@@ -102,13 +102,11 @@ extension CharactersViewController: UITableViewDelegate {
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         tableView.deselectRow(at: indexPath, animated: true)
         
         let selectedCharacterModelController = logicController.modelController(for: indexPath.row)
         let detailController = viewControllersFactory.createDetailsViewController(characterModelController: selectedCharacterModelController)
         navigationController?.pushViewController(detailController, animated: true)
-        
     }
     
 }

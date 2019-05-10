@@ -79,7 +79,11 @@ class DetailViewController: UIViewController {
     // MARK: - UI
     
     private func createBarButtonItem() {
-        let barButtonItem = UIBarButtonItem(image:  UIImage(named: "unfavorited"), style: .done, target: self, action: #selector(toggleFavoriteBarButtonItemDidReceiveTouchUpInside(_:)))
+        let barButtonItem = UIBarButtonItem(image: UIImage(named: "unfavorited"),
+                                            style: .done,
+                                            target: self,
+                                            action: #selector(toggleFavoriteBarButtonItemDidReceiveTouchUpInside(_:)))
+        
         navigationItem.rightBarButtonItem = barButtonItem
     }
     

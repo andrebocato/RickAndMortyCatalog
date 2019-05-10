@@ -38,7 +38,7 @@ class DetailLogicController {
     
     // MARK: - Functions
     
-    /// Toggle the character as favorite
+    /// Toggles or untoggles the character's favorite state.
     func toggleFavorite() {
         if modelController.isFavorite {
             modelController.removeFromFavorites()

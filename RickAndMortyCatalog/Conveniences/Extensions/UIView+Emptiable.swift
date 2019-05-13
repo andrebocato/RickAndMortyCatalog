@@ -8,17 +8,13 @@
 
 import UIKit
 
-// MARK: - Protocols
-
-protocol EmptiableView { }
-
 // MARK: - Tags
 
 fileprivate let emptyViewTag = 222
 
 // MARK: - Emptiable View
 
-extension UIView: EmptiableView {
+extension UIView {
     
     /// Shows a subview indicating the view is empty.
     ///

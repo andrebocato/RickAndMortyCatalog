@@ -16,18 +16,18 @@ class SettingsLogicController {
     
     // MARK: - Initialization
     
-    /// Initializes the logic controller with its dependencies
+    /// Initializes the logic controller with its dependencies.
     ///
-    /// - Parameter favoritesDatabase: a favorites database instance
+    /// - Parameter favoritesDatabase: A favorites database instance.
     init(favoritesDatabase: FavoritesDatabaseProtocol) {
         self.favoritesDatabase = favoritesDatabase
     }
     
     // MARK: - Functions
     
-    /// Deletes all the favorites
+    /// Deletes all the favorites.
     ///
-    /// - Parameter completion: returns a result, for success or error
+    /// - Parameter completion: Returns a result with success and error.
     func deleteAllFavorites(completion: ((_ result: Result<Void, Error>) -> Void)? = nil) {
         do {
             try favoritesDatabase.deleteAll()

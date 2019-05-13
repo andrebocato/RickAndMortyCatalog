@@ -8,17 +8,13 @@
 
 import UIKit
 
-// MARK: - Protocols
-
-protocol LoadableView { }
-
 // MARK: - Tags
 
 fileprivate let loadingViewTag = 111
 
-//MARK: - Loadable View
+// MARK: - Loadable View
 
-extension UIView: LoadableView {
+extension UIView {
     
     /// Presents a subview with an activity indicator in the middle.
     ///

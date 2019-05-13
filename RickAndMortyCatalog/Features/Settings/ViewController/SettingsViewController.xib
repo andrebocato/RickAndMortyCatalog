@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="RickAndMortyCatalog" customModuleProvider="target">
             <connections>
-                <outlet property="clearFavoritesButton" destination="p6L-IV-nx9" id="yE1-8D-pGP"/>
+                <outlet property="tableView" destination="0VP-hq-Oqh" id="S7f-4M-tis"/>
                 <outlet property="view" destination="iN0-l3-epB" id="PBD-jK-lh4"/>
             </connections>
         </placeholder>
@@ -21,20 +21,17 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6L-IV-nx9">
-                    <rect key="frame" x="20" y="64" width="127" height="30"/>
-                    <state key="normal" title="Delete all favorites">
-                        <color key="titleColor" red="0.99607843139999996" green="0.18823529410000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="deleteAllFavoritesButtonDidReceiveTouchUpInside:" destination="-1" eventType="touchUpInside" id="REM-8C-roc"/>
-                    </connections>
-                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="0VP-hq-Oqh">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="p6L-IV-nx9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="1P0-YG-lNJ"/>
-                <constraint firstItem="p6L-IV-nx9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="kYm-dn-sEy"/>
+                <constraint firstItem="0VP-hq-Oqh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7PC-HL-i43"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0VP-hq-Oqh" secondAttribute="trailing" id="jhm-YG-MHg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0VP-hq-Oqh" secondAttribute="bottom" id="tEF-a8-DfQ"/>
+                <constraint firstItem="0VP-hq-Oqh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ucX-x1-emT"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>

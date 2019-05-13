@@ -31,6 +31,9 @@
 		65912B0D225D35A600F37508 /* RMCharactersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912B0C225D35A600F37508 /* RMCharactersService.swift */; };
 		6591EFD02270D8C300C7502E /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6591EFCF2270D8C300C7502E /* FavoriteCell.xib */; };
 		6591EFD22270D8D500C7502E /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6591EFD12270D8D500C7502E /* FavoritesViewController.xib */; };
+		65959DC92289E5B100D792DB /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65959DC82289E5B100D792DB /* Themes.swift */; };
+		65959DE3228A07E600D792DB /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65959DE1228A07E600D792DB /* Cell.swift */; };
+		65959DE4228A07E600D792DB /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65959DE2228A07E600D792DB /* Cell.xib */; };
 		65A26C0E2284A61400FC824E /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A26C0D2284A61400FC824E /* PersistenceError.swift */; };
 		65A26C122284B49F00FC824E /* shlop rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C112284B49F00FC824E /* shlop rg.ttf */; };
 		65A26C162284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C152284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png */; };
@@ -141,6 +144,9 @@
 		65912B0C225D35A600F37508 /* RMCharactersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharactersService.swift; sourceTree = "<group>"; };
 		6591EFCF2270D8C300C7502E /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
 		6591EFD12270D8D500C7502E /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
+		65959DC82289E5B100D792DB /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		65959DE1228A07E600D792DB /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		65959DE2228A07E600D792DB /* Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
 		65A26C0D2284A61400FC824E /* PersistenceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceError.swift; sourceTree = "<group>"; };
 		65A26C112284B49F00FC824E /* shlop rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "shlop rg.ttf"; sourceTree = "<group>"; };
 		65A26C152284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rick-And-Morty-PNG-Transparent-Image.png"; sourceTree = "<group>"; };
@@ -329,6 +335,7 @@
 		65912AAB225CF2C600F37508 /* Conveniences */ = {
 			isa = PBXGroup;
 			children = (
+				65959DC72289E5A200D792DB /* Themes */,
 				E50C9D7722707E1900588EBC /* Cache */,
 				E50C9D33226F49D000588EBC /* Networking */,
 				65912AB8225CF48000F37508 /* Enums */,
@@ -442,6 +449,23 @@
 			children = (
 				658032412264FC39000FCAB9 /* FavoriteCell.swift */,
 				6591EFCF2270D8C300C7502E /* FavoriteCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		65959DC72289E5A200D792DB /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				65959DC82289E5B100D792DB /* Themes.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
+		65959DDC2289FF0100D792DB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				65959DE1228A07E600D792DB /* Cell.swift */,
+				65959DE2228A07E600D792DB /* Cell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -670,8 +694,9 @@
 		E50C9DD42275D4CF00588EBC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E50C9DD62275D4DD00588EBC /* LogicController */,
 				E50C9DD52275D4DB00588EBC /* ViewController */,
+				E50C9DD62275D4DD00588EBC /* LogicController */,
+				65959DDC2289FF0100D792DB /* Cells */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -833,6 +858,7 @@
 				650B02042285C351005F5F2E /* Cartoon Toy.ttf in Resources */,
 				65A26C162284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png in Resources */,
 				E50C9D65226FE51900588EBC /* CharactersViewController.xib in Resources */,
+				65959DE4228A07E600D792DB /* Cell.xib in Resources */,
 				E50C9DDB2275D51800588EBC /* SettingsViewController.xib in Resources */,
 				6504A7B62285CF7C00880D5F /* README.md in Resources */,
 				6591EFD02270D8C300C7502E /* FavoriteCell.xib in Resources */,
@@ -973,6 +999,7 @@
 				E50C9D56226F5BB700588EBC /* ServiceError.swift in Sources */,
 				E50C9D982271E7D200588EBC /* FavoriteCharacter.swift in Sources */,
 				E50C9D47226F4AC800588EBC /* HTTPMethod.swift in Sources */,
+				65959DC92289E5B100D792DB /* Themes.swift in Sources */,
 				E50C9DD82275D50600588EBC /* SettingsLogicController.swift in Sources */,
 				E50C9CC0226DF67400588EBC /* RMCharacterInfo.swift in Sources */,
 				E50C9D7922707E2400588EBC /* CacheService.swift in Sources */,
@@ -1016,6 +1043,7 @@
 				E50C9D7622707D3500588EBC /* ImageService.swift in Sources */,
 				E50C9D5C226F874F00588EBC /* DetailViewController.swift in Sources */,
 				E50C9D6F226FEEE700588EBC /* CharacterCell.swift in Sources */,
+				65959DE3228A07E600D792DB /* Cell.swift in Sources */,
 				E50C9D862271618600588EBC /* CharactersLogicControllerDelegate.swift in Sources */,
 				E50C9D9E2271F4D300588EBC /* CharactersLogicControllerState.swift in Sources */,
 				E50C9D35226F4A0100588EBC /* NSError+Extensions.swift in Sources */,

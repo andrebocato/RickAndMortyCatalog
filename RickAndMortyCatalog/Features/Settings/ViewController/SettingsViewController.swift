@@ -23,7 +23,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
-//            tableView.delegate = self
+            tableView.delegate = self
         }
     }
     
@@ -67,8 +67,8 @@ class SettingsViewController: UIViewController {
     // MARK: - UI Setup
     
     private func registerTableViewCells() {
-        let bundle = Bundle(for: Cell.self)
-        let className = Cell.className
+        let bundle = Bundle(for: DestructiveCell.self)
+        let className = DestructiveCell.className
         let cellNib = UINib(nibName: className, bundle: bundle)
         tableView.register(cellNib, forCellReuseIdentifier: className)
         
@@ -119,10 +119,24 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // @TODO: implement case for each setting
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.className, for: indexPath)
-        cell.textLabel?.text = settings[indexPath.section][indexPath.row]
-        return cell
+        switch (indexPath.section, indexPath.row) {
+        case (0, 0): return DestructiveCell().configured(as: .deleteAll)
+        case (1, 0): return SwitchCell().configured(as: .darkTheme)
+        case (2, 0): return ExternalLinkCell().configured(as: .githubRepo)
+        case (2, 1): return ExternalLinkCell().configured(as: .apiDocumentation)
+        default: return UITableViewCell()
+        }
+    }
+    
+}
+
+extension SettingsViewController: UITableViewDelegate {
+    
+    // MARK: - Table View Delegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
 }

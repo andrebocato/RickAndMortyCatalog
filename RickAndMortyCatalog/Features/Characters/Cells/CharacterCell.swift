@@ -18,8 +18,16 @@ class CharacterCell: UITableViewCell {
         }
     }
     
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var idLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel! {
+        didSet {
+            nameLabel.font = .cartoonToy(ofSize: 20.0)
+        }
+    }
+    @IBOutlet private weak var idLabel: UILabel! {
+        didSet {
+            idLabel.font = .shlop(ofSize: 25.0)
+        }
+    }
     
     // MARK: - Private Properties
     

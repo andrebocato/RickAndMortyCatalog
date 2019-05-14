@@ -22,5 +22,6 @@ struct DependencyInjection {
     static let charactersService = RMCharactersService(dispatcher: urlSessionDispatcher)
     static let imageService = ImageService(networkDispatcher: urlSessionDispatcher, cacheService: cacheService)
     static let favoritesDatabase = FavoritesDatabase()
+    static let userDefaults = UserDefaultsImplementation()
     
 }

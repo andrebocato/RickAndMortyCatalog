@@ -16,9 +16,9 @@ class SwitchCell: UITableViewCell {
         case darkTheme
     }
 
-    // MARK: - IBOUtlets
+    // MARK: - Properties
     
-    @IBOutlet private weak var themeSwitch: UISwitch!
+    private var isDarkThemeApplied = Bool()
     
     // MARK: - Functions
     
@@ -26,9 +26,26 @@ class SwitchCell: UITableViewCell {
         switch style {
         case .darkTheme:
             textLabel?.text = "Switch to dark theme"
+            
+            let themeSwitch = UISwitch(frame: .zero)
+            themeSwitch.isOn = false
+            themeSwitch.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
+            accessoryView = themeSwitch
         }
         
         return self
+    }
+ 
+    // MARK: - Actions
+    
+    // @TODO: implement properly
+    @objc func switchValueChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            isDarkThemeApplied = !isDarkThemeApplied
+        } else {
+            backgroundColor = .white
+            textLabel?.textColor = .black
+        }
     }
     
 }

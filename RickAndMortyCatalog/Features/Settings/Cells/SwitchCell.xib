@@ -22,9 +22,17 @@
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pZQ-rR-B3D">
                         <rect key="frame" x="251" y="6.5" width="51" height="31"/>
                     </switch>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvX-k8-m4f">
+                        <rect key="frame" x="20" y="11.5" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="pZQ-rR-B3D" secondAttribute="trailing" constant="20" id="I5h-fg-U3q"/>
+                    <constraint firstItem="zvX-k8-m4f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="2uR-O7-FXx"/>
+                    <constraint firstAttribute="trailing" secondItem="pZQ-rR-B3D" secondAttribute="trailing" constant="20" id="W1C-Ax-fKP"/>
+                    <constraint firstItem="zvX-k8-m4f" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="x0R-uF-GTd"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
@@ -32,6 +40,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="switchThemeFixedLabel" destination="zvX-k8-m4f" id="ZXn-kJ-fpP"/>
                 <outlet property="themeSwitch" destination="pZQ-rR-B3D" id="chK-St-2ys"/>
             </connections>
         </tableViewCell>

@@ -78,7 +78,7 @@ class SettingsViewController: UIViewController {
     // MARK: - IBActions
     
     // @TODO: move to cell file
-    @IBAction private func deleteAllFavoritesButtonDidReceiveTouchUpInside(_ sender: Any) {
+    private func deleteAllFavoritesButtonDidReceiveTouchUpInside(_ sender: Any) {
         AlertHelper.presentAlert(inController: self,
                                  title: "Deleting favorites",
                                  message: "Are you sure you want to delete all your favorited characters? This action can't be undone.",
@@ -94,7 +94,7 @@ class SettingsViewController: UIViewController {
     }
     
     // @TODO: move to cell file
-    @IBAction func themeSwitchValueChanged(_ sender: Any) {
+    private func themeSwitchValueChanged(_ sender: Any) {
         if themeSwitch.isOn {
             debugPrint("dark theme enabled")
         } else {

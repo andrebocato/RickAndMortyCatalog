@@ -99,6 +99,25 @@ class SettingsViewController: UIViewController {
 
 // MARK: - Extensions
 
+enum SettingsCellType {
+    
+    case deleteAll
+    case `switch`
+    case githubRepo
+    case apiDocumentation
+    
+    init?(section: Int, row: Int) {
+        switch (section, row) {
+        case (0, 0): self = .deleteAll
+        case (1, 0): self = .switch
+        case (2, 0): self = .githubRepo
+        case (2, 1): self = .apiDocumentation
+        default: return nil
+        }
+    }
+    
+}
+
 extension SettingsViewController: UITableViewDataSource {
     
     // MARK: - Table View Data Source
@@ -112,28 +131,30 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch (indexPath.section, indexPath.row) {
-        case (0, 0):
-            guard let destructiveCell = tableView.dequeueReusableCell(withIdentifier: DestructiveCell.className) as? DestructiveCell else { return UITableViewCell() }
-            return destructiveCell.configured(as: .deleteAll)
-            
-        case (1, 0):
-            guard let switchCell = tableView.dequeueReusableCell(withIdentifier: SwitchCell.className) as? SwitchCell else { return UITableViewCell() }
-            switchCell.configure(onSwitchValueChanged: { [weak self] (isOn) in
-                self?.logicController.toggleDarkTheme(isOn)
-            })
-            return switchCell
-            
-        case (2, 0):
-            guard let externalLinkCell = tableView.dequeueReusableCell(withIdentifier: ExternalLinkCell.className) as? ExternalLinkCell else { return UITableViewCell() }
-            return externalLinkCell.configured(as: .githubRepo)
-            
-        case (2, 1):
-            guard let externalLinkCell = tableView.dequeueReusableCell(withIdentifier: ExternalLinkCell.className) as? ExternalLinkCell else { return UITableViewCell() }
-            return externalLinkCell.configured(as: .apiDocumentation)
-            
-        default: return UITableViewCell()
+        var cell = UITableViewCell()
+        if let cellType = SettingsCellType(section: indexPath.section, row: indexPath.row) {
+        switch cellType {
+        case .deleteAll:
+            if let destructiveCell = tableView.dequeueReusableCell(withIdentifier: DestructiveCell.className) as? DestructiveCell {
+                cell = destructiveCell.configured(as: .deleteAll)
+            }
+        case .githubRepo:
+            if let externalLinkCell = tableView.dequeueReusableCell(withIdentifier: ExternalLinkCell.className) as? ExternalLinkCell {
+                cell = externalLinkCell.configured(as: .githubRepo)
+            }
+        case .switch:
+            if let switchCell = tableView.dequeueReusableCell(withIdentifier: SwitchCell.className) as? SwitchCell {
+                switchCell.configure(onSwitchValueChanged: { [weak self] (isOn) in
+                    self?.logicController.toggleDarkTheme(isOn)
+                })
+                cell = switchCell
+            }
+        case .apiDocumentation:
+            if let externalLinkCell = tableView.dequeueReusableCell(withIdentifier: ExternalLinkCell.className) as? ExternalLinkCell {
+                cell = externalLinkCell.configured(as: .apiDocumentation)
+            }
         }
+        return cell
     }
     
 }

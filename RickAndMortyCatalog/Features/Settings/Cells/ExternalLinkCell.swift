@@ -19,7 +19,7 @@ class ExternalLinkCell: UITableViewCell {
     
     // MARK: - Functions
     
-    func configured(as style: ExternalLinkCellStyle) -> ExternalLinkCell {
+    func configured(as style: ExternalLinkCellStyle) -> Self {
         accessoryType = .disclosureIndicator
 
         switch style {

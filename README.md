@@ -18,9 +18,11 @@
 
 ## Known bugs
 * Loading view on characters list not centered.
+* "Shlop" font not working on ID label (characters list).
 
 ## TODOs
 * Fix known bugs.
 * Add long gesture recognizers for characters list and favorites.
 * Add haptic feedback.
 * Add loading animation in pagination.
+* Finish Dark Theme implementation.

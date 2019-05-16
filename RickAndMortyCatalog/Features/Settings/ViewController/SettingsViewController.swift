@@ -78,24 +78,6 @@ class SettingsViewController: UIViewController {
                            forCellReuseIdentifier: ExternalLinkCell.className)
 
     }
-    
-    // MARK: - IBActions
-    
-    // @TODO: move to cell file
-    private func deleteAllFavoritesButtonDidReceiveTouchUpInside(_ sender: Any) {
-        AlertHelper.presentAlert(inController: self,
-                                 title: "Deleting favorites",
-                                 message: "Are you sure you want to delete all your favorited characters? This action can't be undone.",
-                                 rightAction: UIAlertAction(title: "Delete", style: .destructive, handler: nil)) { [weak self] in
-                                    self?.logicController.deleteAllFavorites { [weak self] (result) in
-                                        switch result {
-                                        case .failure(let error):
-                                            AlertHelper.presentAlert(inController: self, title: "Error!", message: error.localizedDescription)
-                                        default: return
-                                        }
-                                    }
-        }
-    }
 
 }
 
@@ -114,22 +96,25 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cellType = SettingsCellType(section: indexPath.section, row: indexPath.row)
         
         switch cellType {
         case .deleteAll?:
             return tableView.dequeueReusableCell(ofClass: DestructiveCell.self, for: indexPath).configured(as: .deleteAll)
+            
         case .switch?:
-            let switchCell  = tableView.dequeueReusableCell(ofClass: SwitchCell.self, for: indexPath)
+            let switchCell = tableView.dequeueReusableCell(ofClass: SwitchCell.self, for: indexPath)
             switchCell.setup(onSwitchValueChanged: { [weak self] (isOn) in
                 self?.logicController.toggleDarkTheme(isOn)
             })
             return switchCell
+            
         case .githubRepo?:
             return tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self, for: indexPath).configured(as: .githubRepo)
+            
         case .apiDocumentation?:
             return tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self, for: indexPath).configured(as: .apiDocumentation)
+            
         case .none:
             return UITableViewCell()
         }
@@ -143,9 +128,48 @@ extension SettingsViewController: UITableViewDelegate {
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let cellType = SettingsCellType(section: indexPath.section, row: indexPath.row)
+        
+        switch cellType {
+        case .githubRepo?:
+            AlertHelper.presentAlert(inController: self,
+                                     title: "Leaving the app",
+                                     message: "You are being sent to an external page on the web. Do you wish to proceed?",
+                                     rightAction: UIAlertAction(title: "Go!", style: .default, handler: { (action) in
+                                        UIApplication.shared.open(URL(string: "https://github.com/andrebocato/RickAndMortyCatalog")!)
+                                     }))
+            
+        case .apiDocumentation?:
+            AlertHelper.presentAlert(inController: self,
+                                     title: "Leaving the app",
+                                     message: "You are being sent to an external page on the web. Do you wish to proceed?",
+                                     rightAction: UIAlertAction(title: "Go!", style: .default, handler: { (action) in
+                                        UIApplication.shared.open(URL(string: "https://rickandmortyapi.com/documentation/")!)
+                                     }))
+            
+        case .deleteAll?:
+            AlertHelper.presentAlert(inController: self,
+                                     title: "Deleting favorites",
+                                     message: "Are you sure you want to delete all your favorited characters? This action can't be undone.",
+                                     rightAction: UIAlertAction(title: "Delete", style: .destructive, handler: nil)) { [weak self] in
+                                        self?.logicController.deleteAllFavorites { [weak self] (result) in
+                                            switch result {
+                                            case .failure(let error):
+                                                AlertHelper.presentAlert(inController: self, title: "Error!", message: error.localizedDescription)
+                                            default: return
+                                            }
+                                        }
+            }
+        case .switch?:
+            return
+        case .none:
+            return
+        }
         
     }
-    
 }
+
 
 

@@ -1,5 +1,5 @@
 //
-//  UITableView+Extension.swift
+//  UITableView+Dequeue.swift
 //  RickAndMortyCatalog
 //
 //  Created by Andre Sanches Bocato on 16/05/19.
@@ -17,8 +17,8 @@ extension UITableView {
     ///   - indexPath: Cell location in tableView.
     /// - Returns: UITableViewCell object with associated class name.
     public func dequeueReusableCell<T: UITableViewCell>(ofClass class: T.Type, for indexPath: IndexPath) -> T {
-        guard let cell = dequeueReusableCell(withIdentifier: T.className, for: indexPath) as? T else {
-            fatalError("Couldn't find UITableViewCell of class \(T.className)")
+        guard let cell = dequeueReusableCell(withIdentifier: `class`.className, for: indexPath) as? T else {
+            fatalError("Couldn't find UITableViewCell of class \(`class`.className)")
         }
         return cell
     }

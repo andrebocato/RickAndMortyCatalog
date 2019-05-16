@@ -38,6 +38,7 @@ class SwitchCell: UITableViewCell {
     // MARK: - Public Functions
     
     func setup(onSwitchValueChanged: ((_ isOn: Bool) -> Void)?) {
+        selectionStyle = .none
         self.onSwitchValueChanged = onSwitchValueChanged
     }
     

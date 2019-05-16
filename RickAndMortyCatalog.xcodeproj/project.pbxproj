@@ -45,7 +45,7 @@
 		65C9CBDE228DAED10092E673 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBDD228DAED10092E673 /* Theme.swift */; };
 		65C9CBE0228DB0B30092E673 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBDF228DB0B30092E673 /* Notification+Name.swift */; };
 		65C9CBE2228DC7820092E673 /* SettingsCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBE1228DC7820092E673 /* SettingsCellType.swift */; };
-		65C9CBE4228DD2CD0092E673 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBE3228DD2CD0092E673 /* UITableView+Extension.swift */; };
+		65C9CBE4228DD2CD0092E673 /* UITableView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBE3228DD2CD0092E673 /* UITableView+Dequeue.swift */; };
 		BFDB456DD162690DBC06803E /* Pods_RickAndMortyCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40580FF8463F851878A0EA2 /* Pods_RickAndMortyCatalogTests.framework */; };
 		E50C9CBE226DF29700588EBC /* GetCharacterMock.json in Resources */ = {isa = PBXBuildFile; fileRef = E50C9CBD226DF29700588EBC /* GetCharacterMock.json */; };
 		E50C9CC0226DF67400588EBC /* RMCharacterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9CBF226DF67400588EBC /* RMCharacterInfo.swift */; };
@@ -169,7 +169,7 @@
 		65C9CBDD228DAED10092E673 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		65C9CBDF228DB0B30092E673 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		65C9CBE1228DC7820092E673 /* SettingsCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellType.swift; sourceTree = "<group>"; };
-		65C9CBE3228DD2CD0092E673 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		65C9CBE3228DD2CD0092E673 /* UITableView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeue.swift"; sourceTree = "<group>"; };
 		A40580FF8463F851878A0EA2 /* Pods_RickAndMortyCatalogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RickAndMortyCatalogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06B783FBB9B2ED15594D8F1 /* Pods-RickAndMortyCatalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalog.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalog/Pods-RickAndMortyCatalog.debug.xcconfig"; sourceTree = "<group>"; };
 		C82754B62518529268BB6207 /* Pods-RickAndMortyCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalogTests.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalogTests/Pods-RickAndMortyCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -392,7 +392,7 @@
 				E50C9D7A22707F8B00588EBC /* String+Encription.swift */,
 				653C92E7228B47840031C098 /* UIFont+CustomFonts.swift */,
 				65C9CBDF228DB0B30092E673 /* Notification+Name.swift */,
-				65C9CBE3228DD2CD0092E673 /* UITableView+Extension.swift */,
+				65C9CBE3228DD2CD0092E673 /* UITableView+Dequeue.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1089,7 +1089,7 @@
 				E50C9D842271616A00588EBC /* CharactersLogicController.swift in Sources */,
 				E50C9DC522750FF400588EBC /* DetailLogicControllerState.swift in Sources */,
 				E50C9D7622707D3500588EBC /* ImageService.swift in Sources */,
-				65C9CBE4228DD2CD0092E673 /* UITableView+Extension.swift in Sources */,
+				65C9CBE4228DD2CD0092E673 /* UITableView+Dequeue.swift in Sources */,
 				E50C9D5C226F874F00588EBC /* DetailViewController.swift in Sources */,
 				E50C9D6F226FEEE700588EBC /* CharacterCell.swift in Sources */,
 				E50C9D862271618600588EBC /* CharactersLogicControllerDelegate.swift in Sources */,

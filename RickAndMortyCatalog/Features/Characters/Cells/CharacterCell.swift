@@ -17,7 +17,6 @@ class CharacterCell: UITableViewCell, ThemeObserving {
             cellImageView.layer.cornerRadius = 10
         }
     }
-    
     @IBOutlet private weak var nameLabel: UILabel! {
         didSet {
             nameLabel.font = .cartoonToy(ofSize: 20.0)
@@ -25,7 +24,7 @@ class CharacterCell: UITableViewCell, ThemeObserving {
     }
     @IBOutlet private weak var idLabel: UILabel! {
         didSet {
-            idLabel.font = .shlop(ofSize: 25.0)
+            idLabel.font = .shlop(ofSize: 25.0) // not working
         }
     }
     

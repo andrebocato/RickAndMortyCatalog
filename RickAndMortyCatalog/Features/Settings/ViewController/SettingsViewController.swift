@@ -66,15 +66,9 @@ class SettingsViewController: UIViewController {
     // MARK: - UI Setup
     
     private func registerTableViewCells() {
-        
-        let bundle = Bundle(for: SettingsViewController.self)
-        
-        tableView.register(UINib(nibName: DestructiveCell.className, bundle: bundle),
-                           forCellReuseIdentifier: DestructiveCell.className)
-        
-        tableView.register(UINib(nibName: SwitchCell.className, bundle: bundle),
-                           forCellReuseIdentifier: SwitchCell.className)
-        
+        tableView.register(cellOfClass: DestructiveCell.self)
+        tableView.register(cellOfClass: SwitchCell.self)
+        tableView.register(cellOfClass: ExternalLinkCell.self)
     }
     
     // MARK: - IBActions
@@ -99,60 +93,40 @@ class SettingsViewController: UIViewController {
 
 // MARK: - Extensions
 
-enum SettingsCellType {
-    
-    case deleteAll
-    case `switch`
-    case githubRepo
-    case apiDocumentation
-    
-    init?(section: Int, row: Int) {
-        switch (section, row) {
-        case (0, 0): self = .deleteAll
-        case (1, 0): self = .switch
-        case (2, 0): self = .githubRepo
-        case (2, 1): self = .apiDocumentation
-        default: return nil
-        }
-    }
-    
-}
-
 extension SettingsViewController: UITableViewDataSource {
     
     // MARK: - Table View Data Source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return settings.count
+        return settings.count // TODO: change
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settings[section].count
+        return settings[section].count // @TODO: change
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         if let cellType = SettingsCellType(section: indexPath.section, row: indexPath.row) {
-        switch cellType {
-        case .deleteAll:
-            if let destructiveCell = tableView.dequeueReusableCell(withIdentifier: DestructiveCell.className) as? DestructiveCell {
-                cell = destructiveCell.configured(as: .deleteAll)
-            }
-        case .githubRepo:
-            if let externalLinkCell = tableView.dequeueReusableCell(withIdentifier: ExternalLinkCell.className) as? ExternalLinkCell {
-                cell = externalLinkCell.configured(as: .githubRepo)
-            }
-        case .switch:
-            if let switchCell = tableView.dequeueReusableCell(withIdentifier: SwitchCell.className) as? SwitchCell {
+            switch cellType {
+            case .deleteAll:
+                cell = tableView.dequeueReusableCell(ofClass: DestructiveCell.self).configured(as: .deleteAll)
+                
+            case .switch:
+                let switchCell = tableView.dequeueReusableCell(ofClass: SwitchCell.self)
                 switchCell.configure(onSwitchValueChanged: { [weak self] (isOn) in
                     self?.logicController.toggleDarkTheme(isOn)
                 })
                 cell = switchCell
+                
+            case .githubRepo:
+                cell = tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self).configured(as: .githubRepo)
+                
+            case .apiDocumentation:
+                cell = tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self).configured(as: .apiDocumentation)
             }
-        case .apiDocumentation:
-            if let externalLinkCell = tableView.dequeueReusableCell(withIdentifier: ExternalLinkCell.className) as? ExternalLinkCell {
-                cell = externalLinkCell.configured(as: .apiDocumentation)
-            }
+            
+            return cell
         }
         return cell
     }
@@ -164,8 +138,9 @@ extension SettingsViewController: UITableViewDelegate {
     // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         
     }
     
 }
+
+

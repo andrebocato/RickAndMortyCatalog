@@ -18,7 +18,7 @@ class DestructiveCell: UITableViewCell {
     
     // MARK: - Functions
     
-    func configured(as style: DestructiveCellStyle) -> DestructiveCell {
+    func configured(as style: DestructiveCellStyle) -> Self {
         switch style {
         case .deleteAll:
             textLabel?.text = "Delete all favorites"

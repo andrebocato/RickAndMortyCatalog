@@ -66,9 +66,17 @@ class SettingsViewController: UIViewController {
     // MARK: - UI Setup
     
     private func registerTableViewCells() {
-        tableView.register(cellOfClass: DestructiveCell.self)
-        tableView.register(cellOfClass: SwitchCell.self)
-        tableView.register(cellOfClass: ExternalLinkCell.self)
+        let bundle = Bundle(for: SettingsViewController.self)
+        
+        tableView.register(UINib(nibName: DestructiveCell.className, bundle: bundle),
+                           forCellReuseIdentifier: DestructiveCell.className)
+        
+        tableView.register(UINib(nibName: SwitchCell.className, bundle: bundle),
+                           forCellReuseIdentifier: SwitchCell.className)
+        
+        tableView.register(UINib(nibName: ExternalLinkCell.className, bundle: bundle),
+                           forCellReuseIdentifier: ExternalLinkCell.className)
+
     }
     
     // MARK: - IBActions
@@ -111,17 +119,17 @@ extension SettingsViewController: UITableViewDataSource {
         
         switch cellType {
         case .deleteAll?:
-            return tableView.dequeueReusableCell(ofClass: DestructiveCell.self).configured(as: .deleteAll)
+            return tableView.dequeueReusableCell(ofClass: DestructiveCell.self, for: indexPath).configured(as: .deleteAll)
         case .switch?:
-            let switchCell  = tableView.dequeueReusableCell(ofClass: SwitchCell.self)
+            let switchCell  = tableView.dequeueReusableCell(ofClass: SwitchCell.self, for: indexPath)
             switchCell.setup(onSwitchValueChanged: { [weak self] (isOn) in
                 self?.logicController.toggleDarkTheme(isOn)
             })
             return switchCell
         case .githubRepo?:
-            return tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self).configured(as: .githubRepo)
+            return tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self, for: indexPath).configured(as: .githubRepo)
         case .apiDocumentation?:
-            return tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self).configured(as: .apiDocumentation)
+            return tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self, for: indexPath).configured(as: .apiDocumentation)
         case .none:
             return UITableViewCell()
         }

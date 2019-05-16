@@ -106,29 +106,26 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        if let cellType = SettingsCellType(section: indexPath.section, row: indexPath.row) {
-            switch cellType {
-            case .deleteAll:
-                cell = tableView.dequeueReusableCell(ofClass: DestructiveCell.self).configured(as: .deleteAll)
-                
-            case .switch:
-                let switchCell = tableView.dequeueReusableCell(ofClass: SwitchCell.self)
-                switchCell.configure(onSwitchValueChanged: { [weak self] (isOn) in
-                    self?.logicController.toggleDarkTheme(isOn)
-                })
-                cell = switchCell
-                
-            case .githubRepo:
-                cell = tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self).configured(as: .githubRepo)
-                
-            case .apiDocumentation:
-                cell = tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self).configured(as: .apiDocumentation)
-            }
-            
-            return cell
+        
+        let cellType = SettingsCellType(section: indexPath.section, row: indexPath.row)
+        
+        switch cellType {
+        case .deleteAll?:
+            return tableView.dequeueReusableCell(ofClass: DestructiveCell.self).configured(as: .deleteAll)
+        case .switch?:
+            let switchCell  = tableView.dequeueReusableCell(ofClass: SwitchCell.self)
+            switchCell.setup(onSwitchValueChanged: { [weak self] (isOn) in
+                self?.logicController.toggleDarkTheme(isOn)
+            })
+            return switchCell
+        case .githubRepo?:
+            return tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self).configured(as: .githubRepo)
+        case .apiDocumentation?:
+            return tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self).configured(as: .apiDocumentation)
+        case .none:
+            return UITableViewCell()
         }
-        return cell
+        
     }
     
 }

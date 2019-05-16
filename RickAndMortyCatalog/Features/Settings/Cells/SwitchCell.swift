@@ -37,7 +37,7 @@ class SwitchCell: UITableViewCell {
     
     // MARK: - Public Functions
     
-    func configure(onSwitchValueChanged: ((_ isOn: Bool) -> Void)?) {
+    func setup(onSwitchValueChanged: ((_ isOn: Bool) -> Void)?) {
         self.onSwitchValueChanged = onSwitchValueChanged
     }
     

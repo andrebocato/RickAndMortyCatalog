@@ -113,17 +113,25 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath.section, indexPath.row) {
-        case (0, 0): return DestructiveCell().configured(as: .deleteAll)
+        case (0, 0):
+            guard let destructiveCell = tableView.dequeueReusableCell(withIdentifier: DestructiveCell.className) as? DestructiveCell else { return UITableViewCell() }
+            return destructiveCell.configured(as: .deleteAll)
+            
         case (1, 0):
-            guard let switchCell = tableView.dequeueReusableCell(withIdentifier: SwitchCell.className) as? SwitchCell else {
-                return UITableViewCell()
-            }
+            guard let switchCell = tableView.dequeueReusableCell(withIdentifier: SwitchCell.className) as? SwitchCell else { return UITableViewCell() }
             switchCell.configure(onSwitchValueChanged: { [weak self] (isOn) in
                 self?.logicController.toggleDarkTheme(isOn)
             })
             return switchCell
-        case (2, 0): return ExternalLinkCell().configured(as: .githubRepo)
-        case (2, 1): return ExternalLinkCell().configured(as: .apiDocumentation)
+            
+        case (2, 0):
+            guard let externalLinkCell = tableView.dequeueReusableCell(withIdentifier: ExternalLinkCell.className) as? ExternalLinkCell else { return UITableViewCell() }
+            return externalLinkCell.configured(as: .githubRepo)
+            
+        case (2, 1):
+            guard let externalLinkCell = tableView.dequeueReusableCell(withIdentifier: ExternalLinkCell.className) as? ExternalLinkCell else { return UITableViewCell() }
+            return externalLinkCell.configured(as: .apiDocumentation)
+            
         default: return UITableViewCell()
         }
     }

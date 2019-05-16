@@ -13,7 +13,6 @@
 		650B02042285C351005F5F2E /* Cartoon Toy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C172284BD4F00FC824E /* Cartoon Toy.ttf */; };
 		653C92DE228B20CC0031C098 /* ColorThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C92DD228B20CC0031C098 /* ColorThemes.swift */; };
 		653C92E4228B368D0031C098 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C92E3228B368D0031C098 /* UserDefaultsManager.swift */; };
-		653C92E6228B3D110031C098 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C92E5228B3D110031C098 /* UIViewController+Extension.swift */; };
 		653C92E8228B47840031C098 /* UIFont+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C92E7228B47840031C098 /* UIFont+CustomFonts.swift */; };
 		65520C2B22737F170095371F /* DetailLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65520C2A22737F170095371F /* DetailLogicController.swift */; };
 		6576A3922266370A00571620 /* UIView+Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3912266370A00571620 /* UIView+Loadable.swift */; };
@@ -43,6 +42,8 @@
 		65A26C0E2284A61400FC824E /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A26C0D2284A61400FC824E /* PersistenceError.swift */; };
 		65A26C122284B49F00FC824E /* shlop rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C112284B49F00FC824E /* shlop rg.ttf */; };
 		65A26C162284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C152284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png */; };
+		65C9CBDE228DAED10092E673 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBDD228DAED10092E673 /* Theme.swift */; };
+		65C9CBE0228DB0B30092E673 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBDF228DB0B30092E673 /* Notification+Name.swift */; };
 		BFDB456DD162690DBC06803E /* Pods_RickAndMortyCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40580FF8463F851878A0EA2 /* Pods_RickAndMortyCatalogTests.framework */; };
 		E50C9CBE226DF29700588EBC /* GetCharacterMock.json in Resources */ = {isa = PBXBuildFile; fileRef = E50C9CBD226DF29700588EBC /* GetCharacterMock.json */; };
 		E50C9CC0226DF67400588EBC /* RMCharacterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9CBF226DF67400588EBC /* RMCharacterInfo.swift */; };
@@ -127,7 +128,6 @@
 		6504A7B52285CF7B00880D5F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		653C92DD228B20CC0031C098 /* ColorThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemes.swift; sourceTree = "<group>"; };
 		653C92E3228B368D0031C098 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
-		653C92E5228B3D110031C098 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		653C92E7228B47840031C098 /* UIFont+CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+CustomFonts.swift"; sourceTree = "<group>"; };
 		65520C2A22737F170095371F /* DetailLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLogicController.swift; sourceTree = "<group>"; };
 		6576A3912266370A00571620 /* UIView+Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loadable.swift"; sourceTree = "<group>"; };
@@ -164,6 +164,8 @@
 		65A26C112284B49F00FC824E /* shlop rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "shlop rg.ttf"; sourceTree = "<group>"; };
 		65A26C152284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rick-And-Morty-PNG-Transparent-Image.png"; sourceTree = "<group>"; };
 		65A26C172284BD4F00FC824E /* Cartoon Toy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cartoon Toy.ttf"; sourceTree = "<group>"; };
+		65C9CBDD228DAED10092E673 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		65C9CBDF228DB0B30092E673 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		A40580FF8463F851878A0EA2 /* Pods_RickAndMortyCatalogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RickAndMortyCatalogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06B783FBB9B2ED15594D8F1 /* Pods-RickAndMortyCatalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalog.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalog/Pods-RickAndMortyCatalog.debug.xcconfig"; sourceTree = "<group>"; };
 		C82754B62518529268BB6207 /* Pods-RickAndMortyCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalogTests.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalogTests/Pods-RickAndMortyCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				E50C9D60226FD74D00588EBC /* NSObject+ClassName.swift */,
 				E50C9D7A22707F8B00588EBC /* String+Encription.swift */,
 				653C92E7228B47840031C098 /* UIFont+CustomFonts.swift */,
+				65C9CBDF228DB0B30092E673 /* Notification+Name.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -480,7 +483,7 @@
 			isa = PBXGroup;
 			children = (
 				653C92DD228B20CC0031C098 /* ColorThemes.swift */,
-				653C92E5228B3D110031C098 /* UIViewController+Extension.swift */,
+				65C9CBDD228DAED10092E673 /* Theme.swift */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -1044,10 +1047,10 @@
 				E50C9D9C2271F4B000588EBC /* RMCharacterModelControllerState.swift in Sources */,
 				65912AB5225CF45100F37508 /* AlertHelper.swift in Sources */,
 				E50C9DDC2275D51800588EBC /* SettingsViewController.swift in Sources */,
+				65C9CBDE228DAED10092E673 /* Theme.swift in Sources */,
 				E50C9D41226F4A9A00588EBC /* URLSessionDispatcher.swift in Sources */,
 				E50C9D942271E34E00588EBC /* RealmFavoriteCharacter.swift in Sources */,
 				E50C9DA02272016200588EBC /* RMCharacterModelControllerBusinessError.swift in Sources */,
-				653C92E6228B3D110031C098 /* UIViewController+Extension.swift in Sources */,
 				E50C9CC2226DF6FB00588EBC /* RMCharacterResponse.swift in Sources */,
 				E50C9DC322750FD000588EBC /* DetailLogicControllerDelegate.swift in Sources */,
 				E50C9D63226FE02C00588EBC /* SimpleURLRequest.swift in Sources */,
@@ -1065,6 +1068,7 @@
 				E50C9D4F226F4AF600588EBC /* URLRequestError.swift in Sources */,
 				653C92E8228B47840031C098 /* UIFont+CustomFonts.swift in Sources */,
 				65959DEB228A092F00D792DB /* SwitchCell.swift in Sources */,
+				65C9CBE0228DB0B30092E673 /* Notification+Name.swift in Sources */,
 				E50C9D43226F4AB100588EBC /* URLRequestProtocol.swift in Sources */,
 				E50C9D45226F4ABD00588EBC /* URLRequestBuilder.swift in Sources */,
 				E50C9DA2227203DB00588EBC /* ModelControllersFactory.swift in Sources */,

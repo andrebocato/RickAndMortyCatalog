@@ -11,6 +11,7 @@ import UIKit
 class SwitchCell: UITableViewCell {
 
     // MARK: - IBOutlets
+    
     @IBOutlet private weak var cellTitleLabel: UILabel! {
         didSet {
             cellTitleLabel.text = "Switch to dark theme"
@@ -28,16 +29,16 @@ class SwitchCell: UITableViewCell {
     
     private var onSwitchValueChanged: ((_ isOn: Bool) -> Void)?
     
-    // MARK: - Functions
-    
-    func configure(onSwitchValueChanged: ((_ isOn: Bool) -> Void)?) {
-        self.onSwitchValueChanged = onSwitchValueChanged
-    }
- 
     // MARK: - IBActions
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         onSwitchValueChanged?(sender.isOn)
+    }
+    
+    // MARK: - Public Functions
+    
+    func configure(onSwitchValueChanged: ((_ isOn: Bool) -> Void)?) {
+        self.onSwitchValueChanged = onSwitchValueChanged
     }
     
 }

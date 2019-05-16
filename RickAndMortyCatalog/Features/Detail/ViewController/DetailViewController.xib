@@ -54,6 +54,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="300" id="Sf3-nm-lUN"/>
                                         <constraint firstAttribute="width" constant="300" id="umN-zL-XMC"/>
+                                        <constraint firstAttribute="width" secondItem="adZ-2f-czu" secondAttribute="height" multiplier="1:1" id="wJ2-Ns-mge"/>
                                     </constraints>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="l6S-dj-oMS" userLabel="Texts Stack View">

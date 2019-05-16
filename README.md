@@ -18,11 +18,9 @@
 
 ## Known bugs
 * Loading view on characters list not centered.
-* Images on characters list are being placed over the last ones, new ones should be loaded.
 
 ## TODOs
 * Fix known bugs.
-* Add dark theme.
 * Add long gesture recognizers for characters list and favorites.
 * Add haptic feedback.
 * Add loading animation in pagination.

@@ -38,7 +38,6 @@
 		65959DE7228A091C00D792DB /* DestructiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65959DE5228A091C00D792DB /* DestructiveCell.swift */; };
 		65959DE8228A091C00D792DB /* DestructiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65959DE6228A091C00D792DB /* DestructiveCell.xib */; };
 		65959DEB228A092F00D792DB /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65959DE9228A092F00D792DB /* SwitchCell.swift */; };
-		65959DEC228A092F00D792DB /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65959DEA228A092F00D792DB /* SwitchCell.xib */; };
 		65959DF2228A099100D792DB /* ExternalLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65959DF0228A099100D792DB /* ExternalLinkCell.swift */; };
 		65959DF3228A099100D792DB /* ExternalLinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65959DF1228A099100D792DB /* ExternalLinkCell.xib */; };
 		65A26C0E2284A61400FC824E /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A26C0D2284A61400FC824E /* PersistenceError.swift */; };
@@ -98,6 +97,7 @@
 		E50C9DDE2275E0FE00588EBC /* FavoriteDatabaseObjectChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DDD2275E0FE00588EBC /* FavoriteDatabaseObjectChange.swift */; };
 		E50C9DE02275E7A300588EBC /* FavoritesDatabaseObservationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DDF2275E7A300588EBC /* FavoritesDatabaseObservationToken.swift */; };
 		E50C9DE52275E81F00588EBC /* RealmObjectObservationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C9DE42275E81F00588EBC /* RealmObjectObservationToken.swift */; };
+		E5288C3C228D8EFF00E5942A /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5288C3B228D8EFD00E5942A /* SwitchCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,7 +158,6 @@
 		65959DE5228A091C00D792DB /* DestructiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestructiveCell.swift; sourceTree = "<group>"; };
 		65959DE6228A091C00D792DB /* DestructiveCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestructiveCell.xib; sourceTree = "<group>"; };
 		65959DE9228A092F00D792DB /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
-		65959DEA228A092F00D792DB /* SwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		65959DF0228A099100D792DB /* ExternalLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLinkCell.swift; sourceTree = "<group>"; };
 		65959DF1228A099100D792DB /* ExternalLinkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExternalLinkCell.xib; sourceTree = "<group>"; };
 		65A26C0D2284A61400FC824E /* PersistenceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceError.swift; sourceTree = "<group>"; };
@@ -221,6 +220,7 @@
 		E50C9DDD2275E0FE00588EBC /* FavoriteDatabaseObjectChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDatabaseObjectChange.swift; sourceTree = "<group>"; };
 		E50C9DDF2275E7A300588EBC /* FavoritesDatabaseObservationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDatabaseObservationToken.swift; sourceTree = "<group>"; };
 		E50C9DE42275E81F00588EBC /* RealmObjectObservationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjectObservationToken.swift; sourceTree = "<group>"; };
+		E5288C3B228D8EFD00E5942A /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -491,7 +491,7 @@
 				65959DE5228A091C00D792DB /* DestructiveCell.swift */,
 				65959DE6228A091C00D792DB /* DestructiveCell.xib */,
 				65959DE9228A092F00D792DB /* SwitchCell.swift */,
-				65959DEA228A092F00D792DB /* SwitchCell.xib */,
+				E5288C3B228D8EFD00E5942A /* SwitchCell.xib */,
 				65959DF0228A099100D792DB /* ExternalLinkCell.swift */,
 				65959DF1228A099100D792DB /* ExternalLinkCell.xib */,
 			);
@@ -885,10 +885,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				650B02042285C351005F5F2E /* Cartoon Toy.ttf in Resources */,
+				E5288C3C228D8EFF00E5942A /* SwitchCell.xib in Resources */,
 				65A26C162284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png in Resources */,
 				E50C9D65226FE51900588EBC /* CharactersViewController.xib in Resources */,
 				E50C9DDB2275D51800588EBC /* SettingsViewController.xib in Resources */,
-				65959DEC228A092F00D792DB /* SwitchCell.xib in Resources */,
 				65959DE8228A091C00D792DB /* DestructiveCell.xib in Resources */,
 				65959DF3228A099100D792DB /* ExternalLinkCell.xib in Resources */,
 				6504A7B62285CF7C00880D5F /* README.md in Resources */,

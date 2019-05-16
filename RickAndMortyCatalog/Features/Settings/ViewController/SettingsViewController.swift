@@ -28,7 +28,6 @@ class SettingsViewController: UIViewController {
     }
     
     @IBOutlet private weak var clearFavoritesButton: UIButton!
-    @IBOutlet private weak var themeSwitch: UISwitch!
     @IBOutlet private weak var switchThemeFixedLabel: UILabel!
     
     // MARK: - Dependencies
@@ -67,12 +66,15 @@ class SettingsViewController: UIViewController {
     // MARK: - UI Setup
     
     private func registerTableViewCells() {
-        let bundle = Bundle(for: DestructiveCell.self)
-        let className = DestructiveCell.className
-        let cellNib = UINib(nibName: className, bundle: bundle)
-        tableView.register(cellNib, forCellReuseIdentifier: className)
         
-        // TODO: register other cells
+        let bundle = Bundle(for: SettingsViewController.self)
+        
+        tableView.register(UINib(nibName: DestructiveCell.className, bundle: bundle),
+                           forCellReuseIdentifier: DestructiveCell.className)
+        
+        tableView.register(UINib(nibName: SwitchCell.className, bundle: bundle),
+                           forCellReuseIdentifier: SwitchCell.className)
+        
     }
     
     // MARK: - IBActions
@@ -92,16 +94,7 @@ class SettingsViewController: UIViewController {
                                     }
         }
     }
-    
-    // @TODO: move to cell file
-    private func themeSwitchValueChanged(_ sender: Any) {
-        if themeSwitch.isOn {
-            debugPrint("dark theme enabled")
-        } else {
-            debugPrint("dark theme disabled")
-        }
-    }
-    
+
 }
 
 // MARK: - Extensions
@@ -121,7 +114,14 @@ extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath.section, indexPath.row) {
         case (0, 0): return DestructiveCell().configured(as: .deleteAll)
-        case (1, 0): return SwitchCell().configured(as: .darkTheme)
+        case (1, 0):
+            guard let switchCell = tableView.dequeueReusableCell(withIdentifier: SwitchCell.className) as? SwitchCell else {
+                return UITableViewCell()
+            }
+            switchCell.configure(onSwitchValueChanged: { [weak self] (isOn) in
+                self?.logicController.toggleDarkTheme(isOn)
+            })
+            return switchCell
         case (2, 0): return ExternalLinkCell().configured(as: .githubRepo)
         case (2, 1): return ExternalLinkCell().configured(as: .apiDocumentation)
         default: return UITableViewCell()

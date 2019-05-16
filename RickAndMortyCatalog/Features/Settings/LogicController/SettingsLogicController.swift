@@ -13,14 +13,16 @@ class SettingsLogicController {
     // MARK: - Dependencies
     
     private let favoritesDatabase: FavoritesDatabaseProtocol
+    private let themeUpdater: ThemeUpdaterProtocol
     
     // MARK: - Initialization
     
     /// Initializes the logic controller with its dependencies.
     ///
     /// - Parameter favoritesDatabase: A favorites database instance.
-    init(favoritesDatabase: FavoritesDatabaseProtocol) {
+    init(favoritesDatabase: FavoritesDatabaseProtocol, themeUpdater: ThemeUpdaterProtocol) {
         self.favoritesDatabase = favoritesDatabase
+        self.themeUpdater = themeUpdater
     }
     
     // MARK: - Functions
@@ -35,6 +37,15 @@ class SettingsLogicController {
         } catch {
             completion?(.failure(error))
         }
+    }
+    
+    
+    /// Toggle the dark theme on or off
+    ///
+    /// - Parameter enabled: send true to enable the theme, false to disable it
+    func toggleDarkTheme(_ enabled: Bool) {
+        let newTheme: Theme = enabled ? .dark : .default
+        themeUpdater.updateApplicationWithTheme(newTheme: newTheme)
     }
     
 }

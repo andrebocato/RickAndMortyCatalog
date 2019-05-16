@@ -10,42 +10,34 @@ import UIKit
 
 class SwitchCell: UITableViewCell {
 
-    // MARK: - Enums
-    
-    enum SwitchCellStyle {
-        case darkTheme
+    // MARK: - IBOutlets
+    @IBOutlet private weak var cellTitleLabel: UILabel! {
+        didSet {
+            cellTitleLabel.text = "Switch to dark theme"
+        }
     }
-
+    
+    @IBOutlet private weak var themeSwitch: UISwitch! {
+        didSet {
+            themeSwitch.isOn = false // TODO: CHANGE THIS...
+            // You need to have somewere that holds the last theme aplied to set this value...
+        }
+    }
+    
     // MARK: - Properties
     
-    private var isDarkThemeApplied = Bool()
+    private var onSwitchValueChanged: ((_ isOn: Bool) -> Void)?
     
     // MARK: - Functions
     
-    func configured(as style: SwitchCellStyle) -> SwitchCell {
-        switch style {
-        case .darkTheme:
-            textLabel?.text = "Switch to dark theme"
-            
-            let themeSwitch = UISwitch(frame: .zero)
-            themeSwitch.isOn = false
-            themeSwitch.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
-            accessoryView = themeSwitch
-        }
-        
-        return self
+    func configure(onSwitchValueChanged: ((_ isOn: Bool) -> Void)?) {
+        self.onSwitchValueChanged = onSwitchValueChanged
     }
  
-    // MARK: - Actions
+    // MARK: - IBActions
     
-    // @TODO: implement properly
-    @objc func switchValueChanged(_ sender: UISwitch) {
-        if sender.isOn {
-            isDarkThemeApplied = !isDarkThemeApplied
-        } else {
-            backgroundColor = .white
-            textLabel?.textColor = .black
-        }
+    @IBAction func switchValueChanged(_ sender: UISwitch) {
+        onSwitchValueChanged?(sender.isOn)
     }
     
 }

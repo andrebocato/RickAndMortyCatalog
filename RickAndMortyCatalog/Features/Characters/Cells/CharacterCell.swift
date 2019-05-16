@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterCell: UITableViewCell {
+class CharacterCell: UITableViewCell, ThemeObserving {
 
     // MARK: - IBOutlets
 
@@ -36,10 +36,19 @@ class CharacterCell: UITableViewCell {
     
     // MARK: - Lifecycle
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupThemeObserver()
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         cellImageView.image = UIImage()
         modelController.cancelImageRequest()
+    }
+    
+    deinit {
+        tearDownThemeObserver()
     }
     
     // MARK: - Configuration Functions
@@ -109,6 +118,14 @@ extension CharacterCell: RMCharacterModelControllerDelegate {
     
     private func handleBusinessError(_ error: Error) {
         onFavoriteErrorCallBack?(error)
+    }
+    
+}
+
+extension CharacterCell: Themeable {
+    
+    func apply(theme: ThemeType) {
+        debugPrint("Should apply new theme: \(theme)")
     }
     
 }

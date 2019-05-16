@@ -23,5 +23,6 @@ struct DependencyInjection {
     static let imageService = ImageService(networkDispatcher: urlSessionDispatcher, cacheService: cacheService)
     static let favoritesDatabase = FavoritesDatabase()
     static let userDefaults = UserDefaultsImplementation()
+    static let themeUpdater = ThemeUpdater()
     
 }

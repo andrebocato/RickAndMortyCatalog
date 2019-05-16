@@ -138,7 +138,7 @@ extension SettingsViewController: UITableViewDelegate {
                                      title: "Leaving the app",
                                      message: "You are being sent to an external page on the web. Do you wish to proceed?",
                                      rightAction: UIAlertAction(title: "Go!", style: .default, handler: { (action) in
-                                        UIApplication.shared.open(URL(string: "https://github.com/andrebocato/RickAndMortyCatalog")!)
+                                        UIApplication.shared.open(URL(string: "https://github.com/andrebocato/RickAndMortyCatalog")!) // @TODO: logic controller?
                                      }))
             
         case .apiDocumentation?:
@@ -146,7 +146,7 @@ extension SettingsViewController: UITableViewDelegate {
                                      title: "Leaving the app",
                                      message: "You are being sent to an external page on the web. Do you wish to proceed?",
                                      rightAction: UIAlertAction(title: "Go!", style: .default, handler: { (action) in
-                                        UIApplication.shared.open(URL(string: "https://rickandmortyapi.com/documentation/")!)
+                                        UIApplication.shared.open(URL(string: "https://rickandmortyapi.com/documentation/")!) // @TODO: logic controller?
                                      }))
             
         case .deleteAll?:

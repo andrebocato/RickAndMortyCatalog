@@ -45,4 +45,8 @@ class SettingsLogicController {
         themeUpdater.updateApplicationWithTheme(newTheme: newTheme)
     }
     
+    func open(url: URL?) {
+        
+    }
+    
 }

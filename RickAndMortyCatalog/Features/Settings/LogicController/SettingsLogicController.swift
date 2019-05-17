@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class SettingsLogicController {
 
@@ -14,13 +15,16 @@ class SettingsLogicController {
     
     private let favoritesDatabase: FavoritesDatabaseProtocol
     private let themeUpdater: ThemeUpdaterProtocol
+    private let urlOpener: URLOpenerProtocol
     
     // MARK: - Initialization
     
     init(favoritesDatabase: FavoritesDatabaseProtocol,
-         themeUpdater: ThemeUpdaterProtocol) {
+         themeUpdater: ThemeUpdaterProtocol,
+         urlOpener: URLOpenerProtocol) {
         self.favoritesDatabase = favoritesDatabase
         self.themeUpdater = themeUpdater
+        self.urlOpener = urlOpener
     }
     
     // MARK: - Functions
@@ -45,8 +49,16 @@ class SettingsLogicController {
         themeUpdater.updateApplicationWithTheme(newTheme: newTheme)
     }
     
-    func open(url: URL?) {
-        
+    
+    /// Opens a URL using a string.
+    ///
+    /// - Parameter url: A string URL to be opened.
+    func open(urlString: String) {
+        if let url = URL(string: urlString), urlOpener.canOpenURL(url) {
+            urlOpener.open(url, options: [:], completionHandler: nil)
+        } else {
+            // @TODO: handle error
+        }
     }
     
 }

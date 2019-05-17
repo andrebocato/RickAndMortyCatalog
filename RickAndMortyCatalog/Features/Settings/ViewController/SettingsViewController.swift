@@ -136,15 +136,15 @@ extension SettingsViewController: UITableViewDelegate {
         case .githubRepo?:
             presentAlert(title: "Leaving the app",
                          message: "You are being sent to an external page on the web. Do you wish to proceed?",
-                         rightAction: UIAlertAction(title: "Go!", style: .default, handler: { (action) in
-                            UIApplication.shared.open(URL(string: "https://github.com/andrebocato/RickAndMortyCatalog")!) // @TODO: logic controller?
+                         rightAction: UIAlertAction(title: "Go!", style: .default, handler: { [weak self] (action) in
+                            self?.logicController.open(urlString: "https://github.com/andrebocato/RickAndMortyCatalog")
                          }))
             
         case .apiDocumentation?:
             presentAlert(title: "Leaving the app",
                          message: "You are being sent to an external page on the web. Do you wish to proceed?",
-                         rightAction: UIAlertAction(title: "Go!", style: .default, handler: { (action) in
-                            UIApplication.shared.open(URL(string: "https://rickandmortyapi.com/documentation/")!) // @TODO: logic controller?
+                         rightAction: UIAlertAction(title: "Go!", style: .default, handler: { [weak self] (action) in
+                            self?.logicController.open(urlString: "https://rickandmortyapi.com/documentation/")
                          }))
             
         case .deleteAll?:

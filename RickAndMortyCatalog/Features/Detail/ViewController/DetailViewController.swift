@@ -150,7 +150,7 @@ extension DetailViewController: DetailLogicControllerDelegate {
     }
     
     private func handleError(_ error: Error) {
-        AlertHelper.presentAlert(inController: self, title: "Error!", message: error.localizedDescription) { [weak self] in
+        presentAlert(title: "Error!", message: error.localizedDescription) { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
     }

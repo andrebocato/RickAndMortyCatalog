@@ -24,5 +24,6 @@ struct DependencyInjection {
     static let favoritesDatabase = FavoritesDatabase()
     static let userDefaults = UserDefaultsImplementation()
     static let themeUpdater = ThemeUpdater()
+    static let urlOpener = // ?????
     
 }

@@ -52,7 +52,8 @@ extension AppDelegate: ViewControllersFactoryProtocol {
     
     func createSettingsViewController() ->  SettingsViewController {
         let settingsLogicController = SettingsLogicController(favoritesDatabase: DependencyInjection.favoritesDatabase,
-                                                              themeUpdater: DependencyInjection.themeUpdater)
+                                                              themeUpdater: DependencyInjection.themeUpdater,
+                                                              urlOpener: DependencyInjection.urlOpener)
         return SettingsViewController(nibName: SettingsViewController.className,
                                       bundle: Bundle(for: SettingsViewController.self),
                                       logicController: settingsLogicController)

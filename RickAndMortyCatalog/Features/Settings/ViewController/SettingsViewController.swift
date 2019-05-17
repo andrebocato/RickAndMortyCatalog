@@ -134,33 +134,30 @@ extension SettingsViewController: UITableViewDelegate {
         
         switch cellType {
         case .githubRepo?:
-            AlertHelper.presentAlert(inController: self,
-                                     title: "Leaving the app",
-                                     message: "You are being sent to an external page on the web. Do you wish to proceed?",
-                                     rightAction: UIAlertAction(title: "Go!", style: .default, handler: { (action) in
-                                        UIApplication.shared.open(URL(string: "https://github.com/andrebocato/RickAndMortyCatalog")!) // @TODO: logic controller?
-                                     }))
+            presentAlert(title: "Leaving the app",
+                         message: "You are being sent to an external page on the web. Do you wish to proceed?",
+                         rightAction: UIAlertAction(title: "Go!", style: .default, handler: { (action) in
+                            UIApplication.shared.open(URL(string: "https://github.com/andrebocato/RickAndMortyCatalog")!) // @TODO: logic controller?
+                         }))
             
         case .apiDocumentation?:
-            AlertHelper.presentAlert(inController: self,
-                                     title: "Leaving the app",
-                                     message: "You are being sent to an external page on the web. Do you wish to proceed?",
-                                     rightAction: UIAlertAction(title: "Go!", style: .default, handler: { (action) in
-                                        UIApplication.shared.open(URL(string: "https://rickandmortyapi.com/documentation/")!) // @TODO: logic controller?
-                                     }))
+            presentAlert(title: "Leaving the app",
+                         message: "You are being sent to an external page on the web. Do you wish to proceed?",
+                         rightAction: UIAlertAction(title: "Go!", style: .default, handler: { (action) in
+                            UIApplication.shared.open(URL(string: "https://rickandmortyapi.com/documentation/")!) // @TODO: logic controller?
+                         }))
             
         case .deleteAll?:
-            AlertHelper.presentAlert(inController: self,
-                                     title: "Deleting favorites",
-                                     message: "Are you sure you want to delete all your favorited characters? This action can't be undone.",
-                                     rightAction: UIAlertAction(title: "Delete", style: .destructive, handler: nil)) { [weak self] in
-                                        self?.logicController.deleteAllFavorites { [weak self] (result) in
-                                            switch result {
-                                            case .failure(let error):
-                                                AlertHelper.presentAlert(inController: self, title: "Error!", message: error.localizedDescription)
-                                            default: return
-                                            }
-                                        }
+            presentAlert(title: "Deleting favorites",
+                         message: "Are you sure you want to delete all your favorited characters? This action can't be undone.",
+                         rightAction: UIAlertAction(title: "Delete", style: .destructive, handler: nil)) { [weak self] in
+                            self?.logicController.deleteAllFavorites { [weak self] (result) in
+                                switch result {
+                                case .failure(let error):
+                                    self?.presentAlert(title: "Error!", message: error.localizedDescription)
+                                default: return
+                                }
+                            }
             }
         case .switch?:
             return

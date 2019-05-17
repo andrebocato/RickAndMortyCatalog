@@ -1,5 +1,5 @@
 //
-//  AlertHelper.swift
+//  AlertPresenting.swift
 //  RickAndMortyCatalog
 //
 //  Created by Andre Sanches Bocato on 09/04/19.
@@ -8,27 +8,38 @@
 
 import UIKit
 
-class AlertHelper {
-    
-    // MARK: - Initialization
-    
-    private init() {}
-    
-    // MARK: - Functions
+// MARK: - Protocols
+
+protocol AlertPresenting {
     
     /// Presents an Alert Controller with cancel and destructive actions.
     ///
     /// - Parameters:
-    ///   - controller: View Controller where the alert will be presented.
     ///   - title: Title to be displayed in the alert.
     ///   - message: Optional message to be displayed in the alert.
     ///   - rightAction: Main action of the alert.
     ///   - completionHandler: Closure to be executed right after presenting the alert.
-    static func presentAlert(inController controller: UIViewController?,
-                             title: String,
-                             message: String?,
-                             rightAction: UIAlertAction,
-                             completionHandler: (() -> Void)? = nil) {
+    func presentAlert(title: String, message: String?, rightAction: UIAlertAction, completionHandler: (() -> Void)?)
+    
+    /// Presents an Alert Controller with an alert message.
+    ///
+    /// - Parameters:
+    ///   - title: Title to be displayed in the alert.
+    ///   - message: Optional message to be displayed in the alert.
+    ///   - completionHandler: Closure to be executed right after presenting the alert.
+    func presentAlert(title: String, message: String?, completionHandler: (() -> Void)?)
+}
+
+extension UIViewController: AlertPresenting { }
+
+extension AlertPresenting where Self: UIViewController {
+    
+    // MARK: - Functions
+    
+    func presentAlert(title: String,
+                      message: String?,
+                      rightAction: UIAlertAction,
+                      completionHandler: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -40,22 +51,14 @@ class AlertHelper {
         alert.addAction(rightAction)
         
         DispatchQueue.main.async {
-            controller?.present(alert, animated: true, completion: completionHandler)
+            self.present(alert, animated: true, completion: completionHandler)
         }
         
     }
     
-    /// Presents an Alert Controller with an alert message.
-    ///
-    /// - Parameters:
-    ///   - controller: View Controller where the alert will be presented.
-    ///   - title: Title to be displayed in the alert.
-    ///   - message: Optional message to be displayed in the alert.
-    ///   - completionHandler: Closure to be executed right after presenting the alert.
-    static func presentAlert(inController controller: UIViewController?,
-                             title: String,
-                             message: String?,
-                             completionHandler: (() -> Void)? = nil) {
+    func presentAlert(title: String,
+                      message: String?,
+                      completionHandler: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -65,7 +68,7 @@ class AlertHelper {
         alert.addAction(okAction)
         
         DispatchQueue.main.async {
-            controller?.present(alert, animated: true, completion: completionHandler)
+            self.present(alert, animated: true, completion: completionHandler)
         }
     }
     

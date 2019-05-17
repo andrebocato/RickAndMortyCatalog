@@ -24,7 +24,7 @@
 		65912A91225CF1C500F37508 /* RickAndMortyCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912A90225CF1C500F37508 /* RickAndMortyCatalogTests.swift */; };
 		65912A9C225CF1C500F37508 /* RickAndMortyCatalogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912A9B225CF1C500F37508 /* RickAndMortyCatalogUITests.swift */; };
 		65912AB3225CF43C00F37508 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912AB2225CF43C00F37508 /* JSON.swift */; };
-		65912AB5225CF45100F37508 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912AB4225CF45100F37508 /* AlertHelper.swift */; };
+		65912AB5225CF45100F37508 /* UIViewController+AlertPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912AB4225CF45100F37508 /* UIViewController+AlertPresenting.swift */; };
 		65912ABA225CF49200F37508 /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912AB9225CF49200F37508 /* SerializationError.swift */; };
 		65912AC3225CFD9A00F37508 /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912AC2225CFD9A00F37508 /* CharactersViewController.swift */; };
 		65912AD9225D08FC00F37508 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912AD8225D08FC00F37508 /* FavoritesViewController.swift */; };
@@ -147,7 +147,7 @@
 		65912A9B225CF1C500F37508 /* RickAndMortyCatalogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyCatalogUITests.swift; sourceTree = "<group>"; };
 		65912A9D225CF1C500F37508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65912AB2225CF43C00F37508 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		65912AB4225CF45100F37508 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		65912AB4225CF45100F37508 /* UIViewController+AlertPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AlertPresenting.swift"; sourceTree = "<group>"; };
 		65912AB9225CF49200F37508 /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
 		65912AC2225CFD9A00F37508 /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
 		65912AD8225D08FC00F37508 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -369,17 +369,8 @@
 				65912AB8225CF48000F37508 /* Enums */,
 				65912AB1225CF43000F37508 /* JSON */,
 				65912AAE225CF2ED00F37508 /* Extensions */,
-				65912AAC225CF2D600F37508 /* Helpers */,
 			);
 			path = Conveniences;
-			sourceTree = "<group>";
-		};
-		65912AAC225CF2D600F37508 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				65912AB4225CF45100F37508 /* AlertHelper.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		65912AAE225CF2ED00F37508 /* Extensions */ = {
@@ -393,6 +384,7 @@
 				653C92E7228B47840031C098 /* UIFont+CustomFonts.swift */,
 				65C9CBDF228DB0B30092E673 /* Notification+Name.swift */,
 				65C9CBE3228DD2CD0092E673 /* UITableView+Dequeue.swift */,
+				65912AB4225CF45100F37508 /* UIViewController+AlertPresenting.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1052,7 +1044,7 @@
 				E50C9D4B226F4ADE00588EBC /* URLRequestAdapter.swift in Sources */,
 				E50C9D49226F4AD300588EBC /* URLRequestParameters.swift in Sources */,
 				E50C9D9C2271F4B000588EBC /* RMCharacterModelControllerState.swift in Sources */,
-				65912AB5225CF45100F37508 /* AlertHelper.swift in Sources */,
+				65912AB5225CF45100F37508 /* UIViewController+AlertPresenting.swift in Sources */,
 				E50C9DDC2275D51800588EBC /* SettingsViewController.swift in Sources */,
 				65C9CBDE228DAED10092E673 /* Theme.swift in Sources */,
 				E50C9D41226F4A9A00588EBC /* URLSessionDispatcher.swift in Sources */,

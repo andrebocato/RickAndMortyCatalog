@@ -10,8 +10,12 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    // MARK: - Properties
+    // MARK: - Private Properties
     
+    private let githubRepoURL = "https://github.com/andrebocato/RickAndMortyCatalog"
+    private let apiDocumentationURL = "https://rickandmortyapi.com/documentation/"
+    
+    // @TODO: remove
     let settings = [
         ["delete all favorites"],
         ["switch to dark mode"],
@@ -137,14 +141,16 @@ extension SettingsViewController: UITableViewDelegate {
             presentAlert(title: "Leaving the app",
                          message: "You are being sent to an external page on the web. Do you wish to proceed?",
                          rightAction: UIAlertAction(title: "Go!", style: .default, handler: { [weak self] (action) in
-                            self?.logicController.open(urlString: "https://github.com/andrebocato/RickAndMortyCatalog")
+                            guard let url = self?.githubRepoURL else { return }
+                            self?.logicController.open(urlString: url)
                          }))
             
         case .apiDocumentation?:
             presentAlert(title: "Leaving the app",
                          message: "You are being sent to an external page on the web. Do you wish to proceed?",
                          rightAction: UIAlertAction(title: "Go!", style: .default, handler: { [weak self] (action) in
-                            self?.logicController.open(urlString: "https://rickandmortyapi.com/documentation/")
+                            guard let url = self?.apiDocumentationURL else { return }
+                            self?.logicController.open(urlString: url)
                          }))
             
         case .deleteAll?:
@@ -159,10 +165,9 @@ extension SettingsViewController: UITableViewDelegate {
                                 }
                             }
             }
-        case .switch?:
-            return
-        case .none:
-            return
+            
+        case .switch?: return
+        case .none: return
         }
         
     }

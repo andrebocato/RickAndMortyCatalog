@@ -16,7 +16,8 @@ protocol ThemeType {
     var textColor: UIColor { get }
     var selectedCellBackgroundColor: UIColor { get }
     var tabBarColor: UIColor { get }
-    var buttonColor: UIColor { get }
+    var unselectedButtonColor: UIColor { get }
+    var selectedButtonColor: UIColor { get }
 }
 
 // MARK: - Themes
@@ -71,12 +72,21 @@ enum Theme: String, ThemeType {
         }
     }
     
-    var buttonColor: UIColor {
+    var unselectedButtonColor: UIColor {
         switch self {
         case .dark:
             return UIColor(red: 0.97, green: 0.52, blue: 0.18, alpha: 1.0)
         case .`default`:
             return UIColor(red: 0.41, green: 0.71, blue: 0.71, alpha: 1.0)
+        }
+    }
+    
+    var selectedButtonColor: UIColor {
+        switch self {
+        case .dark:
+            return UIColor(red: 0.53, green: 0.27, blue: 0.06, alpha: 1.0)
+        case .light:
+            return UIColor(red: 0.20, green: 0.37, blue: 0.39, alpha: 1.0)
         }
     }
     

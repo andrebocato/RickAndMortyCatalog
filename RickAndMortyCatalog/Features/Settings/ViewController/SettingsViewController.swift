@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, ThemeObserving {
 
     // MARK: - Private Properties
     
@@ -31,9 +31,6 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    @IBOutlet private weak var clearFavoritesButton: UIButton!
-    @IBOutlet private weak var switchThemeFixedLabel: UILabel!
-    
     // MARK: - Dependencies
 
     private let logicController: SettingsLogicController
@@ -52,6 +49,13 @@ class SettingsViewController: UIViewController {
     
     // MARK: - Lifecycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        registerTableViewCells()
+        loadCurrentTheme()
+        addThemeObserver()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.toolbar.isHidden = true
@@ -59,12 +63,8 @@ class SettingsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        removeThemeObserver()
         navigationController?.toolbar.isHidden = false
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        registerTableViewCells()
     }
     
     // MARK: - UI Setup
@@ -173,5 +173,12 @@ extension SettingsViewController: UITableViewDelegate {
     }
 }
 
-
-
+extension SettingsViewController: Themeable {
+    
+    func apply(theme: ThemeType) {
+        tableView.backgroundColor = theme.viewBackgroundColor
+        view.backgroundColor = theme.viewBackgroundColor
+        view.setNeedsDisplay()
+    }
+    
+}

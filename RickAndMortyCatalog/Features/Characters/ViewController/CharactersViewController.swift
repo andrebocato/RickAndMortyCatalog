@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CharactersViewController: UIViewController {
+class CharactersViewController: UIViewController, ThemeObserving {
     
     // MARK: - Dependencies
     
@@ -50,6 +50,13 @@ class CharactersViewController: UIViewController {
         super.viewDidLoad()
         registerTableViewCells()
         logicController.loadCharacters()
+        loadCurrentTheme()
+        addThemeObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeThemeObserver()
     }
     
     // MARK: - UI Setup
@@ -145,6 +152,16 @@ extension CharactersViewController: CharactersLogicControllerDelegate {
     
     private func handleServiceError(_ error: ServiceError) {
         presentAlert(title: "Service Error!", message: error.localizedDescription)
+    }
+    
+}
+
+extension CharactersViewController: Themeable {
+    
+    func apply(theme: ThemeType) {
+        tableView.backgroundColor = theme.viewBackgroundColor
+        view.backgroundColor = theme.viewBackgroundColor
+        view.setNeedsDisplay()
     }
     
 }

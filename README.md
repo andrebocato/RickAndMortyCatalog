@@ -16,13 +16,13 @@
 * [CocoaPods](https://cocoapods.org) needs to be installed in order to use Realm.
 * The documentation and guide for utilizing those tools can be found on their websites, linked above.
 
-## Known bugs
-* Loading view on characters list not centered.
-* "Shlop" font not working on ID label (characters list).
+## Known issues
+* LoadingView on characters list not centered.
+* LoadingViews and EmptyViews do not change according to themes.
 
 ## TODOs
 * Fix known bugs.
 * Add long gesture recognizers for characters list and favorites.
 * Add haptic feedback.
 * Add loading animation in pagination.
-* Finish Dark Theme implementation.
+* Add theme changes to navigation and tab bars.

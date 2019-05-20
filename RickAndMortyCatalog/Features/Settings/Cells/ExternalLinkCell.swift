@@ -8,13 +8,25 @@
 
 import UIKit
 
-class ExternalLinkCell: UITableViewCell {
+class ExternalLinkCell: UITableViewCell, ThemeObserving {
 
     // MARK: - Enums
     
     enum ExternalLinkCellStyle {
         case githubRepo
         case apiDocumentation
+    }
+    
+    // MARK: - Lifecycle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        loadCurrentTheme()
+        addThemeObserver()
+    }
+    
+    deinit {
+        removeThemeObserver()
     }
     
     // MARK: - Functions
@@ -30,6 +42,16 @@ class ExternalLinkCell: UITableViewCell {
         }
         
         return self
+    }
+    
+}
+
+extension ExternalLinkCell: Themeable {
+    
+    func apply(theme: ThemeType) {
+        textLabel?.textColor = theme.textColor
+        backgroundColor = theme.cellBackgroundColor
+        setNeedsDisplay()
     }
     
 }

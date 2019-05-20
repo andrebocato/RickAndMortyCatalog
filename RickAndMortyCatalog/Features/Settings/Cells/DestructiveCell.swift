@@ -8,12 +8,24 @@
 
 import UIKit
 
-class DestructiveCell: UITableViewCell {
+class DestructiveCell: UITableViewCell, ThemeObserving {
 
     // MARK: - Enums
     
     enum DestructiveCellStyle {
         case deleteAll
+    }
+    
+    // MARK: - Lifecycle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        loadCurrentTheme()
+        addThemeObserver()
+    }
+    
+    deinit {
+        removeThemeObserver()
     }
     
     // MARK: - Functions
@@ -26,6 +38,15 @@ class DestructiveCell: UITableViewCell {
         }
         
         return self
+    }
+    
+}
+
+extension DestructiveCell: Themeable {
+    
+    func apply(theme: ThemeType) {
+        backgroundColor = theme.cellBackgroundColor
+        setNeedsDisplay()
     }
     
 }

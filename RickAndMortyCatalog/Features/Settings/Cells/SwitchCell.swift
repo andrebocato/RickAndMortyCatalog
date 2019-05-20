@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SwitchCell: UITableViewCell {
+class SwitchCell: UITableViewCell, ThemeObserving {
 
     // MARK: - IBOutlets
     
@@ -17,11 +17,23 @@ class SwitchCell: UITableViewCell {
             cellTitleLabel.text = "Switch to dark theme"
         }
     }
-    
     @IBOutlet private weak var themeSwitch: UISwitch!
     
     // MARK: - Properties
+    
     private var onSwitchValueChanged: ((_ isOn: Bool) -> Void)?
+    
+    // MARK: - Lifecycle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        loadCurrentTheme()
+        addThemeObserver()
+    }
+    
+    deinit {
+        removeThemeObserver()
+    }
     
     // MARK: - IBActions
     
@@ -35,6 +47,17 @@ class SwitchCell: UITableViewCell {
         selectionStyle = .none
         themeSwitch.isOn = isSwitchOn
         self.onSwitchValueChanged = onSwitchValueChanged
+    }
+    
+}
+
+extension SwitchCell: Themeable {
+    
+    func apply(theme: ThemeType) {
+        cellTitleLabel.textColor = theme.textColor
+        themeSwitch.onTintColor = theme.unselectedButtonColor
+        backgroundColor = theme.cellBackgroundColor
+        setNeedsDisplay()
     }
     
 }

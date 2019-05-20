@@ -41,7 +41,6 @@
 		65959DF2228A099100D792DB /* ExternalLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65959DF0228A099100D792DB /* ExternalLinkCell.swift */; };
 		65959DF3228A099100D792DB /* ExternalLinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65959DF1228A099100D792DB /* ExternalLinkCell.xib */; };
 		65A26C0E2284A61400FC824E /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A26C0D2284A61400FC824E /* PersistenceError.swift */; };
-		65A26C122284B49F00FC824E /* shlop rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C112284B49F00FC824E /* shlop rg.ttf */; };
 		65A26C162284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C152284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png */; };
 		65C9CBDE228DAED10092E673 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBDD228DAED10092E673 /* Theme.swift */; };
 		65C9CBE0228DB0B30092E673 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBDF228DB0B30092E673 /* Notification+Name.swift */; };
@@ -167,7 +166,6 @@
 		65959DF0228A099100D792DB /* ExternalLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLinkCell.swift; sourceTree = "<group>"; };
 		65959DF1228A099100D792DB /* ExternalLinkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExternalLinkCell.xib; sourceTree = "<group>"; };
 		65A26C0D2284A61400FC824E /* PersistenceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceError.swift; sourceTree = "<group>"; };
-		65A26C112284B49F00FC824E /* shlop rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "shlop rg.ttf"; sourceTree = "<group>"; };
 		65A26C152284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rick-And-Morty-PNG-Transparent-Image.png"; sourceTree = "<group>"; };
 		65A26C172284BD4F00FC824E /* Cartoon Toy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cartoon Toy.ttf"; sourceTree = "<group>"; };
 		65C9CBDD228DAED10092E673 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -527,7 +525,6 @@
 		65A26C102284B47E00FC824E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				65A26C112284B49F00FC824E /* shlop rg.ttf */,
 				65A26C172284BD4F00FC824E /* Cartoon Toy.ttf */,
 			);
 			path = Fonts;
@@ -911,7 +908,6 @@
 				65959DF3228A099100D792DB /* ExternalLinkCell.xib in Resources */,
 				6504A7B62285CF7C00880D5F /* README.md in Resources */,
 				6591EFD02270D8C300C7502E /* FavoriteCell.xib in Resources */,
-				65A26C122284B49F00FC824E /* shlop rg.ttf in Resources */,
 				65912A86225CF1C500F37508 /* LaunchScreen.storyboard in Resources */,
 				65912A83225CF1C500F37508 /* Assets.xcassets in Resources */,
 				6591EFD22270D8D500C7502E /* FavoritesViewController.xib in Resources */,

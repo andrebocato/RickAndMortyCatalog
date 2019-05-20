@@ -24,7 +24,7 @@ class CharacterCell: UITableViewCell, ThemeObserving {
     }
     @IBOutlet private weak var idLabel: UILabel! {
         didSet {
-            idLabel.font = .shlop(ofSize: 25.0) // not working
+            idLabel.font = .cartoonToy(ofSize: 25.0)
         }
     }
     
@@ -38,7 +38,6 @@ class CharacterCell: UITableViewCell, ThemeObserving {
     override func awakeFromNib() {
         super.awakeFromNib()
         addThemeObserver()
-        
     }
     
     override func prepareForReuse() {

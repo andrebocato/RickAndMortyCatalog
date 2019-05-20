@@ -12,7 +12,7 @@ extension AppDelegate: ThemeLoader {
     
     func loadApplicationTheme() { // TODO: Refactor this
         let isDarkThemeOn = DependencyInjection.themeManager.isDarkThemeOn()
-        let currentTheme: Theme = isDarkThemeOn ? .dark : .default
+        let currentTheme: Theme = isDarkThemeOn ? .dark : .light
         DependencyInjection.themeUpdater.updateApplicationWithTheme(newTheme: currentTheme)
     }
     

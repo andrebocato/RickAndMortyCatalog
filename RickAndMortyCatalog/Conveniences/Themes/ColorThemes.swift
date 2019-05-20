@@ -29,6 +29,8 @@ protocol ThemeUpdaterProtocol {
 
 /// Allows the object to have a theme.
 protocol Themeable {
+    /// Loads the current applied theme from UserDefaults.s
+    func loadCurrentTheme()
     /// Applies a selected theme to the object.
     ///
     /// - Parameter theme: The theme to be applied.

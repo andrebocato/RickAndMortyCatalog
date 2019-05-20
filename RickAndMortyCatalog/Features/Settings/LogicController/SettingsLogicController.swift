@@ -52,7 +52,7 @@ class SettingsLogicController {
     ///
     /// - Parameter enabled: Send true to enable the theme, false to disable it.
     func toggleDarkTheme(_ enabled: Bool) {
-        let newTheme: Theme = enabled ? .dark : .default
+        let newTheme: Theme = enabled ? .dark : .light
         themeManager.setDarkThemeOn(enabled)
         themeUpdater.updateApplicationWithTheme(newTheme: newTheme)
     }

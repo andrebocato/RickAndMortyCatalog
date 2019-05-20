@@ -4,7 +4,6 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>shlop.tff</string>
 		<string>Cartoon Toy.tff</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>

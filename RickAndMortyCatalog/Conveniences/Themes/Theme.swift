@@ -21,10 +21,10 @@ protocol ThemeType {
 
 // MARK: - Themes
 
-enum Theme: ThemeType {
+enum Theme: String, ThemeType {
     
-    case dark
-    case `default`
+    case dark = "dark"
+    case `default` = "defaultt"
     
     var cellBackgroundColor: UIColor {
         switch self {

@@ -38,6 +38,7 @@ class CharacterCell: UITableViewCell, ThemeObserving {
     override func awakeFromNib() {
         super.awakeFromNib()
         addThemeObserver()
+        
     }
     
     override func prepareForReuse() {

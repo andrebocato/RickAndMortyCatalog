@@ -15,15 +15,23 @@ class SettingsLogicController {
     private let favoritesDatabase: FavoritesDatabaseProtocol
     private let themeUpdater: ThemeUpdaterProtocol
     private let urlOpener: URLOpenerProtocol
+    private let themeManager: ThemeManagerProtocol
+    
+    // MARK: - Public Properties
+    var isDarkThemeOn: Bool {
+        return themeManager.isDarkThemeOn()
+    }
     
     // MARK: - Initialization
     
     init(favoritesDatabase: FavoritesDatabaseProtocol,
          themeUpdater: ThemeUpdaterProtocol,
-         urlOpener: URLOpenerProtocol) {
+         urlOpener: URLOpenerProtocol,
+         themeManager: ThemeManagerProtocol) {
         self.favoritesDatabase = favoritesDatabase
         self.themeUpdater = themeUpdater
         self.urlOpener = urlOpener
+        self.themeManager = themeManager
     }
     
     // MARK: - Functions
@@ -45,6 +53,7 @@ class SettingsLogicController {
     /// - Parameter enabled: Send true to enable the theme, false to disable it.
     func toggleDarkTheme(_ enabled: Bool) {
         let newTheme: Theme = enabled ? .dark : .default
+        themeManager.setDarkThemeOn(enabled)
         themeUpdater.updateApplicationWithTheme(newTheme: newTheme)
     }
     

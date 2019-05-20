@@ -47,7 +47,7 @@ class ThemeUpdater: ThemeUpdaterProtocol {
 
 // MARK: - Extensions
 
-extension ThemeObserving where Self: Themeable & UIView {
+extension ThemeObserving where Self: Themeable & NSObjectProtocol {
     
     // MARK: - Theme Observing functions
     

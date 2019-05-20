@@ -10,12 +10,17 @@ import Foundation
 
 // MARK: - Protocols
 
-class UserDefaultsManager {
+protocol ThemeManagerProtocol {
+    func setDarkThemeOn(_ isOn: Bool)
+    func isDarkThemeOn() -> Bool
+}
+
+class UserDefaultsThemeManager: ThemeManagerProtocol {
     
     // MARK: - Private Properties
     
     private let isDarkThemeOnKey = "isDarkThemeOnKey"
-
+    
     // MARK: - Public Functions
     
     public func setDarkThemeOn(_ isOn: Bool) {

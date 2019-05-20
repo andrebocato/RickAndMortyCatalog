@@ -108,7 +108,7 @@ extension SettingsViewController: UITableViewDataSource {
             
         case .switch?:
             let switchCell = tableView.dequeueReusableCell(ofClass: SwitchCell.self, for: indexPath)
-            switchCell.configure(onSwitchValueChanged: { [weak self] (isOn) in
+            switchCell.configure(isSwitchOn: logicController.isDarkThemeOn, onSwitchValueChanged: { [weak self] (isOn) in
                 self?.logicController.toggleDarkTheme(isOn)
             })
             return switchCell

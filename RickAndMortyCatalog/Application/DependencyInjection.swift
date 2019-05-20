@@ -14,16 +14,16 @@ struct DependencyInjection {
     // MARK: - Private
     
     private init() {}
-    private static let urlSessionDispatcher = URLSessionDispatcher()
-    private static let cacheService = CacheService(cacheDirectoryName: "RickAndMortyCatalogCache")
+    private static let urlSessionDispatcher: URLRequestDispatcherProtocol = URLSessionDispatcher()
+    private static let cacheService: CacheServiceProtocol = CacheService(cacheDirectoryName: "RickAndMortyCatalogCache")
     
     // MARK: - Public
     
-    static let charactersService = RMCharactersService(dispatcher: urlSessionDispatcher)
-    static let imageService = ImageService(networkDispatcher: urlSessionDispatcher, cacheService: cacheService)
-    static let favoritesDatabase = FavoritesDatabase()
-    static let userDefaults = UserDefaultsManager()
-    static let themeUpdater = ThemeUpdater()
+    static let charactersService: RMCharactersServiceProtocol = RMCharactersService(dispatcher: urlSessionDispatcher)
+    static let imageService: ImageServiceProtocol = ImageService(networkDispatcher: urlSessionDispatcher, cacheService: cacheService)
+    static let favoritesDatabase/*: FavoritesDatabaseProtocol*/ = FavoritesDatabase()
+    static let themeManager: ThemeManagerProtocol = UserDefaultsThemeManager()
+    static let themeUpdater: ThemeUpdaterProtocol = ThemeUpdater()
     static let urlOpener: URLOpenerProtocol = UIApplication.shared
     
 }

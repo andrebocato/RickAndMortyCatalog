@@ -22,7 +22,7 @@ class FavoritesLogicController {
     
     // MARK: - Dependencies
     
-    private let database: FavoritesDatabase
+    private let database: FavoritesDatabaseProtocol
     private let modelControllerFactory: ModelControllersFactoryProtocol
     
     // MARK: - Private Properties

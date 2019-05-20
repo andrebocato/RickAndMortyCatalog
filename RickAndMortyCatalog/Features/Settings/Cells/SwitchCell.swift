@@ -20,24 +20,25 @@ class SwitchCell: UITableViewCell {
     
     @IBOutlet private weak var themeSwitch: UISwitch! {
         didSet {
-            themeSwitch.isOn = false // TODO: CHANGE THIS...
-            // You need to have somewere that holds the last theme aplied to set this value...
+            themeSwitch.isOn = userDefaults.isDarkThemeOn()
         }
     }
     
     // MARK: - Properties
     
     private var onSwitchValueChanged: ((_ isOn: Bool) -> Void)?
+    private let userDefaults = UserDefaultsManager()
     
     // MARK: - IBActions
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         onSwitchValueChanged?(sender.isOn)
+        userDefaults.setDarkThemeOn(sender.isOn)
     }
     
     // MARK: - Public Functions
     
-    func setup(onSwitchValueChanged: ((_ isOn: Bool) -> Void)?) {
+    func configure(onSwitchValueChanged: ((_ isOn: Bool) -> Void)?) {
         selectionStyle = .none
         self.onSwitchValueChanged = onSwitchValueChanged
     }

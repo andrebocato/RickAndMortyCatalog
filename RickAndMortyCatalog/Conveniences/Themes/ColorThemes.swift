@@ -10,13 +10,13 @@ import UIKit
 
 // MARK: - Protocols
 
-/// Establishes theme observer setting up and tearing down.
+/// Establishes theme observer adding and removal.
 protocol ThemeObserving {
     /// Sets up an observer for theme changes.
-    func setupThemeObserver()
+    func addThemeObserver()
     
-    /// Tears down an observer for theme changes;
-    func tearDownThemeObserver()
+    /// Removes an observer for theme changes;
+    func removeThemeObserver()
 }
 
 /// Allows the class to update its theme.
@@ -47,17 +47,17 @@ class ThemeUpdater: ThemeUpdaterProtocol {
 
 // MARK: - Extensions
 
-extension ThemeObserving where Self: Themeable & NSObjectProtocol {
+extension ThemeObserving where Self: Themeable & UIView {
     
     // MARK: - Theme Observing functions
     
-    func setupThemeObserver() {
+    func addThemeObserver() {
         NotificationCenter.default.addObserver(forName: .applicationThemeDidChange, object: nil, queue: nil) { [weak self] (notification) in
             self?.themeDidChangeWithNotification(notification)
         }
     }
     
-    func tearDownThemeObserver() {
+    func removeThemeObserver() {
         NotificationCenter.default.removeObserver(self, name: .applicationThemeDidChange, object: nil)
     }
     

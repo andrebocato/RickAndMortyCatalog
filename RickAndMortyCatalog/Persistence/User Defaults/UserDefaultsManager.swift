@@ -10,41 +10,20 @@ import Foundation
 
 // MARK: - Protocols
 
-protocol UserDefaultsProtocol {
-    /// Sets a value to be saved on UserDefaults with a specified key.
-    ///
-    /// - Parameters:
-    ///   - value: Value to be stored.
-    ///   - key: Reference key where the value will be stored.
-    func setValue(_ value: Any?, forKey key: String)
+class UserDefaultsManager {
     
-    /// Gets a value stored in a key on UserDefaults.
-    ///
-    /// - Parameter key: Key reference to the value.
-    /// - Returns: The desired value.
-    func getValue(forKey key: String) -> Any?
-}
+    // MARK: - Private Properties
+    
+    private let isDarkThemeOnKey = "isDarkThemeOnKey"
 
-// MARK: -
-
-class UserDefaultsImplementation: UserDefaultsProtocol {
-    
-    // MARK: - Properties
-    
-    let isDarkThemeKey = "isDarkThemeKey"
-    
     // MARK: - Public Functions
     
-    
-    
-    // MARK: - Private Functions
-    
-    func setValue(_ value: Any?, forKey key: String) {
-        UserDefaults.standard.set(value, forKey: key)
+    public func setDarkThemeOn(_ isOn: Bool) {
+        UserDefaults.standard.set(isOn, forKey: isDarkThemeOnKey)
     }
     
-    func getValue(forKey key: String) -> Any? {
-        return UserDefaults.standard.value(forKey: key)
+    public func isDarkThemeOn() -> Bool {
+        return UserDefaults.standard.bool(forKey: isDarkThemeOnKey)
     }
-    
+
 }

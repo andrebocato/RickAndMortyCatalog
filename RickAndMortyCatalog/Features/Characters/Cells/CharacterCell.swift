@@ -37,7 +37,7 @@ class CharacterCell: UITableViewCell, ThemeObserving {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupThemeObserver()
+        addThemeObserver()
     }
     
     override func prepareForReuse() {
@@ -47,7 +47,7 @@ class CharacterCell: UITableViewCell, ThemeObserving {
     }
     
     deinit {
-        tearDownThemeObserver()
+        removeThemeObserver()
     }
     
     // MARK: - Configuration Functions

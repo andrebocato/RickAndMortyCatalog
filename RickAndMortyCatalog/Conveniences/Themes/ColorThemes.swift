@@ -12,9 +12,10 @@ import UIKit
 
 /// Establishes theme observer adding and removal.
 protocol ThemeObserving {
+    /// Loads and applies the current theme from UserDefaults.
+    func loadCurrentTheme()
     /// Sets up an observer for theme changes.
     func addThemeObserver()
-    
     /// Removes an observer for theme changes;
     func removeThemeObserver()
 }
@@ -29,8 +30,6 @@ protocol ThemeUpdaterProtocol {
 
 /// Allows the object to have a theme.
 protocol Themeable {
-    /// Loads the current applied theme from UserDefaults.s
-    func loadCurrentTheme()
     /// Applies a selected theme to the object.
     ///
     /// - Parameter theme: The theme to be applied.
@@ -52,6 +51,12 @@ class ThemeUpdater: ThemeUpdaterProtocol {
 extension ThemeObserving where Self: Themeable & NSObjectProtocol {
     
     // MARK: - Theme Observing functions
+    
+    func loadCurrentTheme() {
+        let isDarkThemeOn = UserDefaults.standard.bool(forKey: "isDarkThemeOnKey")
+        let currentTheme: Theme = isDarkThemeOn ? .dark : .light
+        apply(theme: currentTheme)
+    }
     
     func addThemeObserver() {
         NotificationCenter.default.addObserver(forName: .applicationThemeDidChange, object: nil, queue: nil) { [weak self] (notification) in

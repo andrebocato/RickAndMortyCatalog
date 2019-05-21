@@ -179,6 +179,11 @@ extension SettingsViewController: Themeable {
         tableView.backgroundColor = theme.viewBackgroundColor
         view.backgroundColor = theme.viewBackgroundColor
         view.setNeedsDisplay()
+        
+        // @TODO: move outta here
+        tabBarController?.tabBar.unselectedItemTintColor = theme.unselectedButtonColor
+        tabBarController?.tabBar.tintColor = theme.selectedButtonColor
+        tabBarController?.view.tintColor = theme.tabBarColor
     }
     
 }

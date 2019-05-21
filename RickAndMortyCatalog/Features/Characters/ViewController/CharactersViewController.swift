@@ -162,6 +162,13 @@ extension CharactersViewController: Themeable {
         tableView.backgroundColor = theme.viewBackgroundColor
         view.backgroundColor = theme.viewBackgroundColor
         view.setNeedsDisplay()
+        
+        // @TODO: move outta here?
+        tabBarController?.tabBar.unselectedItemTintColor = theme.unselectedButtonColor
+        tabBarController?.tabBar.tintColor = theme.selectedButtonColor
+        tabBarController?.tabBar.barTintColor = theme.tabBarColor
+        navigationController?.navigationBar.barTintColor = theme.tabBarColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
     }
     
 }

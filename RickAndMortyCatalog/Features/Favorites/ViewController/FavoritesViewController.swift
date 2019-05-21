@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: UIViewController, ThemeObserving {
     
     // MARK: - IBOutlets
     
@@ -47,11 +47,18 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCollectionViewCells()
+        addThemeObserver()
+        loadCurrentTheme()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         logicController.loadFavorites()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeThemeObserver()
     }
     
     // MARK: - UI
@@ -132,6 +139,23 @@ extension FavoritesViewController: FavoritesLogicControllerDelegate {
     
     func databaseFetchDidFailWithError(_ error: Error) {
         view.showEmptyView(message: "Could not fetch favorites. \n=(")
+    }
+    
+}
+
+extension FavoritesViewController: Themeable {
+    
+    func apply(theme: ThemeType) {
+        view.backgroundColor = theme.viewBackgroundColor
+        collectionView.backgroundColor = theme.viewBackgroundColor
+        view.setNeedsDisplay()
+        
+        // @TODO: move outta here?
+        tabBarController?.tabBar.unselectedItemTintColor = theme.unselectedButtonColor
+        tabBarController?.tabBar.tintColor = theme.selectedButtonColor
+        tabBarController?.tabBar.barTintColor = theme.tabBarColor
+        navigationController?.navigationBar.barTintColor = theme.tabBarColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
     }
     
 }

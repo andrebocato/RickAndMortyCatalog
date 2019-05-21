@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, ThemeObserving {
     
     // MARK: - Dependencies
     
@@ -61,6 +61,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createBarButtonItem()
+        loadCurrentTheme()
+        addThemeObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +70,7 @@ class DetailViewController: UIViewController {
         navigationController?.toolbar.isHidden = true
         navigationController?.tabBarController?.tabBar.isHidden = true
         setupViewData()
+        removeThemeObserver()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -107,7 +110,6 @@ class DetailViewController: UIViewController {
     private func setupLabelsText() {
         idLabel.text = "\(logicController.character.id)"
         nameLabel.text = logicController.character.name
-        statusLabel.text = logicController.character.status
         statusLabel.text = logicController.character.status
         speciesLabel.text = logicController.character.species
         typeLabel.text = logicController.character.type
@@ -153,6 +155,33 @@ extension DetailViewController: DetailLogicControllerDelegate {
         presentAlert(title: "Error!", message: error.localizedDescription) { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+    }
+    
+}
+
+extension DetailViewController: Themeable {
+    
+    func apply(theme: ThemeType) {
+        idLabel.textColor = theme.textColor
+        nameLabel.textColor = theme.textColor
+        statusLabel.textColor = theme.textColor
+        speciesLabel.textColor = theme.textColor
+        typeLabel.textColor = theme.textColor
+        genderLabel.textColor = theme.textColor
+        originLabel.textColor = theme.textColor
+        locationLabel.textColor = theme.textColor
+        
+        idFixedLabel.textColor = theme.titleTextColor
+        nameFixedLabel.textColor = theme.titleTextColor
+        statusFixedLabel.textColor = theme.titleTextColor
+        speciesFixedLabel.textColor = theme.titleTextColor
+        typeFixedLabel.textColor = theme.titleTextColor
+        genderFixedLabel.textColor = theme.titleTextColor
+        originNameFixedLabel.textColor = theme.titleTextColor
+        locationNameFixedLabel.textColor = theme.titleTextColor
+        
+        view.backgroundColor = theme.viewBackgroundColor
+        imageView.superview?.backgroundColor = theme.viewBackgroundColor
     }
     
 }

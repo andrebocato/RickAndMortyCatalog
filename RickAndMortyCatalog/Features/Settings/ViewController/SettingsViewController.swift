@@ -180,10 +180,12 @@ extension SettingsViewController: Themeable {
         view.backgroundColor = theme.viewBackgroundColor
         view.setNeedsDisplay()
         
-        // @TODO: move outta here
+        // @TODO: move outta here?
         tabBarController?.tabBar.unselectedItemTintColor = theme.unselectedButtonColor
         tabBarController?.tabBar.tintColor = theme.selectedButtonColor
-        tabBarController?.view.tintColor = theme.tabBarColor
+        tabBarController?.tabBar.barTintColor = theme.tabBarColor
+        navigationController?.navigationBar.barTintColor = theme.tabBarColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
     }
     
 }

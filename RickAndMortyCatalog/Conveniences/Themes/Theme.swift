@@ -13,6 +13,7 @@ import UIKit
 protocol ThemeType {
     var cellBackgroundColor: UIColor { get }
     var viewBackgroundColor: UIColor { get }
+    var titleTextColor: UIColor { get }
     var textColor: UIColor { get }
     var selectedCellBackgroundColor: UIColor { get }
     var tabBarColor: UIColor { get }
@@ -42,6 +43,15 @@ enum Theme: String, ThemeType {
             return UIColor(red: 0.23, green: 0.25, blue: 0.25, alpha: 1.0)
         case .light:
             return UIColor(red: 0.96, green: 0.97, blue: 0.97, alpha: 1.0)
+        }
+    }
+    
+    var titleTextColor: UIColor {
+        switch self {
+        case .dark:
+            return .white
+        case .light:
+            return .black
         }
     }
     

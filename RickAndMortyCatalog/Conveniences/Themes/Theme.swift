@@ -67,9 +67,9 @@ enum Theme: String, ThemeType {
     var selectedCellBackgroundColor: UIColor {
         switch self {
         case .dark:
-            return UIColor(red: 0.24, green: 0.28, blue: 0.29, alpha: 1.0)
-        case .light:
             return UIColor(red: 0.38, green: 0.40, blue: 0.40, alpha: 1.0)
+        case .light:
+            return UIColor(red :0.39, green: 0.72, blue: 0.76, alpha: 0.2)
         }
     }
     
@@ -85,7 +85,7 @@ enum Theme: String, ThemeType {
     var unselectedButtonColor: UIColor {
         switch self {
         case .dark:
-            return UIColor(red: 0.97, green: 0.52, blue: 0.18, alpha: 1.0)
+            return UIColor(red: 0.71, green: 0.41, blue: 0.21, alpha: 1.0)
         case .light:
             return UIColor(red: 0.41, green: 0.71, blue: 0.71, alpha: 1.0)
         }
@@ -94,7 +94,7 @@ enum Theme: String, ThemeType {
     var selectedButtonColor: UIColor {
         switch self {
         case .dark:
-            return UIColor(red: 0.53, green: 0.27, blue: 0.06, alpha: 1.0)
+            return UIColor(red: 0.97, green: 0.52, blue: 0.18, alpha: 1.0)
         case .light:
             return UIColor(red: 0.20, green: 0.37, blue: 0.39, alpha: 1.0)
         }

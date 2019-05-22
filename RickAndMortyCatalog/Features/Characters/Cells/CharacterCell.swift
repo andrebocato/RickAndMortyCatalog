@@ -19,12 +19,12 @@ class CharacterCell: UITableViewCell, ThemeObserving {
     }
     @IBOutlet private weak var nameLabel: UILabel! {
         didSet {
-            nameLabel.font = .cartoonToy(ofSize: 20.0)
+            nameLabel.font = .laCartoonerie(ofSize: 20.0)
         }
     }
     @IBOutlet private weak var idLabel: UILabel! {
         didSet {
-            idLabel.font = .cartoonToy(ofSize: 25.0)
+            idLabel.font = .laCartoonerie(ofSize: 25.0)
         }
     }
     
@@ -130,7 +130,7 @@ extension CharacterCell: Themeable {
         nameLabel.textColor = theme.textColor
         
         let coloredView = UIView()
-        coloredView.backgroundColor = theme.selectedCellBackgroundColor // @TODO: fix. not working properly
+        coloredView.backgroundColor = theme.selectedCellBackgroundColor 
         selectedBackgroundView = coloredView
         
         setNeedsDisplay()

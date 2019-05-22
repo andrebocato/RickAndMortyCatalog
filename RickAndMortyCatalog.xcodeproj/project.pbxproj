@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1686156EAEDFD7974B12CAF9 /* Pods_RickAndMortyCatalogUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3EF03A9023914565E5C8AE /* Pods_RickAndMortyCatalogUITests.framework */; };
 		3995102BC0AFEF307FE69EEA /* Pods_RickAndMortyCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2791398DF094DC4A4D9CB139 /* Pods_RickAndMortyCatalog.framework */; };
+		6501749F2295D424009865C1 /* laCartoonerie.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6501749E2295D424009865C1 /* laCartoonerie.TTF */; };
 		6504A7B62285CF7C00880D5F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6504A7B52285CF7B00880D5F /* README.md */; };
 		650B02042285C351005F5F2E /* Cartoon Toy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C172284BD4F00FC824E /* Cartoon Toy.ttf */; };
 		653C92DE228B20CC0031C098 /* ColorThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C92DD228B20CC0031C098 /* ColorThemes.swift */; };
@@ -41,7 +42,6 @@
 		65959DF2228A099100D792DB /* ExternalLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65959DF0228A099100D792DB /* ExternalLinkCell.swift */; };
 		65959DF3228A099100D792DB /* ExternalLinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65959DF1228A099100D792DB /* ExternalLinkCell.xib */; };
 		65A26C0E2284A61400FC824E /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A26C0D2284A61400FC824E /* PersistenceError.swift */; };
-		65A26C162284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C152284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png */; };
 		65C9CBDE228DAED10092E673 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBDD228DAED10092E673 /* Theme.swift */; };
 		65C9CBE0228DB0B30092E673 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBDF228DB0B30092E673 /* Notification+Name.swift */; };
 		65C9CBE2228DC7820092E673 /* SettingsCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBE1228DC7820092E673 /* SettingsCellType.swift */; };
@@ -130,6 +130,7 @@
 		457EBC460303FD9226D0FED7 /* Pods-RickAndMortyCatalogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalogTests.release.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalogTests/Pods-RickAndMortyCatalogTests.release.xcconfig"; sourceTree = "<group>"; };
 		5122440E45AD6D5ABF6FE029 /* Pods-RickAndMortyCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalog.release.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalog/Pods-RickAndMortyCatalog.release.xcconfig"; sourceTree = "<group>"; };
 		5500136B425F93B4E9C513A7 /* Pods-RickAndMortyCatalogUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalogUITests.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalogUITests/Pods-RickAndMortyCatalogUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6501749E2295D424009865C1 /* laCartoonerie.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = laCartoonerie.TTF; sourceTree = "<group>"; };
 		6504A7B52285CF7B00880D5F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		653C92DD228B20CC0031C098 /* ColorThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemes.swift; sourceTree = "<group>"; };
 		653C92E3228B368D0031C098 /* UserDefaultsThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsThemeManager.swift; sourceTree = "<group>"; };
@@ -167,7 +168,6 @@
 		65959DF0228A099100D792DB /* ExternalLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLinkCell.swift; sourceTree = "<group>"; };
 		65959DF1228A099100D792DB /* ExternalLinkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExternalLinkCell.xib; sourceTree = "<group>"; };
 		65A26C0D2284A61400FC824E /* PersistenceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceError.swift; sourceTree = "<group>"; };
-		65A26C152284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rick-And-Morty-PNG-Transparent-Image.png"; sourceTree = "<group>"; };
 		65A26C172284BD4F00FC824E /* Cartoon Toy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cartoon Toy.ttf"; sourceTree = "<group>"; };
 		65C9CBDD228DAED10092E673 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		65C9CBDF228DB0B30092E673 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
@@ -528,6 +528,7 @@
 		65A26C102284B47E00FC824E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				6501749E2295D424009865C1 /* laCartoonerie.TTF */,
 				65A26C172284BD4F00FC824E /* Cartoon Toy.ttf */,
 			);
 			path = Fonts;
@@ -559,7 +560,6 @@
 			children = (
 				65A26C102284B47E00FC824E /* Fonts */,
 				E50C9CBC226DF27000588EBC /* MockJSONs */,
-				65A26C152284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png */,
 				65912A82225CF1C500F37508 /* Assets.xcassets */,
 				65912A84225CF1C500F37508 /* LaunchScreen.storyboard */,
 			);
@@ -912,7 +912,6 @@
 			files = (
 				650B02042285C351005F5F2E /* Cartoon Toy.ttf in Resources */,
 				E5288C3C228D8EFF00E5942A /* SwitchCell.xib in Resources */,
-				65A26C162284B7E000FC824E /* Rick-And-Morty-PNG-Transparent-Image.png in Resources */,
 				E50C9D65226FE51900588EBC /* CharactersViewController.xib in Resources */,
 				E50C9DDB2275D51800588EBC /* SettingsViewController.xib in Resources */,
 				65959DE8228A091C00D792DB /* DestructiveCell.xib in Resources */,
@@ -921,6 +920,7 @@
 				6591EFD02270D8C300C7502E /* FavoriteCell.xib in Resources */,
 				65912A86225CF1C500F37508 /* LaunchScreen.storyboard in Resources */,
 				65912A83225CF1C500F37508 /* Assets.xcassets in Resources */,
+				6501749F2295D424009865C1 /* laCartoonerie.TTF in Resources */,
 				6591EFD22270D8D500C7502E /* FavoritesViewController.xib in Resources */,
 				E50C9D5D226F874F00588EBC /* DetailViewController.xib in Resources */,
 				E50C9CBE226DF29700588EBC /* GetCharacterMock.json in Resources */,

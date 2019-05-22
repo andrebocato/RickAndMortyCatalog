@@ -49,7 +49,7 @@ class CharactersViewController: UIViewController, ThemeObserving {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableViewCells()
-        logicController.loadCharacters()
+        logicController.loadCharacters() // @TODO: loading view not centered
         loadCurrentTheme()
         addThemeObserver()
     }
@@ -142,7 +142,7 @@ extension CharactersViewController: CharactersLogicControllerDelegate {
         state ? view.startLoading() : view.stopLoading()
     }
     
-    private func handleLoadingNextPageState(_ state: Bool) { // @TODO: Maybe change this...
+    private func handleLoadingNextPageState(_ state: Bool) { // @TODO: not working
         let lastRowIndex = logicController.numberOfCharacters - 1
         DispatchQueue.main.async {
             let lastCell = self.tableView.cellForRow(at: IndexPath(row: lastRowIndex, section: 0))
@@ -168,7 +168,7 @@ extension CharactersViewController: Themeable {
         tabBarController?.tabBar.tintColor = theme.selectedButtonColor
         tabBarController?.tabBar.barTintColor = theme.tabBarColor
         navigationController?.navigationBar.barTintColor = theme.tabBarColor
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.titleTextColor]
     }
     
 }

@@ -182,6 +182,8 @@ extension DetailViewController: Themeable {
         
         view.backgroundColor = theme.viewBackgroundColor
         imageView.superview?.backgroundColor = theme.viewBackgroundColor
+        navigationController?.navigationBar.barTintColor = theme.tabBarColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.titleTextColor]
     }
     
 }

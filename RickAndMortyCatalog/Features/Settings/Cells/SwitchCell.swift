@@ -55,7 +55,7 @@ extension SwitchCell: Themeable {
     
     func apply(theme: ThemeType) {
         cellTitleLabel.textColor = theme.textColor
-        themeSwitch.onTintColor = theme.unselectedButtonColor
+        themeSwitch.onTintColor = theme.selectedButtonColor
         backgroundColor = theme.cellBackgroundColor
         setNeedsDisplay()
     }

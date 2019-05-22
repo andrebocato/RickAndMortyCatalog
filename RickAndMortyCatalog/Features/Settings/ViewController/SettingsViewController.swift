@@ -185,7 +185,7 @@ extension SettingsViewController: Themeable {
         tabBarController?.tabBar.tintColor = theme.selectedButtonColor
         tabBarController?.tabBar.barTintColor = theme.tabBarColor
         navigationController?.navigationBar.barTintColor = theme.tabBarColor
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.titleTextColor]
     }
     
 }

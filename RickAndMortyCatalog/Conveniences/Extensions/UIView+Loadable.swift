@@ -22,7 +22,6 @@ extension UIView {
     func startLoading(style: UIActivityIndicatorView.Style = .whiteLarge) {
         
         let loadingView = UIView(frame: frame)
-        loadingView.backgroundColor = .white
         loadingView.tag = loadingViewTag
         loadingView.translatesAutoresizingMaskIntoConstraints = false
         loadingView.center = center

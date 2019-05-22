@@ -17,12 +17,11 @@
 * The documentation and guide for utilizing those tools can be found on their websites, linked above.
 
 ## Known issues
-* LoadingView on characters list not centered.
-* LoadingViews and EmptyViews do not change according to themes.
+* LoadingView on characters list not centered. LoadingView is being created on viewDidLoad() and is centering based on different frame sizes. Loading characters (and using loading view) on viewWillAppear centers the view properly.
+* Loading animation on pagination is not working.
 
 ## TODOs
 * Fix known bugs.
 * Add long gesture recognizers for characters list and favorites.
 * Add haptic feedback.
-* Add loading animation in pagination.
-* Add theme changes to navigation and tab bars.
+* Implement "Rick" and "Morty" color themes.

@@ -26,6 +26,13 @@ class FavoritesViewController: UIViewController, ThemeObserving {
         }
     }
     
+//    var underlineView: UIView! {
+//        didSet {
+//            underlineView.heightAnchor.constraint(equalToConstant: 5).isActive = true
+//            underlineView.bottomAnchor.constraint(equalTo: segmentedCollectionView.layoutMarginsGuide.bottomAnchor, constant: 0).isActive = true
+//        }
+//    }
+    
     // MARK: - Dependencies
     
     private var logicController: FavoritesLogicController
@@ -64,6 +71,9 @@ class FavoritesViewController: UIViewController, ThemeObserving {
         logicController.loadFavorites()
         let indexPath = RMStatusFilter.all.indexPath
         segmentedCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+        
+//        guard let cell = segmentedCollectionView.cellForItem(at: indexPath) else { return }
+//        configureUnderlineView(under: cell)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,6 +92,11 @@ class FavoritesViewController: UIViewController, ThemeObserving {
         favoritesCollectionView.register(UINib(nibName: FavoriteCell.className, bundle: bundle),
                                          forCellWithReuseIdentifier: FavoriteCell.className)
     }
+    
+//    private func configureUnderlineView(under cell: UICollectionViewCell) {
+//        underlineView.leadingAnchor.constraint(equalTo: cell.layoutMarginsGuide.leadingAnchor, constant: 0).isActive = true
+//        underlineView.trailingAnchor.constraint(equalTo: cell.layoutMarginsGuide.trailingAnchor, constant: 0).isActive = true
+//    }
     
 }
 
@@ -132,6 +147,10 @@ extension FavoritesViewController: UICollectionViewDelegate {
         switch collectionView {
         case segmentedCollectionView:
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            
+//            guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+//            configureUnderlineView(under: cell)
+            
             guard let filter = RMStatusFilter(rawValue: indexPath.item) else { return }
             logicController.filterCharacters(by: filter)
             
@@ -144,6 +163,7 @@ extension FavoritesViewController: UICollectionViewDelegate {
         default: return
         }
     }
+    
 }
 
 extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
@@ -195,6 +215,7 @@ extension FavoritesViewController: Themeable {
         view.backgroundColor = theme.viewBackgroundColor
         segmentedCollectionView.backgroundColor = theme.viewBackgroundColor
         favoritesCollectionView.backgroundColor = theme.viewBackgroundColor
+//        underlineView.backgroundColor = theme.selectedButtonColor
         view.setNeedsDisplay()
         
         tabBarController?.tabBar.apply(theme)

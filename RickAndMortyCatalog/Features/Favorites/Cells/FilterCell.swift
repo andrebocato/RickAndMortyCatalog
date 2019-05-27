@@ -14,7 +14,7 @@ class FilterCell: UICollectionViewCell, ThemeObserving {
     
     @IBOutlet private weak var filterLabel: UILabel! {
         didSet {
-            filterLabel.font = .cartoonToy(ofSize: 25)
+            filterLabel.font = .laCartoonerie(ofSize: 25) 
         }
     }
     
@@ -42,7 +42,7 @@ class FilterCell: UICollectionViewCell, ThemeObserving {
     // MARK: - Public Functions
     
     public func configured(withTitle title: String) -> FilterCell {
-        filterLabel.text = title
+        filterLabel.text = title.capitalized
         return self
     }
     

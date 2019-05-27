@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Filters: Int, CaseIterable {
+enum RMStatusFilter: Int, CaseIterable {
     case all
     case alive
     case dead
@@ -19,7 +19,11 @@ enum Filters: Int, CaseIterable {
         case .all: return "All"
         case .alive: return "Alive"
         case .dead: return "Dead"
-        case .unknown: return "Unknown"
+        case .unknown: return "unknown"
         }
+    }
+    
+    var indexPath: IndexPath {
+        return IndexPath(item: self.rawValue, section: 0)
     }
 }

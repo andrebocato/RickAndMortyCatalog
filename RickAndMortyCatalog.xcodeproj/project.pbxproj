@@ -13,7 +13,7 @@
 		6504A7B62285CF7C00880D5F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6504A7B52285CF7B00880D5F /* README.md */; };
 		650B02042285C351005F5F2E /* Cartoon Toy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C172284BD4F00FC824E /* Cartoon Toy.ttf */; };
 		653071C2229C6ACB00F2BFD8 /* RMStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653071C1229C6ACB00F2BFD8 /* RMStatus.swift */; };
-		653071C4229C6E3300F2BFD8 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653071C3229C6E3300F2BFD8 /* Filters.swift */; };
+		653071C4229C6E3300F2BFD8 /* RMStatusFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653071C3229C6E3300F2BFD8 /* RMStatusFilter.swift */; };
 		653C92DE228B20CC0031C098 /* ColorThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C92DD228B20CC0031C098 /* ColorThemes.swift */; };
 		653C92E4228B368D0031C098 /* UserDefaultsThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C92E3228B368D0031C098 /* UserDefaultsThemeManager.swift */; };
 		653C92E8228B47840031C098 /* UIFont+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C92E7228B47840031C098 /* UIFont+CustomFonts.swift */; };
@@ -140,7 +140,7 @@
 		6501749E2295D424009865C1 /* laCartoonerie.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = laCartoonerie.TTF; sourceTree = "<group>"; };
 		6504A7B52285CF7B00880D5F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		653071C1229C6ACB00F2BFD8 /* RMStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMStatus.swift; sourceTree = "<group>"; };
-		653071C3229C6E3300F2BFD8 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		653071C3229C6E3300F2BFD8 /* RMStatusFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMStatusFilter.swift; sourceTree = "<group>"; };
 		653C92DD228B20CC0031C098 /* ColorThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemes.swift; sourceTree = "<group>"; };
 		653C92E3228B368D0031C098 /* UserDefaultsThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsThemeManager.swift; sourceTree = "<group>"; };
 		653C92E7228B47840031C098 /* UIFont+CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+CustomFonts.swift"; sourceTree = "<group>"; };
@@ -435,7 +435,7 @@
 		65912AB8225CF48000F37508 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				653071C3229C6E3300F2BFD8 /* Filters.swift */,
+				653071C3229C6E3300F2BFD8 /* RMStatusFilter.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1070,7 +1070,7 @@
 				659CEA30229C257300600FAB /* UITabBar+Themeable.swift in Sources */,
 				65912AE5225D1B7500F37508 /* RMCharacter.swift in Sources */,
 				65912AC3225CFD9A00F37508 /* CharactersViewController.swift in Sources */,
-				653071C4229C6E3300F2BFD8 /* Filters.swift in Sources */,
+				653071C4229C6E3300F2BFD8 /* RMStatusFilter.swift in Sources */,
 				E5288C44229338C300E5942A /* AppDelegate+ThemeLoader.swift in Sources */,
 				65912AD9225D08FC00F37508 /* FavoritesViewController.swift in Sources */,
 				6553792D228EFE4C00DFB97A /* URLOpenerProtocol.swift in Sources */,
@@ -1315,13 +1315,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8X682DW69D;
+				DEVELOPMENT_TEAM = Q6D8LQAG8B;
 				INFOPLIST_FILE = "$(SRCROOT)/RickAndMortyCatalog/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bocato.RickAndMortyCatalog;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bocato.RickAndMortyCatalog-dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1334,13 +1334,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8X682DW69D;
+				DEVELOPMENT_TEAM = Q6D8LQAG8B;
 				INFOPLIST_FILE = "$(SRCROOT)/RickAndMortyCatalog/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bocato.RickAndMortyCatalog;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bocato.RickAndMortyCatalog-dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

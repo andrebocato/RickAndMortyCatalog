@@ -62,24 +62,22 @@ class FavoritesLogicController {
         }
     }
     
-    func filterCharacters(by item: Int) {
-        switch item {
-        case 0:
+    func filterCharacters(by filter: RMStatusFilter) {
+        switch filter {
+        case .all:
             loadFavorites()
             
-        case 1:
+        case .alive:
             loadFavorites()
-            favorites = favorites.filter { $0.rmCharacter.status == "Alive" }
+            favorites = favorites.filter { $0.rmCharacter.status == .alive }
             
-        case 2:
+        case .dead:
             loadFavorites()
-            favorites = favorites.filter { $0.rmCharacter.status == "Dead" }
+            favorites = favorites.filter { $0.rmCharacter.status == .dead }
             
-        case 3:
+        case .unknown:
             loadFavorites()
-            favorites = favorites.filter { $0.rmCharacter.status == "unknown" }
-            
-        default: return
+            favorites = favorites.filter { $0.rmCharacter.status == .unknown }
         }
     }
 }

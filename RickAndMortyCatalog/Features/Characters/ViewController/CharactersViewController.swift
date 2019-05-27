@@ -67,7 +67,7 @@ class CharactersViewController: UIViewController, ThemeObserving {
         let cellNib = UINib(nibName: className, bundle: bundle)
         tableView.register(cellNib, forCellReuseIdentifier: className)
     }
-
+    
 }
 
 // MARK: - Extensions

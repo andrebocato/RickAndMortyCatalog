@@ -62,6 +62,8 @@ class FavoritesViewController: UIViewController, ThemeObserving {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         logicController.loadFavorites()
+        let indexPath = RMStatusFilter.all.indexPath
+        segmentedCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -92,7 +94,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case segmentedCollectionView:
-            return Filters.allCases.count
+            return RMStatusFilter.allCases.count
             
         case favoritesCollectionView:
             if logicController.numberOfFavorites == 0 {
@@ -107,7 +109,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
         case segmentedCollectionView: 
-            guard let title = Filters(rawValue: indexPath.item)?.stringValue else { return UICollectionViewCell() }
+            guard let title = RMStatusFilter(rawValue: indexPath.item)?.stringValue else { return UICollectionViewCell() }
             return collectionView.dequeueReusableCell(ofClass: FilterCell.self, for: indexPath).configured(withTitle: title)
             
         case favoritesCollectionView:
@@ -130,8 +132,8 @@ extension FavoritesViewController: UICollectionViewDelegate {
         switch collectionView {
         case segmentedCollectionView:
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            logicController.filterCharacters(by: indexPath.item)
-            // @TODO: filter
+            guard let filter = RMStatusFilter(rawValue: indexPath.item) else { return }
+            logicController.filterCharacters(by: filter)
             
         case favoritesCollectionView:
             collectionView.deselectItem(at: indexPath, animated: true)

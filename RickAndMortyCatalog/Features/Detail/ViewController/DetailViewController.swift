@@ -110,7 +110,7 @@ class DetailViewController: UIViewController, ThemeObserving {
     private func setupLabelsText() {
         idLabel.text = "\(logicController.character.id)"
         nameLabel.text = logicController.character.name
-        statusLabel.text = logicController.character.status//.rawValue
+        statusLabel.text = logicController.character.status.rawValue
         speciesLabel.text = logicController.character.species
         typeLabel.text = logicController.character.type
         genderLabel.text = logicController.character.gender

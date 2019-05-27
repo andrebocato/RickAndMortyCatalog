@@ -25,3 +25,5 @@
 * Add long gesture recognizers for characters list and favorites.
 * Add haptic feedback.
 * Implement "Rick" and "Morty" color themes.
+* Implement quote of the day and notifications for users to remind them to read their daily quotes.
+* Change all UI elements' fonts to the custom one chosen for the app.

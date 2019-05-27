@@ -53,7 +53,7 @@ class SwitchCell: UITableViewCell, ThemeObserving {
 
 extension SwitchCell: Themeable {
     
-    func apply(theme: ThemeType) {
+    func apply(_ theme: ThemeType) {
         cellTitleLabel.textColor = theme.textColor
         themeSwitch.onTintColor = theme.selectedButtonColor
         backgroundColor = theme.cellBackgroundColor

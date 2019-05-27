@@ -124,7 +124,7 @@ extension CharacterCell: RMCharacterModelControllerDelegate {
 
 extension CharacterCell: Themeable {
     
-    func apply(theme: ThemeType) {
+    func apply(_ theme: ThemeType) {
         backgroundColor = theme.viewBackgroundColor
         idLabel.textColor = theme.textColor
         nameLabel.textColor = theme.textColor

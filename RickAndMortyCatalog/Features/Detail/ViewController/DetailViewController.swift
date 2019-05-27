@@ -110,7 +110,7 @@ class DetailViewController: UIViewController, ThemeObserving {
     private func setupLabelsText() {
         idLabel.text = "\(logicController.character.id)"
         nameLabel.text = logicController.character.name
-        statusLabel.text = logicController.character.status
+        statusLabel.text = logicController.character.status//.rawValue
         speciesLabel.text = logicController.character.species
         typeLabel.text = logicController.character.type
         genderLabel.text = logicController.character.gender
@@ -161,7 +161,7 @@ extension DetailViewController: DetailLogicControllerDelegate {
 
 extension DetailViewController: Themeable {
     
-    func apply(theme: ThemeType) {
+    func apply(_ theme: ThemeType) {
         idLabel.textColor = theme.textColor
         nameLabel.textColor = theme.textColor
         statusLabel.textColor = theme.textColor
@@ -182,8 +182,8 @@ extension DetailViewController: Themeable {
         
         view.backgroundColor = theme.viewBackgroundColor
         imageView.superview?.backgroundColor = theme.viewBackgroundColor
-        navigationController?.navigationBar.barTintColor = theme.tabBarColor
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.titleTextColor]
+        
+        navigationController?.navigationBar.apply(theme)
     }
     
 }

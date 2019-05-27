@@ -33,7 +33,7 @@ protocol Themeable {
     /// Applies a selected theme to the object.
     ///
     /// - Parameter theme: The theme to be applied.
-    func apply(theme: ThemeType)
+    func apply(_ theme: ThemeType)
 }
 
 // MARK: - Theme Updater
@@ -55,7 +55,7 @@ extension ThemeObserving where Self: Themeable & NSObjectProtocol {
     func loadCurrentTheme() {
         let isDarkThemeOn = UserDefaults.standard.bool(forKey: "isDarkThemeOnKey")
         let currentTheme: Theme = isDarkThemeOn ? .dark : .light
-        apply(theme: currentTheme)
+        apply(currentTheme)
     }
     
     func addThemeObserver() {
@@ -73,7 +73,7 @@ extension ThemeObserving where Self: Themeable & NSObjectProtocol {
     private func themeDidChangeWithNotification(_ notification: Notification) {
         guard let object = notification.object,
             let newTheme = object as? Theme else { return }
-        apply(theme: newTheme)
+        apply(newTheme)
     }
     
 }

@@ -158,17 +158,13 @@ extension CharactersViewController: CharactersLogicControllerDelegate {
 
 extension CharactersViewController: Themeable {
     
-    func apply(theme: ThemeType) {
+    func apply(_ theme: ThemeType) {
         tableView.backgroundColor = theme.viewBackgroundColor
         view.backgroundColor = theme.viewBackgroundColor
         view.setNeedsDisplay()
         
-        // @TODO: move outta here?
-        tabBarController?.tabBar.unselectedItemTintColor = theme.unselectedButtonColor
-        tabBarController?.tabBar.tintColor = theme.selectedButtonColor
-        tabBarController?.tabBar.barTintColor = theme.tabBarColor
-        navigationController?.navigationBar.barTintColor = theme.tabBarColor
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.titleTextColor]
+        tabBarController?.tabBar.apply(theme)
+        navigationController?.navigationBar.apply(theme)
     }
     
 }

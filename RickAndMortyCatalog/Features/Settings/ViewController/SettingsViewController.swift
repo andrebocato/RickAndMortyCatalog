@@ -123,7 +123,6 @@ extension SettingsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let cellType = SettingsCellType(section: indexPath.section, row: indexPath.row)
-        
         switch cellType {
         case .githubRepo?: handleGithubRepoSelection()
         case .apiDocumentation?: handleAPIDocumentationSelection()
@@ -172,17 +171,13 @@ extension SettingsViewController: UITableViewDelegate {
 
 extension SettingsViewController: Themeable {
     
-    func apply(theme: ThemeType) {
+    func apply(_ theme: ThemeType) {
         tableView.backgroundColor = theme.viewBackgroundColor
         view.backgroundColor = theme.viewBackgroundColor
         view.setNeedsDisplay()
         
-        // @TODO: move outta here?
-        tabBarController?.tabBar.unselectedItemTintColor = theme.unselectedButtonColor
-        tabBarController?.tabBar.tintColor = theme.selectedButtonColor
-        tabBarController?.tabBar.barTintColor = theme.tabBarColor
-        navigationController?.navigationBar.barTintColor = theme.tabBarColor
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.titleTextColor]
+        tabBarController?.tabBar.apply(theme)
+        navigationController?.navigationBar.apply(theme)
     }
-    
+ 
 }

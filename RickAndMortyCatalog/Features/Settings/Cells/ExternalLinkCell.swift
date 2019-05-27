@@ -48,7 +48,7 @@ class ExternalLinkCell: UITableViewCell, ThemeObserving {
 
 extension ExternalLinkCell: Themeable {
     
-    func apply(theme: ThemeType) {
+    func apply(_ theme: ThemeType) {
         textLabel?.textColor = theme.textColor
         backgroundColor = theme.cellBackgroundColor
         setNeedsDisplay()

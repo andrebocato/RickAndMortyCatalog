@@ -35,12 +35,9 @@ class ExternalLinkCell: UITableViewCell, ThemeObserving {
         accessoryType = .disclosureIndicator
 
         switch style {
-        case .githubRepo:
-            textLabel?.text = "Source code"
-        case .apiDocumentation:
-            textLabel?.text = "API Documentation"
+        case .githubRepo: textLabel?.text = "Source code"
+        case .apiDocumentation: textLabel?.text = "API Documentation"
         }
-        
         return self
     }
     

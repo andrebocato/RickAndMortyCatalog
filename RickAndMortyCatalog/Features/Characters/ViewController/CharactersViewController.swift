@@ -25,6 +25,14 @@ class CharactersViewController: UIViewController, ThemeObserving {
         }
     }
     @IBOutlet private weak var longPressGestureRecognizer: UILongPressGestureRecognizer!
+    // disabled
+    @IBOutlet private weak var swipeGestureRecognizer: UISwipeGestureRecognizer! {
+        didSet {
+            swipeGestureRecognizer.delegate = self
+            swipeGestureRecognizer.numberOfTouchesRequired = 3
+            swipeGestureRecognizer.direction = .up
+        }
+    }
     
     // MARK: - Properties
 
@@ -37,6 +45,11 @@ class CharactersViewController: UIViewController, ThemeObserving {
         case .began: toggleFavoriteForLongPressGesture(sender)
         default: return
         }
+    }
+    
+    // disabled
+    @IBAction private func swipeGestureRecognizerDidReceiveActionEvent(_ sender: UISwipeGestureRecognizer) {
+        debugPrint("puxou")
     }
     
     // MARK: - Initialization
@@ -79,8 +92,6 @@ class CharactersViewController: UIViewController, ThemeObserving {
     }
     
     private func toggleFavoriteForLongPressGesture(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        
-        
 //        let touchPoint = longPressGestureRecognizer.location(in: tableView)
 //        guard let indexPath = tableView.indexPathForRow(at: touchPoint) else { return }
 //        let selectedModelController = logicController.modelController(for: indexPath.row)
@@ -132,6 +143,14 @@ extension CharactersViewController: UITableViewDelegate {
         let selectedCharacterModelController = logicController.modelController(for: indexPath.row)
         let detailController = viewControllersFactory.createDetailsViewController(characterModelController: selectedCharacterModelController)
         navigationController?.pushViewController(detailController, animated: true)
+    }
+    
+}
+
+extension CharactersViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
 }

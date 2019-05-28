@@ -83,7 +83,10 @@ class SettingsLogicController {
         }
     }
     
-    // @TODO: Document
+    
+    /// Opens the GitHub repository URL.
+    ///
+    /// - Parameter onError: Closure called in case an error occurs.
     func openGithubRepo(onError: ((_ error: Error) -> Void)? = nil) {
         open(urlString: githubRepoURL, onError: { originalError in
             debugPrint(originalError)
@@ -92,7 +95,9 @@ class SettingsLogicController {
         })
     }
     
-    // @TODO: Document
+    /// Opens the API documentation URL.
+    ///
+    /// - Parameter onError: Closure called in case an error occurs.
     func openAPIDocumentation(onError: ((_ error: Error) -> Void)? = nil) {
         open(urlString: apiDocumentationURL, onError: { originalError in
             debugPrint(originalError)

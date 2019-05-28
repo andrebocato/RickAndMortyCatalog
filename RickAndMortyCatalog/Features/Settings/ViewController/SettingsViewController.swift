@@ -68,9 +68,8 @@ class SettingsViewController: UIViewController, ThemeObserving {
         
         tableView.register(UINib(nibName: ExternalLinkCell.className, bundle: bundle),
                            forCellReuseIdentifier: ExternalLinkCell.className)
-
     }
-
+    
 }
 
 // MARK: - Extensions

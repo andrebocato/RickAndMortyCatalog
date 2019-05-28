@@ -68,7 +68,6 @@ class CharacterCell: UITableViewCell, ThemeObserving {
     private func setupUI() {
         setupImage()
         setupLabels()
-//        setupCellColors()
     }
     
     private func setupImage() {
@@ -83,13 +82,7 @@ class CharacterCell: UITableViewCell, ThemeObserving {
         idLabel.text = " #\(modelController.character.id)"
         nameLabel.text = modelController.character.name
     }
-    
-//    private func setupCellColors() {
-//        let coloredView = UIView()
-//        coloredView.backgroundColor = UIColor(red: 0.75, green: 0.80, blue: 0.93, alpha: 1.0) // magic color?
-//        selectedBackgroundView = coloredView
-//    }
-    
+        
 }
 
 // MARK: - Extensions

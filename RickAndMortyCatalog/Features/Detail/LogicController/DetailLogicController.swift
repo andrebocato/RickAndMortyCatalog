@@ -60,12 +60,9 @@ extension DetailLogicController: RMCharacterModelControllerDelegate {
     
     func stateDidChange(_ newState: RMCharacterModelControllerState) {
         switch newState {
-        case .businessError(let be):
-            delegate?.stateDidChange(.error(be))
-        case .loadingImage(let isLoading):
-            delegate?.stateDidChange(.loadingImage(isLoading))
-        case .favoritePropertyChanged(let isFavorite):
-            delegate?.favoriteStateChanged(isFavorite)
+        case .businessError(let be): delegate?.stateDidChange(.error(be))
+        case .loadingImage(let isLoading): delegate?.stateDidChange(.loadingImage(isLoading))
+        case .favoritePropertyChanged(let isFavorite): delegate?.favoriteStateChanged(isFavorite)
         }
     }
     

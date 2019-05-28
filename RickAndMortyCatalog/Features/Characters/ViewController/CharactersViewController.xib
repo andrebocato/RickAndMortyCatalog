@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharactersViewController" customModule="RickAndMortyCatalog" customModuleProvider="target">
             <connections>
+                <outlet property="longPressGestureRecognizer" destination="87I-3a-DXW" id="4Rc-gd-py5"/>
                 <outlet property="tableView" destination="p1d-7r-SgI" id="8KG-4g-tKI"/>
                 <outlet property="view" destination="6a1-Kx-jFN" id="zcy-ZP-9eT"/>
             </connections>
@@ -37,7 +38,15 @@
                 <constraint firstItem="Wsd-c0-yBt" firstAttribute="bottom" secondItem="p1d-7r-SgI" secondAttribute="bottom" id="tiE-3j-hbh"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Wsd-c0-yBt"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="87I-3a-DXW" appends="YES" id="RhW-0P-8Xb"/>
+            </connections>
             <point key="canvasLocation" x="58" y="-17"/>
         </view>
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="87I-3a-DXW">
+            <connections>
+                <action selector="longPressGestureRecognizerDidReceiveActionEvent:" destination="-1" id="pVL-xM-QaZ"/>
+            </connections>
+        </pongPressGestureRecognizer>
     </objects>
 </document>

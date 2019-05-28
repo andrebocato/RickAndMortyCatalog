@@ -24,10 +24,20 @@ class CharactersViewController: UIViewController, ThemeObserving {
             tableView.delegate = self
         }
     }
+    @IBOutlet private weak var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
     // MARK: - Properties
 
     private let cellHeight: CGFloat = 80
+    
+    // MARK: - IBActions
+    
+    @IBAction private func longPressGestureRecognizerDidReceiveActionEvent(_ sender: UILongPressGestureRecognizer) {
+        switch sender.state {
+        case .began: toggleFavoriteForLongPressGesture(sender)
+        default: return
+        }
+    }
     
     // MARK: - Initialization
     
@@ -68,6 +78,14 @@ class CharactersViewController: UIViewController, ThemeObserving {
         tableView.register(cellNib, forCellReuseIdentifier: className)
     }
     
+    private func toggleFavoriteForLongPressGesture(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        
+        
+//        let touchPoint = longPressGestureRecognizer.location(in: tableView)
+//        guard let indexPath = tableView.indexPathForRow(at: touchPoint) else { return }
+//        let selectedModelController = logicController.modelController(for: indexPath.row)
+//        logicController.toggleFavorite(modelController: selectedModelController)
+    }
 }
 
 // MARK: - Extensions

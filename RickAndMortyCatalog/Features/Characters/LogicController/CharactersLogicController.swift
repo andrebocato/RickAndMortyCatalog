@@ -79,6 +79,17 @@ class CharactersLogicController {
         }
     }
     
+    /// Toggles or untoggles the character's favorite state.
+    ///
+    /// - Parameter modelController: A RMCharacterModelController.
+    func toggleFavorite(modelController: RMCharacterModelController) {
+        if modelController.isFavorite {
+            modelController.removeFromFavorites()
+        } else {
+            modelController.addToFavorites()
+        }
+    }
+    
     // MARK: - Private Functions
     
     /// Gets an array of characters from the Network.

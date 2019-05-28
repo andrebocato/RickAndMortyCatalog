@@ -9,7 +9,7 @@
 import UIKit
 
 class SwitchCell: UITableViewCell, ThemeObserving {
-
+    
     // MARK: - IBOutlets
     
     @IBOutlet private weak var cellTitleLabel: UILabel! {
@@ -39,6 +39,7 @@ class SwitchCell: UITableViewCell, ThemeObserving {
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         onSwitchValueChanged?(sender.isOn)
+        UISelectionFeedbackGenerator().selectionChanged()
     }
     
     // MARK: - Public Functions

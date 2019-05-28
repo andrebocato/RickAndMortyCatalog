@@ -24,6 +24,9 @@
 		656004AE2295EBBC00725470 /* UICollectionView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656004AD2295EBBC00725470 /* UICollectionView+Dequeue.swift */; };
 		6576A3922266370A00571620 /* UIView+Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3912266370A00571620 /* UIView+Loadable.swift */; };
 		6576A3962266413200571620 /* UIView+Emptiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3952266413200571620 /* UIView+Emptiable.swift */; };
+		657DC872229DA2BF003B435C /* DetailFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657DC870229DA2BF003B435C /* DetailFieldCell.swift */; };
+		657DC873229DA2BF003B435C /* DetailFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657DC871229DA2BF003B435C /* DetailFieldCell.xib */; };
+		657DC875229DABDA003B435C /* DetailFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657DC874229DABDA003B435C /* DetailFields.swift */; };
 		658032422264FC39000FCAB9 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658032412264FC39000FCAB9 /* FavoriteCell.swift */; };
 		65912A7C225CF1C400F37508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912A7B225CF1C400F37508 /* AppDelegate.swift */; };
 		65912A83225CF1C500F37508 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65912A82225CF1C500F37508 /* Assets.xcassets */; };
@@ -151,6 +154,9 @@
 		656004AD2295EBBC00725470 /* UICollectionView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeue.swift"; sourceTree = "<group>"; };
 		6576A3912266370A00571620 /* UIView+Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loadable.swift"; sourceTree = "<group>"; };
 		6576A3952266413200571620 /* UIView+Emptiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Emptiable.swift"; sourceTree = "<group>"; };
+		657DC870229DA2BF003B435C /* DetailFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFieldCell.swift; sourceTree = "<group>"; };
+		657DC871229DA2BF003B435C /* DetailFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailFieldCell.xib; sourceTree = "<group>"; };
+		657DC874229DABDA003B435C /* DetailFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFields.swift; sourceTree = "<group>"; };
 		658032412264FC39000FCAB9 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		65912A78225CF1C400F37508 /* RickAndMortyCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65912A7B225CF1C400F37508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -282,6 +288,7 @@
 			children = (
 				65520C2122734F6A0095371F /* ViewController */,
 				65520C2922737F020095371F /* LogicController */,
+				657DC86F229DA27E003B435C /* Cells */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -319,6 +326,15 @@
 				6553792C228EFE4C00DFB97A /* URLOpenerProtocol.swift */,
 			);
 			path = URLOpener;
+			sourceTree = "<group>";
+		};
+		657DC86F229DA27E003B435C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				657DC870229DA2BF003B435C /* DetailFieldCell.swift */,
+				657DC871229DA2BF003B435C /* DetailFieldCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		65912A6F225CF1C400F37508 = {
@@ -436,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				653071C3229C6E3300F2BFD8 /* RMStatusFilter.swift */,
+				657DC874229DABDA003B435C /* DetailFields.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -938,6 +955,7 @@
 				65959DE8228A091C00D792DB /* DestructiveCell.xib in Resources */,
 				65959DF3228A099100D792DB /* ExternalLinkCell.xib in Resources */,
 				6504A7B62285CF7C00880D5F /* README.md in Resources */,
+				657DC873229DA2BF003B435C /* DetailFieldCell.xib in Resources */,
 				6591EFD02270D8C300C7502E /* FavoriteCell.xib in Resources */,
 				65912A86225CF1C500F37508 /* LaunchScreen.storyboard in Resources */,
 				65912A83225CF1C500F37508 /* Assets.xcassets in Resources */,
@@ -1079,6 +1097,7 @@
 				E50C9D52226F4E0900588EBC /* RMCharactersRequest.swift in Sources */,
 				E50C9DE02275E7A300588EBC /* FavoritesDatabaseObservationToken.swift in Sources */,
 				E50C9D3B226F4A5B00588EBC /* NetworkingService.swift in Sources */,
+				657DC872229DA2BF003B435C /* DetailFieldCell.swift in Sources */,
 				65912A7C225CF1C400F37508 /* AppDelegate.swift in Sources */,
 				659CEA32229C265400600FAB /* UINavigationBar+Themeable.swift in Sources */,
 				65C9CBE2228DC7820092E673 /* SettingsCellType.swift in Sources */,
@@ -1123,6 +1142,7 @@
 				65959DEB228A092F00D792DB /* SwitchCell.swift in Sources */,
 				65C9CBE0228DB0B30092E673 /* Notification+Name.swift in Sources */,
 				656004AE2295EBBC00725470 /* UICollectionView+Dequeue.swift in Sources */,
+				657DC875229DABDA003B435C /* DetailFields.swift in Sources */,
 				E50C9D43226F4AB100588EBC /* URLRequestProtocol.swift in Sources */,
 				E50C9D45226F4ABD00588EBC /* URLRequestBuilder.swift in Sources */,
 				E50C9DA2227203DB00588EBC /* ModelControllersFactory.swift in Sources */,

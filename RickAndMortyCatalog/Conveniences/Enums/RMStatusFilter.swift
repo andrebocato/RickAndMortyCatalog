@@ -19,7 +19,7 @@ enum RMStatusFilter: Int, CaseIterable {
         case .all: return "All"
         case .alive: return "Alive"
         case .dead: return "Dead"
-        case .unknown: return "unknown"
+        case .unknown: return "Unknown"
         }
     }
     

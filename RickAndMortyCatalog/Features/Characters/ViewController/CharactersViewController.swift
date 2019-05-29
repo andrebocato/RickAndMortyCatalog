@@ -25,6 +25,7 @@ class CharactersViewController: UIViewController, ThemeObserving {
         }
     }
     @IBOutlet private weak var longPressGestureRecognizer: UILongPressGestureRecognizer!
+    
     // disabled
     @IBOutlet private weak var swipeGestureRecognizer: UISwipeGestureRecognizer! {
         didSet {
@@ -114,7 +115,8 @@ extension CharactersViewController: UITableViewDataSource {
         
         let modelController = logicController.modelController(for: indexPath.row)
         cell.configure(with: modelController, onFavoriteErrorCallBack: { [weak self] (error) in
-            self?.presentAlert(title: "Persistence Error!", message: error.localizedDescription) 
+            self?.presentAlert(title: "Persistence Error!",
+                               message: error.localizedDescription) 
         })
         
         return cell
@@ -188,7 +190,11 @@ extension CharactersViewController: CharactersLogicControllerDelegate {
     }
     
     private func handleServiceError(_ error: ServiceError) {
-        presentAlert(title: "Service Error!", message: error.localizedDescription)
+        presentAlert(title: "Service Error!",
+                     message: error.localizedDescription,
+                     rightAction: UIAlertAction(title: "Retry", style: .default, handler: { [weak self] (action) in
+                        self?.logicController.loadCharacters()
+                     }))
     }
     
 }

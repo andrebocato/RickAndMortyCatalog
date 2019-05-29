@@ -18,9 +18,8 @@
 * The documentation and guide for utilizing those tools can be found on their websites, linked above.
 
 ## Known issues
-* LoadingView on characters list not centered. LoadingView is being created on viewDidLoad() and is centering based on different frame sizes. Loading characters (and using loading view) on viewWillAppear centers the view properly.
+* LoadingView on characters list not centered. LoadingView is being created on viewDidLoad and is centering based on different frame sizes. Loading characters (and using loading view) on viewWillAppear centers the view properly.
 * Loading animation on pagination is not working.
-* User cannot retry fetching when a problem occurs.
 
 ## TODOs
 * Fix known bugs.

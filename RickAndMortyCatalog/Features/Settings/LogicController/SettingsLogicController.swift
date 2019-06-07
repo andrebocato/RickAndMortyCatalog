@@ -9,8 +9,6 @@
 import Foundation
 
 class SettingsLogicController {
-
-    // MARK: - Enums
     
     // @TODO: change this
     let settings = [

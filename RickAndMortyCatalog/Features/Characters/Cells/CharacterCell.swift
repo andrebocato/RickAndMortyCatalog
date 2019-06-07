@@ -126,8 +126,9 @@ extension CharacterCell: Themeable {
     
     func apply(_ theme: ThemeType) {
         backgroundColor = theme.viewBackgroundColor
-        idLabel.textColor = theme.textColor
+        idLabel.textColor = theme.titleTextColor
         nameLabel.textColor = theme.textColor
+        favoriteImageView.tintColor = theme.selectedButtonColor
         
         let coloredView = UIView()
         coloredView.backgroundColor = theme.selectedCellBackgroundColor 

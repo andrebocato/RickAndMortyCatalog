@@ -155,7 +155,7 @@ extension SettingsViewController: UITableViewDelegate {
     private func handleDeleteAllSelection() {
         presentAlert(title: "Deleting favorites",
                      message: "Are you sure you want to delete all your favorited characters? This action can't be undone.",
-                     rightAction: UIAlertAction(title: "Delete", style: .destructive, handler: nil)) { [weak self] in
+                     rightAction: UIAlertAction(title: "Delete", style: .destructive, handler: nil)) { [weak self] in 
                         self?.logicController.deleteAllFavorites { [weak self] (result) in
                             switch result {
                             case .failure(let error):

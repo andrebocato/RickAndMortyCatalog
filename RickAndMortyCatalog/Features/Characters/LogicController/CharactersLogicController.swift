@@ -79,10 +79,9 @@ class CharactersLogicController {
         }
     }
     
-    /// Toggles or untoggles the character's favorite state.
-    ///
-    /// - Parameter modelController: A RMCharacterModelController.
-    func toggleFavorite(modelController: RMCharacterModelController) {
+    // not working. only "unfavorites" it
+    /// Toggles the character's favorite state.
+    func toggleFavorite(_ modelController: RMCharacterModelController) {
         if modelController.isFavorite {
             modelController.removeFromFavorites()
         } else {
@@ -127,6 +126,17 @@ class CharactersLogicController {
         characters.sort(by: { $0.id < $1.id })
         
         delegate?.charactersListDidUpdate()
+    }
+    
+}
+
+extension CharactersLogicController: RMCharacterModelControllerDelegate {
+    
+    func stateDidChange(_ newState: RMCharacterModelControllerState) {
+        switch newState {
+        case .favoritePropertyChanged(let isFavorite): delegate?.favoriteStateChanged(isFavorite) 
+        default: return
+        }
     }
     
 }

@@ -16,7 +16,7 @@ protocol DetailLogicControllerDelegate: AnyObject {
     /// - Parameter newState: A new state to be rendered.
     func stateDidChange(_ newState: DetailLogicControllerState)
     
-    /// Notifies that the favorite state has changed
+    /// Notifies that the favorite state has changed.
     ///
     /// - Parameter isFavorite: Defines the favorite state.
     func favoriteStateChanged(_ isFavorite: Bool)

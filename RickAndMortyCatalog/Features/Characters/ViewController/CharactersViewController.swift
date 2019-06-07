@@ -26,33 +26,20 @@ class CharactersViewController: UIViewController, ThemeObserving {
     }
     @IBOutlet private weak var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
-    // disabled
-    @IBOutlet private weak var swipeGestureRecognizer: UISwipeGestureRecognizer! {
-        didSet {
-            swipeGestureRecognizer.delegate = self
-            swipeGestureRecognizer.numberOfTouchesRequired = 3
-            swipeGestureRecognizer.direction = .up
-        }
-    }
-    
     // MARK: - Properties
 
     private let cellHeight: CGFloat = 80
     
     // MARK: - IBActions
     
+    // disabled. not working
     @IBAction private func longPressGestureRecognizerDidReceiveActionEvent(_ sender: UILongPressGestureRecognizer) {
         switch sender.state {
         case .began: toggleFavoriteForLongPressGesture(sender)
         default: return
         }
     }
-    
-    // disabled
-    @IBAction private func swipeGestureRecognizerDidReceiveActionEvent(_ sender: UISwipeGestureRecognizer) {
-        debugPrint("puxou")
-    }
-    
+        
     // MARK: - Initialization
     
     init(nibName nibNameOrNil: String?,
@@ -78,6 +65,11 @@ class CharactersViewController: UIViewController, ThemeObserving {
         addThemeObserver()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removeThemeObserver()
@@ -93,10 +85,10 @@ class CharactersViewController: UIViewController, ThemeObserving {
     }
     
     private func toggleFavoriteForLongPressGesture(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
-//        let touchPoint = longPressGestureRecognizer.location(in: tableView)
-//        guard let indexPath = tableView.indexPathForRow(at: touchPoint) else { return }
-//        let selectedModelController = logicController.modelController(for: indexPath.row)
-//        logicController.toggleFavorite(modelController: selectedModelController)
+        let touchPoint = longPressGestureRecognizer.location(in: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: touchPoint) else { return }
+        let modelController = logicController.modelController(for: indexPath.row)
+        logicController.toggleFavorite(modelController)
     }
 }
 
@@ -116,7 +108,7 @@ extension CharactersViewController: UITableViewDataSource {
         let modelController = logicController.modelController(for: indexPath.row)
         cell.configure(with: modelController, onFavoriteErrorCallBack: { [weak self] (error) in
             self?.presentAlert(title: "Persistence Error!",
-                               message: error.localizedDescription) 
+                               message: error.localizedDescription)  
         })
         
         return cell
@@ -149,14 +141,6 @@ extension CharactersViewController: UITableViewDelegate {
     
 }
 
-extension CharactersViewController: UIGestureRecognizerDelegate {
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-    
-}
-
 extension CharactersViewController: CharactersLogicControllerDelegate {
  
     // MARK: - Characters Logic Controller Delegate
@@ -170,6 +154,13 @@ extension CharactersViewController: CharactersLogicControllerDelegate {
     }
     
     func charactersListDidUpdate() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func favoriteStateChanged(_ isFavorite: Bool) {
+        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

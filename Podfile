@@ -10,7 +10,8 @@ target 'RickAndMortyCatalog' do
   inhibit_all_warnings!
   
   pod 'RealmSwift'
-
+  pod 'SwiftLint'
+  
   # Pods for RickAndMortyCatalog
 
   target 'RickAndMortyCatalogTests' do

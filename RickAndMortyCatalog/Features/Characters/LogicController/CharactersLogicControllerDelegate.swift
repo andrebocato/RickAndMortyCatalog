@@ -18,4 +18,9 @@ protocol CharactersLogicControllerDelegate: AnyObject {
     
     /// Informs us that the character list has updated.
     func charactersListDidUpdate()
+    
+    /// Notifies that the favorite state has changed.
+    ///
+    /// - Parameter isFavorite: Defines the favorite state.
+    func favoriteStateChanged(_ isFavorite: Bool)
 }

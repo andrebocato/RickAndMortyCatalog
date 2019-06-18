@@ -11,7 +11,6 @@ import UIKit
 // MARK: - Protocols
 
 protocol AlertPresenting {
-    
     /// Presents an Alert Controller with cancel and destructive actions.
     ///
     /// - Parameters:

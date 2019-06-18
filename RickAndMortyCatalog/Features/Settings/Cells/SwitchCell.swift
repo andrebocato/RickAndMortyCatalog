@@ -9,7 +9,7 @@
 import UIKit
 
 class SwitchCell: UITableViewCell, ThemeObserving {
-
+    
     // MARK: - IBOutlets
     
     @IBOutlet private weak var cellTitleLabel: UILabel! {
@@ -39,6 +39,7 @@ class SwitchCell: UITableViewCell, ThemeObserving {
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         onSwitchValueChanged?(sender.isOn)
+        UISelectionFeedbackGenerator().selectionChanged()
     }
     
     // MARK: - Public Functions
@@ -53,7 +54,7 @@ class SwitchCell: UITableViewCell, ThemeObserving {
 
 extension SwitchCell: Themeable {
     
-    func apply(theme: ThemeType) {
+    func apply(_ theme: ThemeType) {
         cellTitleLabel.textColor = theme.textColor
         themeSwitch.onTintColor = theme.selectedButtonColor
         backgroundColor = theme.cellBackgroundColor

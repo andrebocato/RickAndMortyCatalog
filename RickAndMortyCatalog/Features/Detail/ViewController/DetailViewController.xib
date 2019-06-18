@@ -9,31 +9,10 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Cartoon Toy.ttf">
-            <string>CartoonToy-Italic</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="RickAndMortyCatalog" customModuleProvider="target">
             <connections>
-                <outlet property="genderFixedLabel" destination="761-B2-Bri" id="kR2-2S-psg"/>
-                <outlet property="genderLabel" destination="u11-Az-hjd" id="uby-Nc-4Np"/>
-                <outlet property="idFixedLabel" destination="TQO-WA-TL3" id="B6n-Mh-XXe"/>
-                <outlet property="idLabel" destination="b4L-tD-hOy" id="VaV-bn-NjQ"/>
-                <outlet property="imageView" destination="adZ-2f-czu" id="b7f-7b-kok"/>
-                <outlet property="locationLabel" destination="ZxZ-JE-Jvo" id="vTQ-V6-ow3"/>
-                <outlet property="locationNameFixedLabel" destination="fOT-t9-9co" id="DeB-HA-SJ1"/>
-                <outlet property="nameFixedLabel" destination="2Fh-WF-5DP" id="F8f-Om-xCB"/>
-                <outlet property="nameLabel" destination="M9B-HB-KM5" id="Ze3-4q-Z6I"/>
-                <outlet property="originLabel" destination="qD0-g7-cmD" id="fYl-9m-K6F"/>
-                <outlet property="originNameFixedLabel" destination="IK9-QO-lCw" id="zWI-l6-epL"/>
-                <outlet property="speciesFixedLabel" destination="124-xj-a6X" id="EeE-um-MeM"/>
-                <outlet property="speciesLabel" destination="Pf6-6l-Etf" id="yaj-QV-Inn"/>
-                <outlet property="statusFixedLabel" destination="a60-0h-hZo" id="LvL-jm-aio"/>
-                <outlet property="statusLabel" destination="3Uv-vR-OZR" id="pd4-H2-mAf"/>
-                <outlet property="typeFixedLabel" destination="4fP-Sr-ZOc" id="Zu1-A0-D6X"/>
-                <outlet property="typeLabel" destination="Jrg-dJ-vsr" id="r3H-s0-Csk"/>
+                <outlet property="tableView" destination="vbm-gY-ciV" id="9E7-vq-U9w"/>
                 <outlet property="view" destination="V9u-1X-SjZ" id="yoC-4M-lad"/>
             </connections>
         </placeholder>
@@ -42,159 +21,17 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FaY-Gs-ju3">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vbm-gY-ciV">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o9T-b5-9ks">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="adZ-2f-czu">
-                                    <rect key="frame" x="57" y="20" width="300" height="300"/>
-                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="300" id="Sf3-nm-lUN"/>
-                                        <constraint firstAttribute="width" constant="300" id="umN-zL-XMC"/>
-                                        <constraint firstAttribute="width" secondItem="adZ-2f-czu" secondAttribute="height" multiplier="1:1" id="wJ2-Ns-mge"/>
-                                    </constraints>
-                                </imageView>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="l6S-dj-oMS" userLabel="Texts Stack View">
-                                    <rect key="frame" x="20" y="340" width="374" height="280"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="M03-eA-jE6" userLabel="Fields Stack View">
-                                            <rect key="frame" x="0.0" y="0.0" width="204.5" height="280"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQO-WA-TL3" userLabel="ID">
-                                                    <rect key="frame" x="0.0" y="0.0" width="204.5" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fh-WF-5DP">
-                                                    <rect key="frame" x="0.0" y="37" width="204.5" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STATUS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a60-0h-hZo">
-                                                    <rect key="frame" x="0.0" y="74" width="204.5" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPECIES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="124-xj-a6X">
-                                                    <rect key="frame" x="0.0" y="111" width="204.5" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TYPE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fP-Sr-ZOc">
-                                                    <rect key="frame" x="0.0" y="148" width="204.5" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENDER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="761-B2-Bri">
-                                                    <rect key="frame" x="0.0" y="185" width="204.5" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ORIGIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IK9-QO-lCw">
-                                                    <rect key="frame" x="0.0" y="222" width="204.5" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOCATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOT-t9-9co">
-                                                    <rect key="frame" x="0.0" y="259" width="204.5" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aNy-w5-c5t" userLabel="Placeholders Stack View">
-                                            <rect key="frame" x="212.5" y="0.0" width="161.5" height="280"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4L-tD-hOy" userLabel="ID">
-                                                    <rect key="frame" x="0.0" y="0.0" width="14.5" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <color key="textColor" red="0.47446221113204956" green="0.47454416751861572" blue="0.47444480657577515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9B-HB-KM5">
-                                                    <rect key="frame" x="0.0" y="37" width="37.5" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <color key="textColor" red="0.47446221113204956" green="0.47454416751861572" blue="0.47444480657577515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Uv-vR-OZR">
-                                                    <rect key="frame" x="0.0" y="74" width="51" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <color key="textColor" red="0.47446221113204956" green="0.47454416751861572" blue="0.47444480657577515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Species" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pf6-6l-Etf">
-                                                    <rect key="frame" x="0.0" y="111" width="54" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <color key="textColor" red="0.47446221113204956" green="0.47454416751861572" blue="0.47444480657577515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jrg-dJ-vsr">
-                                                    <rect key="frame" x="0.0" y="148" width="36" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <color key="textColor" red="0.47446221113204956" green="0.47454416751861572" blue="0.47444480657577515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u11-Az-hjd">
-                                                    <rect key="frame" x="0.0" y="185" width="54.5" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <color key="textColor" red="0.47446221113204956" green="0.47454416751861572" blue="0.47444480657577515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Origin" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qD0-g7-cmD">
-                                                    <rect key="frame" x="0.0" y="222" width="48" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <color key="textColor" red="0.47446221113204956" green="0.47454416751861572" blue="0.47444480657577515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxZ-JE-Jvo">
-                                                    <rect key="frame" x="0.0" y="259" width="62" height="21"/>
-                                                    <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                                    <color key="textColor" red="0.47446221113204956" green="0.47454416751861572" blue="0.47444480657577515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                </stackView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="adZ-2f-czu" firstAttribute="top" secondItem="o9T-b5-9ks" secondAttribute="top" constant="20" id="GUL-lv-f3c"/>
-                                <constraint firstAttribute="trailing" secondItem="l6S-dj-oMS" secondAttribute="trailing" constant="20" id="TaY-DZ-xmK"/>
-                                <constraint firstItem="adZ-2f-czu" firstAttribute="centerX" secondItem="o9T-b5-9ks" secondAttribute="centerX" id="eLj-gP-Cfx"/>
-                                <constraint firstItem="l6S-dj-oMS" firstAttribute="top" secondItem="adZ-2f-czu" secondAttribute="bottom" constant="20" id="jjp-pM-tDg"/>
-                                <constraint firstItem="l6S-dj-oMS" firstAttribute="leading" secondItem="o9T-b5-9ks" secondAttribute="leading" constant="20" id="tUw-K7-AOW"/>
-                                <constraint firstAttribute="bottom" secondItem="l6S-dj-oMS" secondAttribute="bottom" id="uWS-k6-qDw"/>
-                            </constraints>
-                        </view>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="o9T-b5-9ks" firstAttribute="leading" secondItem="FaY-Gs-ju3" secondAttribute="leading" id="Ofo-an-SDR"/>
-                        <constraint firstAttribute="trailing" secondItem="o9T-b5-9ks" secondAttribute="trailing" id="YEZ-DF-j6m"/>
-                        <constraint firstItem="o9T-b5-9ks" firstAttribute="top" secondItem="FaY-Gs-ju3" secondAttribute="top" id="k5b-2x-Tl5"/>
-                        <constraint firstAttribute="bottom" secondItem="o9T-b5-9ks" secondAttribute="bottom" id="p2E-03-FxS"/>
-                    </constraints>
-                </scrollView>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="erx-NC-bSD" firstAttribute="trailing" secondItem="FaY-Gs-ju3" secondAttribute="trailing" id="9QG-3Y-rOx"/>
-                <constraint firstItem="o9T-b5-9ks" firstAttribute="width" secondItem="V9u-1X-SjZ" secondAttribute="width" id="C8f-G9-Bn2"/>
-                <constraint firstItem="erx-NC-bSD" firstAttribute="top" secondItem="FaY-Gs-ju3" secondAttribute="top" id="Ctz-WZ-yAO"/>
-                <constraint firstItem="erx-NC-bSD" firstAttribute="bottom" secondItem="FaY-Gs-ju3" secondAttribute="bottom" id="fFm-vP-99u"/>
-                <constraint firstItem="erx-NC-bSD" firstAttribute="leading" secondItem="FaY-Gs-ju3" secondAttribute="leading" id="uqA-Da-jkP"/>
+                <constraint firstItem="erx-NC-bSD" firstAttribute="bottom" secondItem="vbm-gY-ciV" secondAttribute="bottom" id="3Gj-4W-ERY"/>
+                <constraint firstItem="vbm-gY-ciV" firstAttribute="top" secondItem="erx-NC-bSD" secondAttribute="top" id="43p-Kz-yje"/>
+                <constraint firstItem="erx-NC-bSD" firstAttribute="trailing" secondItem="vbm-gY-ciV" secondAttribute="trailing" id="Vex-AO-juR"/>
+                <constraint firstItem="vbm-gY-ciV" firstAttribute="leading" secondItem="erx-NC-bSD" secondAttribute="leading" id="W2v-5j-Mv3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="erx-NC-bSD"/>
             <point key="canvasLocation" x="968" y="-5"/>

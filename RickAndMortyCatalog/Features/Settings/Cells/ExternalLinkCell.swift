@@ -35,12 +35,9 @@ class ExternalLinkCell: UITableViewCell, ThemeObserving {
         accessoryType = .disclosureIndicator
 
         switch style {
-        case .githubRepo:
-            textLabel?.text = "Source code"
-        case .apiDocumentation:
-            textLabel?.text = "API Documentation"
+        case .githubRepo: textLabel?.text = "Source code"
+        case .apiDocumentation: textLabel?.text = "API Documentation"
         }
-        
         return self
     }
     
@@ -48,7 +45,7 @@ class ExternalLinkCell: UITableViewCell, ThemeObserving {
 
 extension ExternalLinkCell: Themeable {
     
-    func apply(theme: ThemeType) {
+    func apply(_ theme: ThemeType) {
         textLabel?.textColor = theme.textColor
         backgroundColor = theme.cellBackgroundColor
         setNeedsDisplay()

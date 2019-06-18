@@ -12,7 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoritesViewController" customModule="RickAndMortyCatalog" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="Ohz-qM-B62" id="hFg-Mg-lT0"/>
+                <outlet property="favoritesCollectionView" destination="Ohz-qM-B62" id="hFg-Mg-lT0"/>
+                <outlet property="segmentedCollectionView" destination="qdo-bC-Rxo" id="msU-hd-4tj"/>
                 <outlet property="view" destination="UTt-Sc-Jz9" id="uyq-d0-CuM"/>
             </connections>
         </placeholder>
@@ -21,8 +22,21 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ohz-qM-B62">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="qdo-bC-Rxo">
+                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="evy-Wa-I8v"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dNb-m2-xgR">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ohz-qM-B62">
+                    <rect key="frame" x="0.0" y="94" width="414" height="768"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1tY-4A-WJk">
                         <size key="itemSize" width="100" height="100"/>
@@ -35,13 +49,16 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="Ohz-qM-B62" firstAttribute="top" secondItem="3x3-i0-yll" secondAttribute="top" id="41Q-pf-yv1"/>
-                <constraint firstItem="3x3-i0-yll" firstAttribute="trailing" secondItem="Ohz-qM-B62" secondAttribute="trailing" id="KRi-E9-65Q"/>
-                <constraint firstItem="3x3-i0-yll" firstAttribute="bottom" secondItem="Ohz-qM-B62" secondAttribute="bottom" id="bJh-bJ-ABG"/>
-                <constraint firstItem="Ohz-qM-B62" firstAttribute="leading" secondItem="3x3-i0-yll" secondAttribute="leading" id="j6K-1w-Dep"/>
+                <constraint firstItem="3x3-i0-yll" firstAttribute="trailing" secondItem="Ohz-qM-B62" secondAttribute="trailing" id="5B1-vT-19s"/>
+                <constraint firstItem="qdo-bC-Rxo" firstAttribute="leading" secondItem="3x3-i0-yll" secondAttribute="leading" id="JIw-dQ-vGw"/>
+                <constraint firstItem="Ohz-qM-B62" firstAttribute="top" secondItem="qdo-bC-Rxo" secondAttribute="bottom" id="JlV-bh-y2B"/>
+                <constraint firstItem="3x3-i0-yll" firstAttribute="leading" secondItem="Ohz-qM-B62" secondAttribute="leading" id="Mhe-I4-sZs"/>
+                <constraint firstItem="Ohz-qM-B62" firstAttribute="bottom" secondItem="3x3-i0-yll" secondAttribute="bottom" id="Wcy-wd-mxG"/>
+                <constraint firstItem="3x3-i0-yll" firstAttribute="trailing" secondItem="qdo-bC-Rxo" secondAttribute="trailing" id="XkT-mI-S24"/>
+                <constraint firstItem="qdo-bC-Rxo" firstAttribute="top" secondItem="3x3-i0-yll" secondAttribute="top" id="dlX-EN-JRi"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="3x3-i0-yll"/>
-            <point key="canvasLocation" x="371" y="113"/>
+            <point key="canvasLocation" x="369.56521739130437" y="112.5"/>
         </view>
     </objects>
 </document>

@@ -24,11 +24,22 @@ class CharactersViewController: UIViewController, ThemeObserving {
             tableView.delegate = self
         }
     }
+    @IBOutlet private weak var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
     // MARK: - Properties
 
     private let cellHeight: CGFloat = 80
     
+    // MARK: - IBActions
+    
+    // disabled. not working
+    @IBAction private func longPressGestureRecognizerDidReceiveActionEvent(_ sender: UILongPressGestureRecognizer) {
+        switch sender.state {
+        case .began: toggleFavoriteForLongPressGesture(sender)
+        default: return
+        }
+    }
+        
     // MARK: - Initialization
     
     init(nibName nibNameOrNil: String?,
@@ -54,6 +65,11 @@ class CharactersViewController: UIViewController, ThemeObserving {
         addThemeObserver()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removeThemeObserver()
@@ -67,7 +83,13 @@ class CharactersViewController: UIViewController, ThemeObserving {
         let cellNib = UINib(nibName: className, bundle: bundle)
         tableView.register(cellNib, forCellReuseIdentifier: className)
     }
-
+    
+    private func toggleFavoriteForLongPressGesture(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        let touchPoint = longPressGestureRecognizer.location(in: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: touchPoint) else { return }
+        let modelController = logicController.modelController(for: indexPath.row)
+        logicController.toggleFavorite(modelController)
+    }
 }
 
 // MARK: - Extensions
@@ -85,7 +107,8 @@ extension CharactersViewController: UITableViewDataSource {
         
         let modelController = logicController.modelController(for: indexPath.row)
         cell.configure(with: modelController, onFavoriteErrorCallBack: { [weak self] (error) in
-            self?.presentAlert(title: "Persistence Error!", message: error.localizedDescription) 
+            self?.presentAlert(title: "Persistence Error!",
+                               message: error.localizedDescription)  
         })
         
         return cell
@@ -136,6 +159,13 @@ extension CharactersViewController: CharactersLogicControllerDelegate {
         }
     }
     
+    func favoriteStateChanged(_ isFavorite: Bool) {
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     // MARK: - State Handlers
     
     private func handleLoadingCharactersState(_ state: Bool) {
@@ -151,24 +181,24 @@ extension CharactersViewController: CharactersLogicControllerDelegate {
     }
     
     private func handleServiceError(_ error: ServiceError) {
-        presentAlert(title: "Service Error!", message: error.localizedDescription)
+        presentAlert(title: "Service Error!",
+                     message: error.localizedDescription,
+                     rightAction: UIAlertAction(title: "Retry", style: .default, handler: { [weak self] (action) in
+                        self?.logicController.loadCharacters()
+                     }))
     }
     
 }
 
 extension CharactersViewController: Themeable {
     
-    func apply(theme: ThemeType) {
+    func apply(_ theme: ThemeType) {
         tableView.backgroundColor = theme.viewBackgroundColor
         view.backgroundColor = theme.viewBackgroundColor
         view.setNeedsDisplay()
         
-        // @TODO: move outta here?
-        tabBarController?.tabBar.unselectedItemTintColor = theme.unselectedButtonColor
-        tabBarController?.tabBar.tintColor = theme.selectedButtonColor
-        tabBarController?.tabBar.barTintColor = theme.tabBarColor
-        navigationController?.navigationBar.barTintColor = theme.tabBarColor
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.titleTextColor]
+        tabBarController?.tabBar.apply(theme)
+        navigationController?.navigationBar.apply(theme)
     }
     
 }

@@ -14,7 +14,7 @@ struct RMCharacter: Codable {
     /// The name of the character.
     let name: String
     /// The status of the character ('Alive', 'Dead' or 'unknown').
-    let status: String
+    let status: RMStatus
     /// The species of the character.
     let species: String
     /// The type or subspecies of the character.

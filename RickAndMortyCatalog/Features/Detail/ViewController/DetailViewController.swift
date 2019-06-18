@@ -5,7 +5,6 @@
 //  Created by Andre Sanches Bocato on 09/04/19.
 //  Copyright © 2019 Andre Sanches Bocato. All rights reserved.
 //
-// @TODO: set text as "-" when result is ""
 
 import Foundation
 import UIKit
@@ -18,29 +17,12 @@ class DetailViewController: UIViewController, ThemeObserving {
     private var logicController: DetailLogicController
     
     // MARK: - IBOutlets
-    
-    @IBOutlet private weak var idFixedLabel: UILabel!
-    @IBOutlet private weak var nameFixedLabel: UILabel!
-    @IBOutlet private weak var statusFixedLabel: UILabel!
-    @IBOutlet private weak var speciesFixedLabel: UILabel!
-    @IBOutlet private weak var typeFixedLabel: UILabel!
-    @IBOutlet private weak var genderFixedLabel: UILabel!
-    @IBOutlet private weak var originNameFixedLabel: UILabel!
-    @IBOutlet private weak var locationNameFixedLabel: UILabel!
-    
-    @IBOutlet private weak var imageView: UIImageView! {
+        
+    @IBOutlet private var tableView: UITableView! {
         didSet {
-            imageView.layer.cornerRadius = 8.0
+            tableView.dataSource = self
         }
     }
-    @IBOutlet private weak var idLabel: UILabel!
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var statusLabel: UILabel!
-    @IBOutlet private weak var speciesLabel: UILabel!
-    @IBOutlet private weak var typeLabel: UILabel!
-    @IBOutlet private weak var genderLabel: UILabel!
-    @IBOutlet private weak var originLabel: UILabel!
-    @IBOutlet private weak var locationLabel: UILabel!
     
     // MARK: - Initialization
     
@@ -60,6 +42,7 @@ class DetailViewController: UIViewController, ThemeObserving {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerTableViewCells()
         createBarButtonItem()
         loadCurrentTheme()
         addThemeObserver()
@@ -81,6 +64,12 @@ class DetailViewController: UIViewController, ThemeObserving {
     
     // MARK: - UI
     
+    private func registerTableViewCells() {
+        let bundle = Bundle(for: DetailFieldCell.self)
+        tableView.register(UINib(nibName: DetailFieldCell.className, bundle: bundle),
+                           forCellReuseIdentifier: DetailFieldCell.className)
+    }
+    
     private func createBarButtonItem() {
         let barButtonItem = UIBarButtonItem(image: UIImage(named: "unfavorited"),
                                             style: .done,
@@ -91,31 +80,28 @@ class DetailViewController: UIViewController, ThemeObserving {
     }
     
     private func setupViewData() {
-        setupImageView()
-        setupLabelsText()
         updateBarButtonImage()
+        setupImageView()
         view.setNeedsDisplay()
     }
     
     private func setupImageView() {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.width))
+        let imageView = UIImageView(frame: headerView.frame)
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 8.0
         imageView.startLoading()
+        
+        headerView.addSubview(imageView)
+        
         logicController.fetchImageData { [weak self] (imageData) in
             DispatchQueue.main.async {
-                self?.imageView.image = UIImage(data: imageData)
-                self?.imageView.stopLoading()
+                imageView.image = UIImage(data: imageData)
+                imageView.stopLoading()
+                self?.tableView.tableHeaderView = headerView
             }
         }
-    }
-    
-    private func setupLabelsText() {
-        idLabel.text = "\(logicController.character.id)"
-        nameLabel.text = logicController.character.name
-        statusLabel.text = logicController.character.status
-        speciesLabel.text = logicController.character.species
-        typeLabel.text = logicController.character.type
-        genderLabel.text = logicController.character.gender
-        originLabel.text = logicController.character.origin.name
-        locationLabel.text = logicController.character.location.name
+        
     }
     
     private func updateBarButtonImage() {
@@ -128,6 +114,21 @@ class DetailViewController: UIViewController, ThemeObserving {
     
     @objc private func toggleFavoriteBarButtonItemDidReceiveTouchUpInside(_ sender: UIBarButtonItem) {
         logicController.toggleFavorite()
+    }
+    
+}
+
+extension DetailViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return DetailFields.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let fields = DetailFields(rawValue: indexPath.row) else { return UITableViewCell() }
+        return tableView
+            .dequeueReusableCell(ofClass: DetailFieldCell.self, for: indexPath)
+            .configured(with: logicController.character, field: fields)
     }
     
 }
@@ -148,7 +149,7 @@ extension DetailViewController: DetailLogicControllerDelegate {
     // MARK: - State Handlers
     
     private func handleLoadingImageState(_ loading: Bool) {
-        loading ? imageView.startLoading() : imageView.stopLoading()
+//        loading ? imageView.startLoading() : imageView.stopLoading()
     }
     
     private func handleError(_ error: Error) {
@@ -161,29 +162,11 @@ extension DetailViewController: DetailLogicControllerDelegate {
 
 extension DetailViewController: Themeable {
     
-    func apply(theme: ThemeType) {
-        idLabel.textColor = theme.textColor
-        nameLabel.textColor = theme.textColor
-        statusLabel.textColor = theme.textColor
-        speciesLabel.textColor = theme.textColor
-        typeLabel.textColor = theme.textColor
-        genderLabel.textColor = theme.textColor
-        originLabel.textColor = theme.textColor
-        locationLabel.textColor = theme.textColor
-        
-        idFixedLabel.textColor = theme.titleTextColor
-        nameFixedLabel.textColor = theme.titleTextColor
-        statusFixedLabel.textColor = theme.titleTextColor
-        speciesFixedLabel.textColor = theme.titleTextColor
-        typeFixedLabel.textColor = theme.titleTextColor
-        genderFixedLabel.textColor = theme.titleTextColor
-        originNameFixedLabel.textColor = theme.titleTextColor
-        locationNameFixedLabel.textColor = theme.titleTextColor
-        
+    func apply(_ theme: ThemeType) {
+        tableView.backgroundColor = theme.viewBackgroundColor
         view.backgroundColor = theme.viewBackgroundColor
-        imageView.superview?.backgroundColor = theme.viewBackgroundColor
-        navigationController?.navigationBar.barTintColor = theme.tabBarColor
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.titleTextColor]
+        
+        navigationController?.navigationBar.apply(theme)
     }
     
 }

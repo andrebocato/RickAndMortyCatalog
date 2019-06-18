@@ -44,7 +44,7 @@ class DestructiveCell: UITableViewCell, ThemeObserving {
 
 extension DestructiveCell: Themeable {
     
-    func apply(theme: ThemeType) {
+    func apply(_ theme: ThemeType) {
         backgroundColor = theme.cellBackgroundColor
         setNeedsDisplay()
     }

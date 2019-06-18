@@ -24,7 +24,7 @@ class DetailLogicController {
         return modelController.character
     }
     
-    // Exposes the isFavorite computed property from the modelController
+    /// Exposes the isFavorite computed property from the modelController....
     var isFavoriteCharacter: Bool {
         return modelController.isFavorite
     }
@@ -38,7 +38,7 @@ class DetailLogicController {
     
     // MARK: - Functions
     
-    /// Toggles or untoggles the character's favorite state.
+    /// Toggles the character's favorite state.
     func toggleFavorite() {
         if modelController.isFavorite {
             modelController.removeFromFavorites()
@@ -60,12 +60,9 @@ extension DetailLogicController: RMCharacterModelControllerDelegate {
     
     func stateDidChange(_ newState: RMCharacterModelControllerState) {
         switch newState {
-        case .businessError(let be):
-            delegate?.stateDidChange(.error(be))
-        case .loadingImage(let isLoading):
-            delegate?.stateDidChange(.loadingImage(isLoading))
-        case .favoritePropertyChanged(let isFavorite):
-            delegate?.favoriteStateChanged(isFavorite)
+        case .businessError(let be): delegate?.stateDidChange(.error(be))
+        case .loadingImage(let isLoading): delegate?.stateDidChange(.loadingImage(isLoading))
+        case .favoritePropertyChanged(let isFavorite): delegate?.favoriteStateChanged(isFavorite)
         }
     }
     

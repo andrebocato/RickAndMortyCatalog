@@ -9,18 +9,6 @@
 import UIKit
 
 class SettingsViewController: UIViewController, ThemeObserving {
-
-    // MARK: - Private Properties
-    
-    private let githubRepoURL = "https://github.com/andrebocato/RickAndMortyCatalog"
-    private let apiDocumentationURL = "https://rickandmortyapi.com/documentation/"
-    
-    // @TODO: remove
-    let settings = [
-        ["delete all favorites"],
-        ["switch to dark mode"],
-        ["source code (github)", "api documentation"]
-    ]
     
     // MARK: - IBOutlets
     
@@ -80,9 +68,8 @@ class SettingsViewController: UIViewController, ThemeObserving {
         
         tableView.register(UINib(nibName: ExternalLinkCell.className, bundle: bundle),
                            forCellReuseIdentifier: ExternalLinkCell.className)
-
     }
-
+    
 }
 
 // MARK: - Extensions
@@ -92,11 +79,11 @@ extension SettingsViewController: UITableViewDataSource {
     // MARK: - Table View Data Source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return settings.count // TODO: change
+        return logicController.settings.count // TODO: change
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settings[section].count // @TODO: change
+        return logicController.settings[section].count // @TODO: change
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -135,57 +122,61 @@ extension SettingsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let cellType = SettingsCellType(section: indexPath.section, row: indexPath.row)
-        
         switch cellType {
-        case .githubRepo?:
-            presentAlert(title: "Leaving the app",
-                         message: "You are being sent to an external page on the web. Do you wish to proceed?",
-                         rightAction: UIAlertAction(title: "Go!", style: .default, handler: { [weak self] (action) in
-                            guard let url = self?.githubRepoURL else { return }
-                            self?.logicController.open(urlString: url)
-                         }))
-            
-        case .apiDocumentation?:
-            presentAlert(title: "Leaving the app",
-                         message: "You are being sent to an external page on the web. Do you wish to proceed?",
-                         rightAction: UIAlertAction(title: "Go!", style: .default, handler: { [weak self] (action) in
-                            guard let url = self?.apiDocumentationURL else { return }
-                            self?.logicController.open(urlString: url)
-                         }))
-            
-        case .deleteAll?:
-            presentAlert(title: "Deleting favorites",
-                         message: "Are you sure you want to delete all your favorited characters? This action can't be undone.",
-                         rightAction: UIAlertAction(title: "Delete", style: .destructive, handler: nil)) { [weak self] in
-                            self?.logicController.deleteAllFavorites { [weak self] (result) in
-                                switch result {
-                                case .failure(let error):
-                                    self?.presentAlert(title: "Error!", message: error.localizedDescription)
-                                default: return
-                                }
-                            }
-            }
-            
-        case .switch?: return
-        case .none: return
+        case .githubRepo?: handleGithubRepoSelection()
+        case .apiDocumentation?: handleAPIDocumentationSelection()
+        case .deleteAll?: handleDeleteAllSelection()
+        default: return
         }
         
     }
+    
+    private func handleGithubRepoSelection() {
+        presentAlert(title: "Leaving the app",
+                     message: "You are being sent to an external page on the web. Do you wish to proceed?",
+                     rightAction: UIAlertAction(title: "Go!", style: .default, handler: { [weak self] (action) in
+                        self?.logicController.openGithubRepo(onError: { error in
+                            self?.presentAlert(title: "Error!", message: error.localizedDescription)
+                        })
+                     }))
+    }
+    
+    private func handleAPIDocumentationSelection() {
+        presentAlert(title: "Leaving the app",
+                     message: "You are being sent to an external page on the web. Do you wish to proceed?",
+                     rightAction: UIAlertAction(title: "Go!", style: .default, handler: { [weak self] _ in
+                        self?.logicController.openAPIDocumentation(onError: { error in
+                            self?.presentAlert(title: "Error!", message: error.localizedDescription)
+                        })
+                     }))
+        
+    }
+    
+    private func handleDeleteAllSelection() {
+        presentAlert(title: "Deleting favorites",
+                     message: "Are you sure you want to delete all your favorited characters? This action can't be undone.",
+                     rightAction: UIAlertAction(title: "Delete", style: .destructive, handler: nil)) { [weak self] in 
+                        self?.logicController.deleteAllFavorites { [weak self] (result) in
+                            switch result {
+                            case .failure(let error):
+                                self?.presentAlert(title: "Error!", message: error.localizedDescription)
+                            default: return
+                            }
+                        }
+        }
+    }
+    
 }
 
 extension SettingsViewController: Themeable {
     
-    func apply(theme: ThemeType) {
+    func apply(_ theme: ThemeType) {
         tableView.backgroundColor = theme.viewBackgroundColor
         view.backgroundColor = theme.viewBackgroundColor
         view.setNeedsDisplay()
         
-        // @TODO: move outta here?
-        tabBarController?.tabBar.unselectedItemTintColor = theme.unselectedButtonColor
-        tabBarController?.tabBar.tintColor = theme.selectedButtonColor
-        tabBarController?.tabBar.barTintColor = theme.tabBarColor
-        navigationController?.navigationBar.barTintColor = theme.tabBarColor
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.titleTextColor]
+        tabBarController?.tabBar.apply(theme)
+        navigationController?.navigationBar.apply(theme)
     }
-    
+ 
 }

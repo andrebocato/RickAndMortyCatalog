@@ -9,7 +9,19 @@
 import Foundation
 
 class SettingsLogicController {
-
+    
+    // @TODO: change this
+    let settings = [
+        ["delete all favorites"],
+        ["switch to dark mode"],
+        ["source code (github)", "api documentation"]
+    ]
+    
+    // MARK: - Constants
+    
+    private let githubRepoURL = "https://github.com/andrebocato/RickAndMortyCatalog"
+    private let apiDocumentationURL = "https://rickandmortyapi.com/documentation/"
+    
     // MARK: - Dependencies
     
     private let favoritesDatabase: FavoritesDatabaseProtocol
@@ -57,16 +69,39 @@ class SettingsLogicController {
         themeUpdater.updateApplicationWithTheme(newTheme: newTheme)
     }
     
-    
     /// Opens a URL using a string.
     ///
     /// - Parameter url: A string URL to be opened.
-    func open(urlString: String) {
+    private func open(urlString: String, onError: (_ error: Error) -> Void) {
         if let url = URL(string: urlString), urlOpener.canOpenURL(url) {
             urlOpener.open(url, options: [:], completionHandler: nil)
         } else {
-            // @TODO: handle error
+            let error = NSError(domain: "SettingsLogicController", code: -1, description: "Could not open URL: \(urlString)")
+            onError(error)
         }
+    }
+    
+    
+    /// Opens the GitHub repository URL.
+    ///
+    /// - Parameter onError: Closure called in case an error occurs.
+    func openGithubRepo(onError: ((_ error: Error) -> Void)? = nil) {
+        open(urlString: githubRepoURL, onError: { originalError in
+            debugPrint(originalError)
+            let error = NSError(domain: "SettingsLogicController", code: -1, description: "Could not open Github Repo.")
+            onError?(error)
+        })
+    }
+    
+    /// Opens the API documentation URL.
+    ///
+    /// - Parameter onError: Closure called in case an error occurs.
+    func openAPIDocumentation(onError: ((_ error: Error) -> Void)? = nil) {
+        open(urlString: apiDocumentationURL, onError: { originalError in
+            debugPrint(originalError)
+            let error = NSError(domain: "SettingsLogicController", code: -1, description: "Could not open API Documentation.")
+            onError?(error)
+        })
     }
     
 }

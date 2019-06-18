@@ -27,7 +27,7 @@ enum SerializationError: Error {
         }
     }
     
-    var localizedDescrption: String {
+    var localizedDescription: String {
         switch self {
         case .unknown:
             return "An unknown error has occcurred in encoding."

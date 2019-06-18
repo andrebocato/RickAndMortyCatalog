@@ -10,19 +10,24 @@
 		1686156EAEDFD7974B12CAF9 /* Pods_RickAndMortyCatalogUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3EF03A9023914565E5C8AE /* Pods_RickAndMortyCatalogUITests.framework */; };
 		3995102BC0AFEF307FE69EEA /* Pods_RickAndMortyCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2791398DF094DC4A4D9CB139 /* Pods_RickAndMortyCatalog.framework */; };
 		6501749F2295D424009865C1 /* laCartoonerie.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6501749E2295D424009865C1 /* laCartoonerie.TTF */; };
-		650174A22295E2EB009865C1 /* SegmentedTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650174A12295E2EB009865C1 /* SegmentedTabController.swift */; };
 		6504A7B62285CF7C00880D5F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6504A7B52285CF7B00880D5F /* README.md */; };
 		650B02042285C351005F5F2E /* Cartoon Toy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A26C172284BD4F00FC824E /* Cartoon Toy.ttf */; };
+		6521C1ED229ED59F004B5330 /* UIAlertController+Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6521C1EC229ED59F004B5330 /* UIAlertController+Themeable.swift */; };
+		653071C2229C6ACB00F2BFD8 /* RMStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653071C1229C6ACB00F2BFD8 /* RMStatus.swift */; };
+		653071C4229C6E3300F2BFD8 /* RMStatusFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653071C3229C6E3300F2BFD8 /* RMStatusFilter.swift */; };
 		653C92DE228B20CC0031C098 /* ColorThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C92DD228B20CC0031C098 /* ColorThemes.swift */; };
 		653C92E4228B368D0031C098 /* UserDefaultsThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C92E3228B368D0031C098 /* UserDefaultsThemeManager.swift */; };
 		653C92E8228B47840031C098 /* UIFont+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C92E7228B47840031C098 /* UIFont+CustomFonts.swift */; };
 		65520C2B22737F170095371F /* DetailLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65520C2A22737F170095371F /* DetailLogicController.swift */; };
 		6553792D228EFE4C00DFB97A /* URLOpenerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6553792C228EFE4C00DFB97A /* URLOpenerProtocol.swift */; };
-		656004AB2295E75200725470 /* FavoriteFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656004A92295E75200725470 /* FavoriteFilterCell.swift */; };
-		656004AC2295E75200725470 /* FavoriteFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656004AA2295E75200725470 /* FavoriteFilterCell.xib */; };
+		656004AB2295E75200725470 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656004A92295E75200725470 /* FilterCell.swift */; };
+		656004AC2295E75200725470 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656004AA2295E75200725470 /* FilterCell.xib */; };
 		656004AE2295EBBC00725470 /* UICollectionView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656004AD2295EBBC00725470 /* UICollectionView+Dequeue.swift */; };
 		6576A3922266370A00571620 /* UIView+Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3912266370A00571620 /* UIView+Loadable.swift */; };
 		6576A3962266413200571620 /* UIView+Emptiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576A3952266413200571620 /* UIView+Emptiable.swift */; };
+		657DC872229DA2BF003B435C /* DetailFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657DC870229DA2BF003B435C /* DetailFieldCell.swift */; };
+		657DC873229DA2BF003B435C /* DetailFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657DC871229DA2BF003B435C /* DetailFieldCell.xib */; };
+		657DC875229DABDA003B435C /* DetailFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657DC874229DABDA003B435C /* DetailFields.swift */; };
 		658032422264FC39000FCAB9 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658032412264FC39000FCAB9 /* FavoriteCell.swift */; };
 		65912A7C225CF1C400F37508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65912A7B225CF1C400F37508 /* AppDelegate.swift */; };
 		65912A83225CF1C500F37508 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65912A82225CF1C500F37508 /* Assets.xcassets */; };
@@ -45,6 +50,8 @@
 		65959DEB228A092F00D792DB /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65959DE9228A092F00D792DB /* SwitchCell.swift */; };
 		65959DF2228A099100D792DB /* ExternalLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65959DF0228A099100D792DB /* ExternalLinkCell.swift */; };
 		65959DF3228A099100D792DB /* ExternalLinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65959DF1228A099100D792DB /* ExternalLinkCell.xib */; };
+		659CEA30229C257300600FAB /* UITabBar+Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659CEA2F229C257300600FAB /* UITabBar+Themeable.swift */; };
+		659CEA32229C265400600FAB /* UINavigationBar+Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659CEA31229C265400600FAB /* UINavigationBar+Themeable.swift */; };
 		65A26C0E2284A61400FC824E /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A26C0D2284A61400FC824E /* PersistenceError.swift */; };
 		65C9CBDE228DAED10092E673 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBDD228DAED10092E673 /* Theme.swift */; };
 		65C9CBE0228DB0B30092E673 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C9CBDF228DB0B30092E673 /* Notification+Name.swift */; };
@@ -135,18 +142,23 @@
 		5122440E45AD6D5ABF6FE029 /* Pods-RickAndMortyCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalog.release.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalog/Pods-RickAndMortyCatalog.release.xcconfig"; sourceTree = "<group>"; };
 		5500136B425F93B4E9C513A7 /* Pods-RickAndMortyCatalogUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyCatalogUITests.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyCatalogUITests/Pods-RickAndMortyCatalogUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6501749E2295D424009865C1 /* laCartoonerie.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = laCartoonerie.TTF; sourceTree = "<group>"; };
-		650174A12295E2EB009865C1 /* SegmentedTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedTabController.swift; sourceTree = "<group>"; };
 		6504A7B52285CF7B00880D5F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		6521C1EC229ED59F004B5330 /* UIAlertController+Themeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Themeable.swift"; sourceTree = "<group>"; };
+		653071C1229C6ACB00F2BFD8 /* RMStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMStatus.swift; sourceTree = "<group>"; };
+		653071C3229C6E3300F2BFD8 /* RMStatusFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMStatusFilter.swift; sourceTree = "<group>"; };
 		653C92DD228B20CC0031C098 /* ColorThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemes.swift; sourceTree = "<group>"; };
 		653C92E3228B368D0031C098 /* UserDefaultsThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsThemeManager.swift; sourceTree = "<group>"; };
 		653C92E7228B47840031C098 /* UIFont+CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+CustomFonts.swift"; sourceTree = "<group>"; };
 		65520C2A22737F170095371F /* DetailLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLogicController.swift; sourceTree = "<group>"; };
 		6553792C228EFE4C00DFB97A /* URLOpenerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpenerProtocol.swift; sourceTree = "<group>"; };
-		656004A92295E75200725470 /* FavoriteFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFilterCell.swift; sourceTree = "<group>"; };
-		656004AA2295E75200725470 /* FavoriteFilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteFilterCell.xib; sourceTree = "<group>"; };
+		656004A92295E75200725470 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		656004AA2295E75200725470 /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 		656004AD2295EBBC00725470 /* UICollectionView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeue.swift"; sourceTree = "<group>"; };
 		6576A3912266370A00571620 /* UIView+Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loadable.swift"; sourceTree = "<group>"; };
 		6576A3952266413200571620 /* UIView+Emptiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Emptiable.swift"; sourceTree = "<group>"; };
+		657DC870229DA2BF003B435C /* DetailFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFieldCell.swift; sourceTree = "<group>"; };
+		657DC871229DA2BF003B435C /* DetailFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailFieldCell.xib; sourceTree = "<group>"; };
+		657DC874229DABDA003B435C /* DetailFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFields.swift; sourceTree = "<group>"; };
 		658032412264FC39000FCAB9 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		65912A78225CF1C400F37508 /* RickAndMortyCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65912A7B225CF1C400F37508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +187,8 @@
 		65959DE9228A092F00D792DB /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		65959DF0228A099100D792DB /* ExternalLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLinkCell.swift; sourceTree = "<group>"; };
 		65959DF1228A099100D792DB /* ExternalLinkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExternalLinkCell.xib; sourceTree = "<group>"; };
+		659CEA2F229C257300600FAB /* UITabBar+Themeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Themeable.swift"; sourceTree = "<group>"; };
+		659CEA31229C265400600FAB /* UINavigationBar+Themeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Themeable.swift"; sourceTree = "<group>"; };
 		65A26C0D2284A61400FC824E /* PersistenceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceError.swift; sourceTree = "<group>"; };
 		65A26C172284BD4F00FC824E /* Cartoon Toy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cartoon Toy.ttf"; sourceTree = "<group>"; };
 		65C9CBDD228DAED10092E673 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -271,21 +285,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		650174A02295E26F009865C1 /* Segmented Tab Controller */ = {
-			isa = PBXGroup;
-			children = (
-				650174A12295E2EB009865C1 /* SegmentedTabController.swift */,
-				656004A92295E75200725470 /* FavoriteFilterCell.swift */,
-				656004AA2295E75200725470 /* FavoriteFilterCell.xib */,
-			);
-			path = "Segmented Tab Controller";
-			sourceTree = "<group>";
-		};
 		653748602264E19F00AC910E /* Detail */ = {
 			isa = PBXGroup;
 			children = (
 				65520C2122734F6A0095371F /* ViewController */,
 				65520C2922737F020095371F /* LogicController */,
+				657DC86F229DA27E003B435C /* Cells */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -323,6 +328,15 @@
 				6553792C228EFE4C00DFB97A /* URLOpenerProtocol.swift */,
 			);
 			path = URLOpener;
+			sourceTree = "<group>";
+		};
+		657DC86F229DA27E003B435C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				657DC870229DA2BF003B435C /* DetailFieldCell.swift */,
+				657DC871229DA2BF003B435C /* DetailFieldCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		65912A6F225CF1C400F37508 = {
@@ -418,9 +432,12 @@
 				E50C9D7A22707F8B00588EBC /* String+Encription.swift */,
 				653C92E7228B47840031C098 /* UIFont+CustomFonts.swift */,
 				65C9CBDF228DB0B30092E673 /* Notification+Name.swift */,
-				65C9CBE3228DD2CD0092E673 /* UITableView+Dequeue.swift */,
 				65912AB4225CF45100F37508 /* UIViewController+AlertPresenting.swift */,
+				65C9CBE3228DD2CD0092E673 /* UITableView+Dequeue.swift */,
 				656004AD2295EBBC00725470 /* UICollectionView+Dequeue.swift */,
+				659CEA2F229C257300600FAB /* UITabBar+Themeable.swift */,
+				659CEA31229C265400600FAB /* UINavigationBar+Themeable.swift */,
+				6521C1EC229ED59F004B5330 /* UIAlertController+Themeable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -429,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				65912AB2225CF43C00F37508 /* JSON.swift */,
+				65912AB9225CF49200F37508 /* SerializationError.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -436,7 +454,8 @@
 		65912AB8225CF48000F37508 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				65912AB9225CF49200F37508 /* SerializationError.swift */,
+				653071C3229C6E3300F2BFD8 /* RMStatusFilter.swift */,
+				657DC874229DABDA003B435C /* DetailFields.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -484,7 +503,6 @@
 		65912AD7225D08DA00F37508 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				650174A02295E26F009865C1 /* Segmented Tab Controller */,
 				E50C9DA82274FCBC00588EBC /* ViewController */,
 				E50C9DB62274FF6900588EBC /* LogicController */,
 				6591EFCE2270D86000C7502E /* Cells */,
@@ -496,6 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				65912AE4225D1B7500F37508 /* RMCharacter.swift */,
+				653071C1229C6ACB00F2BFD8 /* RMStatus.swift */,
 				65912AEA225D1E0C00F37508 /* RMCharacterOrigin.swift */,
 				65912AEC225D1E7200F37508 /* RMCharacterLocation.swift */,
 				E50C9CC1226DF6FB00588EBC /* RMCharacterResponse.swift */,
@@ -507,6 +526,8 @@
 		6591EFCE2270D86000C7502E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				656004A92295E75200725470 /* FilterCell.swift */,
+				656004AA2295E75200725470 /* FilterCell.xib */,
 				658032412264FC39000FCAB9 /* FavoriteCell.swift */,
 				6591EFCF2270D8C300C7502E /* FavoriteCell.xib */,
 			);
@@ -938,13 +959,14 @@
 				65959DE8228A091C00D792DB /* DestructiveCell.xib in Resources */,
 				65959DF3228A099100D792DB /* ExternalLinkCell.xib in Resources */,
 				6504A7B62285CF7C00880D5F /* README.md in Resources */,
+				657DC873229DA2BF003B435C /* DetailFieldCell.xib in Resources */,
 				6591EFD02270D8C300C7502E /* FavoriteCell.xib in Resources */,
 				65912A86225CF1C500F37508 /* LaunchScreen.storyboard in Resources */,
 				65912A83225CF1C500F37508 /* Assets.xcassets in Resources */,
 				6501749F2295D424009865C1 /* laCartoonerie.TTF in Resources */,
 				6591EFD22270D8D500C7502E /* FavoritesViewController.xib in Resources */,
 				E50C9D5D226F874F00588EBC /* DetailViewController.xib in Resources */,
-				656004AC2295E75200725470 /* FavoriteFilterCell.xib in Resources */,
+				656004AC2295E75200725470 /* FilterCell.xib in Resources */,
 				E50C9CBE226DF29700588EBC /* GetCharacterMock.json in Resources */,
 				E50C9D70226FEEE700588EBC /* CharacterCell.xib in Resources */,
 			);
@@ -1075,12 +1097,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				650174A22295E2EB009865C1 /* SegmentedTabController.swift in Sources */,
 				658032422264FC39000FCAB9 /* FavoriteCell.swift in Sources */,
 				E50C9DCD2275245A00588EBC /* RMCharacterImageFetcherProtocol.swift in Sources */,
 				653C92E4228B368D0031C098 /* UserDefaultsThemeManager.swift in Sources */,
+				659CEA30229C257300600FAB /* UITabBar+Themeable.swift in Sources */,
 				65912AE5225D1B7500F37508 /* RMCharacter.swift in Sources */,
 				65912AC3225CFD9A00F37508 /* CharactersViewController.swift in Sources */,
+				653071C4229C6E3300F2BFD8 /* RMStatusFilter.swift in Sources */,
 				E5288C44229338C300E5942A /* AppDelegate+ThemeLoader.swift in Sources */,
 				65912AD9225D08FC00F37508 /* FavoritesViewController.swift in Sources */,
 				6553792D228EFE4C00DFB97A /* URLOpenerProtocol.swift in Sources */,
@@ -1089,9 +1112,12 @@
 				E50C9D52226F4E0900588EBC /* RMCharactersRequest.swift in Sources */,
 				E50C9DE02275E7A300588EBC /* FavoritesDatabaseObservationToken.swift in Sources */,
 				E50C9D3B226F4A5B00588EBC /* NetworkingService.swift in Sources */,
+				657DC872229DA2BF003B435C /* DetailFieldCell.swift in Sources */,
 				65912A7C225CF1C400F37508 /* AppDelegate.swift in Sources */,
+				659CEA32229C265400600FAB /* UINavigationBar+Themeable.swift in Sources */,
 				65C9CBE2228DC7820092E673 /* SettingsCellType.swift in Sources */,
 				E50C9D56226F5BB700588EBC /* ServiceError.swift in Sources */,
+				6521C1ED229ED59F004B5330 /* UIAlertController+Themeable.swift in Sources */,
 				E50C9D982271E7D200588EBC /* FavoriteCharacter.swift in Sources */,
 				E50C9D47226F4AC800588EBC /* HTTPMethod.swift in Sources */,
 				E50C9DD82275D50600588EBC /* SettingsLogicController.swift in Sources */,
@@ -1100,6 +1126,7 @@
 				E50C9DA72273DFD000588EBC /* ViewControllersFactory.swift in Sources */,
 				E50C9D802270A9AD00588EBC /* FavoritesDatabase.swift in Sources */,
 				65959DF2228A099100D792DB /* ExternalLinkCell.swift in Sources */,
+				653071C2229C6ACB00F2BFD8 /* RMStatus.swift in Sources */,
 				E50C9DC9227521FE00588EBC /* FavoritesLogicControllerDelegate.swift in Sources */,
 				E50C9D59226F618000588EBC /* RMCharactersServiceMock.swift in Sources */,
 				E50C9D4B226F4ADE00588EBC /* URLRequestAdapter.swift in Sources */,
@@ -1118,7 +1145,7 @@
 				E50C9DB22274FDA000588EBC /* FavoritesDatabaseProtocol.swift in Sources */,
 				E50C9D5F226FD66D00588EBC /* DependencyInjection.swift in Sources */,
 				E50C9DB92274FF8400588EBC /* FavoritesLogicController.swift in Sources */,
-				656004AB2295E75200725470 /* FavoriteFilterCell.swift in Sources */,
+				656004AB2295E75200725470 /* FilterCell.swift in Sources */,
 				E50C9D9A2271F49F00588EBC /* RMCharacterModelControllerDelegate.swift in Sources */,
 				6576A3922266370A00571620 /* UIView+Loadable.swift in Sources */,
 				65A26C0E2284A61400FC824E /* PersistenceError.swift in Sources */,
@@ -1131,6 +1158,7 @@
 				65959DEB228A092F00D792DB /* SwitchCell.swift in Sources */,
 				65C9CBE0228DB0B30092E673 /* Notification+Name.swift in Sources */,
 				656004AE2295EBBC00725470 /* UICollectionView+Dequeue.swift in Sources */,
+				657DC875229DABDA003B435C /* DetailFields.swift in Sources */,
 				E50C9D43226F4AB100588EBC /* URLRequestProtocol.swift in Sources */,
 				E50C9D45226F4ABD00588EBC /* URLRequestBuilder.swift in Sources */,
 				E50C9DA2227203DB00588EBC /* ModelControllersFactory.swift in Sources */,
@@ -1323,13 +1351,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8X682DW69D;
+				DEVELOPMENT_TEAM = Q6D8LQAG8B;
 				INFOPLIST_FILE = "$(SRCROOT)/RickAndMortyCatalog/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bocato.RickAndMortyCatalog;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bocato.RickAndMortyCatalog-dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1342,13 +1370,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8X682DW69D;
+				DEVELOPMENT_TEAM = Q6D8LQAG8B;
 				INFOPLIST_FILE = "$(SRCROOT)/RickAndMortyCatalog/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bocato.RickAndMortyCatalog;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bocato.RickAndMortyCatalog-dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

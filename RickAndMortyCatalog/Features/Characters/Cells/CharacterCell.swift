@@ -9,9 +9,9 @@
 import UIKit
 
 class CharacterCell: UITableViewCell, ThemeObserving {
-
+    
     // MARK: - IBOutlets
-
+    
     @IBOutlet private weak var cellImageView: UIImageView! {
         didSet {
             cellImageView.layer.cornerRadius = 10
@@ -27,6 +27,7 @@ class CharacterCell: UITableViewCell, ThemeObserving {
             idLabel.font = .laCartoonerie(ofSize: 25.0)
         }
     }
+    @IBOutlet private weak var favoriteImageView: UIImageView!
     
     // MARK: - Private Properties
     
@@ -62,16 +63,16 @@ class CharacterCell: UITableViewCell, ThemeObserving {
         self.onFavoriteErrorCallBack = onFavoriteErrorCallBack
         setupUI()
     }
-        
+    
     // MARK: - Private Functions
     
     private func setupUI() {
-        setupImage()
+        setupImageView()
         setupLabels()
-//        setupCellColors()
+        setupIsFavoriteImageView()
     }
     
-    private func setupImage() {
+    private func setupImageView() {
         modelController.fetchImageData { [weak self] (data) in
             DispatchQueue.main.async {
                 self?.cellImageView.image = UIImage(data: data)
@@ -80,22 +81,21 @@ class CharacterCell: UITableViewCell, ThemeObserving {
     }
     
     private func setupLabels() {
-        idLabel.text = " #\(modelController.character.id)"
+        idLabel.text = "#\(modelController.character.id)"
         nameLabel.text = modelController.character.name
     }
     
-//    private func setupCellColors() {
-//        let coloredView = UIView()
-//        coloredView.backgroundColor = UIColor(red: 0.75, green: 0.80, blue: 0.93, alpha: 1.0) // magic color?
-//        selectedBackgroundView = coloredView
-//    }
+    private func setupIsFavoriteImageView() {
+        let isFavoriteImageName = modelController.isFavorite ? "favorited" : "unfavorited"
+        favoriteImageView.image = UIImage(named: isFavoriteImageName)
+    }
     
 }
 
 // MARK: - Extensions
 
 extension CharacterCell: RMCharacterModelControllerDelegate {
-
+    
     // MARK: - RMCharacter Model Controller Delegate
     
     func allCharactersWereDeleted() {
@@ -111,9 +111,9 @@ extension CharacterCell: RMCharacterModelControllerDelegate {
     }
     
     private func handleLoadingImageState(_ loading: Bool) { // @TODO: Check this...
-//        DispatchQueue.main.async {
-//            loading ? self.cellImageView.startLoading(style: .white) : self.cellImageView.stopLoading()
-//        }
+        //        DispatchQueue.main.async {
+        //            loading ? self.cellImageView.startLoading(style: .white) : self.cellImageView.stopLoading()
+        //        }
     }
     
     private func handleBusinessError(_ error: Error) {
@@ -124,10 +124,11 @@ extension CharacterCell: RMCharacterModelControllerDelegate {
 
 extension CharacterCell: Themeable {
     
-    func apply(theme: ThemeType) {
+    func apply(_ theme: ThemeType) {
         backgroundColor = theme.viewBackgroundColor
-        idLabel.textColor = theme.textColor
+        idLabel.textColor = theme.titleTextColor
         nameLabel.textColor = theme.textColor
+        favoriteImageView.tintColor = theme.selectedButtonColor
         
         let coloredView = UIView()
         coloredView.backgroundColor = theme.selectedCellBackgroundColor 

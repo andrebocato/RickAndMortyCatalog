@@ -13,8 +13,8 @@
         <array key="Cartoon Toy.ttf">
             <string>CartoonToy-Italic</string>
         </array>
-        <array key="shlop rg.ttf">
-            <string>Shlop-Regular</string>
+        <array key="laCartoonerie.TTF">
+            <string>laCartoonerie</string>
         </array>
     </customFonts>
     <objects>
@@ -27,41 +27,54 @@
                 <rect key="frame" x="0.0" y="0.0" width="433" height="171.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="6NQ-Sb-h6I">
-                        <rect key="frame" x="10" y="60" width="393" height="62"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mEa-We-A8Y">
-                                <rect key="frame" x="0.0" y="0.0" width="75" height="62"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="fuv-w4-Nta"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="FVz-cO-XAT">
-                                <rect key="frame" x="79" y="0.0" width="294.5" height="62"/>
-                                <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38R-QW-iLF">
-                                <rect key="frame" x="377.5" y="0.0" width="15.5" height="62"/>
-                                <fontDescription key="fontDescription" name="Shlop-Regular" family="Shlop" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mEa-We-A8Y">
+                        <rect key="frame" x="8" y="8" width="64" height="155.5"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="fuv-w4-Nta"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="FVz-cO-XAT">
+                        <rect key="frame" x="80" y="75.5" width="234" height="21"/>
+                        <fontDescription key="fontDescription" name="CartoonToy-Italic" family="Cartoon Toy" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iSG-4f-XHb">
+                        <rect key="frame" x="400" y="73.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="1yb-wO-CgM"/>
+                            <constraint firstAttribute="width" constant="25" id="7MT-gX-Vsl"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="ID" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38R-QW-iLF">
+                        <rect key="frame" x="322" y="8" width="70" height="155.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="EBY-qC-GQn"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="laCartoonerie" family="laCartoonerie" pointSize="25"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="6NQ-Sb-h6I" secondAttribute="trailing" constant="10" id="WKO-MP-r1z"/>
-                    <constraint firstItem="6NQ-Sb-h6I" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Wlr-Zg-Oeg"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="6NQ-Sb-h6I" secondAttribute="bottom" constant="5" id="YeX-8g-xYb"/>
-                    <constraint firstItem="6NQ-Sb-h6I" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="ari-Mg-nS1"/>
+                    <constraint firstAttribute="bottom" secondItem="mEa-We-A8Y" secondAttribute="bottom" constant="8" id="457-HA-1mp"/>
+                    <constraint firstItem="FVz-cO-XAT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Adh-s5-32f"/>
+                    <constraint firstItem="iSG-4f-XHb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="C6D-RN-Amm"/>
+                    <constraint firstItem="mEa-We-A8Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="C6R-xz-bgv"/>
+                    <constraint firstItem="mEa-We-A8Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="gmA-Gg-2vB"/>
+                    <constraint firstItem="FVz-cO-XAT" firstAttribute="leading" secondItem="mEa-We-A8Y" secondAttribute="trailing" constant="8" id="m60-Em-BkC"/>
+                    <constraint firstItem="38R-QW-iLF" firstAttribute="leading" secondItem="FVz-cO-XAT" secondAttribute="trailing" constant="8" id="mFE-F5-fss"/>
+                    <constraint firstAttribute="trailing" secondItem="iSG-4f-XHb" secondAttribute="trailing" constant="8" id="nnR-B2-PxM"/>
+                    <constraint firstItem="iSG-4f-XHb" firstAttribute="leading" secondItem="38R-QW-iLF" secondAttribute="trailing" constant="8" id="oWX-f6-4VY"/>
+                    <constraint firstAttribute="bottom" secondItem="38R-QW-iLF" secondAttribute="bottom" constant="8" id="piv-Fn-BhS"/>
+                    <constraint firstItem="38R-QW-iLF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="tDx-hf-9Nt"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cellImageView" destination="mEa-We-A8Y" id="QY0-VW-Wnz"/>
+                <outlet property="favoriteImageView" destination="iSG-4f-XHb" id="CMe-P6-Eid"/>
                 <outlet property="idLabel" destination="38R-QW-iLF" id="Zds-i0-9VE"/>
                 <outlet property="nameLabel" destination="FVz-cO-XAT" id="L92-SI-uly"/>
             </connections>

@@ -15,16 +15,16 @@ class RealmObjectObservationToken: FavoritesDatabaseObservationToken {
     
     private let realmNotificationToken: NotificationToken
     
-    // MARk:
+    // MARRK: - Initialization
     
-    /// Initiazes
+    /// Initiazes a Realm notification token.
     ///
-    /// - Parameter realmNotificationToken: A realm notification token instance.
+    /// - Parameter realmNotificationToken: A Realm notification token instance.
     init(realmNotificationToken: NotificationToken) {
         self.realmNotificationToken = realmNotificationToken
     }
     
-    /// Invalidates the notification token
+    /// Invalidates the notification token.
     func invalidate() {
         realmNotificationToken.invalidate()
     }

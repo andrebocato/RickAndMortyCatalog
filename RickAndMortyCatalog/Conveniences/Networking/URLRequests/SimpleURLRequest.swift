@@ -11,10 +11,10 @@ import Foundation
 struct SimpleURLRequest: URLRequestProtocol {
     
     var baseURL: URL
-    var path: String? = nil
+    var path: String?
     var method: HTTPMethod
-    var parameters: URLRequestParameters? = nil
-    var headers: [String : Any]? = nil
+    var parameters: URLRequestParameters?
+    var headers: [String: Any]?
     
     init(baseURL: URL,
          method: HTTPMethod = .get) {

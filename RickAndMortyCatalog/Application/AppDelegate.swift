@@ -12,8 +12,12 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // MARK: - Proerties
+    
     var window: UIWindow?
 
+    // MARK: - Functions
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let rootViewController = createTabBarController()

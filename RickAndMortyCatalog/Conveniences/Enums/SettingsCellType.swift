@@ -8,8 +8,8 @@
 
 import Foundation
 
+/// Types of settings cells.
 enum SettingsCellType {
-    
     case deleteAll
     case `switch`
     case githubRepo
@@ -17,11 +17,16 @@ enum SettingsCellType {
     
     init?(section: Int, row: Int) {
         switch (section, row) {
-        case (0, 0): self = .deleteAll
-        case (1, 0): self = .switch
-        case (2, 0): self = .githubRepo
-        case (2, 1): self = .apiDocumentation
-        default: return nil
+        case (0, 0): 
+            self = .deleteAll
+        case (1, 0):
+            self = .switch
+        case (2, 0):
+            self = .githubRepo
+        case (2, 1):
+            self = .apiDocumentation
+        default:
+            return nil
         }
     }
     

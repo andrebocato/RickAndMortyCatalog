@@ -10,7 +10,6 @@ import Foundation
 
 /// Defines a communication strategy between the model holder and it's logic.
 protocol RMCharacterModelControllerDelegate: AnyObject {
-    
     /// Tells us that the characters logic had a state change.
     ///
     /// - Parameter newState: A new state to be rendered.

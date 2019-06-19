@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: - Protocols
+// MARK: - Protocol
 
 protocol AlertPresenting {
     /// Presents an Alert Controller with cancel and destructive actions.
@@ -19,21 +19,20 @@ protocol AlertPresenting {
     ///   - rightAction: Main action of the alert.
     ///   - completionHandler: Closure to be executed right after presenting the alert.
     func presentAlert(title: String, message: String?, rightAction: UIAlertAction, completionHandler: (() -> Void)?)
-    
     /// Presents an Alert Controller with an alert message.
     ///
     /// - Parameters:
-    ///   - title: Title to be displayed in the alert.
+    ///   - title: Title to be displayed in the alert ("Ok" by default).
     ///   - message: Optional message to be displayed in the alert.
     ///   - completionHandler: Closure to be executed right after presenting the alert.
-    func presentAlert(title: String, message: String?, completionHandler: (() -> Void)?)
+    func presentOkAlert(title: String?, message: String?, completionHandler: (() -> Void)?)
 }
 
 extension UIViewController: AlertPresenting { }
 
 extension AlertPresenting where Self: UIViewController {
     
-    // MARK: - Functions
+    // MARK: - Protocol Functions
     
     func presentAlert(title: String,
                       message: String?,
@@ -42,7 +41,7 @@ extension AlertPresenting where Self: UIViewController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
             alert.dismiss(animated: true, completion: nil)
         })
         
@@ -55,13 +54,13 @@ extension AlertPresenting where Self: UIViewController {
         
     }
     
-    func presentAlert(title: String,
-                      message: String?,
-                      completionHandler: (() -> Void)? = nil) {
+    func presentOkAlert(title: String?,
+                        message: String?,
+                        completionHandler: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { (action) in
+        let okAction = UIAlertAction(title: title ?? "Ok", style: .cancel, handler: { _ in
             alert.dismiss(animated: true, completion: nil)
         })
         alert.addAction(okAction)

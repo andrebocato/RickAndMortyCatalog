@@ -8,10 +8,8 @@
 
 import Foundation
 
-/// Define an observation token abstraction
+/// Define an observation token abstraction.
 protocol FavoritesDatabaseObservationToken {
-    
-    /// Invalidates the observation token
+    /// Invalidates the observation token.
     func invalidate()
-    
 }

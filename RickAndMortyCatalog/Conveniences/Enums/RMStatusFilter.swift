@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Possible statuses of a RMCharacter.
 enum RMStatusFilter: Int, CaseIterable {
     case all
     case alive
@@ -16,10 +17,14 @@ enum RMStatusFilter: Int, CaseIterable {
     
     var stringValue: String {
         switch self {
-        case .all: return "All"
-        case .alive: return "Alive"
-        case .dead: return "Dead"
-        case .unknown: return "Unknown"
+        case .all:
+            return "All"
+        case .alive:
+            return "Alive"
+        case .dead:
+            return "Dead"
+        case .unknown:
+            return "Unknown"
         }
     }
     

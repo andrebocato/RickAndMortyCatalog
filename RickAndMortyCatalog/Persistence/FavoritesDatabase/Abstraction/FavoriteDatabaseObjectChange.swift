@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Define an object change
+/// Defines an object change.
 ///
 /// - updated: The object was updated.
 /// - deleted: The object was deleted.

@@ -8,10 +8,10 @@
 
 import Foundation
 
+// MARK: - Protocol
 
 /// Defines an image service to fetch images data from cache or the network.
 protocol ImageServiceProtocol {
-    
     /// Initializes an ImageService with its dependencies.
     ///
     /// - Parameters:
@@ -31,28 +31,37 @@ protocol ImageServiceProtocol {
 
 class ImageService: ImageServiceProtocol {
     
-    // MARK: - Properties
-
+    // MARK: - Private Properties
+    
     private let networkDispatcher: URLRequestDispatcherProtocol
     private let cacheService: CacheServiceProtocol
+    
+    // MARK: - Initialization
     
     required init(networkDispatcher: URLRequestDispatcherProtocol, cacheService: CacheServiceProtocol) {
         self.networkDispatcher = networkDispatcher
         self.cacheService = cacheService
     }
     
+    // MARK: - Lifecycle
+    
     deinit {
         cacheService.clear {
             switch $0 {
-            case .failure(let error): debugPrint(error)
-            case .success: debugPrint("Successfuly cleared the cache.")
+            case .failure(let error):
+                debugPrint(error)
+                
+            case .success:
+                debugPrint("Successfuly cleared the cache.")
             }
         }
     }
     
+    // MARK: - Public Functions
+    
     @discardableResult
-    func getImageDataFromURL(_ url: String,
-                             completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken? {
+    public func getImageDataFromURL(_ url: String,
+                                    completionHandler: @escaping (Result<Data, ServiceError>) -> Void) -> URLRequestToken? {
         
         var requestToken: URLRequestToken?
         cacheService.loadData(from: url) { (cacheResult) in
@@ -85,9 +94,8 @@ class ImageService: ImageServiceProtocol {
                 }
             }
         }
+        
         return requestToken
     }
     
 }
-
-

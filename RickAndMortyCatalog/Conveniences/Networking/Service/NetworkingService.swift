@@ -8,17 +8,19 @@
 
 import Foundation
 
+// MARK: - Protocol
+
 /// Defines an API service.
 public protocol NetworkingService {
-    
     /// The dispatcher to take care of the network requests.
     var dispatcher: URLRequestDispatcherProtocol { get }
-    
     /// Intializer to inject the dispatcher.
     ///
     /// - Parameter dispatcher: The dispatcher to take care of the network requests.
     init(dispatcher: URLRequestDispatcherProtocol)
 }
+
+// MARK: - Networking Service Serializer
 
 extension NetworkingService {
     

@@ -40,11 +40,7 @@ class DetailLogicController {
     
     /// Toggles the character's favorite state.
     func toggleFavorite() {
-        if modelController.isFavorite {
-            modelController.removeFromFavorites()
-        } else {
-            modelController.addToFavorites()
-        }
+        modelController.isFavorite ? modelController.removeFromFavorites() : modelController.addToFavorites()
     }
     
     /// Fetches the image data from persistence or downloads it.
@@ -56,13 +52,20 @@ class DetailLogicController {
     
 }
 
+// MARK: - Character Model Controller Delegate
+
 extension DetailLogicController: RMCharacterModelControllerDelegate {
     
     func stateDidChange(_ newState: RMCharacterModelControllerState) {
         switch newState {
-        case .businessError(let be): delegate?.stateDidChange(.error(be))
-        case .loadingImage(let isLoading): delegate?.stateDidChange(.loadingImage(isLoading))
-        case .favoritePropertyChanged(let isFavorite): delegate?.favoriteStateChanged(isFavorite)
+        case .businessError(let businessError):
+            delegate?.stateDidChange(.error(businessError))
+            
+        case .loadingImage(let isLoading):
+            delegate?.stateDidChange(.loadingImage(isLoading))
+            
+        case .favoritePropertyChanged(let isFavorite):
+            delegate?.favoriteStateChanged(isFavorite)
         }
     }
     

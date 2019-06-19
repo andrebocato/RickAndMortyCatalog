@@ -28,9 +28,9 @@ class DestructiveCell: UITableViewCell, ThemeObserving {
         removeThemeObserver()
     }
     
-    // MARK: - Functions
+    // MARK: - Public Functions
     
-    func configured(as style: DestructiveCellStyle) -> Self {
+    public func configured(as style: DestructiveCellStyle) -> Self {
         switch style {
         case .deleteAll:
             textLabel?.text = "Delete all favorites"
@@ -41,6 +41,8 @@ class DestructiveCell: UITableViewCell, ThemeObserving {
     }
     
 }
+
+// MARK: - Themeable
 
 extension DestructiveCell: Themeable {
     

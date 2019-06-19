@@ -24,6 +24,7 @@ class SettingsViewController: UIViewController, ThemeObserving {
     private let logicController: SettingsLogicController
     
     // MARK: - Initialization
+    
     init(nibName nibNameOrNil: String?,
          bundle nibBundleOrNil: Bundle?,
          logicController: SettingsLogicController) {
@@ -55,35 +56,31 @@ class SettingsViewController: UIViewController, ThemeObserving {
         navigationController?.toolbar.isHidden = false
     }
     
-    // MARK: - UI Setup
+    // MARK: - UI Configuration
     
     private func registerTableViewCells() {
         let bundle = Bundle(for: SettingsViewController.self)
         
         tableView.register(UINib(nibName: DestructiveCell.className, bundle: bundle),
                            forCellReuseIdentifier: DestructiveCell.className)
-        
         tableView.register(UINib(nibName: SwitchCell.className, bundle: bundle),
                            forCellReuseIdentifier: SwitchCell.className)
-        
         tableView.register(UINib(nibName: ExternalLinkCell.className, bundle: bundle),
                            forCellReuseIdentifier: ExternalLinkCell.className)
     }
     
 }
 
-// MARK: - Extensions
+// MARK: - Table View Data Source
 
 extension SettingsViewController: UITableViewDataSource {
     
-    // MARK: - Table View Data Source
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return logicController.settings.count // TODO: change
+        return logicController.settings.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return logicController.settings[section].count // @TODO: change
+        return logicController.settings[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,52 +88,66 @@ extension SettingsViewController: UITableViewDataSource {
         
         switch cellType {
         case .deleteAll?:
-            return tableView.dequeueReusableCell(ofClass: DestructiveCell.self, for: indexPath).configured(as: .deleteAll)
+            return tableView
+                .dequeueReusableCell(ofClass: DestructiveCell.self, for: indexPath)
+                .configured(as: .deleteAll)
             
         case .switch?:
             let switchCell = tableView.dequeueReusableCell(ofClass: SwitchCell.self, for: indexPath)
+            
             switchCell.configure(isSwitchOn: logicController.isDarkThemeOn, onSwitchValueChanged: { [weak self] (isOn) in
                 self?.logicController.toggleDarkTheme(isOn)
             })
             return switchCell
             
         case .githubRepo?:
-            return tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self, for: indexPath).configured(as: .githubRepo)
+            return tableView
+                .dequeueReusableCell(ofClass: ExternalLinkCell.self, for: indexPath)
+                .configured(as: .githubRepo)
             
         case .apiDocumentation?:
-            return tableView.dequeueReusableCell(ofClass: ExternalLinkCell.self, for: indexPath).configured(as: .apiDocumentation)
+            return tableView
+                .dequeueReusableCell(ofClass: ExternalLinkCell.self, for: indexPath)
+                .configured(as: .apiDocumentation)
             
         case .none:
             return UITableViewCell()
         }
-        
     }
     
 }
 
+// MARK: - Table View Delegate
+
 extension SettingsViewController: UITableViewDelegate {
-    
-    // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let cellType = SettingsCellType(section: indexPath.section, row: indexPath.row)
         switch cellType {
-        case .githubRepo?: handleGithubRepoSelection()
-        case .apiDocumentation?: handleAPIDocumentationSelection()
-        case .deleteAll?: handleDeleteAllSelection()
-        default: return
+        case .githubRepo?:
+            handleGithubRepoSelection()
+            
+        case .apiDocumentation?:
+            handleAPIDocumentationSelection()
+            
+        case .deleteAll?:
+            handleDeleteAllSelection()
+            
+        default:
+            return
         }
-        
     }
+    
+    // MARK: - Handlers
     
     private func handleGithubRepoSelection() {
         presentAlert(title: "Leaving the app",
                      message: "You are being sent to an external page on the web. Do you wish to proceed?",
-                     rightAction: UIAlertAction(title: "Go!", style: .default, handler: { [weak self] (action) in
+                     rightAction: UIAlertAction(title: "Go!", style: .default, handler: { [weak self] _ in
                         self?.logicController.openGithubRepo(onError: { error in
-                            self?.presentAlert(title: "Error!", message: error.localizedDescription)
+                            self?.presentOkAlert(title: "Error!", message: error.localizedDescription)
                         })
                      }))
     }
@@ -146,7 +157,7 @@ extension SettingsViewController: UITableViewDelegate {
                      message: "You are being sent to an external page on the web. Do you wish to proceed?",
                      rightAction: UIAlertAction(title: "Go!", style: .default, handler: { [weak self] _ in
                         self?.logicController.openAPIDocumentation(onError: { error in
-                            self?.presentAlert(title: "Error!", message: error.localizedDescription)
+                            self?.presentOkAlert(title: "Error!", message: error.localizedDescription)
                         })
                      }))
         
@@ -159,14 +170,18 @@ extension SettingsViewController: UITableViewDelegate {
                         self?.logicController.deleteAllFavorites { [weak self] (result) in
                             switch result {
                             case .failure(let error):
-                                self?.presentAlert(title: "Error!", message: error.localizedDescription)
-                            default: return
+                                self?.presentOkAlert(title: "Error!", message: error.localizedDescription)
+                                
+                            default:
+                                return
                             }
                         }
         }
     }
     
 }
+
+// MARK: - Themeable
 
 extension SettingsViewController: Themeable {
     

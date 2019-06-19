@@ -20,6 +20,7 @@ extension UICollectionView {
         guard let cell = dequeueReusableCell(withReuseIdentifier: `class`.className, for: indexPath) as? T else {
             fatalError("Couldn't find UICollectionViewCell of class \(`class`.className)")
         }
+        
         return cell
     }
     

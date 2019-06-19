@@ -21,7 +21,7 @@ struct DependencyInjection {
     
     static let charactersService: RMCharactersServiceProtocol = RMCharactersService(dispatcher: urlSessionDispatcher)
     static let imageService: ImageServiceProtocol = ImageService(networkDispatcher: urlSessionDispatcher, cacheService: cacheService)
-    static let favoritesDatabase/*: FavoritesDatabaseProtocol*/ = FavoritesDatabase()
+    static let favoritesDatabase = FavoritesDatabase()
     static let themeManager: ThemeManagerProtocol = UserDefaultsThemeManager()
     static let themeUpdater: ThemeUpdaterProtocol = ThemeUpdater()
     static let urlOpener: URLOpenerProtocol = UIApplication.shared

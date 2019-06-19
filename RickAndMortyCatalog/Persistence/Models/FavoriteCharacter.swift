@@ -9,8 +9,6 @@
 import Foundation
 
 struct FavoriteCharacter {
-    
     let rmCharacter: RMCharacter
     let imageData: Data
-    
 }

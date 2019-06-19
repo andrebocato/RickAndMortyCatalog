@@ -8,9 +8,11 @@
 
 import Foundation
 
+// MARK: - Theme Loader
+
 extension AppDelegate: ThemeLoader {
     
-    func loadApplicationTheme() { // TODO: Refactor this
+    func loadApplicationTheme() {
         let isDarkThemeOn = DependencyInjection.themeManager.isDarkThemeOn()
         let currentTheme: Theme = isDarkThemeOn ? .dark : .light
         DependencyInjection.themeUpdater.updateApplicationWithTheme(newTheme: currentTheme)

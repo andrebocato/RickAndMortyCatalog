@@ -17,4 +17,5 @@ extension UIFont {
     class func laCartoonerie(ofSize size: CGFloat) -> UIFont {
         return UIFont(name: "laCartoonerie", size: size) ?? .systemFont(ofSize: size)
     }
+    
 }

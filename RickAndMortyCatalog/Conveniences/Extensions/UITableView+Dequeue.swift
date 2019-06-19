@@ -20,6 +20,7 @@ extension UITableView {
         guard let cell = dequeueReusableCell(withIdentifier: `class`.className, for: indexPath) as? T else {
             fatalError("Couldn't find UITableViewCell of class \(`class`.className)")
         }
+        
         return cell
     }
     

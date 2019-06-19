@@ -10,12 +10,10 @@ import Foundation
 
 /// Defines a communication strategy between the ligic controller holder and its events.
 protocol DetailLogicControllerDelegate: AnyObject {
-    
     /// Tells us that the characters logic had a state change.
     ///
     /// - Parameter newState: A new state to be rendered.
     func stateDidChange(_ newState: DetailLogicControllerState)
-    
     /// Notifies that the favorite state has changed.
     ///
     /// - Parameter isFavorite: Defines the favorite state.

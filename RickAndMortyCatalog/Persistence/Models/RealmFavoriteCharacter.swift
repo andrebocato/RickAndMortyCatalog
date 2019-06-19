@@ -14,8 +14,8 @@ class RealmFavoriteCharacter: Object {
     // MARK: - Properties
     
     @objc dynamic var id: String = UUID().uuidString
-    @objc dynamic var rmCharacterData: Data? = nil
-    @objc dynamic var imageData: Data? = nil
+    @objc dynamic var rmCharacterData: Data?
+    @objc dynamic var imageData: Data?
     
     // MARK: - Initialization
     

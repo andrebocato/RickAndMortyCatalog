@@ -11,7 +11,7 @@ import Foundation
 /// Task abstraction in order to make the request cancelable without exposing the URLSessionDataTask.
 public class URLRequestToken {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     private weak var task: URLSessionDataTask?
     

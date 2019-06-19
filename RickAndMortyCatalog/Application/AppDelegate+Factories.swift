@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+// MARK: - Model Controllers Factory
+
 extension AppDelegate: ModelControllersFactoryProtocol {
     
     func createRMCharacterModelController(character: RMCharacter) -> RMCharacterModelController {
@@ -19,10 +21,13 @@ extension AppDelegate: ModelControllersFactoryProtocol {
     
 }
 
+// MARK: - View Controllers Factory
+
 extension AppDelegate: ViewControllersFactoryProtocol {
     
     func createDetailsViewController(characterModelController: RMCharacterModelController) -> DetailViewController {
         let logicController = DetailLogicController(modelController: characterModelController)
+        
         return DetailViewController(nibName: DetailViewController.className,
                                     bundle: Bundle(for: DetailViewController.self),
                                     logicController: logicController)
@@ -36,6 +41,7 @@ extension AppDelegate: ViewControllersFactoryProtocol {
                                                                 logicController: charactersLogicController,
                                                                 viewControllersFactory: self)
         charactersLogicController.delegate = charactersViewController
+        
         return charactersViewController
     }
     
@@ -47,20 +53,22 @@ extension AppDelegate: ViewControllersFactoryProtocol {
                                                               logicController: favoritesLogicController,
                                                               viewControllersFactory: self)
         favoritesLogicController.delegate = favoritesViewController
+        
         return favoritesViewController
     }
     
-    func createSettingsViewController() ->  SettingsViewController {
+    func createSettingsViewController() -> SettingsViewController {
         let settingsLogicController = SettingsLogicController(favoritesDatabase: DependencyInjection.favoritesDatabase,
                                                               themeUpdater: DependencyInjection.themeUpdater,
                                                               urlOpener: DependencyInjection.urlOpener,
                                                               themeManager: DependencyInjection.themeManager)
+
         return SettingsViewController(nibName: SettingsViewController.className,
                                       bundle: Bundle(for: SettingsViewController.self),
                                       logicController: settingsLogicController)
     }
     
-    func createTabBarController() ->  UITabBarController {
+    func createTabBarController() -> UITabBarController {
         
         // CharactersViewController
         let charactersViewController = createCharactersViewController()

@@ -30,8 +30,10 @@ enum RMCharactersRequest: URLRequestProtocol {
         switch self {
         case .allCharactersOnPage(let page):
             return .url(["page": "\(page)"])
+            
         case .characterWithID(let id):
             return .url(["": "\(id)"])
+            
         case .characterInRange(let start, let end):
             return .url(["": "\(start),\(end)"])
         }

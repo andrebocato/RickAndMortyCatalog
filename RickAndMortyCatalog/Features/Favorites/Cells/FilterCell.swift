@@ -18,8 +18,9 @@ class FilterCell: UICollectionViewCell, ThemeObserving {
         }
     }
     
-    var theme: ThemeType!
+    // MARK: - Properties
     
+    var theme: ThemeType!
     override var isSelected: Bool {
         didSet {
             backgroundColor = isSelected ? theme.tabBarColor : theme.viewBackgroundColor
@@ -48,7 +49,7 @@ class FilterCell: UICollectionViewCell, ThemeObserving {
     
 }
 
-// MARK: - Extensions
+// MARK: - Themeable
 
 extension FilterCell: Themeable {
     

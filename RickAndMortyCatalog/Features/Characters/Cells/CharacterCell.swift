@@ -52,12 +52,14 @@ class CharacterCell: UITableViewCell, ThemeObserving {
         removeThemeObserver()
     }
     
-    // MARK: - Configuration Functions
+    // MARK: - Public Functions
     
     /// Configures the cell with data.
     ///
-    /// - Parameter modelController: The modelController that refers to a RMCharacter.
-    func configure(with modelController: RMCharacterModelController, onFavoriteErrorCallBack: ((_ error: Error) -> Void)? = nil) {
+    /// - Parameters:
+    ///   - modelController: The modelController that refers to a RMCharacter.
+    ///   - onFavoriteErrorCallBack: Closure executed in case of error toggling a character as favorite.
+    public func configure(with modelController: RMCharacterModelController, onFavoriteErrorCallBack: ((_ error: Error) -> Void)? = nil) {
         self.modelController = modelController
         self.modelController.delegate = self
         self.onFavoriteErrorCallBack = onFavoriteErrorCallBack
@@ -92,11 +94,9 @@ class CharacterCell: UITableViewCell, ThemeObserving {
     
 }
 
-// MARK: - Extensions
+// MARK: - Model Controller Delegate
 
 extension CharacterCell: RMCharacterModelControllerDelegate {
-    
-    // MARK: - RMCharacter Model Controller Delegate
     
     func allCharactersWereDeleted() {
         setupUI()
@@ -110,7 +110,8 @@ extension CharacterCell: RMCharacterModelControllerDelegate {
         }
     }
     
-    private func handleLoadingImageState(_ loading: Bool) { // @TODO: Check this...
+    // @TODO: fix. not working
+    private func handleLoadingImageState(_ loading: Bool) {
         //        DispatchQueue.main.async {
         //            loading ? self.cellImageView.startLoading(style: .white) : self.cellImageView.stopLoading()
         //        }

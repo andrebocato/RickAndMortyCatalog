@@ -11,5 +11,3 @@ import Foundation
 protocol ThemeLoader {
     func loadApplicationTheme()
 }
-
-

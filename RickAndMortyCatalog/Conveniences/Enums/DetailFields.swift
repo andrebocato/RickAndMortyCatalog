@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum DetailFields: Int, CaseIterable{
+/// Enumerates the field names for a character detail card.
+enum DetailFields: Int, CaseIterable {
     case id
     case name
     case status
@@ -20,18 +21,27 @@ enum DetailFields: Int, CaseIterable{
     
     var stringValue: String {
         switch self {
-        case .id: return "ID"
-        case .name: return "NAME"
-        case .status: return "STATUS"
-        case .species: return "SPECIES"
-        case .type: return "TYPE"
-        case .gender: return "GENDER"
-        case .origin: return "ORIGIN"
-        case .location: return "LOCATION"
+        case .id:
+            return "ID"
+        case .name:
+            return "NAME"
+        case .status:
+            return "STATUS"
+        case .species:
+            return "SPECIES"
+        case .type:
+            return "TYPE"
+        case .gender:
+            return "GENDER"
+        case .origin:
+            return "ORIGIN"
+        case .location:
+            return "LOCATION"
         }
     }
     
     var indexPath: IndexPath {
         return IndexPath(item: self.rawValue, section: 0)
     }
+    
 }

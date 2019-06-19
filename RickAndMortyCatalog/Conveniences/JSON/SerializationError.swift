@@ -39,4 +39,5 @@ enum SerializationError: Error {
             return "Could not deserialize data."
         }
     }
+    
 }

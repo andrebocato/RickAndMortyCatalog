@@ -17,8 +17,8 @@ class DetailViewController: UIViewController, ThemeObserving {
     private var logicController: DetailLogicController
     
     // MARK: - IBOutlets
-        
-    @IBOutlet private var tableView: UITableView! {
+    
+    @IBOutlet private weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
         }
@@ -62,7 +62,7 @@ class DetailViewController: UIViewController, ThemeObserving {
         navigationController?.tabBarController?.tabBar.isHidden = false
     }
     
-    // MARK: - UI
+    // MARK: - UI Configuration
     
     private func registerTableViewCells() {
         let bundle = Bundle(for: DetailFieldCell.self)
@@ -118,6 +118,8 @@ class DetailViewController: UIViewController, ThemeObserving {
     
 }
 
+// MARK: - Table View Data Source
+
 extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -133,6 +135,8 @@ extension DetailViewController: UITableViewDataSource {
     
 }
 
+// MARK: - Detail Logic Controller Delegate
+
 extension DetailViewController: DetailLogicControllerDelegate {
     
     func favoriteStateChanged(_ isFavorite: Bool) {
@@ -141,24 +145,30 @@ extension DetailViewController: DetailLogicControllerDelegate {
     
     func stateDidChange(_ newState: DetailLogicControllerState) {
         switch newState {
-        case .error(let e): handleError(e)
-        case .loadingImage(let value): handleLoadingImageState(value)
+        case .error(let error):
+            handleError(error)
+            
+        case .loadingImage(let value):
+            handleLoadingImageState(value)
         }
     }
     
     // MARK: - State Handlers
     
+    // @TODO: fix. not working
     private func handleLoadingImageState(_ loading: Bool) {
 //        loading ? imageView.startLoading() : imageView.stopLoading()
     }
     
     private func handleError(_ error: Error) {
-        presentAlert(title: "Error!", message: error.localizedDescription) { [weak self] in
+        presentOkAlert(title: "Error!", message: error.localizedDescription) { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
     }
     
 }
+
+// MARK: - Themeable
 
 extension DetailViewController: Themeable {
     

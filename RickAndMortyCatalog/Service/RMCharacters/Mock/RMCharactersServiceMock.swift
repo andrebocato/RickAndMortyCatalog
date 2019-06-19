@@ -10,7 +10,8 @@ import Foundation
 
 // MARK: - Mocked Service
 
-class URLRequestDispatcherMock: URLRequestDispatcherProtocol { // TODO: make this better
+// TODO: make this better
+class URLRequestDispatcherMock: URLRequestDispatcherProtocol {
     
     func execute(request: URLRequestProtocol, completion: @escaping (Result<Data?, URLRequestError>) -> Void) -> URLRequestToken? {
         return nil
@@ -32,9 +33,10 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
     
     // MARK: - Protocol Stubs
     
+    // @TODO: place json out of the function
     @discardableResult
     func getAllCharacters(onPage page: Int,
-                          completionHandler: @escaping (Result<RMCharacterResponse, ServiceError>) -> Void)  -> URLRequestToken? {
+                          completionHandler: @escaping (Result<RMCharacterResponse, ServiceError>) -> Void) -> URLRequestToken? {
         
         // Example using JSON strings on the code.
         guard let mockedCharactersData = """
@@ -104,7 +106,6 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
         }
         
         return nil
-        
     }
     
     @discardableResult
@@ -113,9 +114,8 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
         
         // Example getting the JSON data from a file on the project
         let bundle = Bundle(for: RMCharactersServiceMock.self)
-        guard let path = bundle.path(forResource: "GetCharacterMock", ofType: "json"),
-            let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
-                fatalError("Resource not found!")
+        guard let path = bundle.path(forResource: "GetCharacterMock", ofType: "json"), let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
+            fatalError("Resource not found!")
         }
         
         guard let mockedCharacter = try? JSONDecoder().decode(RMCharacter.self, from: jsonData) else {

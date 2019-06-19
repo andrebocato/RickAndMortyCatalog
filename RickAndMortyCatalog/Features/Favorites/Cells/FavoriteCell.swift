@@ -26,9 +26,9 @@ class FavoriteCell: UICollectionViewCell {
         imageView.startLoading(style: .gray)
     }
     
-    // MARK: - Configuration Functions
+    // MARK: - Public Functions
     
-    func configure(with imageFetcher: RMCharacterImageFetcherProtocol) {
+    public func configure(with imageFetcher: RMCharacterImageFetcherProtocol) {
         self.imageFetcher = imageFetcher
         loadImage()
     }

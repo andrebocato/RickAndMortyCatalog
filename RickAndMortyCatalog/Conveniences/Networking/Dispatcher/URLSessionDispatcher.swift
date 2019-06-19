@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - Data Task Response
+
 private struct DataTaskResponse {
     let data: Data?
     let error: Error?
@@ -29,7 +31,7 @@ public class URLSessionDispatcher: URLRequestDispatcherProtocol {
         self.session = session
     }
     
-    // MARK: - Public
+    // MARK: - Public Functions
     
     public func execute(request: URLRequestProtocol,
                         completion: @escaping (Result<Data?, URLRequestError>) -> Void) -> URLRequestToken? {
@@ -54,6 +56,7 @@ public class URLSessionDispatcher: URLRequestDispatcherProtocol {
                     completion(.success(data))
                 }
             }
+            
             urlRequestToken = URLRequestToken(task: dataTask)
             dataTask.resume()
             
@@ -63,24 +66,27 @@ public class URLSessionDispatcher: URLRequestDispatcherProtocol {
         
         return urlRequestToken
     }
+    
     // MARK: - Private Functions
     
     private func parseErrors(in dataTaskResponse: DataTaskResponse) -> URLRequestError? {
-        guard let statusCode = dataTaskResponse.httpResponse?.statusCode else {
-            return .unknown
-        }
+        guard let statusCode = dataTaskResponse.httpResponse?.statusCode else { return .unknown }
         
         if !(200...299 ~= statusCode) {
             guard dataTaskResponse.error == nil else {
                 return .unknown
             }
-            guard 400...499 ~= statusCode, let data = dataTaskResponse.data, let jsonString = String(data: data, encoding: .utf8) else {
-                return .unknown
+            
+            guard 400...499 ~= statusCode,
+                let data = dataTaskResponse.data,
+                let jsonString = String(data: data, encoding: .utf8) else {
+                    return .unknown
             }
             
             debugPrint(jsonString)
             return .withData(data, dataTaskResponse.error)
         }
+        
         return nil
     }
     

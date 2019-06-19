@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Tags
 
-fileprivate let emptyViewTag = 222
+private let emptyViewTag = 222
 
 // MARK: - Emptiable View
 

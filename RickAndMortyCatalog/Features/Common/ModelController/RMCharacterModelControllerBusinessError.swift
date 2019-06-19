@@ -10,14 +10,15 @@ import Foundation
 
 /// Defines business errors for the model controller.
 enum RMCharacterModelControllerBusinessError: Error {
-    
     case couldNotAddToFavorites
     case couldNotRemoveFromFavorites
     
     var localizedDescription: String {
         switch self {
-        case .couldNotAddToFavorites: return "Could not add to Favorites."
-        case .couldNotRemoveFromFavorites: return "Could not remove from Favorites."
+        case .couldNotAddToFavorites:
+            return "Could not add to Favorites."
+        case .couldNotRemoveFromFavorites:
+            return "Could not remove from Favorites."
         }
     }
     

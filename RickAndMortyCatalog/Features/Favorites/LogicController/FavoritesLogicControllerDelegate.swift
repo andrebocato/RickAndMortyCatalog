@@ -10,10 +10,8 @@ import Foundation
 
 /// Defines a communication strategy between the ViewController and its logic.
 protocol FavoritesLogicControllerDelegate: AnyObject {
-    
     /// Informs us that the favorites list has updated.
     func favoritesListDidUpdate()
-    
     /// Notifies that there was an error with the database.
     ///
     /// - Parameter error: An error.

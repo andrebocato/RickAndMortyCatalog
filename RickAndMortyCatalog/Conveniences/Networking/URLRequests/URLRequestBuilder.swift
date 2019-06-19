@@ -89,7 +89,6 @@ public class URLRequestBuilder {
     ///
     /// - Returns: A configured URLRequest.
     public func build() throws -> URLRequest {
-        
         var url = baseURL
         if let path = path {
             url = baseURL.appendingPathComponent(path)
@@ -123,16 +122,14 @@ public class URLRequestBuilder {
     // MARK: - Private Functions
     
     private func setupRequest(_ request: inout URLRequest, with parameters: URLRequestParameters?) {
-        
         guard let parameters = parameters else { return }
         
         switch parameters {
         case .body(let bodyParameters):
-            guard let bodyParameters = bodyParameters,
-                let payload = try? JSONSerialization.data(withJSONObject: bodyParameters, options: []) else { return }
+            guard let bodyParameters = bodyParameters, let payload = try? JSONSerialization.data(withJSONObject: bodyParameters, options: []) else { return }
             request.httpBody = payload
-        case .url(let urlParameters):
             
+        case .url(let urlParameters):
             guard let urlParameters = urlParameters,
                 let url = request.url,
                 var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return }
@@ -140,7 +137,6 @@ public class URLRequestBuilder {
             urlComponents.queryItems = urlParameters.map { URLQueryItem(name: $0.key, value: $0.value) }
             request.url = urlComponents.url
         }
-        
     }
     
 }

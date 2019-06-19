@@ -71,8 +71,7 @@ extension ThemeObserving where Self: Themeable & NSObjectProtocol {
     // MARK: - Private Functions
     
     private func themeDidChangeWithNotification(_ notification: Notification) {
-        guard let object = notification.object,
-            let newTheme = object as? Theme else { return }
+        guard let object = notification.object, let newTheme = object as? Theme else { return }
         apply(newTheme)
     }
     

@@ -38,9 +38,7 @@ class FavoritesDatabase: FavoritesDatabaseProtocol {
         
         return try realm.objects(RealmFavoriteCharacter.self)
             .compactMap({ (realmFavorite) -> FavoriteCharacter? in
-                guard let characterData = realmFavorite.rmCharacterData,
-                    let imageData = realmFavorite.imageData else { return nil }
-                
+                guard let characterData = realmFavorite.rmCharacterData, let imageData = realmFavorite.imageData else { return nil }
                 let character = try JSONDecoder().decode(RMCharacter.self, from: characterData)
                 return FavoriteCharacter(rmCharacter: character, imageData: imageData)
             })
@@ -49,7 +47,7 @@ class FavoritesDatabase: FavoritesDatabaseProtocol {
             })
         
     }
-
+    
     func deleteFavorite(withID id: Int) throws {
         
         let realm = try Realm()
@@ -63,7 +61,7 @@ class FavoritesDatabase: FavoritesDatabaseProtocol {
         }
         
     }
-
+    
     func deleteAll() throws {
         
         let realm = try Realm()
@@ -80,20 +78,22 @@ class FavoritesDatabase: FavoritesDatabaseProtocol {
         
         let primaryKey = "\(id)"
         
-        guard let result = realm.object(ofType: RealmFavoriteCharacter.self, forPrimaryKey: primaryKey) else {
-            return nil
-        }
+        guard let result = realm.object(ofType: RealmFavoriteCharacter.self, forPrimaryKey: primaryKey) else { return nil }
         
         let token = result.observe { (change) in
             switch change {
-            case .change: onChange(.updated)
-            case .deleted: onChange(.deleted)
-            default: return
+            case .change:
+                onChange(.updated)
+                
+            case .deleted:
+                onChange(.deleted)
+                
+            default:
+                return
             }
         }
         
         return RealmObjectObservationToken(realmNotificationToken: token)
-        
     }
-
+    
 }

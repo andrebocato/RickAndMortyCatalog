@@ -26,6 +26,7 @@ class FavoritesLogicController {
     private let modelControllerFactory: ModelControllersFactoryProtocol
     
     // MARK: - Private Properties
+    
     private var favorites: [FavoriteCharacter] = [] {
         didSet {
             delegate?.favoritesListDidUpdate()
@@ -46,23 +47,24 @@ class FavoritesLogicController {
     ///
     /// - Parameter index: The index to be worked on.
     /// - Returns: The modelController to the model on the specified row.
-    func modelController(for index: Int) -> RMCharacterModelController {
+    public func modelController(for index: Int) -> RMCharacterModelController {
         let rmCharacter = favorites[index].rmCharacter
         let modelController = modelControllerFactory.createRMCharacterModelController(character: rmCharacter)
         return modelController
     }
     
     /// Gets all favorites from the database
-    func loadFavorites() {
+    public func loadFavorites() {
         do {
             let fetchedFavorites = try database.fetchAllFavorites()
             favorites = fetchedFavorites
+            
         } catch {
             delegate?.databaseFetchDidFailWithError(error)
         }
     }
     
-    func filterCharacters(by filter: RMStatusFilter) {
+    public func filterCharacters(by filter: RMStatusFilter) {
         switch filter {
         case .all:
             loadFavorites()
@@ -80,4 +82,5 @@ class FavoritesLogicController {
             favorites = favorites.filter { $0.rmCharacter.status == .unknown }
         }
     }
+    
 }

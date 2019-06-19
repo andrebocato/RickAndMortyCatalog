@@ -45,7 +45,7 @@ public protocol CacheServiceProtocol {
     ///   - key: The key to fetch the data.
     ///   - completion: Completion block to get its result.
     func loadData(from key: String, completion: ((_ result: Result<Data, CacheServiceError>) -> Void))
-
+    
     /// Clears the cache.
     ///
     /// - Parameter completion: Returns whether the cache could be clearedor not.
@@ -113,7 +113,7 @@ public final class CacheService: CacheServiceProtocol {
             }
         }
     }
-
+    
     public func loadData(from key: String,
                          completion: ((Result<Data, CacheServiceError>) -> Void)) {
         
@@ -168,10 +168,9 @@ public final class CacheService: CacheServiceProtocol {
     
     private func getDataFromDisk(for encriptedKey: String) -> Data? {
         let filePath = self.filePath(key: encriptedKey)
-        guard let nsData = NSData(contentsOf: filePath), self.fileManager.fileExists(atPath: filePath.path) else {
-            return nil
-        }
+        guard let nsData = NSData(contentsOf: filePath), self.fileManager.fileExists(atPath: filePath.path) else { return nil }
+        
         return nsData as Data
     }
-
+    
 }

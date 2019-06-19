@@ -6,6 +6,8 @@
 //  Copyright © 2019 Andre Sanches Bocato. All rights reserved.
 //
 
+// This protocol was created to make URL opening with the UIApplication method testable.
+
 import Foundation
 import UIKit
 

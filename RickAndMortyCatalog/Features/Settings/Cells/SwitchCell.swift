@@ -19,7 +19,7 @@ class SwitchCell: UITableViewCell, ThemeObserving {
     }
     @IBOutlet private weak var themeSwitch: UISwitch!
     
-    // MARK: - Properties
+    // MARK: - Private Properties
     
     private var onSwitchValueChanged: ((_ isOn: Bool) -> Void)?
     
@@ -37,20 +37,22 @@ class SwitchCell: UITableViewCell, ThemeObserving {
     
     // MARK: - IBActions
     
-    @IBAction func switchValueChanged(_ sender: UISwitch) {
+    @IBAction private func switchValueChanged(_ sender: UISwitch) {
         onSwitchValueChanged?(sender.isOn)
         UISelectionFeedbackGenerator().selectionChanged()
     }
     
     // MARK: - Public Functions
     
-    func configure(isSwitchOn: Bool, onSwitchValueChanged: ((_ isOn: Bool) -> Void)?) {
+    public func configure(isSwitchOn: Bool, onSwitchValueChanged: ((_ isOn: Bool) -> Void)?) {
         selectionStyle = .none
         themeSwitch.isOn = isSwitchOn
         self.onSwitchValueChanged = onSwitchValueChanged
     }
     
 }
+
+// MARK: - Themeable
 
 extension SwitchCell: Themeable {
     

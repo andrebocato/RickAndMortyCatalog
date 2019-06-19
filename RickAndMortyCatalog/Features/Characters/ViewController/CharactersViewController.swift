@@ -26,7 +26,7 @@ class CharactersViewController: UIViewController, ThemeObserving {
     }
     @IBOutlet private weak var longPressGestureRecognizer: UILongPressGestureRecognizer!
     
-    // MARK: - Properties
+    // MARK: - Private Properties
 
     private let cellHeight: CGFloat = 80
     
@@ -35,8 +35,11 @@ class CharactersViewController: UIViewController, ThemeObserving {
     // disabled. not working
     @IBAction private func longPressGestureRecognizerDidReceiveActionEvent(_ sender: UILongPressGestureRecognizer) {
         switch sender.state {
-        case .began: toggleFavoriteForLongPressGesture(sender)
-        default: return
+        case .began:
+            toggleFavoriteForLongPressGesture(sender)
+            
+        default:
+            return
         }
     }
         
@@ -60,7 +63,7 @@ class CharactersViewController: UIViewController, ThemeObserving {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableViewCells()
-        logicController.loadCharacters() // @TODO: loading view not centered
+        logicController.loadCharacters()
         loadCurrentTheme()
         addThemeObserver()
     }
@@ -92,23 +95,20 @@ class CharactersViewController: UIViewController, ThemeObserving {
     }
 }
 
-// MARK: - Extensions
+// MARK: - Table View Data Source
 
 extension CharactersViewController: UITableViewDataSource {
     
-    // MARK: - Table View Data Source
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return logicController.numberOfCharacters
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.className, for: indexPath) as? CharacterCell else { return UITableViewCell() }
-        
+        let cell = tableView.dequeueReusableCell(ofClass: CharacterCell.self, for: indexPath)
         let modelController = logicController.modelController(for: indexPath.row)
+        
         cell.configure(with: modelController, onFavoriteErrorCallBack: { [weak self] (error) in
-            self?.presentAlert(title: "Persistence Error!",
-                               message: error.localizedDescription)  
+            self?.presentOkAlert(title: "Persistence Error!", message: error.localizedDescription)
         })
         
         return cell
@@ -127,29 +127,35 @@ extension CharactersViewController: UITableViewDataSource {
     
 }
 
+// MARK: - Table View Delegate
+
 extension CharactersViewController: UITableViewDelegate {
-    
-    // MARK: - Table View Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let selectedCharacterModelController = logicController.modelController(for: indexPath.row)
         let detailController = viewControllersFactory.createDetailsViewController(characterModelController: selectedCharacterModelController)
+        
         navigationController?.pushViewController(detailController, animated: true)
     }
     
 }
 
+// MARK: - Characters Logic Controller Delegate
+
 extension CharactersViewController: CharactersLogicControllerDelegate {
- 
-    // MARK: - Characters Logic Controller Delegate
     
     func stateDidChange(_ newState: CharactersLogicControllerState) {
         switch newState {
-        case .loadingCharacters(let value): handleLoadingCharactersState(value)
-        case .loadingNextPage(let value): handleLoadingNextPageState(value)
-        case .serviceError(let error): handleServiceError(error)
+        case .loadingCharacters(let value):
+            handleLoadingCharactersState(value)
+            
+        case .loadingNextPage(let value):
+            handleLoadingNextPageState(value)
+            
+        case .serviceError(let error):
+            handleServiceError(error)
         }
     }
     
@@ -160,7 +166,6 @@ extension CharactersViewController: CharactersLogicControllerDelegate {
     }
     
     func favoriteStateChanged(_ isFavorite: Bool) {
-        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -172,8 +177,10 @@ extension CharactersViewController: CharactersLogicControllerDelegate {
         state ? view.startLoading() : view.stopLoading()
     }
     
-    private func handleLoadingNextPageState(_ state: Bool) { // @TODO: not working
+     // @TODO: fix. not working
+    private func handleLoadingNextPageState(_ state: Bool) {
         let lastRowIndex = logicController.numberOfCharacters - 1
+        
         DispatchQueue.main.async {
             let lastCell = self.tableView.cellForRow(at: IndexPath(row: lastRowIndex, section: 0))
             state ? lastCell?.startLoading() : lastCell?.stopLoading()
@@ -183,12 +190,14 @@ extension CharactersViewController: CharactersLogicControllerDelegate {
     private func handleServiceError(_ error: ServiceError) {
         presentAlert(title: "Service Error!",
                      message: error.localizedDescription,
-                     rightAction: UIAlertAction(title: "Retry", style: .default, handler: { [weak self] (action) in
+                     rightAction: UIAlertAction(title: "Retry", style: .default, handler: { [weak self] _ in
                         self?.logicController.loadCharacters()
                      }))
     }
     
 }
+
+// MARK: - Themeable
 
 extension CharactersViewController: Themeable {
     

@@ -1,5 +1,5 @@
 //
-//  Notification+Name.swift
+//  Notification+Names.swift
 //  RickAndMortyCatalog
 //
 //  Created by Andre Sanches Bocato on 16/05/19.

@@ -21,7 +21,7 @@ protocol ThemeType {
     var selectedButtonColor: UIColor { get }
 }
 
-// MARK: - Themes
+// MARK: - Color Themes
 
 enum Theme: String, ThemeType {
     

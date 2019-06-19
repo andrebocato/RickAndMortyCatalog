@@ -35,24 +35,42 @@ class DetailFieldCell: UITableViewCell, ThemeObserving {
         removeThemeObserver()
     }
     
-    // MARK: - Functions
+    // MARK: - Public Functions
     
-    func configured(with character: RMCharacter, field: DetailFields) -> Self {
+    /// Configures the cell data.
+    ///
+    /// - Parameters:
+    ///   - character: A RMCharacter.
+    ///   - field: The field to be populated with data.
+    /// - Returns: The configured table view cell.
+    public func configured(with character: RMCharacter, field: DetailFields) -> Self {
         titleFieldLabel?.text = field.stringValue
+        
         switch field {
-        case .id: fieldPlaceholderLabel?.text = "\(character.id)"
-        case .name: fieldPlaceholderLabel?.text = character.name
-        case .status: fieldPlaceholderLabel?.text = character.status.rawValue
-        case .species: fieldPlaceholderLabel?.text = character.species
-        case .type: fieldPlaceholderLabel?.text = !character.type.isEmpty ? character.type : "-"
-        case .gender: fieldPlaceholderLabel?.text = character.gender
-        case .origin: fieldPlaceholderLabel?.text = character.origin.name
-        case .location: fieldPlaceholderLabel?.text = character.location.name
+        case .id:
+            fieldPlaceholderLabel?.text = "\(character.id)"
+        case .name:
+            fieldPlaceholderLabel?.text = character.name
+        case .status:
+            fieldPlaceholderLabel?.text = character.status.rawValue
+        case .species:
+            fieldPlaceholderLabel?.text = character.species
+        case .type:
+            fieldPlaceholderLabel?.text = !character.type.isEmpty ? character.type : "-"
+        case .gender:
+            fieldPlaceholderLabel?.text = character.gender
+        case .origin:
+            fieldPlaceholderLabel?.text = character.origin.name
+        case .location:
+            fieldPlaceholderLabel?.text = character.location.name
         }
+        
         return self
     }
     
 }
+
+// MARK: - Themeable
 
 extension DetailFieldCell: Themeable {
     

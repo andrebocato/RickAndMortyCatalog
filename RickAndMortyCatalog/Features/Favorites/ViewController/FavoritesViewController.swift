@@ -26,13 +26,6 @@ class FavoritesViewController: UIViewController, ThemeObserving {
         }
     }
     
-//    var underlineView: UIView! {
-//        didSet {
-//            underlineView.heightAnchor.constraint(equalToConstant: 5).isActive = true
-//            underlineView.bottomAnchor.constraint(equalTo: segmentedCollectionView.layoutMarginsGuide.bottomAnchor, constant: 0).isActive = true
-//        }
-//    }
-    
     // MARK: - Dependencies
     
     private var logicController: FavoritesLogicController
@@ -71,9 +64,6 @@ class FavoritesViewController: UIViewController, ThemeObserving {
         logicController.loadFavorites()
         let indexPath = RMStatusFilter.all.indexPath
         segmentedCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
-        
-//        guard let cell = segmentedCollectionView.cellForItem(at: indexPath) else { return }
-//        configureUnderlineView(under: cell)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -81,30 +71,22 @@ class FavoritesViewController: UIViewController, ThemeObserving {
         removeThemeObserver()
     }
     
-    // MARK: - UI
+    // MARK: - UI Configuration
     
     private func registerCollectionViewCells() {
         let bundle = Bundle(for: FavoritesViewController.self)
         
         segmentedCollectionView.register(UINib(nibName: FilterCell.className, bundle: bundle),
                                          forCellWithReuseIdentifier: FilterCell.className)
-        
         favoritesCollectionView.register(UINib(nibName: FavoriteCell.className, bundle: bundle),
                                          forCellWithReuseIdentifier: FavoriteCell.className)
     }
     
-//    private func configureUnderlineView(under cell: UICollectionViewCell) {
-//        underlineView.leadingAnchor.constraint(equalTo: cell.layoutMarginsGuide.leadingAnchor, constant: 0).isActive = true
-//        underlineView.trailingAnchor.constraint(equalTo: cell.layoutMarginsGuide.trailingAnchor, constant: 0).isActive = true
-//    }
-    
 }
 
-// MARK: - Extensions
+// MARK: - Collection View Data Source
 
 extension FavoritesViewController: UICollectionViewDataSource {
-    
-    // MARK: - Collection View Data Source
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
@@ -112,63 +94,68 @@ extension FavoritesViewController: UICollectionViewDataSource {
             return RMStatusFilter.allCases.count
             
         case favoritesCollectionView:
-            if logicController.numberOfFavorites == 0 {
+            if logicController.numberOfFavorites.isZero {
                 view.showEmptyView(message: "You have no favorites.")
             }
             return logicController.numberOfFavorites
             
-        default: return 0
+        default:
+            return 0
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
         case segmentedCollectionView: 
             guard let title = RMStatusFilter(rawValue: indexPath.item)?.stringValue else { return UICollectionViewCell() }
-            return collectionView.dequeueReusableCell(ofClass: FilterCell.self, for: indexPath).configured(withTitle: title)
+            return collectionView
+                .dequeueReusableCell(ofClass: FilterCell.self, for: indexPath)
+                .configured(withTitle: title)
             
         case favoritesCollectionView:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCell.className, for: indexPath) as? FavoriteCell else { return UICollectionViewCell() }
+            let cell = collectionView.dequeueReusableCell(ofClass: FavoriteCell.self, for: indexPath)
             let modelController = logicController.modelController(for: indexPath.item)
+            
             cell.configure(with: modelController)
             return cell
             
-        default: return UICollectionViewCell()
+        default:
+            return UICollectionViewCell()
         }
     }
     
 }
 
+// MARK: - Collection View Delegate
+
 extension FavoritesViewController: UICollectionViewDelegate {
-    
-    // MARK: - Collection View Delegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
         case segmentedCollectionView:
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             
-//            guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-//            configureUnderlineView(under: cell)
-            
             guard let filter = RMStatusFilter(rawValue: indexPath.item) else { return }
             logicController.filterCharacters(by: filter)
             
         case favoritesCollectionView:
             collectionView.deselectItem(at: indexPath, animated: true)
+            
             let selectedCharacterModelController = logicController.modelController(for: indexPath.row)
             let detailController = viewControllersFactory.createDetailsViewController(characterModelController: selectedCharacterModelController)
+            
             navigationController?.pushViewController(detailController, animated: true)
             
-        default: return
+        default:
+            return
         }
     }
     
 }
 
+// MARK: - Collection View Delegate Flow Layout
+
 extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
-    
-    // MARK: - Collection View Delegate Flow Layout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
@@ -180,7 +167,8 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
             let size = (collectionView.bounds.width/3) - minimumSpacing
             return CGSize(width: size, height: size)
             
-        default: return CGSize(width: 0.0, height: 0.0)
+        default:
+            return CGSize(width: 0.0, height: 0.0)
         }
     }
     
@@ -194,6 +182,8 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
+// MARK: - Favorites Logic Controller Delegate
+
 extension FavoritesViewController: FavoritesLogicControllerDelegate {
     
     func favoritesListDidUpdate() {
@@ -204,10 +194,12 @@ extension FavoritesViewController: FavoritesLogicControllerDelegate {
     }
     
     func databaseFetchDidFailWithError(_ error: Error) {
-        view.showEmptyView(message: "Could not fetch favorites. \n=(")
+        view.showEmptyView(message: "Could not fetch favorites. \n☹️")
     }
     
 }
+
+// MARK: - Themeable
 
 extension FavoritesViewController: Themeable {
     
@@ -215,7 +207,6 @@ extension FavoritesViewController: Themeable {
         view.backgroundColor = theme.viewBackgroundColor
         segmentedCollectionView.backgroundColor = theme.viewBackgroundColor
         favoritesCollectionView.backgroundColor = theme.viewBackgroundColor
-//        underlineView.backgroundColor = theme.selectedButtonColor
         view.setNeedsDisplay()
         
         tabBarController?.tabBar.apply(theme)

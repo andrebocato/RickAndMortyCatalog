@@ -29,19 +29,25 @@ class ExternalLinkCell: UITableViewCell, ThemeObserving {
         removeThemeObserver()
     }
     
-    // MARK: - Functions
+    // MARK: - Public Functions
     
-    func configured(as style: ExternalLinkCellStyle) -> Self {
+    public func configured(as style: ExternalLinkCellStyle) -> Self {
         accessoryType = .disclosureIndicator
 
         switch style {
-        case .githubRepo: textLabel?.text = "Source code"
-        case .apiDocumentation: textLabel?.text = "API Documentation"
+        case .githubRepo:
+            textLabel?.text = "Source code"
+            
+        case .apiDocumentation:
+            textLabel?.text = "API Documentation"
         }
+        
         return self
     }
     
 }
+
+// MARK: - Themeable
 
 extension ExternalLinkCell: Themeable {
     

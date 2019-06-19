@@ -59,26 +59,22 @@ class RMCharacterModelController: RMCharacterImageFetcherProtocol {
         databaseObjectObservationToken?.invalidate()
     }
     
-    // MARK: Public Functions
+    // MARK: - Public Functions
     
     /// Fetches the image data from persistence or downloads it.
     ///
     /// - Parameter completion: Returns the image data asynchronously.
-    func fetchImageData(completion: @escaping (Data) -> Void) {
-        if isFavorite {
-            fetchCharacterImageFromPersistence(completion: completion)
-        } else {
-            fetchCharacterImageFromImageService(completion: completion)
-        }
+    public func fetchImageData(completion: @escaping (Data) -> Void) {
+        isFavorite ? fetchCharacterImageFromPersistence(completion: completion) : fetchCharacterImageFromImageService(completion: completion)
     }
     
     /// Cancels the network request for image data.
-    func cancelImageRequest() {
+    public func cancelImageRequest() {
         requestToken?.cancel()
     }
     
     /// Adds the model to the favorites database.
-    func addToFavorites() {
+    public func addToFavorites() {
         guard let imageData = imageData else {
             delegate?.stateDidChange(.businessError(.couldNotAddToFavorites))
             return
@@ -87,6 +83,7 @@ class RMCharacterModelController: RMCharacterImageFetcherProtocol {
         do {
             try favoritesDatabase.createOrUpdateFavorite(rmCharacter: character, imageData: imageData)
             isFavorite = true
+            
         } catch {
             debugPrint(error)
             delegate?.stateDidChange(.businessError(.couldNotAddToFavorites))
@@ -94,10 +91,11 @@ class RMCharacterModelController: RMCharacterImageFetcherProtocol {
     }
     
     /// Removes the model from the favorites database.
-    func removeFromFavorites() {
+    public func removeFromFavorites() {
         do {
             try favoritesDatabase.deleteFavorite(withID: character.id)
             isFavorite = false
+            
         } catch {
             debugPrint(error)
             delegate?.stateDidChange(.businessError(.couldNotRemoveFromFavorites))
@@ -122,10 +120,7 @@ class RMCharacterModelController: RMCharacterImageFetcherProtocol {
     ///
     /// - Parameter completion: Executed after fetching image data.
     private func fetchCharacterImageFromPersistence(completion: @escaping (Data) -> Void) {
-        guard let favorite = try? favoritesDatabase.fetchFavoriteWithID(character.id) else {
-            // @TODO: return placeholder ?
-            return
-        }
+        guard let favorite = try? favoritesDatabase.fetchFavoriteWithID(character.id) else { return }
         imageData = favorite.imageData
         completion(favorite.imageData)
     }
@@ -134,23 +129,20 @@ class RMCharacterModelController: RMCharacterImageFetcherProtocol {
     ///
     /// - Parameter completion: Returns image data on success and and error on failure.
     private func fetchCharacterImageFromImageService(completion: @escaping (Data) -> Void) {
-        
         delegate?.stateDidChange(.loadingImage(true))
         
         let imageURL = character.image
         requestToken = service.getImageDataFromURL(imageURL) { [weak self] (result) in
-            
             self?.delegate?.stateDidChange(.loadingImage(false))
             
             switch result {
             case .success(let data):
                 self?.imageData = data
                 completion(data)
+                
             case .failure(let error):
                 debugPrint(error)
-                // @TODO: return placeholder ?
             }
-            
         }
     }
     

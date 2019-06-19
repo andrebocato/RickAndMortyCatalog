@@ -35,6 +35,8 @@ struct RMCharacter: Codable {
     let created: String
 }
 
+// MARK: - Equatable
+
 extension RMCharacter: Equatable {
     
     static func == (lhs: RMCharacter, rhs: RMCharacter) -> Bool {

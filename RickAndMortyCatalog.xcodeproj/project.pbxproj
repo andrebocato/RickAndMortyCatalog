@@ -444,8 +444,8 @@
 				65912AB4225CF45100F37508 /* UIViewController+AlertPresenting.swift */,
 				65C9CBE3228DD2CD0092E673 /* UITableView+Dequeue.swift */,
 				656004AD2295EBBC00725470 /* UICollectionView+Dequeue.swift */,
-				14A9921822B9B74D00993241 /* Themeable */,
 				14A9921922B9BF7E00993241 /* Int+IsZero.swift */,
+				14A9921822B9B74D00993241 /* Themeable */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1351,7 +1351,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q6D8LQAG8B;
+				DEVELOPMENT_TEAM = 8X682DW69D;
 				INFOPLIST_FILE = "$(SRCROOT)/RickAndMortyCatalog/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1370,7 +1370,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q6D8LQAG8B;
+				DEVELOPMENT_TEAM = 8X682DW69D;
 				INFOPLIST_FILE = "$(SRCROOT)/RickAndMortyCatalog/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

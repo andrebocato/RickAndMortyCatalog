@@ -33,7 +33,6 @@ class RMCharactersServiceMock: RMCharactersServiceProtocol {
     
     // MARK: - Protocol Stubs
     
-    // @TODO: place json out of the function
     @discardableResult
     func getAllCharacters(onPage page: Int,
                           completionHandler: @escaping (Result<RMCharacterResponse, ServiceError>) -> Void) -> URLRequestToken? {
